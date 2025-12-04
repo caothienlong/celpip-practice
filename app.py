@@ -1,13 +1,16 @@
 from flask import Flask, render_template, request, jsonify, session
 import secrets
+import uuid
 from utils.data_loader import TestDataLoader
+from utils.results_tracker import ResultsTracker
 from config import calculate_timeout, get_timeout
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
 
-# Initialize data loader
+# Initialize data loader and results tracker
 data_loader = TestDataLoader(data_dir='data')
+results_tracker = ResultsTracker(results_file='data/test_results.json')
 
 
 @app.route('/')
@@ -28,9 +31,17 @@ def index():
         else:
             exam_status[test_num] = {'completed': False}
     
+    # Get historical data from JSON if user email is set
+    test_history = {}
+    if 'user_email' in session:
+        user_email = session['user_email']
+        test_history = results_tracker.get_all_tests_summary(user_email)
+    
     return render_template('test_list.html', 
                          test_numbers=available_tests,
-                         exam_status=exam_status)
+                         exam_status=exam_status,
+                         test_history=test_history,
+                         user_email=session.get('user_email'))
 
 
 @app.route('/test/<int:test_num>')
@@ -71,6 +82,13 @@ def test_detail(test_num):
 @app.route('/test/<int:test_num>/exam')
 def start_exam(test_num):
     """Start Test Mode - begins with Reading Part 1"""
+    # Check if user email is set, if not redirect to email collection
+    if 'user_email' not in session or not session['user_email']:
+        return render_template('collect_email.html', test_num=test_num)
+    
+    # Generate unique attempt ID for this test attempt
+    attempt_id = str(uuid.uuid4())
+    
     # Clear any existing exam session (for retakes)
     test_key = f'exam_{test_num}'
     session[test_key] = {
@@ -78,12 +96,37 @@ def start_exam(test_num):
         'current_skill': 'reading',
         'current_part': 1,
         'scores': {},
-        'completed': False
+        'completed': False,
+        'attempt_id': attempt_id
     }
     session.modified = True
     
+    # Create user in tracking system
+    results_tracker.get_or_create_user(session['user_email'])
+    
     # Redirect to reading part 1
     return test_mode_part(test_num, 'reading', 1)
+
+
+@app.route('/set_user_email', methods=['POST'])
+def set_user_email():
+    """Set user email in session"""
+    data = request.json
+    email = data.get('email', '').strip()
+    
+    if email:
+        session['user_email'] = email
+        session.modified = True
+        return jsonify({'success': True})
+    else:
+        return jsonify({'success': False, 'error': 'Email is required'}), 400
+
+
+@app.route('/clear_session')
+def clear_session():
+    """Clear user session and return to home"""
+    session.clear()
+    return render_template('session_cleared.html')
 
 
 @app.route('/test/<int:test_num>/exam/<skill>/part<int:part_num>')
@@ -295,16 +338,21 @@ def submit_test_mode():
         test_data = data_loader.load_test_part(test_num, skill, part_num)
         correct_answers = data_loader.get_correct_answers(test_data)
         
+        # Convert answers keys to int for comparison
+        int_answers = {int(k): int(v) for k, v in answers.items()}
+        
         score = 0
-        for question_id, user_answer in answers.items():
+        for question_id, user_answer in int_answers.items():
             if question_id in correct_answers:
                 if user_answer == correct_answers[question_id]:
                     score += 1
         
+        max_score = len(correct_answers)
+        
         # Save score to exam session
         test_key = f'exam_{test_num}'
         if test_key not in session:
-            session[test_key] = {'scores': {}}
+            session[test_key] = {'scores': {}, 'attempt_id': str(uuid.uuid4())}
         if 'scores' not in session[test_key]:
             session[test_key]['scores'] = {}
         if skill not in session[test_key]['scores']:
@@ -312,6 +360,21 @@ def submit_test_mode():
         
         session[test_key]['scores'][skill][str(part_num)] = score
         session.modified = True
+        
+        # Save to JSON tracking if user email is set
+        if 'user_email' in session:
+            attempt_id = session[test_key].get('attempt_id', str(uuid.uuid4()))
+            results_tracker.save_test_result(
+                user_email=session['user_email'],
+                test_num=test_num,
+                skill=skill,
+                part_num=part_num,
+                answers=int_answers,
+                correct_answers=correct_answers,
+                score=score,
+                max_score=max_score,
+                attempt_id=attempt_id
+            )
         
         # Determine next action
         skill_parts = data_loader.list_available_parts(test_num, skill)
@@ -337,19 +400,28 @@ def submit_test_mode():
             # If last skill, mark exam as completed and calculate total score
             if not has_next_skill:
                 total_score = 0
-                max_score = 0
+                max_score_total = 0
                 for completed_skill in session[test_key]['scores']:
                     skill_score_dict = session[test_key]['scores'][completed_skill]
                     total_score += sum(skill_score_dict.values())
                     # Calculate max for this skill
                     skill_parts_list = data_loader.list_available_parts(test_num, completed_skill)
                     for p in skill_parts_list:
-                        max_score += len(data_loader.get_all_questions(data_loader.load_test_part(test_num, completed_skill, p)))
+                        max_score_total += len(data_loader.get_all_questions(data_loader.load_test_part(test_num, completed_skill, p)))
                 
                 session[test_key]['completed'] = True
                 session[test_key]['total_score'] = total_score
-                session[test_key]['max_score'] = max_score
+                session[test_key]['max_score'] = max_score_total
                 session.modified = True
+                
+                # Mark attempt as completed in JSON tracking
+                if 'user_email' in session:
+                    attempt_id = session[test_key].get('attempt_id', str(uuid.uuid4()))
+                    results_tracker.complete_test_attempt(
+                        user_email=session['user_email'],
+                        test_num=test_num,
+                        attempt_id=attempt_id
+                    )
             
             return jsonify({
                 'show_skill_score': True,

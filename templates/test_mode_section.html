@@ -302,7 +302,10 @@
                     
                     document.getElementById('finalScore').style.display = 'block';
                     document.getElementById('submitBtn').style.display = 'none';
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    
+                    // Scroll to show the final score card (scroll down)
+                    const finalScoreElement = document.getElementById('finalScore');
+                    finalScoreElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 } else {
                     // Auto-navigate to next part
                     window.location.href = `/test/${data.test_num}/exam/${data.skill}/part${data.next_part}`;
