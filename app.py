@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, session
 import secrets
 from utils.data_loader import TestDataLoader
 from config import calculate_timeout, get_timeout
@@ -12,21 +12,44 @@ data_loader = TestDataLoader(data_dir='data')
 
 @app.route('/')
 def index():
-    """Home page showing all available tests and skills"""
+    """Home page showing all available tests"""
     available_tests = data_loader.list_available_tests()
+    return render_template('test_list.html', test_numbers=available_tests)
+
+
+@app.route('/test/<int:test_num>')
+def test_detail(test_num):
+    """Test detail page showing all 4 skills"""
+    # Get available parts for each skill
+    reading_parts = data_loader.list_available_parts(test_num, 'reading')
+    writing_parts = data_loader.list_available_parts(test_num, 'writing')
+    listening_parts = data_loader.list_available_parts(test_num, 'listening')
+    speaking_parts = data_loader.list_available_parts(test_num, 'speaking')
     
-    # For now, we'll show Test 1 with available skills
-    test_info = {}
-    if available_tests:
-        for test_num in available_tests:
-            test_info[test_num] = {
-                'reading': data_loader.list_available_parts(test_num, 'reading'),
-                'writing': data_loader.list_available_parts(test_num, 'writing'),
-                'speaking': data_loader.list_available_parts(test_num, 'speaking'),
-                'listening': data_loader.list_available_parts(test_num, 'listening')
-            }
+    # Get scores from session
+    if 'scores' not in session:
+        session['scores'] = {}
     
-    return render_template('index.html', test_info=test_info)
+    test_key = f'test_{test_num}'
+    session_scores = session['scores'].get(test_key, {})
+    
+    # Calculate totals for reading
+    reading_total = None
+    reading_max = None
+    if reading_parts and 'reading' in session_scores:
+        reading_total = sum(session_scores['reading'].values())
+        # Calculate max possible score (38 questions for reading)
+        reading_max = 38  # 11 + 8 + 9 + 10
+    
+    return render_template('test_detail.html',
+                         test_num=test_num,
+                         reading_parts=reading_parts,
+                         writing_parts=writing_parts,
+                         listening_parts=listening_parts,
+                         speaking_parts=speaking_parts,
+                         session_scores=session_scores,
+                         reading_total=reading_total,
+                         reading_max=reading_max)
 
 
 @app.route('/test/<int:test_num>/<skill>/part<int:part_num>')
@@ -188,7 +211,7 @@ def submit_answers():
         }
     
     Returns:
-        JSON with score and results
+        JSON with score, results, and next part info
     """
     data = request.json
     answers = data.get('answers', {})
@@ -219,12 +242,46 @@ def submit_answers():
                 }
         
         total_questions = len(correct_answers)
+        percentage = round((score / total_questions) * 100, 1) if total_questions > 0 else 0
+        
+        # Save score to session
+        if 'scores' not in session:
+            session['scores'] = {}
+        
+        test_key = f'test_{test_num}'
+        if test_key not in session['scores']:
+            session['scores'][test_key] = {}
+        if skill not in session['scores'][test_key]:
+            session['scores'][test_key][skill] = {}
+        
+        session['scores'][test_key][skill][part_num] = score
+        session.modified = True
+        
+        # Determine next part
+        next_part = None
+        skill_parts = data_loader.list_available_parts(test_num, skill)
+        if part_num in skill_parts:
+            current_index = skill_parts.index(part_num)
+            if current_index + 1 < len(skill_parts):
+                next_part = skill_parts[current_index + 1]
+        
+        # Calculate skill total
+        skill_scores = session['scores'][test_key].get(skill, {})
+        skill_total = sum(skill_scores.values())
+        skill_max = sum([len(data_loader.get_all_questions(data_loader.load_test_part(test_num, skill, p))) 
+                         for p in skill_parts])
         
         return jsonify({
             'score': score,
             'total': total_questions,
-            'percentage': round((score / total_questions) * 100, 1) if total_questions > 0 else 0,
-            'results': results
+            'percentage': percentage,
+            'results': results,
+            'next_part': next_part,
+            'test_num': test_num,
+            'skill': skill,
+            'skill_total': skill_total,
+            'skill_max': skill_max,
+            'all_parts_complete': next_part is None
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 400

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CELPIP Practice Tests</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .test-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        
+        .test-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .test-label {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        
+        .test-status {
+            margin-top: 15px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .status-complete {
+            background: rgba(76, 175, 80, 0.9);
+        }
+        
+        .status-template {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 CELPIP Practice Tests</h1>
+        <p class="subtitle">Select a test to begin practicing</p>
+        
+        <div class="test-grid">
+            {% for test_num in test_numbers %}
+            <a href="/test/{{ test_num }}" class="test-card">
+                <div class="test-number">{{ test_num }}</div>
+                <div class="test-label">Practice Test {{ test_num }}</div>
+                <div class="test-status {% if test_num in [1, 2] %}status-complete{% else %}status-template{% endif %}">
+                    {% if test_num in [1, 2] %}
+                        ✅ Complete
+                    {% else %}
+                        📝 Template
+                    {% endif %}
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+

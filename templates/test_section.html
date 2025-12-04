@@ -556,11 +556,43 @@
             const resultsDiv = document.getElementById('results');
             let html = `
                 <div class="score-display">
-                    <h2>${data.score} / ${data.total}</h2>
+                    <h2>Part ${data.test_num || '{{ part_num }}'} Score: ${data.score} / ${data.total}</h2>
                     <p style="font-size: 1.5em;">${data.percentage}%</p>
                 </div>
-                <h3 style="margin-bottom: 20px;">Question Results:</h3>
             `;
+            
+            // Show running total if available
+            if (data.skill_total !== undefined) {
+                html += `
+                    <div class="total-score-banner">
+                        <h3>Running Total: ${data.skill_total} / ${data.skill_max} points</h3>
+                        ${data.all_parts_complete ? '<p style="color: #4CAF50; font-weight: bold;">✅ All parts complete!</p>' : ''}
+                    </div>
+                `;
+            }
+            
+            // Add next part button if available
+            if (data.next_part) {
+                html += `
+                    <div style="margin: 20px 0; text-align: center;">
+                        <a href="/test/${data.test_num}/${data.skill}/part${data.next_part}" 
+                           class="next-part-btn">
+                            Next: Part ${data.next_part} →
+                        </a>
+                    </div>
+                `;
+            } else if (data.all_parts_complete) {
+                html += `
+                    <div style="margin: 20px 0; text-align: center;">
+                        <a href="/test/${data.test_num}" 
+                           class="next-part-btn">
+                            ← Back to Test ${data.test_num}
+                        </a>
+                    </div>
+                `;
+            }
+            
+            html += `<h3 style="margin: 30px 0 20px 0;">Question Results:</h3>`;
             
             for (let [questionId, result] of Object.entries(data.results)) {
                 const correctClass = result.correct ? 'correct' : 'incorrect';
@@ -577,7 +609,7 @@
             resultsDiv.style.display = 'block';
             
             document.getElementById('submitBtn').disabled = true;
-            document.querySelectorAll('input[type="radio"]').forEach(input => {
+            document.querySelectorAll('input[type="radio"], select').forEach(input => {
                 input.disabled = true;
             });
             
