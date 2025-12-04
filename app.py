@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, session
+from flask import Flask, render_template, request, jsonify, session, send_from_directory
 import secrets
 import uuid
 from utils.data_loader import TestDataLoader
@@ -11,6 +11,24 @@ app.secret_key = secrets.token_hex(16)
 # Initialize data loader and results tracker
 data_loader = TestDataLoader(data_dir='data')
 results_tracker = ResultsTracker(reports_dir='reports')
+
+
+@app.route('/offline')
+def offline():
+    """Offline page for PWA"""
+    return render_template('offline.html')
+
+
+@app.route('/manifest.json')
+def manifest():
+    """Serve PWA manifest"""
+    return send_from_directory('static', 'manifest.json', mimetype='application/manifest+json')
+
+
+@app.route('/sw.js')
+def service_worker():
+    """Serve service worker"""
+    return send_from_directory('static', 'sw.js', mimetype='application/javascript')
 
 
 @app.route('/')
