@@ -1,0 +1,111 @@
+{
+  "part": 2,
+  "title": "Reading to Apply a Diagram",
+  "type": "diagram",
+  "instructions": "Read the following email message about the diagram. Complete the email by filling in the blanks.",
+  "sections": [
+    {
+      "section_type": "diagram_email",
+      "diagram_image": "part2_diagram.png",
+      "email_title": "Email Message",
+      "content": "Subject: TODO - Add subject\nTo: TODO\nFrom: TODO\n\nTODO: Add email content with __DROPDOWN_1__, __DROPDOWN_2__, __DROPDOWN_3__, __DROPDOWN_4__, __DROPDOWN_5__ placeholders.",
+      "questions": [
+        {
+          "id": 1,
+          "text": "1.",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "text": "2.",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "text": "3.",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "text": "4.",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "text": "5.",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Using the drop-down menu, choose the best option.",
+      "question_format": "dropdown",
+      "questions": [
+        {
+          "id": 6,
+          "text": "Question 6 text here",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 7,
+          "text": "Question 7 text here",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 8,
+          "text": "Question 8 text here",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}

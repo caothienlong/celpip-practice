@@ -1,0 +1,138 @@
+{
+  "part": 4,
+  "title": "Reading for Viewpoints",
+  "type": "viewpoints",
+  "instructions": "Read the following article from a website and answer the questions.",
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Article (Test 2)",
+      "content": "TODO: Add article content here. This should be an opinion piece or article with different viewpoints."
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Using the drop-down menu, choose the best option according to the information given on the website.",
+      "question_format": "dropdown",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Question 1 text here",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "text": "Question 2 text here",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "text": "Question 3 text here",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "text": "Question 4 text here",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "text": "Question 5 text here",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "section_type": "response_passage",
+      "title": "Website Comment",
+      "instruction_text": "The following is a comment by a visitor to the website page. Complete the comment by choosing the best option to fill in each blank.",
+      "content": "TODO: Add comment content with __DROPDOWN_6__, __DROPDOWN_7__, __DROPDOWN_8__, __DROPDOWN_9__, __DROPDOWN_10__ placeholders.",
+      "questions": [
+        {
+          "id": 6,
+          "text": "6.",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 7,
+          "text": "7.",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 8,
+          "text": "8.",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 9,
+          "text": "9.",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 10,
+          "text": "10.",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}

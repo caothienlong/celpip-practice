@@ -1,0 +1,129 @@
+{
+  "part": 3,
+  "title": "Reading for Information",
+  "type": "information",
+  "instructions": "Read the following passage and answer the questions. Decide which paragraph (A to D) has the information given in each statement. Select E if the information is not given in any of the paragraphs.",
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Reading Passage (Test 5)",
+      "content": "A. TODO: Add paragraph A content here.\n\nB. TODO: Add paragraph B content here.\n\nC. TODO: Add paragraph C content here.\n\nD. TODO: Add paragraph D content here.",
+      "note": "E. Not given in any of the above paragraphs."
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Decide which paragraph, A to D, has the information given in each statement below. Select E if the information is not given in any of the paragraphs.",
+      "question_format": "dropdown",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Statement 1 - TODO: Add statement text",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "text": "Statement 2 - TODO: Add statement text",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "text": "Statement 3 - TODO: Add statement text",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "text": "Statement 4 - TODO: Add statement text",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "text": "Statement 5 - TODO: Add statement text",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 6,
+          "text": "Statement 6 - TODO: Add statement text",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 7,
+          "text": "Statement 7 - TODO: Add statement text",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 8,
+          "text": "Statement 8 - TODO: Add statement text",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 9,
+          "text": "Statement 9 - TODO: Add statement text",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}

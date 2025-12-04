@@ -1,0 +1,149 @@
+{
+  "part": 1,
+  "title": "Reading Correspondence",
+  "type": "correspondence",
+  "instructions": "Read the following message and answer the questions.",
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Message (Test 5)",
+      "content": "TODO: Add the reading passage here.\n\nThis should be a letter or email from the PDF."
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Questions 1-6: Choose the best option according to the information given in the message.",
+      "question_format": "dropdown",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Question 1 text here",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "text": "Question 2 text here",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "text": "Question 3 text here",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "text": "Question 4 text here",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "text": "Question 5 text here",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 6,
+          "text": "Question 6 text here",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "section_type": "response_passage",
+      "title": "Response Message",
+      "instruction_text": "Questions 7-11: Complete the response by filling in the blanks.",
+      "content": "TODO: Add response message with __DROPDOWN_7__, __DROPDOWN_8__, __DROPDOWN_9__, __DROPDOWN_10__, __DROPDOWN_11__ placeholders.",
+      "questions": [
+        {
+          "id": 7,
+          "text": "7.",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 8,
+          "text": "8.",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 9,
+          "text": "9.",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 10,
+          "text": "10.",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 11,
+          "text": "11.",
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D"
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}
