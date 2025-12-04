@@ -375,6 +375,88 @@
             </form>
         </div>
     </div>
+    
+    <!-- iOS Installation Instructions -->
+    <div id="iosInstallBanner" style="display: none;">
+        <div style="
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            z-index: 1001;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+            animation: slideUp 0.3s ease-out;
+        ">
+            <div style="margin-bottom: 15px; font-size: 1.1em; font-weight: bold;">
+                📱 Install CELPIP Practice App
+            </div>
+            <div style="margin-bottom: 15px; font-size: 0.95em; line-height: 1.6;">
+                <div>1. Tap the <strong>Share</strong> button 
+                    <svg style="display: inline-block; width: 20px; height: 20px; vertical-align: middle; margin: 0 5px;" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18 16v2H6v-2H4v2c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-2h-2zm-1-4l-1.41-1.41L13 13.17V4h-2v9.17L8.41 10.59 7 12l5 5 5-5z"/>
+                    </svg> 
+                    (at the bottom)
+                </div>
+                <div>2. Scroll and tap <strong>"Add to Home Screen"</strong></div>
+                <div>3. Tap <strong>"Add"</strong> - Done! 🎉</div>
+            </div>
+            <button onclick="document.getElementById('iosInstallBanner').style.display='none'" style="
+                padding: 10px 25px;
+                background: rgba(255,255,255,0.2);
+                border: 2px solid white;
+                color: white;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: 600;
+                font-size: 1em;
+                transition: all 0.3s;
+            " onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+                Got it!
+            </button>
+        </div>
+    </div>
+    
+    @keyframes slideUp {
+        from {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    <!-- Install App Button (Always Visible) -->
+    <div id="installButtonContainer" style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    ">
+        <button id="installAppButton" onclick="showInstallInstructions()" style="
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1em;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(102, 126, 234, 0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(102, 126, 234, 0.4)'">
+            <span style="font-size: 1.2em;">📱</span>
+            <span>Install App</span>
+        </button>
+    </div>
     <div class="container">
         <h1>📚 CELPIP Practice Tests</h1>
         <p class="subtitle">Select a test to begin practicing</p>
