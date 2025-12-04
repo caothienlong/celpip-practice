@@ -36,3 +36,6 @@ Thumbs.db
 
 # PDF source files (large files)
 *.pdf
+
+# User results data
+data/test_results.json
