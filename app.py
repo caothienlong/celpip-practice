@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import secrets
 from utils.data_loader import TestDataLoader
+from config import calculate_timeout, get_timeout
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
@@ -70,12 +71,23 @@ def prepare_test_data(test_data, skill, part_num):
     Returns:
         dict: Processed data ready for template
     """
+    # Get all questions
+    all_questions = data_loader.get_all_questions(test_data)
+    num_questions = len(all_questions)
+    
+    # Calculate timeout (use JSON value if present, otherwise calculate)
+    timeout = test_data.get('timeout_minutes')
+    if timeout is None:
+        # Auto-calculate if not specified in JSON
+        timeout = get_timeout(test_data['part'], skill, part_num, num_questions)
+    
     processed = {
         'title': f"Part {part_num}: {test_data['title']}",
         'instructions': test_data['instructions'],
-        'timeout_minutes': test_data['timeout_minutes'],
+        'timeout_minutes': timeout,
         'type': test_data['type'],
-        'questions': data_loader.get_all_questions(test_data)
+        'questions': all_questions,
+        'num_questions': num_questions
     }
     
     # Process based on test type
