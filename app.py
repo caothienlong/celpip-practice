@@ -14,7 +14,23 @@ data_loader = TestDataLoader(data_dir='data')
 def index():
     """Home page showing all available tests"""
     available_tests = data_loader.list_available_tests()
-    return render_template('test_list.html', test_numbers=available_tests)
+    
+    # Get exam completion status and scores from session
+    exam_status = {}
+    for test_num in available_tests:
+        test_key = f'exam_{test_num}'
+        if test_key in session and session[test_key].get('completed'):
+            exam_status[test_num] = {
+                'completed': True,
+                'total_score': session[test_key].get('total_score', 0),
+                'max_score': session[test_key].get('max_score', 0)
+            }
+        else:
+            exam_status[test_num] = {'completed': False}
+    
+    return render_template('test_list.html', 
+                         test_numbers=available_tests,
+                         exam_status=exam_status)
 
 
 @app.route('/test/<int:test_num>')
