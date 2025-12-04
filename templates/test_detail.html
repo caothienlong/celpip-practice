@@ -199,8 +199,8 @@
                                 {% elif part == 4 %}10 questions • 15 min
                                 {% endif %}
                             </div>
-                            {% if session_scores.get('reading', {}).get(part) is not none %}
-                            <span class="score-badge">{{ session_scores['reading'][part] }} pts</span>
+                            {% if session_scores.get('reading', {}).get(part|string) is not none %}
+                            <span class="score-badge">{{ session_scores['reading'][part|string] }} pts</span>
                             {% endif %}
                         </a>
                         {% endfor %}

@@ -244,7 +244,7 @@ def submit_answers():
         total_questions = len(correct_answers)
         percentage = round((score / total_questions) * 100, 1) if total_questions > 0 else 0
         
-        # Save score to session
+        # Save score to session (use string keys for consistency)
         if 'scores' not in session:
             session['scores'] = {}
         
@@ -254,7 +254,8 @@ def submit_answers():
         if skill not in session['scores'][test_key]:
             session['scores'][test_key][skill] = {}
         
-        session['scores'][test_key][skill][part_num] = score
+        # Convert part_num to string to avoid mixing int/str keys in session
+        session['scores'][test_key][skill][str(part_num)] = score
         session.modified = True
         
         # Determine next part
@@ -268,8 +269,12 @@ def submit_answers():
         # Calculate skill total
         skill_scores = session['scores'][test_key].get(skill, {})
         skill_total = sum(skill_scores.values())
-        skill_max = sum([len(data_loader.get_all_questions(data_loader.load_test_part(test_num, skill, p))) 
-                         for p in skill_parts])
+        # Calculate max possible score for all available parts
+        try:
+            skill_max = sum([len(data_loader.get_all_questions(data_loader.load_test_part(test_num, skill, p))) 
+                             for p in skill_parts])
+        except:
+            skill_max = len(skill_parts) * 10  # Fallback estimation
         
         return jsonify({
             'score': score,
