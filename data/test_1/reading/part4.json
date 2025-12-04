@@ -1,0 +1,140 @@
+{
+  "part": 4,
+  "title": "Reading for Viewpoints",
+  "type": "viewpoints",
+  "instructions": "Read the following article from a website and answer the questions.",
+  "timeout_minutes": 15.0,
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Parenting Blogs and Children's Privacy",
+      "content": "On social media and blogs, many people throw caution to the wind when it comes to privacy—not just their own but that of their family members as well. Social media sites do have community standards, but, except in extreme cases, there's little consensus on what's socially appropriate to post and what isn't. For this reason, many believe that parents should exercise some restraint in order to protect their children from future shame or ridicule stemming from online postings of their toddler pictures.\n\nDuring the last decade, a growing number of proud parents have shared details about their babies and young children on blogs. Amy Smith, a Toronto stay-at-home mother of two-year-old twins, says she blogs because it's \"a way of sharing my worries and getting advice. It's lonely and scary being a new mom.\" She values the virtual connection with moms all over the world in similar situations. Edmontonian Jenn Oakley, a software developer on maternity leave, admits that blogging serves as a familiar activity that offsets the intense challenges of parenthood. \"I feel competent doing anything on the computer,\" she says, \"but I feel like a struggling newbie being a mother.\"\n\nBlogging may be a refreshing relief from changing diapers and laundering bibs, but Vancouver psychologist Janice Kimmel warns that parents need to stop and think before publicly sharing the details of their children's lives. \"A blog is forever,\" she says. \"Once they're adolescents, kids tend to be mortified if they find their baby pictures or toddler misadventure tales online.\" Halifax event planner Doris Jones was shocked to learn from her ten-year-old that his friends were mocking him about a picture they'd found on her blog. \"It was an innocent picture of my son and his sister in the bathtub when they were toddlers. There are millions of photos like this on the net, but still my son's been the butt of jokes all year at school.\" Janice Kimmel isn't surprised. \"We must respect our children's privacy,\" she cautions. \"Before you post, think about your child's future.\""
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Using the drop-down menu, choose the best option according to the information given on the website.",
+      "question_format": "dropdown",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Which statement would Smith and Oakley agree with?",
+          "options": [
+            "Blogging about a baby is harder than raising a baby.",
+            "Blogging helps reduces the stress of sudden lifestyle changes.",
+            "Parents should accept some isolation as unavoidable.",
+            "Parents should keep their parenting stories private."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "text": "What can we most reasonably conclude from the article?",
+          "options": [
+            "Bloggers should use a name that hides their true identity.",
+            "Childcare skills do not come naturally to all women.",
+            "Kids are safer if strangers don't know about their lives.",
+            "Parents should think before sharing some details online."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 3,
+          "text": "Which title best captures the MAIN idea?",
+          "options": [
+            "Blogs Comfort Moms but Risk Kids' Privacy",
+            "Newbie Parents Dispel Fears by Blogging",
+            "Parental Blogging is a Fast Growing Trend",
+            "Software Developer Turns Mommy Blogger"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "text": "Who would be most interested in reading this article?",
+          "options": [
+            "high school students with younger siblings",
+            "first-time stay-at-home mothers",
+            "psychologists specializing in child abuse",
+            "social media application developers"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "text": "We can conclude that parenting blogs are a",
+          "options": [
+            "benefit to families.",
+            "contentious issue.",
+            "no-win situation.",
+            "threat to toddlers."
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "section_type": "response_passage",
+      "title": "Website Comment",
+      "instruction_text": "The following is a comment by a visitor to the website page. Complete the comment by choosing the best option to fill in each blank.",
+      "content": "I wish parent blogs had been around when my kids were little. I totally agree that they __DROPDOWN_6__. For the stay-at-home new moms you profile, __DROPDOWN_7__.\n\nLike the author, I think that moms need to understand that blogs are __DROPDOWN_8__. Like Doris Jones' ten-year-old, I would certainly feel __DROPDOWN_9__ if I found an online photo of myself as a fat little toddler splashing au naturel in the water. That would be my mother's favourite picture, but she'd keep it in her wallet, for her eyes only. If bloggers remembered how and where their own moms displayed their baby pictures, maybe there'd be more __DROPDOWN_10__.",
+      "questions": [
+        {
+          "id": 6,
+          "text": "6.",
+          "options": [
+            "instruct moms in the proper way of",
+            "provide easy entertainment when",
+            "reduce the workload involved in",
+            "relieve some of the stress of"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 7,
+          "text": "7.",
+          "options": [
+            "feeling capable in",
+            "keeping busy with",
+            "offering advice on",
+            "posting photos of"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 8,
+          "text": "8.",
+          "options": [
+            "boring to readers",
+            "public and everlasting",
+            "far too time consuming",
+            "too harmful to children"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 9,
+          "text": "9.",
+          "options": [
+            "amused",
+            "embarrassed",
+            "offended",
+            "unsafe"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 10,
+          "text": "10.",
+          "options": [
+            "eagerness",
+            "discretion",
+            "modesty",
+            "safety"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}
+

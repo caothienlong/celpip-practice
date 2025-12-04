@@ -349,6 +349,60 @@
                 </form>
             </div>
             
+            {% elif section.is_information_type %}
+            <!-- Part 3: Reading for Information -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                <div>
+                    <h3 style="color: #667eea; margin-bottom: 15px;">📄 Reading Passage</h3>
+                    <div class="passage" style="margin: 0;">{{ section.passage }}</div>
+                    {% if section.passage_note %}
+                    <div style="margin-top: 15px; padding: 15px; background: #fff3cd; border-radius: 8px; border-left: 4px solid #ffc107;">
+                        <strong>Note:</strong> {{ section.passage_note }}
+                    </div>
+                    {% endif %}
+                </div>
+                <div>
+                    <h3 style="color: #667eea; margin-bottom: 15px;">❓ Questions</h3>
+                    <div class="question-container" style="background: transparent; padding: 0; box-shadow: none;">
+                        <form id="testForm">
+                            {{ section.questions_html | safe }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            {% elif section.is_viewpoints_type %}
+            <!-- Part 4: Reading for Viewpoints -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                <div>
+                    <h3 style="color: #667eea; margin-bottom: 15px;">📰 Article</h3>
+                    <div class="passage" style="margin: 0;">{{ section.passage }}</div>
+                </div>
+                <div>
+                    <h3 style="color: #667eea; margin-bottom: 15px;">❓ Questions</h3>
+                    <div class="question-container" style="background: transparent; padding: 0; box-shadow: none;">
+                        <form id="testForm">
+                            {{ section.questions_html | safe }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            {% if section.response_passage %}
+            <div class="section-divider">
+                <div class="section-title">{{ section.section_divider_text }}</div>
+            </div>
+            
+            <div>
+                <h3 style="color: #667eea; margin-bottom: 15px;">💬 {{ section.response_title }}</h3>
+                <div class="passage">
+                    <form id="testForm2">
+                        {{ section.response_passage | safe }}
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+            
             {% else %}
             <!-- Part 1: Correspondence section -->
             <div class="section-divider">

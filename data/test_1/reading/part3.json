@@ -1,0 +1,131 @@
+{
+  "part": 3,
+  "title": "Reading for Information",
+  "type": "information",
+  "instructions": "Read the following passage and answer the questions. Decide which paragraph (A to D) has the information given in each statement. Select E if the information is not given in any of the paragraphs.",
+  "timeout_minutes": 13.5,
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "The Royal Ontario Museum",
+      "content": "A. The first record of chewing gum dates back to Finland about 5,000 years ago. Neolithic-period chewing gum was made of bark tar and was widely utilized for its antiseptic and medicinal properties. The ancient Greeks chewed mastic gum, made from the resin of the mastic tree. Ancient Mayans and Aztecs chewed chicle, a substance derived from the sapodilla tree. Chewing gum's popularity spread throughout the world over the centuries.\n\nB. The museum came to exist largely due to the efforts of Charles Currelly, a minister-turned-archaeologist, and Edmund Walker, a banker with philanthropic interests. The former wanted to establish an archaeological museum in Ontario; the latter wanted to establish an institution in Canada similar to the impressive galleries and museums in New York. Although Walker was initially interested in the natural world—he collected fossils and arranged funding for dinosaur digs in Alberta—he eventually became interested in the cultural world as well. Thus, on his death, he donated a collection of Japanese woodblock prints to the museum. To this day, the museum explores both worlds and is, for that reason, one of a kind among the world's museums.\n\nC. The museum's Natural History department holdings include amphibians, reptiles, mammals, birds, and one of the best bat collections on the continent. It also includes world-class collections of minerals, gems, rocks, and meteorites, and a world-renowned collection of dinosaur skeletons. The World Cultures department contains ethnological collections featuring artifacts from the Canadian Northwest Coast, Plains, Inuit, and Woodlands cultures. It also features artifacts from Near Eastern and Asian collections, which include tomb figurines from the Tang dynasty; Canada's largest textile and costume collection; Greek, Roman, and Byzantine collections; and several European and early Canadian decorative arts collections.\n\nD. Another unique feature of the museum is the Michael Lee-Chin Crystal, which consists of five interlocking prismatic structures at the entrance of the museum. The Crystal's angled walls do not actually touch the museum's original building and provide a stark contrast with its Neo-Romanesque architecture. Both harshly criticized and enthusiastically celebrated, the Crystal was but one aspect of the highly successful \"Renaissance\" project, started in 2002 to boost the museum's ticket sales and capacity. The project also resulted in new and renovated gallery spaces allowing twice as many artifacts and specimens to be displayed, a digital gallery enabling an interactive multimedia experience, and additional restaurant and retail space.",
+      "note": "E. Not given in any of the above paragraphs."
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Decide which paragraph, A to D, has the information given in each statement below. Select E if the information is not given in any of the paragraphs.",
+      "question_format": "dropdown",
+      "questions": [
+        {
+          "id": 1,
+          "text": "The museum's specific collections are very diverse.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 2,
+          "text": "The museum's collection of assembled dinosaur bones is internationally famous.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 3,
+          "text": "The \"Renaissance\" project was meant to increase museum attendance.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 4,
+          "text": "Musical performances are sometimes presented at the museum.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 4
+        },
+        {
+          "id": 5,
+          "text": "The Royal Ontario Museum was at first envisioned as one that would emulate certain American museums.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 6,
+          "text": "The ROM uniquely brings together the cultural and scientific realms.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 7,
+          "text": "Nowadays, university scholars from Ontario, Alberta, and China collaborate on some ROM research projects.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 4
+        },
+        {
+          "id": 8,
+          "text": "A controversial architectural configuration was erected near the ROM's front door.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 9,
+          "text": "Before becoming a scientist, Currelly served the church.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}
+

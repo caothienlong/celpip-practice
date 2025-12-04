@@ -119,6 +119,46 @@ def prepare_test_data(test_data, skill, part_num):
                 questions_section['questions']
             )
     
+    elif test_data['type'] == 'information':
+        # Part 3: Reading for Information
+        passage_section = data_loader.get_section_by_type(test_data, 'passage')
+        questions_section = data_loader.get_section_by_type(test_data, 'questions')
+        
+        processed['is_information_type'] = True
+        
+        if passage_section:
+            processed['passage'] = passage_section['content']
+            processed['passage_note'] = passage_section.get('note', '')
+        
+        if questions_section:
+            processed['questions_html'] = data_loader.build_question_dropdown_html(
+                questions_section['questions']
+            )
+    
+    elif test_data['type'] == 'viewpoints':
+        # Part 4: Reading for Viewpoints
+        passage_section = data_loader.get_section_by_type(test_data, 'passage')
+        questions_section = data_loader.get_section_by_type(test_data, 'questions')
+        response_section = data_loader.get_section_by_type(test_data, 'response_passage')
+        
+        processed['is_viewpoints_type'] = True
+        
+        if passage_section:
+            processed['passage'] = passage_section['content']
+        
+        if questions_section:
+            processed['questions_html'] = data_loader.build_question_dropdown_html(
+                questions_section['questions']
+            )
+        
+        if response_section:
+            processed['response_passage'] = data_loader.process_dropdown_content(
+                response_section['content'],
+                response_section['questions']
+            )
+            processed['response_title'] = response_section.get('title', 'Response')
+            processed['section_divider_text'] = response_section.get('instruction_text', '')
+    
     return processed
 
 
