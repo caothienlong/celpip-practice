@@ -1,0 +1,108 @@
+{% if section.has_diagram %}
+<!-- Part 2: Diagram-based section -->
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+    <div>
+        <h3 style="color: #667eea; margin-bottom: 15px;">📊 Diagram</h3>
+        <div style="background: white; padding: 15px; border-radius: 10px; border: 2px solid #e0e0e0;">
+            <img src="{{ url_for('static', filename='images/test_' + test_num|string + '/' + skill + '/' + section.diagram_image) }}" 
+                 alt="Diagram" 
+                 style="width: 100%; height: auto; border-radius: 8px;"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display: none; padding: 30px; background: #fff3cd; border-radius: 8px; text-align: center; color: #856404;">
+                <h4>📷 Diagram Image Missing</h4>
+                <p style="margin: 10px 0;">Please add the diagram image</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3 style="color: #667eea; margin-bottom: 15px;">📧 Email Message</h3>
+        <div class="passage" style="margin: 0;">
+            {{ section.email_content | safe }}
+        </div>
+    </div>
+</div>
+
+<div class="section-divider">
+    <div class="section-title">Using the drop-down menu, choose the best option.</div>
+</div>
+
+<div class="question-container">
+    {{ section.questions_6_8_html | safe }}
+</div>
+
+{% elif section.is_information_type %}
+<!-- Part 3: Reading for Information -->
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+    <div>
+        <h3 style="color: #667eea; margin-bottom: 15px;">📄 Reading Passage</h3>
+        <div class="passage" style="margin: 0;">{{ section.passage }}</div>
+        {% if section.passage_note %}
+        <div style="margin-top: 15px; padding: 15px; background: #fff3cd; border-radius: 8px; border-left: 4px solid #ffc107;">
+            <strong>Note:</strong> {{ section.passage_note }}
+        </div>
+        {% endif %}
+    </div>
+    <div>
+        <h3 style="color: #667eea; margin-bottom: 15px;">❓ Questions</h3>
+        <div class="question-container" style="background: transparent; padding: 0; box-shadow: none;">
+            {{ section.questions_html | safe }}
+        </div>
+    </div>
+</div>
+
+{% elif section.is_viewpoints_type %}
+<!-- Part 4: Reading for Viewpoints -->
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+    <div>
+        <h3 style="color: #667eea; margin-bottom: 15px;">📰 Article</h3>
+        <div class="passage" style="margin: 0;">{{ section.passage }}</div>
+    </div>
+    <div>
+        <h3 style="color: #667eea; margin-bottom: 15px;">❓ Questions</h3>
+        <div class="question-container" style="background: transparent; padding: 0; box-shadow: none;">
+            {{ section.questions_html | safe }}
+        </div>
+    </div>
+</div>
+
+{% if section.response_passage %}
+<div class="section-divider">
+    <div class="section-title">{{ section.section_divider_text }}</div>
+</div>
+
+<div>
+    <h3 style="color: #667eea; margin-bottom: 15px;">💬 {{ section.response_title }}</h3>
+    <div class="passage">
+        {{ section.response_passage | safe }}
+    </div>
+</div>
+{% endif %}
+
+{% else %}
+<!-- Part 1: Correspondence section -->
+<div class="section-divider">
+    <div class="section-title">Questions 1-6: Choose the best option according to the information given in the message.</div>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+    <div>
+        <h3 style="color: #667eea; margin-bottom: 15px;">📧 Message</h3>
+        <div class="passage" style="margin: 0;">{{ section.passage }}</div>
+    </div>
+    <div>
+        <h3 style="color: #667eea; margin-bottom: 15px;">❓ Questions</h3>
+        <div class="question-container" style="background: transparent; padding: 0; box-shadow: none;">
+            {{ section.questions_1_6_html | safe }}
+        </div>
+    </div>
+</div>
+
+<div class="section-divider">
+    <div class="section-title">{{ section.section_divider_text if section.section_divider_text else 'Questions 7-11: Complete the response by filling in the blanks.' }}</div>
+</div>
+
+<div class="passage">
+    {{ section.response_passage | safe }}
+</div>
+{% endif %}
+

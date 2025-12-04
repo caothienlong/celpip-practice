@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test {{ test_num }} - {{ skill|title }} Part {{ part_num }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .test-mode-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+        
+        .progress-bar {
+            margin: 20px 0;
+            background: #f0f0f0;
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .timer {
+            font-size: 2em;
+            color: #667eea;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .timer.warning {
+            color: #f5576c;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .quit-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: #f44336;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(244, 67, 54, 0.3);
+            z-index: 1000;
+        }
+        
+        .quit-btn:hover {
+            background: #d32f2f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.5);
+        }
+        
+        /* Reuse existing styles from test_section.html */
+        .content-wrapper { display: flex; gap: 30px; margin: 20px 0; }
+        .left-panel, .right-panel { flex: 1; }
+        .passage-box { background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 20px; line-height: 1.8; white-space: pre-wrap; }
+        .questions-list { list-style: none; }
+        .question-item { margin: 15px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; display: flex; align-items: flex-start; gap: 10px; }
+        .inline-dropdown { padding: 8px 12px; border: 2px solid #667eea; border-radius: 6px; font-size: 1em; cursor: pointer; background: white; min-width: 200px; }
+        .submit-btn { display: block; width: 100%; padding: 15px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border: none; border-radius: 10px; font-size: 1.1em; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4); }
+        .submit-btn:disabled { background: #ccc; cursor: not-allowed; }
+        
+        .final-score {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #76c7a1 0%, #56ab2f 100%);
+            color: white;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .final-score h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        
+        .final-score .score {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .next-skill-btn, .finish-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #56ab2f;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .next-skill-btn:hover, .finish-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="quit-btn">✕ Quit Test</a>
+    
+    <div class="container">
+        <div class="header">
+            <div class="test-mode-badge">🎯 TEST MODE</div>
+            <h1>{{ section.title }}</h1>
+            <p class="subtitle">Test {{ test_num }} - {{ skill|title }}</p>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: {{ progress }}%"></div>
+            </div>
+            <div class="progress-text">Part {{ part_num }}/{{ total_parts }} - {{ skill|title }}</div>
+        </div>
+        
+        <div class="timer" id="timer">{{ section.timeout_minutes }}:00</div>
+        
+        <p style="color: #666; margin-bottom: 20px;">{{ section.instructions }}</p>
+        
+        <form id="testForm">
+            {% include 'test_content_partial.html' %}
+            
+            <button type="submit" class="submit-btn" id="submitBtn">
+                {% if is_last_part_of_skill %}
+                    Finish {{ skill|title }} Section →
+                {% else %}
+                    Next Part →
+                {% endif %}
+            </button>
+        </form>
+        
+        <div class="final-score" id="finalScore">
+            <h2>{{ skill|title }} Section Complete!</h2>
+            <div class="score" id="skillScoreDisplay"></div>
+            <p style="font-size: 1.2em; margin-bottom: 10px;">You got <span id="skillScoreText"></span></p>
+            {% if next_skill %}
+            <a href="/test/{{ test_num }}/exam/{{ next_skill }}/part1" class="next-skill-btn">
+                Continue to {{ next_skill|title }} →
+            </a>
+            {% else %}
+            <a href="/" class="finish-btn">
+                View Final Results
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    
+    <script>
+        // Timer functionality
+        let timeLeft = {{ section.timeout_minutes }} * 60;
+        const timerElement = document.getElementById('timer');
+        
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 60) {
+                timerElement.classList.add('warning');
+            }
+            
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                alert('Time is up! Moving to next part...');
+                document.getElementById('submitBtn').click();
+            }
+            
+            timeLeft--;
+        }
+        
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer();
+        
+        // Form submission
+        document.getElementById('testForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            clearInterval(timerInterval);
+            
+            const formData = new FormData(this);
+            const answers = {};
+            
+            for (let [key, value] of formData.entries()) {
+                if (key.startsWith('q')) {
+                    const qId = parseInt(key.substring(1));
+                    answers[qId] = parseInt(value);
+                }
+            }
+            
+            fetch('/submit_test_mode', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    answers: answers,
+                    test_num: {{ test_num }},
+                    skill: '{{ skill }}',
+                    part_num: {{ part_num }},
+                    is_last_part: {{ 'true' if is_last_part_of_skill else 'false' }}
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.show_skill_score) {
+                    // Show final skill score
+                    document.getElementById('skillScoreDisplay').textContent = 
+                        `${data.skill_total}/${data.skill_max}`;
+                    document.getElementById('skillScoreText').textContent = 
+                        `${data.skill_total} out of ${data.skill_max} correct (${data.skill_percentage}%)`;
+                    document.getElementById('finalScore').style.display = 'block';
+                    document.getElementById('submitBtn').style.display = 'none';
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    // Auto-navigate to next part
+                    window.location.href = `/test/${data.test_num}/exam/${data.skill}/part${data.next_part}`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

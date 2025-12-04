@@ -19,7 +19,7 @@ def index():
 
 @app.route('/test/<int:test_num>')
 def test_detail(test_num):
-    """Test detail page showing all 4 skills"""
+    """Test detail page showing all 4 skills (Practice Mode)"""
     # Get available parts for each skill
     reading_parts = data_loader.list_available_parts(test_num, 'reading')
     writing_parts = data_loader.list_available_parts(test_num, 'writing')
@@ -50,6 +50,69 @@ def test_detail(test_num):
                          session_scores=session_scores,
                          reading_total=reading_total,
                          reading_max=reading_max)
+
+
+@app.route('/test/<int:test_num>/exam')
+def start_exam(test_num):
+    """Start Test Mode - begins with Reading Part 1"""
+    # Initialize test mode session
+    test_key = f'exam_{test_num}'
+    session[test_key] = {
+        'mode': 'exam',
+        'current_skill': 'reading',
+        'current_part': 1,
+        'scores': {}
+    }
+    session.modified = True
+    
+    # Redirect to reading part 1
+    return test_mode_part(test_num, 'reading', 1)
+
+
+@app.route('/test/<int:test_num>/exam/<skill>/part<int:part_num>')
+def test_mode_part(test_num, skill, part_num):
+    """Display a test part in Test Mode (no going back, sequential only)"""
+    try:
+        # Load test data
+        test_data = data_loader.load_test_part(test_num, skill, part_num)
+        processed_data = prepare_test_data(test_data, skill, part_num)
+        
+        # Determine skill order and progress
+        skill_order = ['reading', 'listening', 'writing', 'speaking']
+        available_parts = data_loader.list_available_parts(test_num, skill)
+        
+        # Check if this is the last part of current skill
+        is_last_part_of_skill = (part_num == available_parts[-1]) if available_parts else False
+        
+        # Determine next skill
+        next_skill = None
+        if is_last_part_of_skill:
+            current_skill_index = skill_order.index(skill)
+            for i in range(current_skill_index + 1, len(skill_order)):
+                next_skill_candidate = skill_order[i]
+                if data_loader.list_available_parts(test_num, next_skill_candidate):
+                    next_skill = next_skill_candidate
+                    break
+        
+        # Calculate progress
+        total_parts = len(available_parts)
+        progress = (part_num / total_parts) * 100 if total_parts > 0 else 0
+        
+        return render_template(
+            'test_mode_section.html',
+            section=processed_data,
+            test_num=test_num,
+            skill=skill,
+            part_num=part_num,
+            total_parts=total_parts,
+            progress=progress,
+            is_last_part_of_skill=is_last_part_of_skill,
+            next_skill=next_skill
+        )
+    except FileNotFoundError as e:
+        return f"Test not found: {e}", 404
+    except Exception as e:
+        return f"Error loading test: {e}", 500
 
 
 @app.route('/test/<int:test_num>/<skill>/part<int:part_num>')
@@ -195,6 +258,76 @@ def prepare_test_data(test_data, skill, part_num):
             processed['section_divider_text'] = response_section.get('instruction_text', '')
     
     return processed
+
+
+@app.route('/submit_test_mode', methods=['POST'])
+def submit_test_mode():
+    """
+    Process Test Mode submission - stores scores but doesn't show answers
+    Only shows final score at end of each skill
+    """
+    data = request.json
+    answers = data.get('answers', {})
+    test_num = data.get('test_num')
+    skill = data.get('skill')
+    part_num = data.get('part_num')
+    is_last_part = data.get('is_last_part', False)
+    
+    try:
+        # Load test data and calculate score
+        test_data = data_loader.load_test_part(test_num, skill, part_num)
+        correct_answers = data_loader.get_correct_answers(test_data)
+        
+        score = 0
+        for question_id, user_answer in answers.items():
+            if question_id in correct_answers:
+                if user_answer == correct_answers[question_id]:
+                    score += 1
+        
+        # Save score to exam session
+        test_key = f'exam_{test_num}'
+        if test_key not in session:
+            session[test_key] = {'scores': {}}
+        if 'scores' not in session[test_key]:
+            session[test_key]['scores'] = {}
+        if skill not in session[test_key]['scores']:
+            session[test_key]['scores'][skill] = {}
+        
+        session[test_key]['scores'][skill][str(part_num)] = score
+        session.modified = True
+        
+        # Determine next action
+        skill_parts = data_loader.list_available_parts(test_num, skill)
+        
+        if is_last_part:
+            # Calculate skill total
+            skill_scores = session[test_key]['scores'][skill]
+            skill_total = sum(skill_scores.values())
+            skill_max = sum([len(data_loader.get_all_questions(data_loader.load_test_part(test_num, skill, p))) 
+                           for p in skill_parts])
+            skill_percentage = round((skill_total / skill_max) * 100, 1) if skill_max > 0 else 0
+            
+            return jsonify({
+                'show_skill_score': True,
+                'skill_total': skill_total,
+                'skill_max': skill_max,
+                'skill_percentage': skill_percentage,
+                'skill': skill
+            })
+        else:
+            # Move to next part
+            current_index = skill_parts.index(part_num)
+            next_part = skill_parts[current_index + 1]
+            
+            return jsonify({
+                'show_skill_score': False,
+                'next_part': next_part,
+                'test_num': test_num,
+                'skill': skill
+            })
+            
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
 
 
 @app.route('/submit_answers', methods=['POST'])
