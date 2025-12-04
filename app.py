@@ -556,4 +556,48 @@ def test1_part2():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    import os
+    import sys
+    
+    # Get host and port from environment variables or command line
+    # Default to localhost only for security
+    host = os.environ.get('FLASK_HOST', '127.0.0.1')
+    port = int(os.environ.get('FLASK_PORT', 5000))
+    
+    # Check for command line arguments
+    if '--host' in sys.argv:
+        idx = sys.argv.index('--host')
+        if idx + 1 < len(sys.argv):
+            host = sys.argv[idx + 1]
+    if '--port' in sys.argv:
+        idx = sys.argv.index('--port')
+        if idx + 1 < len(sys.argv):
+            port = int(sys.argv[idx + 1])
+    
+    print(f"\n{'='*60}")
+    print(f"🚀 CELPIP Practice Test Platform")
+    print(f"{'='*60}")
+    print(f"📍 Running on: http://{host}:{port}")
+    
+    if host == '0.0.0.0':
+        # Show local network IP for convenience
+        import socket
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.connect(("8.8.8.8", 80))
+            local_ip = s.getsockname()[0]
+            s.close()
+            print(f"🌐 Network access: http://{local_ip}:{port}")
+            print(f"📱 Share this URL with devices on your network!")
+        except:
+            print(f"🌐 Network access enabled on all interfaces")
+    else:
+        print(f"🔒 Localhost only (use --host 0.0.0.0 for network access)")
+    
+    print(f"{'='*60}\n")
+    
+    app.run(
+        host=host,
+        port=port,
+        debug=True
+    )
