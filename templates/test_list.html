@@ -205,6 +205,15 @@
         <h1>📚 CELPIP Practice Tests</h1>
         <p class="subtitle">Select a test to begin practicing</p>
         
+        {% if user_email %}
+        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f0f7ff; border-radius: 10px; border: 2px solid #667eea;">
+            <strong>👤 Logged in as:</strong> {{ user_email }}
+            <span style="margin-left: 15px;">
+                <a href="/clear_session" style="color: #f44336; text-decoration: none; font-size: 0.9em;">✕ Clear Session</a>
+            </span>
+        </div>
+        {% endif %}
+        
         <div class="test-grid">
             {% for test_num in test_numbers %}
             <div class="test-card-wrapper">
