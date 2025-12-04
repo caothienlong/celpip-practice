@@ -1,71 +1,115 @@
-# CELPIP Practice Test - Documentation
+# 📚 CELPIP Practice Platform - Documentation Hub
 
-This folder contains detailed documentation for developers and contributors.
+Welcome to the comprehensive documentation for the CELPIP Practice Test Platform. This directory contains all the information you need to understand, use, develop, and contribute to the project.
 
-## 📄 Available Documents
+---
 
-### Setup & Installation
-- **[SETUP.md](SETUP.md)** - Step-by-step setup instructions
-  - Python virtual environment setup
+## 📖 Documentation Index
+
+### 🚀 Getting Started
+- **[SETUP.md](SETUP.md)** - Installation and setup guide
+  - System requirements
+  - Virtual environment setup
   - Dependency installation
   - Running the application
+  - Troubleshooting
 
-### Configuration
-- **[CONFIG_GUIDE.md](CONFIG_GUIDE.md)** - Configuration options
-  - Time per question settings
+### 🏗️ Technical Documentation
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** - System architecture and design
+  - Project structure
+  - Data flow
+  - Module descriptions
+  - Technology stack
+  - Design decisions
+
+### 🎨 Design & UX
+- **[UI_UX_GUIDE.md](UI_UX_GUIDE.md)** - Visual design and user experience ⭐ NEW
+  - Design philosophy
+  - Complete color palette
+  - Visual component specifications
+  - User flow diagrams
+  - Responsive design breakpoints
+  - Animation specifications
+  - Accessibility features
+  - Icon usage guide
+
+### 👥 User Documentation
+- **[USE_CASES.md](USE_CASES.md)** - Use cases, user stories & scenarios ⭐ NEW
+  - User personas (3 detailed profiles)
+  - Use cases (6 comprehensive scenarios)
+  - User stories with acceptance criteria
+  - Real-world usage scenarios
+  - Edge cases and error handling
+  - Data persistence explanation
+
+### ⚙️ Configuration
+- **[CONFIG_GUIDE.md](CONFIG_GUIDE.md)** - Configuration and customization
+  - Time settings per skill
   - Custom timeout overrides
-  - UI customization
+  - JSON configuration format
+  - UI settings
+  - Test metadata
 
-### Architecture & Design
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** - Technical architecture
-  - Platform-agnostic design
-  - Data structure
-  - Component overview
-
-### Contributing
-- **[ADDING_TESTS.md](ADDING_TESTS.md)** - How to add test content
-  - JSON file structure
-  - OCR extraction workflow
-  - Testing guidelines
-
-### Deployment
-- **[GITHUB_SETUP.md](GITHUB_SETUP.md)** - GitHub setup guide
-  - Creating personal access tokens
-  - SSH key configuration
-  - Pushing to GitHub
-
-- **[DEPLOYMENT_SUMMARY.md](DEPLOYMENT_SUMMARY.md)** - Deployment notes
-  - Version control
-  - Release management
+### 📝 Content Management
+- **[ADDING_TESTS.md](ADDING_TESTS.md)** - Adding new test content
+  - JSON data format
+  - Template generation
+  - Adding questions and answers
+  - Image management
+  - Validation checklist
 
 ---
 
-## 🔗 Quick Links
+## 🗺️ Quick Navigation
 
-**Main Documentation:**
-- [Project README](../README.md) - Main project documentation
-- [TEST_STATUS](../TEST_STATUS.md) - Current progress tracker
-- [CHANGELOG](../CHANGELOG.md) - Version history
+### I want to...
 
-**Data Structure:**
-- [data/README.md](../data/README.md) - JSON data format specification
+#### **Get Started**
+→ [SETUP.md](SETUP.md)
 
-**OCR Tools:**
-- [pdftotext/README_OCR.md](../pdftotext/README_OCR.md) - PDF extraction tools
+#### **Understand the System**
+→ [ARCHITECTURE.md](ARCHITECTURE.md)
 
----
+#### **Learn About Design**
+→ [UI_UX_GUIDE.md](UI_UX_GUIDE.md)
 
-## 📝 Documentation Standards
+#### **See How Users Interact**
+→ [USE_CASES.md](USE_CASES.md)
 
-When adding or updating documentation:
+#### **Configure Time Settings**
+→ [CONFIG_GUIDE.md](CONFIG_GUIDE.md)
 
-1. **Keep it concise** - Users should find answers quickly
-2. **Use examples** - Show real code snippets
-3. **Update links** - Ensure cross-references work
-4. **Test instructions** - Verify setup steps work
-5. **Track changes** - Update CHANGELOG.md
+#### **Add New Tests**
+→ [ADDING_TESTS.md](ADDING_TESTS.md)
 
 ---
 
-For questions or issues, please check existing documentation first or create an issue on GitHub.
+## 📚 Additional Resources
 
+### External Links
+
+- **Flask Documentation**: https://flask.palletsprojects.com/
+- **Jinja2 Documentation**: https://jinja.palletsprojects.com/
+- **CELPIP Official**: https://www.celpip.ca/
+
+---
+
+## 📞 Getting Help
+
+### Documentation Issues
+
+If you can't find what you're looking for:
+
+1. Check the index above
+2. Use GitHub repository search
+3. Open an issue with tag `documentation`
+
+---
+
+**Documentation Version**: 2.0  
+**Last Updated**: December 2025  
+**Status**: Comprehensive & Up-to-date
+
+---
+
+*Happy Learning! 🚀*
