@@ -6,8 +6,8 @@
   "sections": [
     {
       "section_type": "passage",
-      "title": "Message (Test 2)",
-      "content": "TODO: Add the reading passage here.\n\nThis should be a letter or email from the PDF."
+      "title": "Message",
+      "content": "Dear Angela,\n\nI've come up with a great idea to add to your tourist booklet of interesting and unusual things to do in our province. As you know, I'm on vacation for 4 weeks. I decided to check out apple picking as a seasonal worker. Can you imagine me picking apples? This wasn't my original plan, but I saw a few ads for pickers posted at a café, and I thought it would be interesting. Although, I was a little worried because the work is extremely different from my usual web design job.\n\nAfter applying for one of the jobs, I bought cheap work clothes from a store in a nearby town. The employer suggested I get bug spray and sunscreen, as well. Although it's fall, the orchards still have insects and the sun is still strong.\n\nI had heard getting work at an orchard was easy in autumn, and it was true! They didn't even ask for a resume or references. They just wanted to know how long I would be available, and when I could start. The pay is low and it's in cash, and the hours are longer than I expected, but they provide free accommodation on the farm and three big meals a day. I left my computer and smartphone at work, thinking I could live without them. Well, I'm certainly doing that! Imagine handwriting a letter like this in the twenty-first century! Unbelievable! I'm also keeping a handwritten journal.\n\nA full day picking apples can be very tiring. We climb up and down ladders to get all the apples on a tree. We carefully twist the stem of each apple to get it off the tree. Once picked, the apple goes gently into a container. After you master the technique, it's amazing how many apples you can pick in a day. At the end of the day, we all get together in the kitchen and talk about many different things completely unrelated to apples, until we're too sleepy to say another word. I'm learning a lot about what people do outside my little web design world.\n\nI would love to hear how your booklet is going. Mail is delivered directly to the apple farm several times a week, so hopefully you can get a letter to me before I get back to the city.\n\nSincerely,\nJanice"
     },
     {
       "section_type": "questions",
@@ -16,67 +16,67 @@
       "questions": [
         {
           "id": 1,
-          "text": "Question 1 text here",
+          "text": "Why is Janice picking apples while on vacation?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "to earn cash for her trip",
+            "to experience something new",
+            "to add more jobs to her resumé",
+            "to find ideas for her journal"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 2,
-          "text": "Question 2 text here",
+          "text": "What does Janice plan to do after this month?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "start writing a journal",
+            "pick apples in other areas",
+            "find another interesting activity",
+            "return to her regular job"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 3,
-          "text": "Question 3 text here",
+          "text": "Why is Janice handwriting a letter?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "She forgot to bring her computer.",
+            "She is unable to connect to the internet.",
+            "She wants to be without technology.",
+            "She prefers handwriting to typing."
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 4,
-          "text": "Question 4 text here",
+          "text": "What is Janice's opinion of the other pickers?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "They are helpful.",
+            "They are interesting.",
+            "They are experienced.",
+            "They are tiring."
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 5,
-          "text": "Question 5 text here",
+          "text": "How did Janice learn about the apple-picking job?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "She overheard a conversation at the café.",
+            "There was a story about it on the internet.",
+            "Other pickers told her about the job.",
+            "She saw an advertisement for pickers."
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 6,
-          "text": "Question 6 text here",
+          "text": "What did Janice predict about the job?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "that she would need to dress differently",
+            "that her resume would be unnecessary",
+            "that her pay would be similar to her usual job",
+            "that she would need to work the entire season"
           ],
           "answer": 0
         }
@@ -85,17 +85,17 @@
     {
       "section_type": "response_passage",
       "title": "Response Message",
-      "instruction_text": "Questions 7-11: Complete the response by filling in the blanks.",
-      "content": "TODO: Add response message with __DROPDOWN_7__, __DROPDOWN_8__, __DROPDOWN_9__, __DROPDOWN_10__, __DROPDOWN_11__ placeholders.",
+      "instruction_text": "Questions 7-11: Complete the response by filling in the blanks. Select the best choice for each blank from the drop-down menu.",
+      "content": "Dear Janice,\n\nIt's hard to think of you __DROPDOWN_7__, but you sound like you're having fun. I trust you have your camera with you and are taking lots of pictures. When you get home, I hope you will write __DROPDOWN_8__, using your pictures and your journal notes.\n\nI think this is a great example of an unusual visitor activity. Do other apple-picking farms __DROPDOWN_9__, or are you just lucky? That's an important point to mention.\n\nAlso, is there no __DROPDOWN_10__, or was it your choice not to take advantage of it? How interesting to talk with the other pickers! Maybe they can give you some __DROPDOWN_11__ tips for our readers interested in doing the same.\n\nVolunteers like you will make our booklet a success. Thanks!\n\nBest,\nAngela",
       "questions": [
         {
           "id": 7,
           "text": "7.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "doing such difficult outdoor work",
+            "managing two part-time jobs",
+            "taking such a short vacation",
+            "talking about your job every night"
           ],
           "answer": 0
         },
@@ -103,21 +103,21 @@
           "id": 8,
           "text": "8.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "an illustrated article for the newspaper",
+            "an instructional guide for apple pickers",
+            "a description of the people you've met",
+            "an informative story for our booklet"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 9,
           "text": "9.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "provide free rooms and meals",
+            "give such detailed training",
+            "hire at this time of the year",
+            "help choose good work clothes"
           ],
           "answer": 0
         },
@@ -125,23 +125,23 @@
           "id": 10,
           "text": "10.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "sunscreen or bug spray provided",
+            "class on cooking with apples",
+            "available internet connection",
+            "chance to work more weeks"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 11,
           "text": "11.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "clothes shopping",
+            "job finding",
+            "sleeping outdoors",
+            "web design"
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     }

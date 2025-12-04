@@ -8,19 +8,17 @@
 - ✅ Part 3: Reading for Information (9 questions, 13.5 min)
 - ✅ Part 4: Reading for Viewpoints (10 questions, 15 min)
 
-**Status:** Fully functional with real content
+**Status:** Fully functional with real content from OCR
 
 ---
 
-### 📝 Test 2: Template Ready
-- 📝 Part 1: Template created - **NEEDS CONTENT**
-- 📝 Part 2: Template created - **NEEDS CONTENT**
-- 📝 Part 3: Template created - **NEEDS CONTENT**
-- 📝 Part 4: Template created - **NEEDS CONTENT**
+### ✅ Test 2: Complete
+- ✅ Part 1: Reading Correspondence (11 questions, 16.5 min)
+- ✅ Part 2: Reading to Apply a Diagram (8 questions, 12 min)
+- ✅ Part 3: Reading for Information (9 questions, 13.5 min)
+- ✅ Part 4: Reading for Viewpoints (10 questions, 15 min)
 
-**Status:** Templates ready, needs PDF content
-
-**Files:** `data/test_2/reading/part*.json`
+**Status:** Fully functional with real content from OCR
 
 ---
 
@@ -65,12 +63,12 @@
 | Test | Parts Complete | Status | Progress |
 |------|----------------|--------|----------|
 | Test 1 | 4/4 | ✅ Complete | ████████████ 100% |
-| Test 2 | 0/4 | 📝 Template | ░░░░░░░░░░░░ 0% |
+| Test 2 | 4/4 | ✅ Complete | ████████████ 100% |
 | Test 3 | 0/4 | 📝 Template | ░░░░░░░░░░░░ 0% |
 | Test 4 | 0/4 | 📝 Template | ░░░░░░░░░░░░ 0% |
 | Test 5 | 0/4 | 📝 Template | ░░░░░░░░░░░░ 0% |
 
-**Overall:** 4/20 parts complete (20%)
+**Overall:** 8/20 parts complete (40%)
 
 ---
 
@@ -78,19 +76,19 @@
 
 ```
 data/
-├── test_1/          ✅ Complete
+├── test_1/          ✅ Complete (100%)
 │   └── reading/
-│       ├── part1.json  ✅ Real content
-│       ├── part2.json  ✅ Real content
-│       ├── part3.json  ✅ Real content
-│       └── part4.json  ✅ Real content
+│       ├── part1.json  ✅ Complete
+│       ├── part2.json  ✅ Complete
+│       ├── part3.json  ✅ Complete
+│       └── part4.json  ✅ Complete
 │
-├── test_2/          📝 Template
+├── test_2/          ✅ Complete (100%)
 │   └── reading/
-│       ├── part1.json  📝 TODO: Add content
-│       ├── part2.json  📝 TODO: Add content
-│       ├── part3.json  📝 TODO: Add content
-│       └── part4.json  📝 TODO: Add content
+│       ├── part1.json  ✅ Complete
+│       ├── part2.json  ✅ Complete
+│       ├── part3.json  ✅ Complete
+│       └── part4.json  ✅ Complete
 │
 ├── test_3/          📝 Template
 ├── test_4/          📝 Template

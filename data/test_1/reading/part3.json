@@ -7,8 +7,8 @@
   "sections": [
     {
       "section_type": "passage",
-      "title": "The Royal Ontario Museum",
-      "content": "A. The first record of chewing gum dates back to Finland about 5,000 years ago. Neolithic-period chewing gum was made of bark tar and was widely utilized for its antiseptic and medicinal properties. The ancient Greeks chewed mastic gum, made from the resin of the mastic tree. Ancient Mayans and Aztecs chewed chicle, a substance derived from the sapodilla tree. Chewing gum's popularity spread throughout the world over the centuries.\n\nB. The museum came to exist largely due to the efforts of Charles Currelly, a minister-turned-archaeologist, and Edmund Walker, a banker with philanthropic interests. The former wanted to establish an archaeological museum in Ontario; the latter wanted to establish an institution in Canada similar to the impressive galleries and museums in New York. Although Walker was initially interested in the natural world—he collected fossils and arranged funding for dinosaur digs in Alberta—he eventually became interested in the cultural world as well. Thus, on his death, he donated a collection of Japanese woodblock prints to the museum. To this day, the museum explores both worlds and is, for that reason, one of a kind among the world's museums.\n\nC. The museum's Natural History department holdings include amphibians, reptiles, mammals, birds, and one of the best bat collections on the continent. It also includes world-class collections of minerals, gems, rocks, and meteorites, and a world-renowned collection of dinosaur skeletons. The World Cultures department contains ethnological collections featuring artifacts from the Canadian Northwest Coast, Plains, Inuit, and Woodlands cultures. It also features artifacts from Near Eastern and Asian collections, which include tomb figurines from the Tang dynasty; Canada's largest textile and costume collection; Greek, Roman, and Byzantine collections; and several European and early Canadian decorative arts collections.\n\nD. Another unique feature of the museum is the Michael Lee-Chin Crystal, which consists of five interlocking prismatic structures at the entrance of the museum. The Crystal's angled walls do not actually touch the museum's original building and provide a stark contrast with its Neo-Romanesque architecture. Both harshly criticized and enthusiastically celebrated, the Crystal was but one aspect of the highly successful \"Renaissance\" project, started in 2002 to boost the museum's ticket sales and capacity. The project also resulted in new and renovated gallery spaces allowing twice as many artifacts and specimens to be displayed, a digital gallery enabling an interactive multimedia experience, and additional restaurant and retail space.",
+      "title": "Chewing Gum",
+      "content": "A. The first record of chewing gum dates back to Finland about 5,000 years ago. Neolithic-period chewing gum was made of bark tar and was widely utilized for its antiseptic and medicinal properties. In America, chewing gum was first introduced to settlers by the American Indians who chewed resin made from the sap of spruce trees. After World War II chewing gum was made of a latex sap substance called chicle, which has been steadily engineered and replaced by synthetic rubbers and artificial sweeteners that allow for greater flavouring, colouring, and texture. Modern chewing gum hardly resembles its predecessors in appearance and flavour. It has also gained unprecedented popularity, becoming a 20-billion-dollar industry in North America.\n\nB. Over the past decades, the bad reputation chewing gum earned for causing cavities and gum disease has also begun to dwindle. With the advent of sugarless chewing gum, most dentists today deem chewing gum in moderation to be harmless, or even potentially beneficial to oral hygiene. In addition, functional chewing gum, a special category of gum that imparts a practical function in addition to, or as a replacement for, the usual enjoyment provided by a confectionery gum, has become increasingly prescribed by dentists and doctors alike. Conditions such as bad breath and tobacco addictions are now commonly treated with functional gum. Surgeons also prescribe functional chewing gum for patients recovering from gastrointestinal surgeries.\n\nC. Recent research suggests the benefits of gum may not be limited to medicated gum. Chewing regular gum has been found to boost cognitive performance in many ways including improved reaction time, motor control, and alertness. These effects have been found to come at an expense, however. Although as many as eight areas of the brain are activated by the simple act of chewing gum, the cognitive gains of mastication-induced arousal can only be sustained for a short period. Moreover, chewing gum was observed to interfere with verbal-fluency and short-memory tasks.\n\nD. Oral health researchers posit the short-lived cognitive gains of chewing gum pale in comparison to their potentially hazardous health effects. They claim the innocuousness of sugarless gum is a myth, expounding that sugar substitutes such as aspartame have been increasingly linked to different types of cancer and autoimmune diseases. They also point to possible chronic irreversible conditions that may ensue from excessive gum chewing such as headaches, tightness in jaw muscles and nerves, metabolic imbalances, and irregularities in mastication that range from tooth decay to bone loss.\n\nE. Not given in any of the above paragraphs.",
       "note": "E. Not given in any of the above paragraphs."
     },
     {
@@ -18,7 +18,7 @@
       "questions": [
         {
           "id": 1,
-          "text": "The museum's specific collections are very diverse.",
+          "text": "Evidence suggests gum chewing can enhance some brain functions.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -30,7 +30,7 @@
         },
         {
           "id": 2,
-          "text": "The museum's collection of assembled dinosaur bones is internationally famous.",
+          "text": "The chemical bases of chewing gum have been reformulated.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -38,11 +38,23 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 2
+          "answer": 0
         },
         {
           "id": 3,
-          "text": "The \"Renaissance\" project was meant to increase museum attendance.",
+          "text": "Chewing gum is used post-operatively as a healing aid.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "text": "There can be lifelong damage associated with regular intake of synthetic sugars.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -53,20 +65,8 @@
           "answer": 3
         },
         {
-          "id": 4,
-          "text": "Musical performances are sometimes presented at the museum.",
-          "options": [
-            "Paragraph A",
-            "Paragraph B",
-            "Paragraph C",
-            "Paragraph D",
-            "Not given (E)"
-          ],
-          "answer": 4
-        },
-        {
           "id": 5,
-          "text": "The Royal Ontario Museum was at first envisioned as one that would emulate certain American museums.",
+          "text": "Chewing gum can curb some unhealthy dependence behaviours.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -78,7 +78,7 @@
         },
         {
           "id": 6,
-          "text": "The ROM uniquely brings together the cultural and scientific realms.",
+          "text": "Some researchers oppose the reported benefits of chewing gum.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -86,11 +86,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 1
+          "answer": 3
         },
         {
           "id": 7,
-          "text": "Nowadays, university scholars from Ontario, Alberta, and China collaborate on some ROM research projects.",
+          "text": "Patients who chew gum regularly tend to be more neglectful of their oral hygiene.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -102,7 +102,7 @@
         },
         {
           "id": 8,
-          "text": "A controversial architectural configuration was erected near the ROM's front door.",
+          "text": "Early chewing gum was entirely natural.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -110,11 +110,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 3
+          "answer": 0
         },
         {
           "id": 9,
-          "text": "Before becoming a scientist, Currelly served the church.",
+          "text": "The benefits of sugar-free gum are recognized.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -128,4 +128,3 @@
     }
   ]
 }
-

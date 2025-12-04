@@ -3,11 +3,12 @@
   "title": "Reading for Viewpoints",
   "type": "viewpoints",
   "instructions": "Read the following article from a website and answer the questions.",
+  "timeout_minutes": 15.0,
   "sections": [
     {
       "section_type": "passage",
-      "title": "Article (Test 2)",
-      "content": "TODO: Add article content here. This should be an opinion piece or article with different viewpoints."
+      "title": "Tourism British Columbia Kayaking Ecotourism",
+      "content": "Tourism British Columbia recently announced a plan to inject public dollars into promoting the rapidly growing travel niche of ecotourism. The province's natural beauty attracts 20 million tourists annually. The government agency believes that number will soar if the province promotes ecotourism. The problem is deciding exactly where to channel those marketing and advertising dollars. The agency's marketing coordinator, Mijung Park, says the plan, for now at least, is to sell British Columbia as a premier destination for kayaking. \"Kayaking lets tourists experience British Columbia's waterways without disturbing the surrounding ecosystems,\" says Park. \"Ocean and river kayaking are both highly marketable. Our agency's next step is deciding on questions of which and how.\"\n\nBusiness owner and tour guide Eric Ferland is making a push for the bulk of funds to be channeled into promoting established ocean kayaking businesses like his own, Kayak-O Inc. Ferland says amateur kayakers have long been drawn to the coastal waters and open sea, where the need to circumnavigate obstacles is nonexistent. \"These river kayaking companies that have been popping up lately are promoting themselves as more of an 'extreme' sport, but ocean kayaking provides an equally exhilarating, yet less arduous, ecotourism excursion that spans a wide demographic, including older clientele,\" says Ferland.\n\nBut River Adventures Ltd. owner Lars Norgaard suggests Ferland's view ignores key differences in the two kayaking options. \"River kayaks, in general, are designed for stability and maneuverability, as novice paddlers are often at the mercy of strong currents. We have clientele of all ages who want a more white-knuckle experience than what ocean kayaking can offer them. But any genuine fear subsides when clients discover that river navigation is straightforward, and nearby shores can be used as reference points.\" According to Norgaard, his young company boasts an impressive number of first-time, one-off customers, thanks to its competitive pricing.\n\nAsked about her agency's future funding priorities, Park seems to imply that a rising tide will lift all boats. The decision, she insists, \"needs to take into account the broad interests of the province, not the profits any individual enterprise stands to gain.\""
     },
     {
       "section_type": "questions",
@@ -16,58 +17,58 @@
       "questions": [
         {
           "id": 1,
-          "text": "Question 1 text here",
+          "text": "What is the topic of the article?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "superiority of ocean kayaks over river kayaks",
+            "plans for publicly-funded kayak ecotourism",
+            "differences between ocean and river kayaking",
+            "difficulties in kayak-based ecotourism"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 2,
-          "text": "Question 2 text here",
+          "text": "According to Ferland, what is a drawback of river kayaking?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "the overall level of difficulty involved",
+            "the lack of long-term growth in this sector",
+            "the difficulty providing a fun excursion",
+            "the potential for a dangerous experience"
           ],
           "answer": 0
         },
         {
           "id": 3,
-          "text": "Question 3 text here",
+          "text": "What does Ferland suggest about ocean kayaking in British Columbia?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "There are fewer operators than there are for river kayaking.",
+            "It has a longer history in the area than river kayaking.",
+            "There are more obstacles than there are in river kayaking.",
+            "It has a reputation as being more dangerous than river kayaking."
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 4,
-          "text": "Question 4 text here",
+          "text": "What type of clients does Norgaard most likely attract?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "repeat customers",
+            "younger adults",
+            "competitive kayakers",
+            "thrifty tourists"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 5,
-          "text": "Question 5 text here",
+          "text": "What does Park say needs to be considered before making a decision?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "what is best for preserving the environment",
+            "which activities interest residents the most",
+            "what is best for British Columbia overall",
+            "which activities will earn the most money"
           ],
-          "answer": 0
+          "answer": 2
         }
       ]
     },
@@ -75,38 +76,38 @@
       "section_type": "response_passage",
       "title": "Website Comment",
       "instruction_text": "The following is a comment by a visitor to the website page. Complete the comment by choosing the best option to fill in each blank.",
-      "content": "TODO: Add comment content with __DROPDOWN_6__, __DROPDOWN_7__, __DROPDOWN_8__, __DROPDOWN_9__, __DROPDOWN_10__ placeholders.",
+      "content": "My understanding, based on this article, is that Tourism British Columbia will be __DROPDOWN_6__. I also get the distinct impression that if they __DROPDOWN_7__ the emerging market of river kayaking, companies like Ferland's will struggle to survive. This would be unfortunate. As an avid ocean kayaker, I take exception to Norgaard's insinuation that ocean kayaking lacks __DROPDOWN_8__. I've paddled through all manner of ocean current and wave conditions. I agree with Ferland's point that ocean kayaking requires __DROPDOWN_9__. I do have to admit, though, that the owner of River Adventures has a point that his sport seems to attract many __DROPDOWN_10__, which could boost ecotourism for the province.",
       "questions": [
         {
           "id": 6,
           "text": "6.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "researching various land and water sports",
+            "doubling the number of tourists from abroad",
+            "seeking to eliminate one type of kayaking",
+            "boosting the use of resources on recreation"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 7,
           "text": "7.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "present the risks of",
+            "increase prices in",
+            "highlight the peacefulness of",
+            "focus ecotourism funding on"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 8,
           "text": "8.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "a sense of danger",
+            "interested customers",
+            "a financial future",
+            "appropriate funding"
           ],
           "answer": 0
         },
@@ -114,23 +115,23 @@
           "id": 9,
           "text": "9.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "some previous experience",
+            "little effort to do well",
+            "less complicated steering",
+            "more time to fully enjoy"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 10,
           "text": "10.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "serious and experienced kayakers",
+            "short-term adventure seekers",
+            "visitors with large budgets",
+            "young people to British Columbia"
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     }

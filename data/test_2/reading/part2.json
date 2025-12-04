@@ -2,68 +2,69 @@
   "part": 2,
   "title": "Reading to Apply a Diagram",
   "type": "diagram",
-  "instructions": "Read the following email message about the diagram. Complete the email by filling in the blanks.",
+  "instructions": "Read the following email message about the diagram. Complete the email by filling in the blanks. Select the best choice for each blank from the drop-down menu.",
+  "timeout_minutes": 12.0,
   "sections": [
     {
       "section_type": "diagram_email",
       "diagram_image": "part2_diagram.png",
       "email_title": "Email Message",
-      "content": "Subject: TODO - Add subject\nTo: TODO\nFrom: TODO\n\nTODO: Add email content with __DROPDOWN_1__, __DROPDOWN_2__, __DROPDOWN_3__, __DROPDOWN_4__, __DROPDOWN_5__ placeholders.",
+      "content": "Subject: Jobs!\nTo: Albert <coolalbert101@canmail.ca>\nFrom: Jim <jimscareercounselling@mailing.ca>\n\nHi Albert,\n\nI hope this email finds you well.\n\nI know that you've been going through a hard time lately, but now that you've graduated, it's time to start thinking seriously about your career. Both of these jobs will provide a good introduction to __DROPDOWN_1__. They also both entail __DROPDOWN_2__, which I think suits you.\n\nThe advantage of the first option is that it is __DROPDOWN_3__ position. This option's __DROPDOWN_4__ is also probably more to your liking. I know you want to get an apartment soon, so you would have to factor transportation costs in your decision-making.\n\nHowever, the second one is probably a better option for you for now. It's close to the transit station, so it would be more convenient for commuting. Did you ever take any courses related to care for the elderly? Anyway, it sounds like that is __DROPDOWN_5__.\n\nRegards,\nJim Wang",
       "questions": [
         {
           "id": 1,
           "text": "1.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "long-term patient care",
+            "needs assessment work",
+            "mental health support",
+            "basic nursing terms"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 2,
           "text": "2.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "leading resident activities",
+            "care for the elderly",
+            "interpersonal skills",
+            "creating patient routines"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 3,
           "text": "3.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "an administrative",
+            "a permanent",
+            "an entry-level",
+            "a well-paid"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 4,
           "text": "4.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "calm setting",
+            "student clientele",
+            "central location",
+            "starting salary"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 5,
           "text": "5.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "a bit pointless for this position",
+            "an asset rather than a necessity",
+            "a course you must take later on",
+            "a pre-requisite for this position"
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     },
@@ -74,36 +75,36 @@
       "questions": [
         {
           "id": 6,
-          "text": "Question 6 text here",
+          "text": "What is likely true about Albert?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "He is training for a new career.",
+            "He is focusing on schoolwork.",
+            "He has not finished his program.",
+            "He has not applied to any jobs."
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 7,
-          "text": "Question 7 text here",
+          "text": "What does Albert's career counsellor suggest that he do?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "choose a job based on its salary",
+            "take courses related to elderly care",
+            "start searching for his own apartment",
+            "reduce his commute as much as he can"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 8,
-          "text": "Question 8 text here",
+          "text": "What is Albert's career counsellor asking him to do in this email?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "form a more positive attitude",
+            "pursue his career goals",
+            "get serious about his education",
+            "take additional courses"
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     }
