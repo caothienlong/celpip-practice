@@ -640,6 +640,61 @@
                 submitBtn.textContent = 'Save Email';
             });
         }
+        
+        // PWA Install functionality
+        let deferredPrompt;
+        
+        // iOS Detection
+        function isIOS() {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            return /iphone|ipad|ipod/.test(userAgent);
+        }
+        
+        function isInStandaloneMode() {
+            return window.matchMedia('(display-mode: standalone)').matches || 
+                   window.navigator.standalone === true;
+        }
+        
+        function showInstallInstructions() {
+            console.log('Install button clicked');
+            console.log('Is iOS?', isIOS());
+            
+            const banner = document.getElementById('iosInstallBanner');
+            console.log('Banner element found:', !!banner);
+            
+            if (banner) {
+                banner.style.display = 'block';
+                console.log('Banner displayed');
+                
+                // Scroll to make it visible
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: document.body.scrollHeight,
+                        behavior: 'smooth'
+                    });
+                }, 100);
+            } else {
+                console.error('Banner element not found!');
+                // Fallback alert
+                alert('Installation Instructions:\n\n' +
+                      '1. Tap the Share button ⬆️ (at bottom of Safari)\n' +
+                      '2. Scroll down in the menu\n' +
+                      '3. Tap "Add to Home Screen" ➕\n' +
+                      '4. Tap "Add"\n\n' +
+                      'Note: You must use Safari browser on iPhone/iPad!');
+            }
+        }
+        
+        // Hide install button if already installed
+        if (isInStandaloneMode()) {
+            console.log('Running in standalone mode');
+            const installBtn = document.getElementById('installButtonContainer');
+            if (installBtn) {
+                installBtn.style.display = 'none';
+            }
+        }
+        
+        console.log('PWA script loaded successfully');
     </script>
 </body>
 </html>
