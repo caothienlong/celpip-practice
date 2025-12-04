@@ -121,13 +121,18 @@
         /* Reuse existing styles from test_section.html */
         .content-wrapper { display: flex; gap: 30px; margin: 20px 0; }
         .left-panel, .right-panel { flex: 1; }
+        .passage { background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 20px; line-height: 1.8; white-space: pre-wrap; }
         .passage-box { background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 20px; line-height: 1.8; white-space: pre-wrap; }
         .questions-list { list-style: none; }
         .question-item { margin: 15px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; display: flex; align-items: flex-start; gap: 10px; }
+        .question-container { background: transparent; padding: 20px; border-radius: 10px; }
         .inline-dropdown { padding: 8px 12px; border: 2px solid #667eea; border-radius: 6px; font-size: 1em; cursor: pointer; background: white; min-width: 200px; }
-        .submit-btn { display: block; width: 100%; padding: 15px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border: none; border-radius: 10px; font-size: 1.1em; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        .inline-dropdown.answered { background: #e8f5e9; border-color: #4caf50; }
+        .submit-btn { display: block; width: 100%; padding: 15px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border: none; border-radius: 10px; font-size: 1.1em; font-weight: bold; cursor: pointer; margin-top: 20px; transition: all 0.3s; }
         .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4); }
         .submit-btn:disabled { background: #ccc; cursor: not-allowed; }
+        .section-divider { margin: 30px 0 20px 0; border-top: 2px solid #e0e0e0; padding-top: 20px; }
+        .section-title { color: #667eea; font-size: 1.3em; margin-bottom: 15px; font-weight: 600; }
         
         .final-score {
             display: none;
