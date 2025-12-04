@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CELPIP Reading Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+        
+        .test-list {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .test-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .test-card h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .part-list {
+            display: grid;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .part-link {
+            display: block;
+            background: rgba(255,255,255,0.95);
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .part-link:hover {
+            background: white;
+            transform: translateX(5px);
+        }
+        
+        .part-info {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 CELPIP Reading Assessment</h1>
+        <p class="subtitle">Practice tests to improve your reading skills</p>
+        
+        <div class="test-list">
+            {% for test_num, skills in test_info.items() %}
+            <div class="test-card">
+                <h2>Practice Test {{ test_num }}</h2>
+                
+                {% if skills.reading %}
+                <h3 style="color: white; font-size: 1.2em; margin-top: 15px; margin-bottom: 10px;">📖 Reading</h3>
+                <div class="part-list">
+                    {% for part in skills.reading %}
+                    <a href="/test/{{ test_num }}/reading/part{{ part }}" class="part-link">
+                        <div>Part {{ part }}: 
+                            {% if part == 1 %}Reading Correspondence
+                            {% elif part == 2 %}Reading to Apply a Diagram
+                            {% elif part == 3 %}Reading for Information
+                            {% elif part == 4 %}Reading for Viewpoints
+                            {% endif %}
+                        </div>
+                        <div class="part-info">
+                            {% if part == 1 %}11 questions • 16.5 minutes
+                            {% elif part == 2 %}8 questions • 12 minutes
+                            {% endif %}
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                {% if skills.writing %}
+                <h3 style="color: white; font-size: 1.2em; margin-top: 15px; margin-bottom: 10px;">✍️ Writing</h3>
+                <div class="part-list">
+                    <div class="part-link" style="opacity: 0.5; cursor: not-allowed;">
+                        <div>Coming soon...</div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                {% if skills.speaking %}
+                <h3 style="color: white; font-size: 1.2em; margin-top: 15px; margin-bottom: 10px;">🗣️ Speaking</h3>
+                <div class="part-list">
+                    <div class="part-link" style="opacity: 0.5; cursor: not-allowed;">
+                        <div>Coming soon...</div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                {% if skills.listening %}
+                <h3 style="color: white; font-size: 1.2em; margin-top: 15px; margin-bottom: 10px;">👂 Listening</h3>
+                <div class="part-list">
+                    <div class="part-link" style="opacity: 0.5; cursor: not-allowed;">
+                        <div>Coming soon...</div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,113 @@
+{
+  "part": 2,
+  "title": "Reading to Apply a Diagram",
+  "type": "diagram",
+  "instructions": "Read the following email message about the diagram. Complete the email by filling in the blanks. Select the best choice for each blank from the drop-down menu.",
+  "timeout_minutes": 12.0,
+  "sections": [
+    {
+      "section_type": "diagram_email",
+      "diagram_image": "part2_diagram.png",
+      "email_title": "Email Message",
+      "content": "Subject: Kids Activities\nTo: Mary S <t.smithers@frimpton.bc.ca>\nFrom: Sandy Rockton <srockton@sterlings.ca>\n\nHi Mary,\n\nIt was a pleasure meeting you and the kids at the park on Sunday. I hope you're settling into our neighborhood. You said you were looking for __DROPDOWN_1__. I saw a few possibilities in the latest Burnaby Parks and Recreation brochure. I remember you saying that Alex is contemplative __DROPDOWN_2__ seems a great choice for thinkers like Alex. He will get to think hard and learn some additional math skills.\n\nYou said Melissa is quite scared of math, in which case you could check out __DROPDOWN_3__. They may help her feel better about her schoolwork.\n\nSpeaking of Melissa, she may want to join my daughter Cindy in the young teens' soccer league. This is quite a commitment as there is __DROPDOWN_4__. If that's a problem, she could try karate. I'm not sure about the class times __DROPDOWN_5__. You'll have to call and ask.\n\nCheers,\nSandy",
+      "questions": [
+        {
+          "id": 1,
+          "text": "1.",
+          "options": [
+            "some after school activities for your kids.",
+            "some helpful educational websites.",
+            "babysitting services for your children.",
+            "online classes for your son."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "text": "2.",
+          "options": [
+            "Trimble Studio",
+            "hellomath.ca",
+            "A1 Math and Chess",
+            "Eastburn Soccer"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 3,
+          "text": "3.",
+          "options": [
+            "Eastburn Soccer.",
+            "Trimble Studio.",
+            "Karate.",
+            "the hellomath.ca website"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 4,
+          "text": "4.",
+          "options": [
+            "a boys and girls soccer league.",
+            "training in the week and a weekend game.",
+            "a website where you can get information.",
+            "a week-long summer training session."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "text": "5.",
+          "options": [
+            "there's no website.",
+            "they are not well established.",
+            "there's no contact information.",
+            "I don't know where they practice."
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Using the drop-down menu, choose the best option.",
+      "question_format": "dropdown",
+      "questions": [
+        {
+          "id": 6,
+          "text": "Mary and Sandy",
+          "options": [
+            "have been friends for a long time.",
+            "met at their kids' soccer practice.",
+            "now live in the same area.",
+            "were neighbours in the past."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 7,
+          "text": "Sandy",
+          "options": [
+            "is looking for activities for her own children.",
+            "is suggesting activities in the neighbourhood.",
+            "works for Burnaby Parks and Recreation.",
+            "has committed to drive the girls to soccer practice."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 8,
+          "text": "Melissa",
+          "options": [
+            "prefers individual to team activities.",
+            "doesn't have the weekends off.",
+            "doesn't enjoy math as much as Alex.",
+            "is too young to play team sports."
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}
+

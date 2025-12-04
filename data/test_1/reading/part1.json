@@ -1,0 +1,151 @@
+{
+  "part": 1,
+  "title": "Reading Correspondence",
+  "type": "correspondence",
+  "instructions": "Read the following message and answer the questions.",
+  "timeout_minutes": 16.5,
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Message from Greg",
+      "content": "Dear Grandpa,\n\nThank you so much! I was surprised and delighted to receive your parcel and open your thoughtful present. A two-person camping tent is just what I needed. I've used it already; my friend Ryan and I spent a week camping in the Kootenay region of BC. We just got back. I was going to use our old family tent, but it's not only too big, it is also getting pretty worn out, so your gift was perfect.\n\nWe planned on camping at various locations in the Kootenay region, but we ended up staying at our first campsite for the whole trip. The campground, located on the east side of Arrow Lake, was called McDonald Creek Provincial Park. We were looking forward to the white sand beach, but when we arrived, the park ranger informed us that all the recent rainfall had caused the lake to flood a couple metres higher than normal. The beach was completely submerged. We still had a great time, though, hiking in the beautiful wilderness.\n\nWe drove a different route to get home so we could pass through the city of Nelson. It looks different from the last time I was there, but that's not too surprising; I was there just a couple times as a kid. Last time we were there, Dad showed me the house where he had been born, and also your old clothing store. I drove around and I couldn't find your old house, Grandpa; however, I did find your old store! It's a cafe now, but they kept your old shop sign as a decoration in the cafe. I got pretty emotional when I saw it. I felt really proud of our family history.\n\nNow I'm back in Calgary, but the trip to Nelson made me realize how much I miss you. So, I was thinking that maybe I should fly over to visit you. I have 2 weeks before college starts, so I could come for a week or so. I have enough money saved up from my summer job to pay for the ticket to Montreal. How does that sound? Perhaps the two of us can go camping like in the old days. We haven't done that since you moved east. I'll bring the new tent!\n\nLove, Greg"
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Questions 1-6: Choose the best option according to the information given in the message.",
+      "question_format": "dropdown",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Greg",
+          "options": [
+            "got used to his old family tent.",
+            "got a new tent in the mail.",
+            "needs a new tent for his trip.",
+            "bought a new tent."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "text": "Greg and Ryan",
+          "options": [
+            "toured several campsites in the Kootenay region.",
+            "enjoyed the provincial park's white sand beaches.",
+            "were surprised by the water level at the lake.",
+            "were unable to tour and camp because of the rainfall."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 3,
+          "text": "Greg took an alternative way back because",
+          "options": [
+            "he wanted to revisit his dad's hometown.",
+            "his grandpa still owns a shop there.",
+            "he wanted to pay his father a visit.",
+            "he used to live there as a child."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "text": "Greg became emotional when",
+          "options": [
+            "he found out his grandpa's business had shut down.",
+            "his father told him stories about his childhood.",
+            "he saw the house where his father grew up.",
+            "he saw something that belonged to his grandfather."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 5,
+          "text": "Greg is hoping to",
+          "options": [
+            "use the tent for the first time.",
+            "travel to Montreal very soon.",
+            "be accepted in college this year.",
+            "get a summer job before starting school."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 6,
+          "text": "Greg's grandpa",
+          "options": [
+            "is coming to Calgary for a few weeks.",
+            "bought Greg a ticket back to Nelson.",
+            "used to go camping with Greg.",
+            "is moving back to Calgary."
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "section_type": "response_passage",
+      "title": "Response Message",
+      "instruction_text": "Questions 7-11: Complete the response by filling in the blanks.",
+      "content": "Greg,\n\nIt goes without saying that I'd love to __DROPDOWN_7__. Now with my old bones, I'm not so sure that __DROPDOWN_8__, but even if it's not, I think we should do it anyway. After all, we have to put the tent to good use! You just email me your travel plans. Also, there's no need to __DROPDOWN_9__. I can take care of that, you should keep your savings for tuition.\n\nWell, I can't say I've been to Nelson since I sold my business there many years ago. Did you take any photos of __DROPDOWN_10__? If you did, I'd love to see them. I'm sorry you __DROPDOWN_11__. I don't even know if it's still standing. If it is, it would be a hundred years old.\n\nAnyway, email me as soon as you book the flight over here.\n\nGrandpa",
+      "questions": [
+        {
+          "id": 7,
+          "text": "7.",
+          "options": [
+            "visit Montreal.",
+            "visit the Kootenays.",
+            "go to Calgary.",
+            "see you here."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 8,
+          "text": "8.",
+          "options": [
+            "flying here is wise,",
+            "I can make it to Calgary,",
+            "we should visit the old cafe,",
+            "camping is a great idea,"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 9,
+          "text": "9.",
+          "options": [
+            "plan a camping trip for us;",
+            "spend your own money on a ticket;",
+            "buy a new tent for this trip;",
+            "drive all the way to Montreal;"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 10,
+          "text": "10.",
+          "options": [
+            "the old store sign?",
+            "the old cafe?",
+            "your father at the cafe?",
+            "the house where your dad was born?"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 11,
+          "text": "11.",
+          "options": [
+            "didn't find the old house.",
+            "didn't find the old store.",
+            "didn't recognize the cafe.",
+            "couldn't buy the old sign."
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}
+

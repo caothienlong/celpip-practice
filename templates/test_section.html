@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test {{ test_num }} - {{ section.title }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .timer {
+            font-size: 1.5em;
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        
+        .timer.warning {
+            background: #ff6b6b;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .content {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .passage {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            white-space: pre-line;
+            line-height: 1.8;
+            border-left: 4px solid #667eea;
+        }
+        
+        .inline-dropdown {
+            display: inline-block;
+            padding: 8px 12px;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            background: white;
+            color: #333;
+            font-size: 0.95em;
+            cursor: pointer;
+            margin: 0 4px;
+            min-width: 250px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+        
+        .question-inline .inline-dropdown {
+            max-width: 500px;
+        }
+        
+        .inline-dropdown:hover {
+            border-color: #764ba2;
+            background: #f0f4ff;
+        }
+        
+        .inline-dropdown:focus {
+            outline: none;
+            border-color: #764ba2;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+        
+        .inline-dropdown.answered {
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+        
+        .question-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .question {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .question-inline {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .question-number {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1em;
+            min-width: 30px;
+        }
+        
+        .question-label {
+            font-weight: 600;
+            color: #333;
+            flex-shrink: 0;
+        }
+        
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+        
+        .options {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+        
+        .option input[type="radio"] {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .option.selected {
+            border-color: #667eea;
+            background: #e3f2fd;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: block;
+            margin: 30px auto;
+            font-weight: 600;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .results {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .score-display {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .score-display h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .result-item {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+        
+        .result-item.correct {
+            background: #e8f5e9;
+            border-color: #4caf50;
+        }
+        
+        .result-item.incorrect {
+            background: #ffebee;
+            border-color: #f44336;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: #5a6268;
+        }
+        
+        .section-divider {
+            margin: 30px 0;
+            border-top: 2px solid #e0e0e0;
+            padding-top: 20px;
+        }
+        
+        .section-title {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h2>Test {{ test_num }} - {{ skill|title }} - {{ section.title }}</h2>
+                <p>{{ section.questions|length }} questions</p>
+            </div>
+            <div class="timer" id="timer">
+                {{ "%.1f"|format(section.timeout_minutes) }} min
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="instructions">
+                <strong>Instructions:</strong> {{ section.instructions }}
+            </div>
+            
+            {% if section.has_diagram %}
+            <!-- Part 2: Diagram-based section -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                <div>
+                    <h3 style="color: #667eea; margin-bottom: 15px;">📊 Activities Diagram</h3>
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 2px solid #e0e0e0;">
+                        <img src="{{ url_for('static', filename='images/test_' + test_num|string + '/' + skill + '/' + section.diagram_image) }}" 
+                             alt="Activities Diagram" 
+                             style="width: 100%; height: auto; border-radius: 8px;"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display: none; padding: 30px; background: #fff3cd; border-radius: 8px; text-align: center; color: #856404;">
+                            <h4>📷 Diagram Image Missing</h4>
+                            <p style="margin: 10px 0;">Please extract the diagram from the PDF and save it as:</p>
+                            <code style="background: white; padding: 5px 10px; border-radius: 4px; display: block; margin: 10px 0;">
+                                static/images/test_{{ test_num }}/{{ skill }}/{{ section.diagram_image }}
+                            </code>
+                            <p style="font-size: 0.9em; margin-top: 10px;">
+                                See <code>data/README.md</code> for instructions
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: #667eea; margin-bottom: 15px;">📧 Email Message</h3>
+                    <div class="passage" style="margin: 0;">
+                        <form id="testForm">
+                            {{ section.email_content | safe }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-divider">
+                <div class="section-title">Using the drop-down menu, choose the best option.</div>
+            </div>
+            
+            <div class="question-container">
+                <form id="testForm2">
+                    {{ section.questions_6_8_html | safe }}
+                </form>
+            </div>
+            
+            {% else %}
+            <!-- Part 1: Correspondence section -->
+            <div class="section-divider">
+                <div class="section-title">Questions 1-6: Choose the best option according to the information given in the message.</div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                <div>
+                    <h3 style="color: #667eea; margin-bottom: 15px;">📧 Message from Greg</h3>
+                    <div class="passage" style="margin: 0;">{{ section.passage }}</div>
+                </div>
+                <div>
+                    <h3 style="color: #667eea; margin-bottom: 15px;">❓ Questions</h3>
+                    <div class="question-container" style="background: transparent; padding: 0; box-shadow: none;">
+                        <form id="testForm">
+                            {{ section.questions_1_6_html | safe }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-divider">
+                <div class="section-title">Questions 7-11: Complete the response by filling in the blanks.</div>
+            </div>
+            
+            <div class="passage">
+                <form id="testForm2">
+                    {{ section.response_passage | safe }}
+                </form>
+            </div>
+            {% endif %}
+            
+            <button class="submit-btn" id="submitBtn">Submit Answers</button>
+        </div>
+        
+        <div class="results" id="results" style="display: none;"></div>
+        
+        <a href="/" class="back-btn">← Back to Tests</a>
+    </div>
+
+    <script>
+        // Timer functionality
+        let timeLeft = {{ section.timeout_minutes }} * 60; // Convert to seconds
+        const timerElement = document.getElementById('timer');
+        
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 60) {
+                timerElement.classList.add('warning');
+            }
+            
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                alert('Time is up!');
+                document.getElementById('submitBtn').click();
+            }
+            
+            timeLeft--;
+        }
+        
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer();
+        
+        // Option selection visual feedback
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const questionId = this.dataset.question;
+                document.querySelectorAll(`.option[data-question="${questionId}"]`).forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                this.classList.add('selected');
+            });
+        });
+        
+        // Dropdown selection visual feedback
+        document.querySelectorAll('.inline-dropdown').forEach(dropdown => {
+            dropdown.addEventListener('change', function() {
+                if (this.value !== '') {
+                    this.classList.add('answered');
+                } else {
+                    this.classList.remove('answered');
+                }
+            });
+        });
+        
+        // Submit functionality
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const form1 = document.getElementById('testForm');
+            const form2 = document.getElementById('testForm2');
+            
+            // Check if both forms exist (Part 1) or just form1 (Part 2)
+            if (form2) {
+                if (!form1.checkValidity() || !form2.checkValidity()) {
+                    alert('Please answer all questions before submitting.');
+                    return;
+                }
+            } else {
+                if (!form1.checkValidity()) {
+                    alert('Please answer all questions before submitting.');
+                    return;
+                }
+            }
+            
+            clearInterval(timerInterval);
+            
+            const formData1 = new FormData(form1);
+            const answers = {};
+            
+            for (let [key, value] of formData1.entries()) {
+                const questionId = key.substring(1);
+                answers[questionId] = parseInt(value);
+            }
+            
+            // Add form2 data if it exists
+            if (form2) {
+                const formData2 = new FormData(form2);
+                for (let [key, value] of formData2.entries()) {
+                    const questionId = key.substring(1);
+                    answers[questionId] = parseInt(value);
+                }
+            }
+            
+            fetch('/submit_answers', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    answers: answers,
+                    test_num: {{ test_num }},
+                    skill: '{{ skill }}',
+                    part_num: {{ part_num }}
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                displayResults(data);
+            });
+        });
+        
+        function displayResults(data) {
+            const resultsDiv = document.getElementById('results');
+            let html = `
+                <div class="score-display">
+                    <h2>${data.score} / ${data.total}</h2>
+                    <p style="font-size: 1.5em;">${data.percentage}%</p>
+                </div>
+                <h3 style="margin-bottom: 20px;">Question Results:</h3>
+            `;
+            
+            for (let [questionId, result] of Object.entries(data.results)) {
+                const correctClass = result.correct ? 'correct' : 'incorrect';
+                const icon = result.correct ? '✓' : '✗';
+                html += `
+                    <div class="result-item ${correctClass}">
+                        <strong>${icon} Question ${questionId}</strong><br>
+                        ${result.correct ? 'Correct!' : `Your answer was incorrect. Correct answer: Option ${result.correct_answer + 1}`}
+                    </div>
+                `;
+            }
+            
+            resultsDiv.innerHTML = html;
+            resultsDiv.style.display = 'block';
+            
+            document.getElementById('submitBtn').disabled = true;
+            document.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.disabled = true;
+            });
+            
+            window.scrollTo({ top: resultsDiv.offsetTop - 100, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+
