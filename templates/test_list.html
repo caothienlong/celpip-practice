@@ -198,9 +198,145 @@
             font-weight: 600;
             margin-left: 5px;
         }
+        
+        /* Email Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideDown 0.3s;
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 20px;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+        }
+        
+        .modal-title {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+            clear: both;
+        }
+        
+        .modal-subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .modal-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+        
+        .modal-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .modal-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .modal-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .error-message {
+            color: #f44336;
+            background: #ffebee;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
     </style>
 </head>
 <body>
+    <!-- Email Modal -->
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEmailModal()">&times;</span>
+            <h2 class="modal-title">📧 Set Email Address</h2>
+            <p class="modal-subtitle">Enter your email to track test results and progress</p>
+            
+            <form id="modalEmailForm" onsubmit="submitEmail(event)">
+                <input 
+                    type="email" 
+                    id="modalEmail" 
+                    class="modal-input"
+                    placeholder="your.email@example.com"
+                    required
+                >
+                <div class="error-message" id="modalError"></div>
+                <button type="submit" class="modal-btn" id="modalSubmitBtn">
+                    Save Email
+                </button>
+            </form>
+        </div>
+    </div>
     <div class="container">
         <h1>📚 CELPIP Practice Tests</h1>
         <p class="subtitle">Select a test to begin practicing</p>
@@ -209,8 +345,21 @@
         <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f0f7ff; border-radius: 10px; border: 2px solid #667eea;">
             <strong>👤 Logged in as:</strong> {{ user_email }}
             <span style="margin-left: 15px;">
+                <a href="#" onclick="showEmailModal(); return false;" style="color: #667eea; text-decoration: none; font-size: 0.9em;">✏️ Change Email</a>
+            </span>
+            <span style="margin-left: 15px;">
                 <a href="/clear_session" style="color: #f44336; text-decoration: none; font-size: 0.9em;">✕ Clear Session</a>
             </span>
+        </div>
+        {% else %}
+        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #fff3cd; border-radius: 10px; border: 2px solid #ffc107;">
+            <strong>⚠️ No email set</strong>
+            <span style="margin-left: 15px;">
+                <a href="#" onclick="showEmailModal(); return false;" style="color: #667eea; text-decoration: none; font-weight: 600;">📧 Set Email Address</a>
+            </span>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
+                Setting your email will enable test result tracking and history.
+            </p>
         </div>
         {% endif %}
         
@@ -272,6 +421,79 @@
             {% endfor %}
         </div>
     </div>
+    
+    <script>
+        function showEmailModal() {
+            document.getElementById('emailModal').style.display = 'block';
+            document.getElementById('modalEmail').focus();
+        }
+        
+        function closeEmailModal() {
+            document.getElementById('emailModal').style.display = 'none';
+            document.getElementById('modalError').style.display = 'none';
+            document.getElementById('modalEmail').value = '';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('emailModal');
+            if (event.target == modal) {
+                closeEmailModal();
+            }
+        }
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeEmailModal();
+            }
+        });
+        
+        function submitEmail(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('modalEmail').value.trim();
+            const submitBtn = document.getElementById('modalSubmitBtn');
+            const errorMessage = document.getElementById('modalError');
+            
+            if (!email) {
+                errorMessage.textContent = 'Please enter a valid email address.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Saving...';
+            errorMessage.style.display = 'none';
+            
+            // Send email to server
+            fetch('/set_user_email', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ email: email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Reload page to show updated email
+                    window.location.reload();
+                } else {
+                    errorMessage.textContent = data.error || 'Failed to set email. Please try again.';
+                    errorMessage.style.display = 'block';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Save Email';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                errorMessage.textContent = 'An error occurred. Please try again.';
+                errorMessage.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Save Email';
+            });
+        }
+    </script>
 </body>
 </html>
 
