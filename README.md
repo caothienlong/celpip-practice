@@ -2,6 +2,19 @@
 
 A comprehensive web-based practice application for CELPIP (Canadian English Language Proficiency Index Program) tests, designed with a scalable architecture for 20 test sets across 4 skills.
 
+## 🚀 Quick Start
+
+**New here?** See [SETUP.md](SETUP.md) for quick installation instructions!
+
+```bash
+git clone https://github.com/YOUR_USERNAME/celpip-practice.git
+cd celpip-practice
+./setup.sh  # or setup.bat on Windows
+python app.py
+```
+
+Then open: **http://localhost:5000**
+
 ## 🏗️ Project Structure
 
 ```
@@ -36,29 +49,21 @@ celpip/
 
 ## 🚀 Installation & Setup
 
-### 1. Create Virtual Environment
+### Automated Setup (Recommended)
 
+**macOS/Linux:**
 ```bash
-python3 -m venv venv
+./setup.sh
 ```
 
-### 2. Activate Virtual Environment
-
-**On macOS/Linux:**
+**Windows:**
 ```bash
-source venv/bin/activate
+setup.bat
 ```
 
-**On Windows:**
-```bash
-venv\Scripts\activate
-```
+### Manual Setup
 
-### 3. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
+See [SETUP.md](SETUP.md) for detailed instructions.
 
 ## ▶️ Running the Application
 
