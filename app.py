@@ -55,13 +55,14 @@ def test_detail(test_num):
 @app.route('/test/<int:test_num>/exam')
 def start_exam(test_num):
     """Start Test Mode - begins with Reading Part 1"""
-    # Initialize test mode session
+    # Clear any existing exam session (for retakes)
     test_key = f'exam_{test_num}'
     session[test_key] = {
         'mode': 'exam',
         'current_skill': 'reading',
         'current_part': 1,
-        'scores': {}
+        'scores': {},
+        'completed': False
     }
     session.modified = True
     
@@ -298,6 +299,7 @@ def submit_test_mode():
         
         # Determine next action
         skill_parts = data_loader.list_available_parts(test_num, skill)
+        skill_order = ['reading', 'listening', 'writing', 'speaking']
         
         if is_last_part:
             # Calculate skill total
@@ -307,12 +309,39 @@ def submit_test_mode():
                            for p in skill_parts])
             skill_percentage = round((skill_total / skill_max) * 100, 1) if skill_max > 0 else 0
             
+            # Check if this is the last skill
+            current_skill_index = skill_order.index(skill)
+            has_next_skill = False
+            for i in range(current_skill_index + 1, len(skill_order)):
+                next_skill_candidate = skill_order[i]
+                if data_loader.list_available_parts(test_num, next_skill_candidate):
+                    has_next_skill = True
+                    break
+            
+            # If last skill, mark exam as completed and calculate total score
+            if not has_next_skill:
+                total_score = 0
+                max_score = 0
+                for completed_skill in session[test_key]['scores']:
+                    skill_score_dict = session[test_key]['scores'][completed_skill]
+                    total_score += sum(skill_score_dict.values())
+                    # Calculate max for this skill
+                    skill_parts_list = data_loader.list_available_parts(test_num, completed_skill)
+                    for p in skill_parts_list:
+                        max_score += len(data_loader.get_all_questions(data_loader.load_test_part(test_num, completed_skill, p)))
+                
+                session[test_key]['completed'] = True
+                session[test_key]['total_score'] = total_score
+                session[test_key]['max_score'] = max_score
+                session.modified = True
+            
             return jsonify({
                 'show_skill_score': True,
                 'skill_total': skill_total,
                 'skill_max': skill_max,
                 'skill_percentage': skill_percentage,
-                'skill': skill
+                'skill': skill,
+                'is_final': not has_next_skill
             })
         else:
             # Move to next part

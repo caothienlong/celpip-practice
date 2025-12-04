@@ -91,6 +91,14 @@
             color: #666;
             font-size: 0.9em;
             font-weight: 600;
+            text-align: center;
+        }
+        
+        .status-completed {
+            background: linear-gradient(135deg, #a8e6cf 0%, #56cc9d 100%);
+            color: white;
+            font-size: 0.95em;
+            padding: 10px 16px;
         }
         
         .test-buttons {
@@ -145,6 +153,17 @@
         .exam-btn.disabled:hover {
             transform: none;
         }
+        
+        .retake-btn {
+            background: linear-gradient(135deg, #fbc2eb 0%, #a18cd1 100%);
+            color: white;
+            box-shadow: 0 3px 10px rgba(161, 140, 209, 0.3);
+        }
+        
+        .retake-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(161, 140, 209, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -157,21 +176,35 @@
             <div class="test-card-wrapper">
                 <div class="test-number">{{ test_num }}</div>
                 <div class="test-label">Practice Test {{ test_num }}</div>
-                <div class="test-status">
-                    {% if test_num in [1, 2] %}
-                        📖 Ready for Test
-                    {% else %}
-                        📝 Template
-                    {% endif %}
+                
+                {% if exam_status[test_num].completed %}
+                <div class="test-status status-completed">
+                    ✅ Test Completed - {{ exam_status[test_num].total_score }}/{{ exam_status[test_num].max_score }}
                 </div>
+                {% elif test_num in [1, 2] %}
+                <div class="test-status">
+                    📖 Ready for Test
+                </div>
+                {% else %}
+                <div class="test-status">
+                    📝 Template
+                </div>
+                {% endif %}
+                
                 <div class="test-buttons">
                     <a href="/test/{{ test_num }}" class="mode-btn practice-btn">
                         📚 Practice Mode
                     </a>
                     {% if test_num in [1, 2] %}
-                    <a href="/test/{{ test_num }}/exam" class="mode-btn exam-btn">
-                        🎯 Test Mode
-                    </a>
+                        {% if exam_status[test_num].completed %}
+                        <a href="/test/{{ test_num }}/exam" class="mode-btn retake-btn">
+                            🔄 Retake Test
+                        </a>
+                        {% else %}
+                        <a href="/test/{{ test_num }}/exam" class="mode-btn exam-btn">
+                            🎯 Test Mode
+                        </a>
+                        {% endif %}
                     {% else %}
                     <button class="mode-btn exam-btn disabled" disabled>
                         🎯 Test Mode

@@ -206,18 +206,10 @@
         </form>
         
         <div class="final-score" id="finalScore">
-            <h2>{{ skill|title }} Section Complete!</h2>
+            <h2><span id="skillName"></span> Section Complete!</h2>
             <div class="score" id="skillScoreDisplay"></div>
             <p style="font-size: 1.2em; margin-bottom: 10px;">You got <span id="skillScoreText"></span></p>
-            {% if next_skill %}
-            <a href="/test/{{ test_num }}/exam/{{ next_skill }}/part1" class="next-skill-btn">
-                Continue to {{ next_skill|title }} →
-            </a>
-            {% else %}
-            <a href="/" class="finish-btn">
-                View Final Results
-            </a>
-            {% endif %}
+            <div id="nextActionButtons"></div>
         </div>
     </div>
     
@@ -277,10 +269,37 @@
             .then(data => {
                 if (data.show_skill_score) {
                     // Show final skill score
+                    document.getElementById('skillName').textContent = '{{ skill|title }}';
                     document.getElementById('skillScoreDisplay').textContent = 
                         `${data.skill_total}/${data.skill_max}`;
                     document.getElementById('skillScoreText').textContent = 
                         `${data.skill_total} out of ${data.skill_max} correct (${data.skill_percentage}%)`;
+                    
+                    // Show appropriate button based on whether it's the final skill
+                    const nextActionButtons = document.getElementById('nextActionButtons');
+                    if (data.is_final) {
+                        nextActionButtons.innerHTML = `
+                            <div style="background: white; color: #56ab2f; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                                <h3 style="margin-bottom: 10px;">🎉 Test Complete!</h3>
+                                <p style="margin: 0;">All sections finished. Great job!</p>
+                            </div>
+                            <a href="/" class="finish-btn">
+                                Back to Home
+                            </a>
+                        `;
+                    } else {
+                        // Find next skill
+                        const skillOrder = ['reading', 'listening', 'writing', 'speaking'];
+                        const currentIndex = skillOrder.indexOf('{{ skill }}');
+                        let nextSkill = '{{ next_skill }}';
+                        
+                        nextActionButtons.innerHTML = `
+                            <a href="/test/{{ test_num }}/exam/${nextSkill}/part1" class="next-skill-btn">
+                                Continue to ${nextSkill.charAt(0).toUpperCase() + nextSkill.slice(1)} →
+                            </a>
+                        `;
+                    }
+                    
                     document.getElementById('finalScore').style.display = 'block';
                     document.getElementById('submitBtn').style.display = 'none';
                     window.scrollTo({ top: 0, behavior: 'smooth' });
