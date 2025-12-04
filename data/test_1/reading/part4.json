@@ -3,7 +3,6 @@
   "title": "Reading for Viewpoints",
   "type": "viewpoints",
   "instructions": "Read the following article from a website and answer the questions.",
-  "timeout_minutes": 15.0,
   "sections": [
     {
       "section_type": "passage",

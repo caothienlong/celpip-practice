@@ -3,7 +3,6 @@
   "title": "Reading for Information",
   "type": "information",
   "instructions": "Read the following passage and answer the questions. Decide which paragraph (A to D) has the information given in each statement. Select E if the information is not given in any of the paragraphs.",
-  "timeout_minutes": 13.5,
   "sections": [
     {
       "section_type": "passage",

@@ -3,7 +3,6 @@
   "title": "Reading to Apply a Diagram",
   "type": "diagram",
   "instructions": "Read the following email message about the diagram. Complete the email by filling in the blanks. Select the best choice for each blank from the drop-down menu.",
-  "timeout_minutes": 12.0,
   "sections": [
     {
       "section_type": "diagram_email",
