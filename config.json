@@ -1,0 +1,30 @@
+{
+  "time_per_question": {
+    "reading": 1.5,
+    "writing": 30.0,
+    "speaking": 1.5,
+    "listening": 1.5
+  },
+  "default_time_per_question": 1.5,
+  "custom_timeouts": {
+    "comment": "Format: 'test_skill_part': minutes. Example: '1_reading_1': 20.0",
+    "examples": {
+      "1_reading_1": 16.5,
+      "1_reading_2": 12.0
+    }
+  },
+  "ui_settings": {
+    "timer_warning_seconds": 60,
+    "auto_submit_on_timeout": true,
+    "show_question_numbers": true
+  },
+  "test_metadata": {
+    "total_tests": 20,
+    "skills": ["reading", "writing", "speaking", "listening"],
+    "reading_parts": 4,
+    "writing_parts": 2,
+    "speaking_parts": 8,
+    "listening_parts": 6
+  }
+}
+
