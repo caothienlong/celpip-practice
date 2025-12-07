@@ -535,22 +535,13 @@
         {% else %}
         <!-- Part 1: Correspondence section -->
         <div class="content-grid">
-            <!-- Left Panel: Passages -->
+            <!-- Left Panel: Passage Only -->
             <div class="content-panel">
                 <h3>📧 Message from Greg</h3>
                 <div class="passage">{{ section.passage }}</div>
-                
-                <div style="margin-top: 30px;">
-                    <h3 style="color: #003366; margin-bottom: 15px;">💬 Response Message</h3>
-                    <div class="passage">
-                        <form id="testForm2">
-                            {{ section.response_passage | safe }}
-                        </form>
-                    </div>
-                </div>
             </div>
             
-            <!-- Right Panel: Questions -->
+            <!-- Right Panel: Questions 1-6 + Response Message -->
             <div class="content-panel">
                 <div style="background: #e6f2ff; padding: 10px 15px; border-radius: 4px; font-size: 0.9em; font-weight: 600; color: #003366; margin-bottom: 15px;">
                     Questions 1-6: Choose the best option according to the information given in the message.
@@ -561,11 +552,16 @@
                 </form>
                 
                 <div style="background: #e6f2ff; padding: 10px 15px; border-radius: 4px; font-size: 0.9em; font-weight: 600; color: #003366; margin-top: 30px; margin-bottom: 15px;">
-                    Questions 7-11: Select the best option to complete the response message on the left.
+                    Questions 7-11: Complete the response by selecting from the dropdown menus.
                 </div>
                 
-                <div style="color: #666; font-size: 0.9em; font-style: italic;">
-                    Use the dropdown menus in the response message on the left to answer questions 7-11.
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #003366; margin-bottom: 15px; font-size: 1em;">💬 Response Message</h3>
+                    <div class="passage">
+                        <form id="testForm2">
+                            {{ section.response_passage | safe }}
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
