@@ -54,6 +54,21 @@
             animation: pulse 1s infinite;
         }
         
+        .answer-key-header-btn {
+            background: #28a745;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: background 0.2s ease;
+        }
+        
+        .answer-key-header-btn:hover {
+            background: #218838;
+        }
+        
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.8; }
@@ -501,6 +516,7 @@
     <div class="celpip-header">
         <h1>Test {{ test_num }} - {{ skill|title }} - {{ section.title }}</h1>
         <div class="header-right">
+            <a href="/test/{{ test_num }}/{{ skill }}/answer-key" class="answer-key-header-btn">📝 Answer Key</a>
             <div class="question-counter">{{ section.questions|length }} Questions</div>
             <div class="timer-box" id="timer">
                 {{ "%.1f"|format(section.timeout_minutes) }} min

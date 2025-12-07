@@ -244,6 +244,88 @@ def answer_key(test_num, skill, part_num):
         return f"Error loading answer key: {e}", 500
 
 
+@app.route('/test/<int:test_num>/<skill>/answer-key')
+def comprehensive_answer_key(test_num, skill):
+    """
+    Display comprehensive answer key for all parts of a skill
+    Shows correct answers, user answers, and comparison
+    """
+    try:
+        # Get all parts for this skill
+        skill_parts = data_loader.list_available_parts(test_num, skill)
+        
+        # Get user's answers from session
+        test_key = f'test_{test_num}'
+        user_answers = session.get('scores', {}).get(test_key, {}).get(skill, {})
+        
+        parts_data = []
+        total_questions = 0
+        correct_answers = 0
+        incorrect_answers = 0
+        unanswered = 0
+        
+        for part_num in skill_parts:
+            # Load test data
+            test_data = data_loader.load_test_part(test_num, skill, part_num)
+            all_questions = data_loader.get_all_questions(test_data)
+            correct_answer_map = data_loader.get_correct_answers(test_data)
+            
+            # Build questions list with answers
+            questions_list = []
+            for q in all_questions:
+                q_id = str(q['id'])
+                correct_idx = correct_answer_map.get(q_id)
+                user_answer_idx = user_answers.get(str(part_num), {}).get(q_id) if isinstance(user_answers.get(str(part_num)), dict) else None
+                
+                # Get answer texts
+                correct_answer_text = q['options'][correct_idx] if correct_idx is not None else '—'
+                user_answer_text = q['options'][user_answer_idx] if user_answer_idx is not None and user_answer_idx < len(q['options']) else None
+                
+                is_correct = user_answer_idx == correct_idx if user_answer_idx is not None else False
+                
+                questions_list.append({
+                    'question_text': f"Q{q['id']}. {q.get('text', q.get('question', ''))}",
+                    'correct_answer_text': correct_answer_text,
+                    'user_answer_text': user_answer_text,
+                    'is_correct': is_correct
+                })
+                
+                total_questions += 1
+                if user_answer_text is None:
+                    unanswered += 1
+                elif is_correct:
+                    correct_answers += 1
+                else:
+                    incorrect_answers += 1
+            
+            parts_data.append({
+                'part_num': part_num,
+                'title': test_data.get('title', f'Part {part_num}'),
+                'questions': questions_list
+            })
+        
+        # Calculate summary
+        percentage = round((correct_answers / total_questions) * 100, 1) if total_questions > 0 else 0
+        
+        summary = {
+            'total_questions': total_questions,
+            'correct_answers': correct_answers,
+            'incorrect_answers': incorrect_answers,
+            'unanswered': unanswered,
+            'percentage': percentage
+        }
+        
+        return render_template(
+            'comprehensive_answer_key.html',
+            test_num=test_num,
+            skill=skill,
+            parts_data=parts_data,
+            summary=summary
+        )
+    except Exception as e:
+        return f"Error loading comprehensive answer key: {e}", 500
+
+
 def prepare_test_data(test_data, skill, part_num):
     """
     Prepare test data for rendering
