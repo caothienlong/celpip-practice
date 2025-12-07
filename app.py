@@ -22,14 +22,27 @@ def index():
     exam_status = {}
     for test_num in available_tests:
         test_key = f'exam_{test_num}'
-        if test_key in session and session[test_key].get('completed'):
-            exam_status[test_num] = {
-                'completed': True,
-                'total_score': session[test_key].get('total_score', 0),
-                'max_score': session[test_key].get('max_score', 0)
-            }
+        if test_key in session:
+            if session[test_key].get('completed'):
+                exam_status[test_num] = {
+                    'completed': True,
+                    'in_progress': False,
+                    'total_score': session[test_key].get('total_score', 0),
+                    'max_score': session[test_key].get('max_score', 0)
+                }
+            else:
+                # In progress
+                exam_status[test_num] = {
+                    'completed': False,
+                    'in_progress': True,
+                    'current_skill': session[test_key].get('current_skill', 'reading'),
+                    'current_part': session[test_key].get('current_part', 1)
+                }
         else:
-            exam_status[test_num] = {'completed': False}
+            exam_status[test_num] = {
+                'completed': False,
+                'in_progress': False
+            }
     
     # Get historical data from JSON if user email is set
     test_history = {}
@@ -81,16 +94,26 @@ def test_detail(test_num):
 
 @app.route('/test/<int:test_num>/exam')
 def start_exam(test_num):
-    """Start Test Mode - begins with Reading Part 1"""
+    """Start or Resume Test Mode"""
     # Check if user email is set, if not redirect to email collection
     if 'user_email' not in session or not session['user_email']:
         return render_template('collect_email.html', test_num=test_num)
     
-    # Generate unique attempt ID for this test attempt
+    test_key = f'exam_{test_num}'
+    
+    # Check if there's an existing in-progress exam
+    if test_key in session and not session[test_key].get('completed', False):
+        # Resume existing exam - get current position
+        current_skill = session[test_key].get('current_skill', 'reading')
+        current_part = session[test_key].get('current_part', 1)
+        
+        # Redirect to current position
+        return test_mode_part(test_num, current_skill, current_part)
+    
+    # Start new exam - generate unique attempt ID
     attempt_id = str(uuid.uuid4())
     
-    # Clear any existing exam session (for retakes)
-    test_key = f'exam_{test_num}'
+    # Initialize new exam session
     session[test_key] = {
         'mode': 'exam',
         'current_skill': 'reading',
@@ -136,6 +159,13 @@ def test_mode_part(test_num, skill, part_num):
         # Load test data
         test_data = data_loader.load_test_part(test_num, skill, part_num)
         processed_data = prepare_test_data(test_data, skill, part_num)
+        
+        # Save current position in session
+        test_key = f'exam_{test_num}'
+        if test_key in session:
+            session[test_key]['current_skill'] = skill
+            session[test_key]['current_part'] = part_num
+            session.modified = True
         
         # Determine skill order and progress
         skill_order = ['reading', 'listening', 'writing', 'speaking']
@@ -721,6 +751,10 @@ def submit_test_mode():
             # Move to next part
             current_index = skill_parts.index(part_num)
             next_part = skill_parts[current_index + 1]
+            
+            # Update session with next position
+            session[test_key]['current_part'] = next_part
+            session.modified = True
             
             return jsonify({
                 'show_skill_score': False,
