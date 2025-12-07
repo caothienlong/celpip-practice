@@ -259,9 +259,17 @@ def comprehensive_answer_key(test_num, skill):
         # Get all parts for this skill
         skill_parts = data_loader.list_available_parts(test_num, skill)
         
-        # Get user's saved answers from session
+        # Get user's saved answers from session (try both Practice and Test Mode)
         test_key = f'test_{test_num}'
-        saved_answers = session.get('answers', {}).get(test_key, {}).get(skill, {})
+        exam_key = f'exam_{test_num}'
+        
+        # Check if this is from Test Mode or Practice Mode
+        is_test_mode = exam_key in session.get('exam_answers', {})
+        
+        if is_test_mode:
+            saved_answers = session.get('exam_answers', {}).get(exam_key, {}).get(skill, {})
+        else:
+            saved_answers = session.get('answers', {}).get(test_key, {}).get(skill, {})
         
         parts_data = []
         total_questions = 0
@@ -328,10 +336,11 @@ def comprehensive_answer_key(test_num, skill):
             test_num=test_num,
             skill=skill,
             parts_data=parts_data,
-            summary=summary
+            summary=summary,
+            is_test_mode=is_test_mode
         )
     except Exception as e:
-        return f"Error loading comprehensive answer key: {e}", 500
+        return jsonify({'error': str(e)}), 500
 
 
 def prepare_test_data(test_data, skill, part_num):
@@ -896,6 +905,53 @@ def reset_test(test_num, skill):
                 if not session['scores'][test_key]:
                     del session['scores'][test_key]
         
+        session.modified = True
+        
+        return jsonify({'success': True})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 400
+
+
+@app.route('/save_test_mode_answer', methods=['POST'])
+def save_test_mode_answer():
+    """
+    Save a single answer to session in Test Mode (auto-save when dropdown changes)
+    Uses exam_<test_num> key to separate from Practice Mode
+    
+    Request JSON:
+        {
+            "test_num": 1,
+            "skill": "reading",
+            "part_num": 1,
+            "question_id": "1",
+            "answer": 0
+        }
+    
+    Returns:
+        JSON with success status
+    """
+    data = request.json
+    test_num = data.get('test_num')
+    skill = data.get('skill')
+    part_num = data.get('part_num')
+    question_id = str(data.get('question_id'))
+    answer = data.get('answer')
+    
+    try:
+        # Initialize session structure for Test Mode
+        if 'exam_answers' not in session:
+            session['exam_answers'] = {}
+        
+        test_key = f'exam_{test_num}'
+        if test_key not in session['exam_answers']:
+            session['exam_answers'][test_key] = {}
+        if skill not in session['exam_answers'][test_key]:
+            session['exam_answers'][test_key][skill] = {}
+        if str(part_num) not in session['exam_answers'][test_key][skill]:
+            session['exam_answers'][test_key][skill][str(part_num)] = {}
+        
+        # Save the answer
+        session['exam_answers'][test_key][skill][str(part_num)][question_id] = answer
         session.modified = True
         
         return jsonify({'success': True})
