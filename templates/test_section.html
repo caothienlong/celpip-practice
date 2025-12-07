@@ -517,6 +517,7 @@
         {% if section.has_diagram %}
         <!-- Part 2: Diagram-based section -->
         <div class="content-grid">
+            <!-- Left Panel: Diagram + Email -->
             <div class="content-panel">
                 <h3>📊 Activities Diagram</h3>
                 <div class="diagram-container">
@@ -531,25 +532,31 @@
                         </code>
                     </div>
                 </div>
-            </div>
-            <div class="content-panel">
-                <h3>📧 Email Message</h3>
-                <div class="passage">
-                    <form id="testForm">
-                        {{ section.email_content | safe }}
-                    </form>
+                
+                <div style="margin-top: 30px;">
+                    <h3>📧 Email Message</h3>
+                    <div class="passage">{{ section.email_content | safe }}</div>
                 </div>
             </div>
-        </div>
-        
-        <div class="section-divider">
-            Using the drop-down menu, choose the best option.
-        </div>
-        
-        <div class="full-width-panel">
-            <form id="testForm2">
-                {{ section.questions_6_8_html | safe }}
-            </form>
+            
+            <!-- Right Panel: Questions -->
+            <div class="content-panel">
+                <div style="background: #e6f2ff; padding: 10px 15px; border-radius: 4px; font-size: 0.9em; font-weight: 600; color: #003366; margin-bottom: 15px;">
+                    Questions 1-5: Complete the email by selecting from the dropdown menus.
+                </div>
+                
+                <div style="color: #666; font-size: 0.9em; font-style: italic; margin-bottom: 20px;">
+                    Use the dropdown menus in the email message on the left to answer questions 1-5.
+                </div>
+                
+                <div style="background: #e6f2ff; padding: 10px 15px; border-radius: 4px; font-size: 0.9em; font-weight: 600; color: #003366; margin-top: 30px; margin-bottom: 15px;">
+                    Questions 6-8: Using the drop-down menu, choose the best option.
+                </div>
+                
+                <form id="testForm2">
+                    {{ section.questions_6_8_html | safe }}
+                </form>
+            </div>
         </div>
         
         {% elif section.is_information_type %}
@@ -575,32 +582,40 @@
         {% elif section.is_viewpoints_type %}
         <!-- Part 4: Reading for Viewpoints -->
         <div class="content-grid">
+            <!-- Left Panel: Article -->
             <div class="content-panel">
                 <h3>📰 Article</h3>
                 <div class="passage">{{ section.passage }}</div>
+                
+                {% if section.response_passage %}
+                <div style="margin-top: 30px;">
+                    <h3 style="color: #003366; margin-bottom: 15px;">💬 {{ section.response_title }}</h3>
+                    <div class="passage">{{ section.response_passage | safe }}</div>
+                </div>
+                {% endif %}
             </div>
+            
+            <!-- Right Panel: Questions -->
             <div class="content-panel">
-                <h3>❓ Questions</h3>
+                <div style="background: #e6f2ff; padding: 10px 15px; border-radius: 4px; font-size: 0.9em; font-weight: 600; color: #003366; margin-bottom: 15px;">
+                    Questions: Choose the best option according to the information given.
+                </div>
+                
                 <form id="testForm">
                     {{ section.questions_html | safe }}
                 </form>
+                
+                {% if section.response_passage %}
+                <div style="background: #e6f2ff; padding: 10px 15px; border-radius: 4px; font-size: 0.9em; font-weight: 600; color: #003366; margin-top: 30px; margin-bottom: 15px;">
+                    Additional Questions: Complete the response using dropdown menus.
+                </div>
+                
+                <div style="color: #666; font-size: 0.9em; font-style: italic;">
+                    Use the dropdown menus in the {{ section.response_title }} on the left.
+                </div>
+                {% endif %}
             </div>
         </div>
-        
-        {% if section.response_passage %}
-        <div class="section-divider">
-            {{ section.section_divider_text }}
-        </div>
-        
-        <div class="full-width-panel">
-            <h3 style="color: #003366; margin-bottom: 15px;">💬 {{ section.response_title }}</h3>
-            <div class="passage">
-                <form id="testForm2">
-                    {{ section.response_passage | safe }}
-                </form>
-            </div>
-        </div>
-        {% endif %}
         
         {% else %}
         <!-- Part 1: Correspondence section -->
