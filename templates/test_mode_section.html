@@ -488,6 +488,40 @@
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
+                // Validate all dropdowns are answered
+                const allDropdowns = document.querySelectorAll('.inline-dropdown');
+                const unansweredDropdowns = [];
+                
+                allDropdowns.forEach(dropdown => {
+                    const isAnswered = dropdown.classList.contains('answered') || 
+                                       dropdown.classList.contains('selected') ||
+                                       dropdown.value !== '' && dropdown.value !== undefined;
+                    
+                    if (!isAnswered) {
+                        unansweredDropdowns.push(dropdown.name || dropdown.dataset.question);
+                    }
+                });
+                
+                if (unansweredDropdowns.length > 0) {
+                    alert(`Please answer all questions before continuing.\n\nUnanswered: ${unansweredDropdowns.length} question(s)`);
+                    
+                    // Highlight first unanswered dropdown
+                    const firstUnanswered = allDropdowns[Array.from(allDropdowns).findIndex(d => {
+                        return !(d.classList.contains('answered') || d.classList.contains('selected') || (d.value !== '' && d.value !== undefined));
+                    })];
+                    
+                    if (firstUnanswered) {
+                        firstUnanswered.style.border = '2px solid red';
+                        firstUnanswered.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        setTimeout(() => {
+                            firstUnanswered.style.border = '';
+                        }, 3000);
+                    }
+                    
+                    return false;
+                }
+                
                 clearInterval(timerInterval);
                 
                 // Collect all answers

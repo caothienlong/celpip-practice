@@ -669,9 +669,9 @@
             {% endif %}
             
             {% if part_num < 4 %}
-            <a href="/test/{{ test_num }}/{{ skill }}/part{{ part_num + 1 }}" class="nav-btn" id="nextBtn">Next →</a>
+            <button onclick="validateAndNavigate('/test/{{ test_num }}/{{ skill }}/part{{ part_num + 1 }}')" class="nav-btn" id="nextBtn" style="border: none; cursor: pointer;">Next →</button>
             {% else %}
-            <a href="/test/{{ test_num }}/{{ skill }}/answer-key" class="nav-btn">Finish</a>
+            <button onclick="validateAndNavigate('/test/{{ test_num }}/{{ skill }}/answer-key')" class="nav-btn" style="border: none; cursor: pointer;">Finish</button>
             {% endif %}
         </div>
         
@@ -822,6 +822,47 @@
                 }
             });
         });
+        
+        // Validation function
+        function validateAndNavigate(url) {
+            const allDropdowns = document.querySelectorAll('.inline-dropdown');
+            const unansweredDropdowns = [];
+            
+            allDropdowns.forEach(dropdown => {
+                // Check if dropdown is selected (either has answered class or selected class)
+                const isAnswered = dropdown.classList.contains('answered') || 
+                                   dropdown.classList.contains('selected') ||
+                                   dropdown.value !== '' && dropdown.value !== undefined;
+                
+                if (!isAnswered) {
+                    unansweredDropdowns.push(dropdown.name || dropdown.dataset.question);
+                }
+            });
+            
+            if (unansweredDropdowns.length > 0) {
+                alert(`Please answer all questions before continuing.\n\nUnanswered: ${unansweredDropdowns.length} question(s)`);
+                
+                // Highlight first unanswered dropdown
+                const firstUnanswered = allDropdowns[Array.from(allDropdowns).findIndex(d => {
+                    return !(d.classList.contains('answered') || d.classList.contains('selected') || (d.value !== '' && d.value !== undefined));
+                })];
+                
+                if (firstUnanswered) {
+                    firstUnanswered.style.border = '2px solid red';
+                    firstUnanswered.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Remove highlight after 3 seconds
+                    setTimeout(() => {
+                        firstUnanswered.style.border = '';
+                    }, 3000);
+                }
+                
+                return false;
+            }
+            
+            // All answered, navigate
+            window.location.href = url;
+        }
     </script>
 </body>
 </html>
