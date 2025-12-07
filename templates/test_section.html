@@ -157,10 +157,8 @@
             background: #f9f9f9;
             border: 1px solid #e0e0e0;
             border-radius: 4px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            flex-wrap: nowrap;
+            display: block;
+            line-height: 1.8;
         }
         
         .question-number {
@@ -188,7 +186,7 @@
         
         /* Dropdown styling */
         .inline-dropdown {
-            display: inline-block;
+            display: inline;
             padding: 6px 30px 6px 10px;
             border: 2px solid #0066cc;
             border-radius: 3px;
@@ -208,6 +206,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            vertical-align: middle;
         }
         
         /* Selected text displayed after choosing an option */
@@ -244,15 +243,15 @@
         
         /* Question dropdowns */
         .question-inline .inline-dropdown {
-            flex: 0 0 auto;
+            display: inline;
             width: 150px;
             min-width: 150px;
         }
         
         /* Selected text in question inline */
         .question-inline .selected-text {
-            flex: 0 1 auto;
             display: inline;
+            line-height: 1.8;
         }
         
         /* Hide dropdown after selection */
