@@ -99,6 +99,27 @@
             border-radius: 5px;
             padding: 20px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            max-height: calc(100vh - 280px);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        
+        .content-panel::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .content-panel::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .content-panel::-webkit-scrollbar-thumb {
+            background: #0066cc;
+            border-radius: 4px;
+        }
+        
+        .content-panel::-webkit-scrollbar-thumb:hover {
+            background: #003366;
         }
         
         .content-panel h3 {
