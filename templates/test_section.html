@@ -197,34 +197,47 @@
             font-size: 0.95em;
             cursor: pointer;
             margin: 0 4px;
-            width: 150px;
+            width: 40px;
             font-family: inherit;
             transition: all 0.2s ease;
+            text-align: center;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230066cc' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 8px 4px;
         }
         
         /* Dropdowns in Response Message (inline in passage) - fixed width */
         .passage .inline-dropdown {
             width: 150px;
             max-width: 150px;
+            text-align: left;
+            background-position: right 8px center;
+            padding: 6px 30px 6px 10px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230066cc' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
         }
         
-        /* When dropdown is opened, allow options to be wider */
+        /* When dropdown is opened, options display in menu */
         .inline-dropdown option {
             white-space: normal;
+            padding: 8px;
         }
         
+        /* Question dropdowns - narrow, fixed width */
         .question-inline .inline-dropdown {
             flex: 0 0 auto;
-            width: auto;
-            min-width: 180px;
-            max-width: none;
+            width: 40px;
+            min-width: 40px;
+            max-width: 40px;
         }
         
-        /* Expand dropdown width when focused/opened - only for question dropdowns */
+        /* No expansion on focus - keep fixed width */
         .question-inline .inline-dropdown:focus,
         .question-inline .inline-dropdown:active {
-            width: auto;
-            min-width: 300px;
+            width: 40px;
+            min-width: 40px;
+            max-width: 40px;
         }
         
         .inline-dropdown:hover {
