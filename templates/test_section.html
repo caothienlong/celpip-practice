@@ -189,7 +189,7 @@
         /* Dropdown styling */
         .inline-dropdown {
             display: inline-block;
-            padding: 6px 10px;
+            padding: 6px 30px 6px 10px;
             border: 2px solid #0066cc;
             border-radius: 3px;
             background: white;
@@ -197,15 +197,24 @@
             font-size: 0.95em;
             cursor: pointer;
             margin: 0 4px;
-            width: 40px;
+            width: 120px;
             font-family: inherit;
             transition: all 0.2s ease;
-            text-align: center;
+            text-align: left;
             appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230066cc' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: center;
-            padding: 8px 4px;
+            background-position: right 8px center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* Show full text when dropdown has a value selected */
+        .inline-dropdown:not([value=""]) {
+            width: auto;
+            max-width: 300px;
+            min-width: 120px;
         }
         
         /* Dropdowns in Response Message (inline in passage) - fixed width */
@@ -215,7 +224,12 @@
             text-align: left;
             background-position: right 8px center;
             padding: 6px 30px 6px 10px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230066cc' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+        }
+        
+        .passage .inline-dropdown:not([value=""]) {
+            width: auto;
+            max-width: 350px;
+            min-width: 150px;
         }
         
         /* When dropdown is opened, options display in menu */
@@ -224,20 +238,23 @@
             padding: 8px;
         }
         
-        /* Question dropdowns - narrow, fixed width */
+        /* Question dropdowns - narrow when empty, expand when filled */
         .question-inline .inline-dropdown {
             flex: 0 0 auto;
-            width: 40px;
-            min-width: 40px;
-            max-width: 40px;
+            width: 120px;
+            min-width: 120px;
         }
         
-        /* No expansion on focus - keep fixed width */
-        .question-inline .inline-dropdown:focus,
-        .question-inline .inline-dropdown:active {
-            width: 40px;
-            min-width: 40px;
-            max-width: 40px;
+        .question-inline .inline-dropdown:not([value=""]) {
+            width: auto;
+            max-width: 300px;
+            min-width: 120px;
+        }
+        
+        /* Keep fixed width on focus (before selection) */
+        .question-inline .inline-dropdown:focus:not(:has(option:checked:not([value=""]))),
+        .question-inline .inline-dropdown:active:not(:has(option:checked:not([value=""]))) {
+            width: 120px;
         }
         
         .inline-dropdown:hover {
@@ -671,8 +688,14 @@
             dropdown.addEventListener('change', function() {
                 if (this.value !== '') {
                     this.classList.add('answered');
+                    // Expand to fit selected text
+                    this.style.width = 'auto';
+                    this.style.minWidth = '120px';
+                    this.style.maxWidth = '300px';
                 } else {
                     this.classList.remove('answered');
+                    // Reset to default width
+                    this.style.width = '120px';
                 }
             });
         });
