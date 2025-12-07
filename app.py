@@ -865,6 +865,44 @@ def save_answer():
         return jsonify({'success': False, 'error': str(e)}), 400
 
 
+@app.route('/reset_test/<int:test_num>/<skill>', methods=['POST'])
+def reset_test(test_num, skill):
+    """
+    Reset a test by clearing all saved answers for that test and skill
+    
+    Args:
+        test_num: Test number (1-20)
+        skill: Skill name (reading, writing, speaking, listening)
+    
+    Returns:
+        JSON with success status
+    """
+    try:
+        test_key = f'test_{test_num}'
+        
+        # Clear answers from session
+        if 'answers' in session and test_key in session['answers']:
+            if skill in session['answers'][test_key]:
+                del session['answers'][test_key][skill]
+                # Clean up if no skills left
+                if not session['answers'][test_key]:
+                    del session['answers'][test_key]
+        
+        # Clear scores from session (if any)
+        if 'scores' in session and test_key in session['scores']:
+            if skill in session['scores'][test_key]:
+                del session['scores'][test_key][skill]
+                # Clean up if no skills left
+                if not session['scores'][test_key]:
+                    del session['scores'][test_key]
+        
+        session.modified = True
+        
+        return jsonify({'success': True})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 400
+
+
 # Legacy routes for backward compatibility
 @app.route('/test1/part1')
 def test1_part1():

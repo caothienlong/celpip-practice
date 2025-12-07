@@ -164,6 +164,48 @@
             font-size: 2em;
             font-weight: bold;
         }
+        
+        /* Action buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .action-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .answer-key-btn {
+            background: #28a745;
+            color: white;
+        }
+        
+        .answer-key-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+        
+        .reset-btn {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .reset-btn:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -172,6 +214,12 @@
             <a href="/" class="back-btn">← Back to Tests</a>
             <h1>Practice Test {{ test_num }}</h1>
             <p class="subtitle">Select a skill to begin</p>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <a href="/test/{{ test_num }}/reading/answer-key" class="action-btn answer-key-btn">📝 View Answer Key</a>
+            <button onclick="resetTest()" class="action-btn reset-btn">🔄 Reset Test</button>
         </div>
         
         <div class="skills-grid">
@@ -259,6 +307,32 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        function resetTest() {
+            if (confirm('Are you sure you want to reset this test? All your answers will be cleared.')) {
+                fetch('/reset_test/{{ test_num }}/reading', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Test has been reset successfully!');
+                        window.location.reload();
+                    } else {
+                        alert('Failed to reset test. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while resetting the test.');
+                });
+            }
+        }
+    </script>
 </body>
 </html>
 
