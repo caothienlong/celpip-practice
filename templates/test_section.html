@@ -534,32 +534,39 @@
         
         {% else %}
         <!-- Part 1: Correspondence section -->
-        <div class="section-divider">
-            Questions 1-6: Choose the best option according to the information given in the message.
-        </div>
-        
         <div class="content-grid">
+            <!-- Left Panel: Passages -->
             <div class="content-panel">
                 <h3>📧 Message from Greg</h3>
                 <div class="passage">{{ section.passage }}</div>
+                
+                <div style="margin-top: 30px;">
+                    <h3 style="color: #003366; margin-bottom: 15px;">💬 Response Message</h3>
+                    <div class="passage">
+                        <form id="testForm2">
+                            {{ section.response_passage | safe }}
+                        </form>
+                    </div>
+                </div>
             </div>
+            
+            <!-- Right Panel: Questions -->
             <div class="content-panel">
-                <h3>❓ Questions</h3>
-                <form id="testForm">
+                <div style="background: #e6f2ff; padding: 10px 15px; border-radius: 4px; font-size: 0.9em; font-weight: 600; color: #003366; margin-bottom: 15px;">
+                    Questions 1-6: Choose the best option according to the information given in the message.
+                </div>
+                
+                <form id="testForm" style="margin-bottom: 30px;">
                     {{ section.questions_1_6_html | safe }}
                 </form>
-            </div>
-        </div>
-        
-        <div class="section-divider">
-            Questions 7-11: Complete the response by filling in the blanks.
-        </div>
-        
-        <div class="full-width-panel">
-            <div class="passage">
-                <form id="testForm2">
-                    {{ section.response_passage | safe }}
-                </form>
+                
+                <div style="background: #e6f2ff; padding: 10px 15px; border-radius: 4px; font-size: 0.9em; font-weight: 600; color: #003366; margin-top: 30px; margin-bottom: 15px;">
+                    Questions 7-11: Select the best option to complete the response message on the left.
+                </div>
+                
+                <div style="color: #666; font-size: 0.9em; font-style: italic;">
+                    Use the dropdown menus in the response message on the left to answer questions 7-11.
+                </div>
             </div>
         </div>
         {% endif %}
