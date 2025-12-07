@@ -329,7 +329,8 @@ def prepare_test_data(test_data, skill, part_num):
         
         if questions_section:
             processed['questions_html'] = data_loader.build_question_dropdown_html(
-                questions_section['questions']
+                questions_section['questions'],
+                test_type='information'
             )
     
     elif test_data['type'] == 'viewpoints':
