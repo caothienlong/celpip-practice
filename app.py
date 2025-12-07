@@ -319,9 +319,13 @@ def comprehensive_answer_key(test_num, skill):
             # Build questions list with answers
             questions_list = []
             for q in all_questions:
-                q_id = str(q['id'])
+                q_id = q['id']  # Use int
+                q_id_str = str(q_id)  # String version for part_answers lookup
                 correct_idx = correct_answer_map.get(q_id)
-                user_answer_idx = part_answers.get(q_id)
+                # Convert user answer to int if it's a string
+                user_answer_idx = part_answers.get(q_id_str)
+                if user_answer_idx is not None:
+                    user_answer_idx = int(user_answer_idx) if isinstance(user_answer_idx, str) else user_answer_idx
                 
                 # Get answer texts
                 correct_answer_text = q['options'][correct_idx] if correct_idx is not None else '—'
@@ -793,14 +797,17 @@ def submit_answers():
         # Load test data
         test_data = data_loader.load_test_part(test_num, skill, part_num)
         
-        # Get correct answers
+        # Get correct answers (returns {int: int})
         correct_answers = data_loader.get_correct_answers(test_data)
+        
+        # Convert answers keys to int for comparison
+        int_answers = {int(k): int(v) for k, v in answers.items()}
         
         # Calculate score
         score = 0
         results = {}
         
-        for question_id, user_answer in answers.items():
+        for question_id, user_answer in int_answers.items():
             if question_id in correct_answers:
                 is_correct = user_answer == correct_answers[question_id]
                 if is_correct:

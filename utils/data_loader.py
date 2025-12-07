@@ -205,8 +205,8 @@ class TestDataLoader:
             test_data: Test part data dictionary
             
         Returns:
-            dict: Mapping of question ID to correct answer index
+            dict: Mapping of question ID (int) to correct answer index (int)
         """
         questions = self.get_all_questions(test_data)
-        return {str(q['id']): q['answer'] for q in questions}
+        return {q['id']: q['answer'] for q in questions}
 
