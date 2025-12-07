@@ -254,9 +254,9 @@ def comprehensive_answer_key(test_num, skill):
         # Get all parts for this skill
         skill_parts = data_loader.list_available_parts(test_num, skill)
         
-        # Get user's answers from session
+        # Get user's saved answers from session
         test_key = f'test_{test_num}'
-        user_answers = session.get('scores', {}).get(test_key, {}).get(skill, {})
+        saved_answers = session.get('answers', {}).get(test_key, {}).get(skill, {})
         
         parts_data = []
         total_questions = 0
@@ -270,12 +270,15 @@ def comprehensive_answer_key(test_num, skill):
             all_questions = data_loader.get_all_questions(test_data)
             correct_answer_map = data_loader.get_correct_answers(test_data)
             
+            # Get user's answers for this part
+            part_answers = saved_answers.get(str(part_num), {})
+            
             # Build questions list with answers
             questions_list = []
             for q in all_questions:
                 q_id = str(q['id'])
                 correct_idx = correct_answer_map.get(q_id)
-                user_answer_idx = user_answers.get(str(part_num), {}).get(q_id) if isinstance(user_answers.get(str(part_num)), dict) else None
+                user_answer_idx = part_answers.get(q_id)
                 
                 # Get answer texts
                 correct_answer_text = q['options'][correct_idx] if correct_idx is not None else '—'
@@ -809,6 +812,52 @@ def submit_answers():
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 400
+
+
+@app.route('/save_answer', methods=['POST'])
+def save_answer():
+    """
+    Save a single answer to session (auto-save when dropdown changes)
+    
+    Request JSON:
+        {
+            "test_num": 1,
+            "skill": "reading",
+            "part_num": 1,
+            "question_id": "1",
+            "answer": 0
+        }
+    
+    Returns:
+        JSON with success status
+    """
+    data = request.json
+    test_num = data.get('test_num')
+    skill = data.get('skill')
+    part_num = data.get('part_num')
+    question_id = str(data.get('question_id'))
+    answer = data.get('answer')
+    
+    try:
+        # Initialize session structure if needed
+        if 'answers' not in session:
+            session['answers'] = {}
+        
+        test_key = f'test_{test_num}'
+        if test_key not in session['answers']:
+            session['answers'][test_key] = {}
+        if skill not in session['answers'][test_key]:
+            session['answers'][test_key][skill] = {}
+        if str(part_num) not in session['answers'][test_key][skill]:
+            session['answers'][test_key][skill][str(part_num)] = {}
+        
+        # Save the answer
+        session['answers'][test_key][skill][str(part_num)][question_id] = answer
+        session.modified = True
+        
+        return jsonify({'success': True})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 400
 
 
 # Legacy routes for backward compatibility

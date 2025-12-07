@@ -662,12 +662,21 @@
         </div>
         {% endif %}
         
-        <button class="submit-btn" id="submitBtn">Submit Answers</button>
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons" style="margin-top: 30px;">
+            {% if part_num > 1 %}
+            <a href="/test/{{ test_num }}/{{ skill }}/part{{ part_num - 1 }}" class="nav-btn secondary">← Back</a>
+            {% endif %}
+            
+            {% if part_num < 4 %}
+            <a href="/test/{{ test_num }}/{{ skill }}/part{{ part_num + 1 }}" class="nav-btn" id="nextBtn">Next →</a>
+            {% else %}
+            <a href="/test/{{ test_num }}" class="nav-btn">Finish</a>
+            {% endif %}
+        </div>
         
-        <div class="results" id="results" style="display: none;"></div>
-        
-        <div style="text-align: center;">
-            <a href="/test/{{ test_num }}" class="back-btn">← Back to Test {{ test_num }}</a>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="/test/{{ test_num }}" class="back-btn">← Back to Test {{ test_num }} Overview</a>
         </div>
     </div>
 
@@ -708,11 +717,35 @@
             });
         });
         
-        // Dropdown selection visual feedback
+        // Dropdown selection visual feedback and auto-save
         document.querySelectorAll('.inline-dropdown').forEach(dropdown => {
             dropdown.addEventListener('change', function() {
-                if (this.value !== '') {
+                const questionId = this.dataset.question || this.name.substring(1);
+                const selectedValue = this.value;
+                
+                if (selectedValue !== '') {
                     this.classList.add('answered');
+                    
+                    // Auto-save to session
+                    fetch('/save_answer', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            test_num: {{ test_num }},
+                            skill: '{{ skill }}',
+                            part_num: {{ part_num }},
+                            question_id: questionId,
+                            answer: parseInt(selectedValue)
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.success) {
+                            console.error('Failed to save answer');
+                        }
+                    });
                     
                     // Get selected option text
                     const selectedText = this.options[this.selectedIndex].text;
@@ -722,7 +755,7 @@
                     textSpan.className = 'selected-text';
                     textSpan.textContent = selectedText;
                     textSpan.dataset.dropdownId = this.id || this.name;
-                    textSpan.dataset.selectedValue = this.value;
+                    textSpan.dataset.selectedValue = selectedValue;
                     
                     // Store the dropdown for potential resubmission
                     textSpan.style.cursor = 'pointer';
@@ -745,134 +778,6 @@
                 }
             });
         });
-        
-        // Submit functionality
-        document.getElementById('submitBtn').addEventListener('click', function() {
-            const form1 = document.getElementById('testForm');
-            const form2 = document.getElementById('testForm2');
-            
-            // Check if both forms exist (Part 1) or just form1 (Part 2)
-            if (form2) {
-                if (!form1.checkValidity() || !form2.checkValidity()) {
-                    alert('Please answer all questions before submitting.');
-                    return;
-                }
-            } else {
-                if (!form1.checkValidity()) {
-                    alert('Please answer all questions before submitting.');
-                    return;
-                }
-            }
-            
-            clearInterval(timerInterval);
-            
-            const formData1 = new FormData(form1);
-            const answers = {};
-            
-            for (let [key, value] of formData1.entries()) {
-                const questionId = key.substring(1);
-                answers[questionId] = parseInt(value);
-            }
-            
-            // Add form2 data if it exists
-            if (form2) {
-                const formData2 = new FormData(form2);
-                for (let [key, value] of formData2.entries()) {
-                    const questionId = key.substring(1);
-                    answers[questionId] = parseInt(value);
-                }
-            }
-            
-            fetch('/submit_answers', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    answers: answers,
-                    test_num: {{ test_num }},
-                    skill: '{{ skill }}',
-                    part_num: {{ part_num }}
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                displayResults(data);
-            });
-        });
-        
-        function displayResults(data) {
-            const resultsDiv = document.getElementById('results');
-            let html = `
-                <div class="score-display">
-                    <h2>Part ${data.test_num || '{{ part_num }}'} Score: ${data.score} / ${data.total}</h2>
-                    <p style="font-size: 1.5em;">${data.percentage}%</p>
-                </div>
-            `;
-            
-            // Show running total if available
-            if (data.skill_total !== undefined) {
-                html += `
-                    <div class="total-score-banner">
-                        <h3>Running Total: ${data.skill_total} / ${data.skill_max} points</h3>
-                        ${data.all_parts_complete ? '<p style="font-weight: bold; margin-top: 10px;">✅ All parts complete!</p>' : ''}
-                    </div>
-                `;
-            }
-            
-            html += `<h3 style="margin: 30px 0 20px 0; color: #003366;">Question Results:</h3>`;
-            
-            for (let [questionId, result] of Object.entries(data.results)) {
-                const correctClass = result.correct ? 'correct' : 'incorrect';
-                const icon = result.correct ? '✓' : '✗';
-                html += `
-                    <div class="result-item ${correctClass}">
-                        <strong>${icon} Question ${questionId}</strong><br>
-                        ${result.correct ? 'Correct!' : `Your answer was incorrect. Correct answer: Option ${result.correct_answer + 1}`}
-                    </div>
-                `;
-            }
-            
-            // Navigation buttons
-            html += '<div class="nav-buttons">';
-            
-            // View Answer Key button
-            html += `
-                <a href="/test/${data.test_num}/${data.skill}/part${data.test_num || '{{ part_num }}'}/answers" 
-                   class="nav-btn answer-key-btn">
-                    📝 View Answer Key
-                </a>
-            `;
-            
-            // Next part button if available
-            if (data.next_part) {
-                html += `
-                    <a href="/test/${data.test_num}/${data.skill}/part${data.next_part}" 
-                       class="nav-btn">
-                        Next: Part ${data.next_part} →
-                    </a>
-                `;
-            } else if (data.all_parts_complete) {
-                html += `
-                    <a href="/test/${data.test_num}" 
-                       class="nav-btn">
-                        ← Back to Test ${data.test_num}
-                    </a>
-                `;
-            }
-            
-            html += '</div>';
-            
-            resultsDiv.innerHTML = html;
-            resultsDiv.style.display = 'block';
-            
-            document.getElementById('submitBtn').disabled = true;
-            document.querySelectorAll('input[type="radio"], select').forEach(input => {
-                input.disabled = true;
-            });
-            
-            window.scrollTo({ top: resultsDiv.offsetTop - 100, behavior: 'smooth' });
-        }
     </script>
 </body>
 </html>
