@@ -671,7 +671,7 @@
             {% if part_num < 4 %}
             <a href="/test/{{ test_num }}/{{ skill }}/part{{ part_num + 1 }}" class="nav-btn" id="nextBtn">Next →</a>
             {% else %}
-            <a href="/test/{{ test_num }}" class="nav-btn">Finish</a>
+            <a href="/test/{{ test_num }}/{{ skill }}/answer-key" class="nav-btn">Finish</a>
             {% endif %}
         </div>
         
@@ -681,6 +681,50 @@
     </div>
 
     <script>
+        // Saved answers from session
+        const savedAnswers = {{ saved_answers|tojson|safe }};
+        
+        // Pre-populate dropdowns with saved answers
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.inline-dropdown').forEach(dropdown => {
+                const questionId = dropdown.dataset.question || dropdown.name.substring(1);
+                const savedValue = savedAnswers[questionId];
+                
+                if (savedValue !== undefined && savedValue !== null) {
+                    // Set the dropdown value
+                    dropdown.value = savedValue;
+                    dropdown.classList.add('answered');
+                    
+                    // Get selected option text
+                    const selectedText = dropdown.options[dropdown.selectedIndex].text;
+                    
+                    // Create a span element to show the selected text
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'selected-text';
+                    textSpan.textContent = selectedText;
+                    textSpan.dataset.dropdownId = dropdown.id || dropdown.name;
+                    textSpan.dataset.selectedValue = savedValue;
+                    
+                    // Store the dropdown for potential resubmission
+                    textSpan.style.cursor = 'pointer';
+                    textSpan.title = 'Click to change answer';
+                    
+                    // Add click event to restore dropdown
+                    textSpan.addEventListener('click', function() {
+                        const originalDropdown = this.nextElementSibling || this.previousElementSibling;
+                        if (originalDropdown && originalDropdown.classList.contains('inline-dropdown')) {
+                            originalDropdown.classList.remove('selected');
+                            this.remove();
+                        }
+                    });
+                    
+                    // Hide dropdown and insert text
+                    dropdown.classList.add('selected');
+                    dropdown.parentNode.insertBefore(textSpan, dropdown);
+                }
+            });
+        });
+        
         // Timer functionality
         let timeLeft = {{ section.timeout_minutes }} * 60; // Convert to seconds
         const timerElement = document.getElementById('timer');

@@ -192,12 +192,17 @@ def test_part(test_num, skill, part_num):
         # Process the test data based on type
         processed_data = prepare_test_data(test_data, skill, part_num)
         
+        # Get saved answers for this part from session
+        test_key = f'test_{test_num}'
+        saved_answers = session.get('answers', {}).get(test_key, {}).get(skill, {}).get(str(part_num), {})
+        
         return render_template(
             'test_section.html',
             section=processed_data,
             test_num=test_num,
             skill=skill,
-            part_num=part_num
+            part_num=part_num,
+            saved_answers=saved_answers
         )
     except FileNotFoundError as e:
         return f"Test not found: {e}", 404
