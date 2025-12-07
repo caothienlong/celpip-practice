@@ -197,7 +197,7 @@
             font-size: 0.95em;
             cursor: pointer;
             margin: 0 4px;
-            width: 120px;
+            width: 150px;
             font-family: inherit;
             transition: all 0.2s ease;
             text-align: left;
@@ -210,26 +210,30 @@
             text-overflow: ellipsis;
         }
         
-        /* Show full text when dropdown has a value selected */
-        .inline-dropdown:not([value=""]) {
-            width: auto;
-            max-width: 300px;
-            min-width: 120px;
+        /* Selected text displayed after choosing an option */
+        .selected-text {
+            display: inline;
+            font-weight: 600;
+            color: #003366;
+            background: #e6f2ff;
+            padding: 4px 8px;
+            border-radius: 3px;
+            line-height: 1.8;
         }
         
-        /* Dropdowns in Response Message (inline in passage) - fixed width */
+        /* Dropdowns in Response Message (inline in passage) */
         .passage .inline-dropdown {
             width: 150px;
             max-width: 150px;
-            text-align: left;
-            background-position: right 8px center;
-            padding: 6px 30px 6px 10px;
         }
         
-        .passage .inline-dropdown:not([value=""]) {
-            width: auto;
-            max-width: 350px;
-            min-width: 150px;
+        .passage .selected-text {
+            display: inline;
+            font-weight: 600;
+            color: #003366;
+            background: #e6f2ff;
+            padding: 2px 6px;
+            border-radius: 3px;
         }
         
         /* When dropdown is opened, options display in menu */
@@ -238,23 +242,22 @@
             padding: 8px;
         }
         
-        /* Question dropdowns - narrow when empty, expand when filled */
+        /* Question dropdowns */
         .question-inline .inline-dropdown {
             flex: 0 0 auto;
-            width: 120px;
-            min-width: 120px;
+            width: 150px;
+            min-width: 150px;
         }
         
-        .question-inline .inline-dropdown:not([value=""]) {
-            width: auto;
-            max-width: 300px;
-            min-width: 120px;
+        /* Selected text in question inline */
+        .question-inline .selected-text {
+            flex: 0 1 auto;
+            display: inline;
         }
         
-        /* Keep fixed width on focus (before selection) */
-        .question-inline .inline-dropdown:focus:not(:has(option:checked:not([value=""]))),
-        .question-inline .inline-dropdown:active:not(:has(option:checked:not([value=""]))) {
-            width: 120px;
+        /* Hide dropdown after selection */
+        .inline-dropdown.selected {
+            display: none;
         }
         
         .inline-dropdown:hover {
@@ -697,14 +700,35 @@
             dropdown.addEventListener('change', function() {
                 if (this.value !== '') {
                     this.classList.add('answered');
-                    // Expand to fit selected text
-                    this.style.width = 'auto';
-                    this.style.minWidth = '120px';
-                    this.style.maxWidth = '300px';
+                    
+                    // Get selected option text
+                    const selectedText = this.options[this.selectedIndex].text;
+                    
+                    // Create a span element to show the selected text
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'selected-text';
+                    textSpan.textContent = selectedText;
+                    textSpan.dataset.dropdownId = this.id || this.name;
+                    textSpan.dataset.selectedValue = this.value;
+                    
+                    // Store the dropdown for potential resubmission
+                    textSpan.style.cursor = 'pointer';
+                    textSpan.title = 'Click to change answer';
+                    
+                    // Add click event to restore dropdown
+                    textSpan.addEventListener('click', function() {
+                        const originalDropdown = this.nextElementSibling || this.previousElementSibling;
+                        if (originalDropdown && originalDropdown.classList.contains('inline-dropdown')) {
+                            originalDropdown.classList.remove('selected');
+                            this.remove();
+                        }
+                    });
+                    
+                    // Hide dropdown and insert text
+                    this.classList.add('selected');
+                    this.parentNode.insertBefore(textSpan, this);
                 } else {
                     this.classList.remove('answered');
-                    // Reset to default width
-                    this.style.width = '120px';
                 }
             });
         });
