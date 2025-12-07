@@ -12,82 +12,165 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f7fa;
-            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f0f0f0;
+            color: #333;
         }
         
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        /* CELPIP-style header */
+        .celpip-header {
+            background: #003366;
             color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         
-        .timer {
-            font-size: 1.5em;
+        .celpip-header h1 {
+            font-size: 1.3em;
+            font-weight: normal;
+        }
+        
+        .header-right {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .timer-box {
+            background: #00509e;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-size: 1.1em;
             font-weight: bold;
-            background: rgba(255,255,255,0.2);
-            padding: 10px 20px;
-            border-radius: 10px;
+            min-width: 100px;
+            text-align: center;
         }
         
-        .timer.warning {
-            background: #ff6b6b;
+        .timer-box.warning {
+            background: #c8102e;
             animation: pulse 1s infinite;
         }
         
         @keyframes pulse {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+            50% { opacity: 0.8; }
         }
         
-        .container {
-            max-width: 1200px;
+        .question-counter {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        
+        /* Main container */
+        .main-container {
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 20px;
         }
         
-        .content {
+        /* Instructions bar */
+        .instructions-bar {
+            background: #e6f2ff;
+            border-left: 4px solid #0066cc;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .instructions-bar strong {
+            color: #003366;
+        }
+        
+        /* Two-column layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .content-panel {
             background: white;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         
-        h1 {
-            color: #333;
+        .content-panel h3 {
+            color: #003366;
+            font-size: 1.1em;
             margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0066cc;
         }
         
-        .instructions {
-            background: #e3f2fd;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid #2196f3;
-        }
-        
+        /* Passage styling */
         .passage {
-            background: #f9f9f9;
-            padding: 25px;
-            border-radius: 8px;
-            margin: 20px 0;
-            white-space: pre-line;
+            background: #fafafa;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
             line-height: 1.8;
-            border-left: 4px solid #667eea;
+            white-space: pre-line;
+            font-size: 1em;
+            color: #222;
         }
         
+        /* Question styling */
+        .question {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+        }
+        
+        .question-inline {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .question-number {
+            font-weight: bold;
+            color: #003366;
+            font-size: 1em;
+            min-width: 80px;
+            flex-shrink: 0;
+        }
+        
+        .question-label {
+            font-weight: 600;
+            color: #333;
+            flex: 1;
+            min-width: 200px;
+            line-height: 1.5;
+        }
+        
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #003366;
+            font-size: 1em;
+        }
+        
+        /* Dropdown styling */
         .inline-dropdown {
             display: inline-block;
-            padding: 8px 12px;
-            border: 2px solid #667eea;
-            border-radius: 6px;
+            padding: 6px 10px;
+            border: 2px solid #0066cc;
+            border-radius: 3px;
             background: white;
             color: #333;
             font-size: 0.95em;
@@ -95,7 +178,7 @@
             margin: 0 4px;
             min-width: 250px;
             font-family: inherit;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
         
         .question-inline .inline-dropdown {
@@ -105,155 +188,144 @@
         }
         
         .inline-dropdown:hover {
-            border-color: #764ba2;
-            background: #f0f4ff;
+            border-color: #003366;
+            background: #f0f8ff;
         }
         
         .inline-dropdown:focus {
             outline: none;
-            border-color: #764ba2;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+            border-color: #003366;
+            box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
         }
         
         .inline-dropdown.answered {
-            background: #e3f2fd;
-            border-color: #2196f3;
+            background: #e6f2ff;
+            border-color: #0066cc;
         }
         
-        .question-container {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .question {
-            margin-bottom: 30px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-        
-        .question-inline {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        
-        .question-number {
-            font-weight: bold;
-            color: #667eea;
-            font-size: 1.1em;
-            min-width: 30px;
-            flex-shrink: 0;
-        }
-        
-        .question-label {
-            font-weight: 600;
-            color: #333;
-            flex: 1;
-            min-width: 200px;
-            word-wrap: break-word;
-            line-height: 1.5;
-        }
-        
-        .question-text {
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #333;
-            font-size: 1.1em;
-        }
-        
+        /* Radio button options */
         .options {
             display: grid;
-            gap: 10px;
+            gap: 8px;
         }
         
         .option {
             display: flex;
             align-items: center;
-            padding: 12px;
+            padding: 10px 12px;
             background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
         
         .option:hover {
-            border-color: #667eea;
-            background: #f0f4ff;
+            border-color: #0066cc;
+            background: #f0f8ff;
         }
         
         .option input[type="radio"] {
             margin-right: 10px;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             cursor: pointer;
         }
         
         .option.selected {
-            border-color: #667eea;
-            background: #e3f2fd;
+            border-color: #0066cc;
+            background: #e6f2ff;
         }
         
+        /* Diagram styling */
+        .diagram-container {
+            background: white;
+            padding: 15px;
+            border: 2px solid #0066cc;
+            border-radius: 5px;
+        }
+        
+        .diagram-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        .note-box {
+            margin-top: 15px;
+            padding: 12px;
+            background: #fff9e6;
+            border-left: 4px solid #ffcc00;
+            border-radius: 3px;
+        }
+        
+        .note-box strong {
+            color: #b38600;
+        }
+        
+        /* Section divider */
+        .section-divider {
+            margin: 30px 0 20px 0;
+            padding: 12px 20px;
+            background: #e6f2ff;
+            border-left: 4px solid #0066cc;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #003366;
+        }
+        
+        /* Submit button */
         .submit-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0066cc;
             color: white;
             border: none;
-            padding: 15px 40px;
-            font-size: 1.1em;
-            border-radius: 10px;
+            padding: 12px 40px;
+            font-size: 1em;
+            border-radius: 5px;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: background 0.2s ease;
             display: block;
             margin: 30px auto;
             font-weight: 600;
         }
         
         .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background: #003366;
         }
         
         .submit-btn:disabled {
-            background: #ccc;
+            background: #999;
             cursor: not-allowed;
-            transform: none;
         }
         
+        /* Results section */
         .results {
             background: white;
-            border-radius: 10px;
-            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 25px;
             margin-top: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         
         .score-display {
             text-align: center;
-            padding: 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            background: #003366;
             color: white;
-            border-radius: 10px;
+            border-radius: 5px;
             margin-bottom: 20px;
         }
         
         .score-display h2 {
-            font-size: 2.5em;
+            font-size: 2em;
             margin-bottom: 10px;
         }
         
         .result-item {
-            padding: 15px;
+            padding: 12px 15px;
             margin: 10px 0;
-            border-radius: 8px;
+            border-radius: 4px;
             border-left: 4px solid;
         }
         
@@ -268,36 +340,48 @@
         }
         
         .total-score-banner {
-            background: linear-gradient(135deg, #76c7a1 0%, #56ab2f 100%);
+            background: #4caf50;
             color: white;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 5px;
             text-align: center;
             margin: 20px 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         
         .total-score-banner h3 {
-            font-size: 1.5em;
+            font-size: 1.4em;
             margin-bottom: 5px;
         }
         
-        .next-part-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        /* Navigation buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
         }
         
-        .next-part-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        .nav-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+        
+        .nav-btn:hover {
+            background: #003366;
+        }
+        
+        .nav-btn.secondary {
+            background: #6c757d;
+        }
+        
+        .nav-btn.secondary:hover {
+            background: #5a6268;
         }
         
         .back-btn {
@@ -305,181 +389,188 @@
             background: #6c757d;
             color: white;
             padding: 10px 20px;
-            border-radius: 8px;
+            border-radius: 5px;
             text-decoration: none;
             margin-top: 20px;
-            transition: background 0.3s ease;
+            transition: background 0.2s ease;
         }
         
         .back-btn:hover {
             background: #5a6268;
         }
         
-        .section-divider {
-            margin: 30px 0;
-            border-top: 2px solid #e0e0e0;
-            padding-top: 20px;
+        /* Answer key button - Practice Mode only */
+        .answer-key-btn {
+            background: #28a745;
         }
         
-        .section-title {
-            color: #667eea;
-            font-size: 1.3em;
-            margin-bottom: 15px;
-            font-weight: 600;
+        .answer-key-btn:hover {
+            background: #218838;
+        }
+        
+        /* Single column layout for full-width content */
+        .full-width-panel {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div>
-                <h2>Test {{ test_num }} - {{ skill|title }} - {{ section.title }}</h2>
-                <p>{{ section.questions|length }} questions</p>
-            </div>
-            <div class="timer" id="timer">
+    <!-- CELPIP-style header -->
+    <div class="celpip-header">
+        <h1>Test {{ test_num }} - {{ skill|title }} - {{ section.title }}</h1>
+        <div class="header-right">
+            <div class="question-counter">{{ section.questions|length }} Questions</div>
+            <div class="timer-box" id="timer">
                 {{ "%.1f"|format(section.timeout_minutes) }} min
             </div>
         </div>
+    </div>
+    
+    <div class="main-container">
+        <!-- Instructions -->
+        <div class="instructions-bar">
+            <strong>Instructions:</strong> {{ section.instructions }}
+        </div>
         
-        <div class="content">
-            <div class="instructions">
-                <strong>Instructions:</strong> {{ section.instructions }}
-            </div>
-            
-            {% if section.has_diagram %}
-            <!-- Part 2: Diagram-based section -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
-                <div>
-                    <h3 style="color: #667eea; margin-bottom: 15px;">📊 Activities Diagram</h3>
-                    <div style="background: white; padding: 15px; border-radius: 10px; border: 2px solid #e0e0e0;">
-                        <img src="{{ url_for('static', filename='images/test_' + test_num|string + '/' + skill + '/' + section.diagram_image) }}" 
-                             alt="Activities Diagram" 
-                             style="width: 100%; height: auto; border-radius: 8px;"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <div style="display: none; padding: 30px; background: #fff3cd; border-radius: 8px; text-align: center; color: #856404;">
-                            <h4>📷 Diagram Image Missing</h4>
-                            <p style="margin: 10px 0;">Please extract the diagram from the PDF and save it as:</p>
-                            <code style="background: white; padding: 5px 10px; border-radius: 4px; display: block; margin: 10px 0;">
-                                static/images/test_{{ test_num }}/{{ skill }}/{{ section.diagram_image }}
-                            </code>
-                            <p style="font-size: 0.9em; margin-top: 10px;">
-                                See <code>data/README.md</code> for instructions
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h3 style="color: #667eea; margin-bottom: 15px;">📧 Email Message</h3>
-                    <div class="passage" style="margin: 0;">
-                        <form id="testForm">
-                            {{ section.email_content | safe }}
-                        </form>
+        {% if section.has_diagram %}
+        <!-- Part 2: Diagram-based section -->
+        <div class="content-grid">
+            <div class="content-panel">
+                <h3>📊 Activities Diagram</h3>
+                <div class="diagram-container">
+                    <img src="{{ url_for('static', filename='images/test_' + test_num|string + '/' + skill + '/' + section.diagram_image) }}" 
+                         alt="Activities Diagram" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; padding: 20px; background: #fff3cd; border-radius: 4px; text-align: center; color: #856404;">
+                        <h4>📷 Diagram Image Missing</h4>
+                        <p style="margin: 10px 0;">Please extract the diagram from the PDF and save it as:</p>
+                        <code style="background: white; padding: 5px 10px; border-radius: 4px; display: block; margin: 10px 0;">
+                            static/images/test_{{ test_num }}/{{ skill }}/{{ section.diagram_image }}
+                        </code>
                     </div>
                 </div>
             </div>
-            
-            <div class="section-divider">
-                <div class="section-title">Using the drop-down menu, choose the best option.</div>
-            </div>
-            
-            <div class="question-container">
-                <form id="testForm2">
-                    {{ section.questions_6_8_html | safe }}
-                </form>
-            </div>
-            
-            {% elif section.is_information_type %}
-            <!-- Part 3: Reading for Information -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
-                <div>
-                    <h3 style="color: #667eea; margin-bottom: 15px;">📄 Reading Passage</h3>
-                    <div class="passage" style="margin: 0;">{{ section.passage }}</div>
-                    {% if section.passage_note %}
-                    <div style="margin-top: 15px; padding: 15px; background: #fff3cd; border-radius: 8px; border-left: 4px solid #ffc107;">
-                        <strong>Note:</strong> {{ section.passage_note }}
-                    </div>
-                    {% endif %}
-                </div>
-                <div>
-                    <h3 style="color: #667eea; margin-bottom: 15px;">❓ Questions</h3>
-                    <div class="question-container" style="background: transparent; padding: 0; box-shadow: none;">
-                        <form id="testForm">
-                            {{ section.questions_html | safe }}
-                        </form>
-                    </div>
-                </div>
-            </div>
-            
-            {% elif section.is_viewpoints_type %}
-            <!-- Part 4: Reading for Viewpoints -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
-                <div>
-                    <h3 style="color: #667eea; margin-bottom: 15px;">📰 Article</h3>
-                    <div class="passage" style="margin: 0;">{{ section.passage }}</div>
-                </div>
-                <div>
-                    <h3 style="color: #667eea; margin-bottom: 15px;">❓ Questions</h3>
-                    <div class="question-container" style="background: transparent; padding: 0; box-shadow: none;">
-                        <form id="testForm">
-                            {{ section.questions_html | safe }}
-                        </form>
-                    </div>
-                </div>
-            </div>
-            
-            {% if section.response_passage %}
-            <div class="section-divider">
-                <div class="section-title">{{ section.section_divider_text }}</div>
-            </div>
-            
-            <div>
-                <h3 style="color: #667eea; margin-bottom: 15px;">💬 {{ section.response_title }}</h3>
+            <div class="content-panel">
+                <h3>📧 Email Message</h3>
                 <div class="passage">
-                    <form id="testForm2">
-                        {{ section.response_passage | safe }}
+                    <form id="testForm">
+                        {{ section.email_content | safe }}
                     </form>
                 </div>
             </div>
-            {% endif %}
-            
-            {% else %}
-            <!-- Part 1: Correspondence section -->
-            <div class="section-divider">
-                <div class="section-title">Questions 1-6: Choose the best option according to the information given in the message.</div>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
-                <div>
-                    <h3 style="color: #667eea; margin-bottom: 15px;">📧 Message from Greg</h3>
-                    <div class="passage" style="margin: 0;">{{ section.passage }}</div>
+        </div>
+        
+        <div class="section-divider">
+            Using the drop-down menu, choose the best option.
+        </div>
+        
+        <div class="full-width-panel">
+            <form id="testForm2">
+                {{ section.questions_6_8_html | safe }}
+            </form>
+        </div>
+        
+        {% elif section.is_information_type %}
+        <!-- Part 3: Reading for Information -->
+        <div class="content-grid">
+            <div class="content-panel">
+                <h3>📄 Reading Passage</h3>
+                <div class="passage">{{ section.passage }}</div>
+                {% if section.passage_note %}
+                <div class="note-box">
+                    <strong>Note:</strong> {{ section.passage_note }}
                 </div>
-                <div>
-                    <h3 style="color: #667eea; margin-bottom: 15px;">❓ Questions</h3>
-                    <div class="question-container" style="background: transparent; padding: 0; box-shadow: none;">
-                        <form id="testForm">
-                            {{ section.questions_1_6_html | safe }}
-                        </form>
-                    </div>
-                </div>
+                {% endif %}
             </div>
-            
-            <div class="section-divider">
-                <div class="section-title">Questions 7-11: Complete the response by filling in the blanks.</div>
+            <div class="content-panel">
+                <h3>❓ Questions</h3>
+                <form id="testForm">
+                    {{ section.questions_html | safe }}
+                </form>
             </div>
-            
+        </div>
+        
+        {% elif section.is_viewpoints_type %}
+        <!-- Part 4: Reading for Viewpoints -->
+        <div class="content-grid">
+            <div class="content-panel">
+                <h3>📰 Article</h3>
+                <div class="passage">{{ section.passage }}</div>
+            </div>
+            <div class="content-panel">
+                <h3>❓ Questions</h3>
+                <form id="testForm">
+                    {{ section.questions_html | safe }}
+                </form>
+            </div>
+        </div>
+        
+        {% if section.response_passage %}
+        <div class="section-divider">
+            {{ section.section_divider_text }}
+        </div>
+        
+        <div class="full-width-panel">
+            <h3 style="color: #003366; margin-bottom: 15px;">💬 {{ section.response_title }}</h3>
             <div class="passage">
                 <form id="testForm2">
                     {{ section.response_passage | safe }}
                 </form>
             </div>
-            {% endif %}
-            
-            <button class="submit-btn" id="submitBtn">Submit Answers</button>
         </div>
+        {% endif %}
+        
+        {% else %}
+        <!-- Part 1: Correspondence section -->
+        <div class="section-divider">
+            Questions 1-6: Choose the best option according to the information given in the message.
+        </div>
+        
+        <div class="content-grid">
+            <div class="content-panel">
+                <h3>📧 Message from Greg</h3>
+                <div class="passage">{{ section.passage }}</div>
+            </div>
+            <div class="content-panel">
+                <h3>❓ Questions</h3>
+                <form id="testForm">
+                    {{ section.questions_1_6_html | safe }}
+                </form>
+            </div>
+        </div>
+        
+        <div class="section-divider">
+            Questions 7-11: Complete the response by filling in the blanks.
+        </div>
+        
+        <div class="full-width-panel">
+            <div class="passage">
+                <form id="testForm2">
+                    {{ section.response_passage | safe }}
+                </form>
+            </div>
+        </div>
+        {% endif %}
+        
+        <button class="submit-btn" id="submitBtn">Submit Answers</button>
         
         <div class="results" id="results" style="display: none;"></div>
         
-        <a href="/test/{{ test_num }}" class="back-btn">← Back to Test {{ test_num }}</a>
+        <div style="text-align: center;">
+            <a href="/test/{{ test_num }}" class="back-btn">← Back to Test {{ test_num }}</a>
+        </div>
     </div>
 
     <script>
@@ -599,33 +690,12 @@
                 html += `
                     <div class="total-score-banner">
                         <h3>Running Total: ${data.skill_total} / ${data.skill_max} points</h3>
-                        ${data.all_parts_complete ? '<p style="color: #4CAF50; font-weight: bold;">✅ All parts complete!</p>' : ''}
+                        ${data.all_parts_complete ? '<p style="font-weight: bold; margin-top: 10px;">✅ All parts complete!</p>' : ''}
                     </div>
                 `;
             }
             
-            // Add next part button if available
-            if (data.next_part) {
-                html += `
-                    <div style="margin: 20px 0; text-align: center;">
-                        <a href="/test/${data.test_num}/${data.skill}/part${data.next_part}" 
-                           class="next-part-btn">
-                            Next: Part ${data.next_part} →
-                        </a>
-                    </div>
-                `;
-            } else if (data.all_parts_complete) {
-                html += `
-                    <div style="margin: 20px 0; text-align: center;">
-                        <a href="/test/${data.test_num}" 
-                           class="next-part-btn">
-                            ← Back to Test ${data.test_num}
-                        </a>
-                    </div>
-                `;
-            }
-            
-            html += `<h3 style="margin: 30px 0 20px 0;">Question Results:</h3>`;
+            html += `<h3 style="margin: 30px 0 20px 0; color: #003366;">Question Results:</h3>`;
             
             for (let [questionId, result] of Object.entries(data.results)) {
                 const correctClass = result.correct ? 'correct' : 'incorrect';
@@ -637,6 +707,36 @@
                     </div>
                 `;
             }
+            
+            // Navigation buttons
+            html += '<div class="nav-buttons">';
+            
+            // View Answer Key button
+            html += `
+                <a href="/test/${data.test_num}/${data.skill}/part${data.test_num || '{{ part_num }}'}/answers" 
+                   class="nav-btn answer-key-btn">
+                    📝 View Answer Key
+                </a>
+            `;
+            
+            // Next part button if available
+            if (data.next_part) {
+                html += `
+                    <a href="/test/${data.test_num}/${data.skill}/part${data.next_part}" 
+                       class="nav-btn">
+                        Next: Part ${data.next_part} →
+                    </a>
+                `;
+            } else if (data.all_parts_complete) {
+                html += `
+                    <a href="/test/${data.test_num}" 
+                       class="nav-btn">
+                        ← Back to Test ${data.test_num}
+                    </a>
+                `;
+            }
+            
+            html += '</div>';
             
             resultsDiv.innerHTML = html;
             resultsDiv.style.display = 'block';
@@ -651,4 +751,3 @@
     </script>
 </body>
 </html>
-

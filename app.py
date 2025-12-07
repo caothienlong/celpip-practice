@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, session, send_from_directory
+from flask import Flask, render_template, request, jsonify, session
 import secrets
 import uuid
 from utils.data_loader import TestDataLoader
@@ -11,24 +11,6 @@ app.secret_key = secrets.token_hex(16)
 # Initialize data loader and results tracker
 data_loader = TestDataLoader(data_dir='data')
 results_tracker = ResultsTracker(reports_dir='reports')
-
-
-@app.route('/offline')
-def offline():
-    """Offline page for PWA"""
-    return render_template('offline.html')
-
-
-@app.route('/manifest.json')
-def manifest():
-    """Serve PWA manifest"""
-    return send_from_directory('static', 'manifest.json', mimetype='application/manifest+json')
-
-
-@app.route('/sw.js')
-def service_worker():
-    """Serve service worker"""
-    return send_from_directory('static', 'sw.js', mimetype='application/javascript')
 
 
 @app.route('/')
@@ -223,6 +205,45 @@ def test_part(test_num, skill, part_num):
         return f"Error loading test: {e}", 500
 
 
+@app.route('/test/<int:test_num>/<skill>/part<int:part_num>/answers')
+def answer_key(test_num, skill, part_num):
+    """
+    Display answer key for a specific test part (Practice Mode only)
+    
+    Args:
+        test_num: Test number (1-20)
+        skill: Skill name (reading, writing, speaking, listening)
+        part_num: Part number
+    """
+    try:
+        # Load test data from JSON
+        test_data = data_loader.load_test_part(test_num, skill, part_num)
+        
+        # Process the test data for answer key display
+        processed_data = prepare_answer_key_data(test_data, skill, part_num)
+        
+        # Determine next part
+        next_part = None
+        skill_parts = data_loader.list_available_parts(test_num, skill)
+        if part_num in skill_parts:
+            current_index = skill_parts.index(part_num)
+            if current_index + 1 < len(skill_parts):
+                next_part = skill_parts[current_index + 1]
+        
+        return render_template(
+            'answer_key.html',
+            section=processed_data,
+            test_num=test_num,
+            skill=skill,
+            part_num=part_num,
+            next_part=next_part
+        )
+    except FileNotFoundError as e:
+        return f"Test not found: {e}", 404
+    except Exception as e:
+        return f"Error loading answer key: {e}", 500
+
+
 def prepare_test_data(test_data, skill, part_num):
     """
     Prepare test data for rendering
@@ -334,6 +355,153 @@ def prepare_test_data(test_data, skill, part_num):
             )
             processed['response_title'] = response_section.get('title', 'Response')
             processed['section_divider_text'] = response_section.get('instruction_text', '')
+    
+    return processed
+
+
+def prepare_answer_key_data(test_data, skill, part_num):
+    """
+    Prepare test data for answer key display
+    
+    Args:
+        test_data: Raw test data from JSON
+        skill: Skill name
+        part_num: Part number
+        
+    Returns:
+        dict: Processed data ready for answer key template
+    """
+    # Get all questions
+    all_questions = data_loader.get_all_questions(test_data)
+    correct_answers = data_loader.get_correct_answers(test_data)
+    
+    processed = {
+        'title': f"Part {part_num}: {test_data['title']}",
+        'instructions': test_data['instructions'],
+        'type': test_data['type'],
+        'all_questions': []
+    }
+    
+    # Process based on test type
+    if test_data['type'] == 'correspondence':
+        # Part 1: Reading Correspondence
+        passage_section = data_loader.get_section_by_type(test_data, 'passage')
+        response_section = data_loader.get_section_by_type(test_data, 'response_passage')
+        questions_section = data_loader.get_section_by_type(test_data, 'questions')
+        
+        if passage_section:
+            processed['passage'] = passage_section['content']
+        
+        processed['questions_1_6'] = []
+        processed['questions_7_11'] = []
+        
+        if questions_section:
+            for q in questions_section['questions']:
+                q_data = {
+                    'id': q['id'],
+                    'text': q['question'],
+                    'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
+                    'correct_answer': correct_answers.get(q['id'])
+                }
+                processed['questions_1_6'].append(q_data)
+        
+        if response_section and 'questions' in response_section:
+            for q in response_section['questions']:
+                q_data = {
+                    'id': q['id'],
+                    'text': q.get('question', f"Question {q['id']}"),
+                    'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
+                    'correct_answer': correct_answers.get(q['id'])
+                }
+                processed['questions_7_11'].append(q_data)
+    
+    elif test_data['type'] == 'diagram':
+        # Part 2: Reading to Apply a Diagram
+        diagram_section = data_loader.get_section_by_type(test_data, 'diagram_email')
+        questions_section = data_loader.get_section_by_type(test_data, 'questions')
+        
+        processed['has_diagram'] = True
+        
+        if diagram_section:
+            processed['diagram_image'] = diagram_section.get('diagram_image')
+            processed['email_text'] = diagram_section['content']
+        
+        # Collect all questions
+        if diagram_section and 'questions' in diagram_section:
+            for q in diagram_section['questions']:
+                q_data = {
+                    'id': q['id'],
+                    'text': q.get('question', f"Question {q['id']}"),
+                    'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
+                    'correct_answer': correct_answers.get(q['id'])
+                }
+                processed['all_questions'].append(q_data)
+        
+        if questions_section:
+            for q in questions_section['questions']:
+                q_data = {
+                    'id': q['id'],
+                    'text': q['question'],
+                    'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
+                    'correct_answer': correct_answers.get(q['id'])
+                }
+                processed['all_questions'].append(q_data)
+    
+    elif test_data['type'] == 'information':
+        # Part 3: Reading for Information
+        passage_section = data_loader.get_section_by_type(test_data, 'passage')
+        questions_section = data_loader.get_section_by_type(test_data, 'questions')
+        
+        processed['is_information_type'] = True
+        
+        if passage_section:
+            processed['passage'] = passage_section['content']
+            processed['passage_note'] = passage_section.get('note', '')
+        
+        if questions_section:
+            for q in questions_section['questions']:
+                q_data = {
+                    'id': q['id'],
+                    'text': q['question'],
+                    'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
+                    'correct_answer': correct_answers.get(q['id'])
+                }
+                processed['all_questions'].append(q_data)
+    
+    elif test_data['type'] == 'viewpoints':
+        # Part 4: Reading for Viewpoints
+        passage_section = data_loader.get_section_by_type(test_data, 'passage')
+        questions_section = data_loader.get_section_by_type(test_data, 'questions')
+        response_section = data_loader.get_section_by_type(test_data, 'response_passage')
+        
+        processed['is_viewpoints_type'] = True
+        
+        if passage_section:
+            processed['passage'] = passage_section['content']
+        
+        if questions_section:
+            for q in questions_section['questions']:
+                q_data = {
+                    'id': q['id'],
+                    'text': q['question'],
+                    'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
+                    'correct_answer': correct_answers.get(q['id'])
+                }
+                processed['all_questions'].append(q_data)
+        
+        processed['response_passage_questions'] = []
+        if response_section and 'questions' in response_section:
+            processed['response_title'] = response_section.get('title', 'Response')
+            processed['section_divider_text'] = response_section.get('instruction_text', '')
+            
+            for q in response_section['questions']:
+                q_data = {
+                    'id': q['id'],
+                    'text': q.get('question', f"Question {q['id']}"),
+                    'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
+                    'correct_answer': correct_answers.get(q['id'])
+                }
+                processed['response_passage_questions'].append(q_data)
     
     return processed
 

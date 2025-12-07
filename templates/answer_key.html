@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer Key - Test {{ test_num }} {{ section.title }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        /* CELPIP-style header */
+        .celpip-header {
+            background: #003366;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .celpip-header h1 {
+            font-size: 1.3em;
+            font-weight: normal;
+        }
+        
+        .badge {
+            background: #28a745;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        /* Main container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Instructions bar */
+        .instructions-bar {
+            background: #e6f2ff;
+            border-left: 4px solid #0066cc;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .instructions-bar strong {
+            color: #003366;
+        }
+        
+        /* Two-column layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .content-panel {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .content-panel h3 {
+            color: #003366;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0066cc;
+        }
+        
+        /* Passage styling */
+        .passage {
+            background: #fafafa;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            line-height: 1.8;
+            white-space: pre-line;
+            font-size: 1em;
+            color: #222;
+        }
+        
+        /* Answer key question styling */
+        .answer-question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .question-header {
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+        
+        .question-text {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .correct-answer {
+            background: #e8f5e9;
+            padding: 8px 12px;
+            border-radius: 3px;
+            color: #2e7d32;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .answer-options {
+            margin-top: 10px;
+        }
+        
+        .answer-option {
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 3px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .answer-option.correct {
+            background: #e8f5e9;
+            border-color: #4caf50;
+            font-weight: 600;
+            color: #2e7d32;
+        }
+        
+        .answer-option.correct::before {
+            content: "✓ ";
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        /* Section divider */
+        .section-divider {
+            margin: 30px 0 20px 0;
+            padding: 12px 20px;
+            background: #e6f2ff;
+            border-left: 4px solid #0066cc;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #003366;
+        }
+        
+        /* Diagram styling */
+        .diagram-container {
+            background: white;
+            padding: 15px;
+            border: 2px solid #0066cc;
+            border-radius: 5px;
+        }
+        
+        .diagram-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        .note-box {
+            margin-top: 15px;
+            padding: 12px;
+            background: #fff9e6;
+            border-left: 4px solid #ffcc00;
+            border-radius: 3px;
+        }
+        
+        .note-box strong {
+            color: #b38600;
+        }
+        
+        /* Navigation buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .nav-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+        
+        .nav-btn:hover {
+            background: #003366;
+        }
+        
+        .nav-btn.secondary {
+            background: #6c757d;
+        }
+        
+        .nav-btn.secondary:hover {
+            background: #5a6268;
+        }
+        
+        /* Single column layout for full-width content */
+        .full-width-panel {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- CELPIP-style header -->
+    <div class="celpip-header">
+        <h1>Answer Key - Test {{ test_num }} - {{ skill|title }} - {{ section.title }}</h1>
+        <div class="badge">ANSWER KEY</div>
+    </div>
+    
+    <div class="main-container">
+        <!-- Instructions -->
+        <div class="instructions-bar">
+            <strong>Answer Key:</strong> This page shows all correct answers for {{ section.title }}. Review the correct answers and compare them with your responses.
+        </div>
+        
+        {% if section.has_diagram %}
+        <!-- Part 2: Diagram-based section -->
+        <div class="content-grid">
+            <div class="content-panel">
+                <h3>📊 Activities Diagram</h3>
+                <div class="diagram-container">
+                    <img src="{{ url_for('static', filename='images/test_' + test_num|string + '/' + skill + '/' + section.diagram_image) }}" 
+                         alt="Activities Diagram" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; padding: 20px; background: #fff3cd; border-radius: 4px; text-align: center; color: #856404;">
+                        <h4>📷 Diagram Image Missing</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="content-panel">
+                <h3>📧 Email Message</h3>
+                <div class="passage">{{ section.email_text }}</div>
+            </div>
+        </div>
+        
+        <div class="section-divider">
+            Questions and Correct Answers
+        </div>
+        
+        <div class="full-width-panel">
+            {% for question in section.all_questions %}
+            <div class="answer-question">
+                <div class="question-header">Question {{ question.id }}</div>
+                <div class="question-text">{{ question.text }}</div>
+                <div class="answer-options">
+                    {% for option_idx, option_text in question.options %}
+                    <div class="answer-option {% if option_idx == question.correct_answer %}correct{% endif %}">
+                        {{ option_text }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% elif section.is_information_type %}
+        <!-- Part 3: Reading for Information -->
+        <div class="content-grid">
+            <div class="content-panel">
+                <h3>📄 Reading Passage</h3>
+                <div class="passage">{{ section.passage }}</div>
+                {% if section.passage_note %}
+                <div class="note-box">
+                    <strong>Note:</strong> {{ section.passage_note }}
+                </div>
+                {% endif %}
+            </div>
+            <div class="content-panel">
+                <h3>✅ Questions & Answers</h3>
+                {% for question in section.all_questions %}
+                <div class="answer-question">
+                    <div class="question-header">Question {{ question.id }}</div>
+                    <div class="question-text">{{ question.text }}</div>
+                    <div class="answer-options">
+                        {% for option_idx, option_text in question.options %}
+                        <div class="answer-option {% if option_idx == question.correct_answer %}correct{% endif %}">
+                            {{ option_text }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        {% elif section.is_viewpoints_type %}
+        <!-- Part 4: Reading for Viewpoints -->
+        <div class="content-grid">
+            <div class="content-panel">
+                <h3>📰 Article</h3>
+                <div class="passage">{{ section.passage }}</div>
+            </div>
+            <div class="content-panel">
+                <h3>✅ Questions & Answers</h3>
+                {% for question in section.all_questions %}
+                <div class="answer-question">
+                    <div class="question-header">Question {{ question.id }}</div>
+                    <div class="question-text">{{ question.text }}</div>
+                    <div class="answer-options">
+                        {% for option_idx, option_text in question.options %}
+                        <div class="answer-option {% if option_idx == question.correct_answer %}correct{% endif %}">
+                            {{ option_text }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        {% if section.response_passage_questions %}
+        <div class="section-divider">
+            {{ section.section_divider_text }}
+        </div>
+        
+        <div class="full-width-panel">
+            <h3 style="color: #003366; margin-bottom: 15px;">💬 {{ section.response_title }} - Answers</h3>
+            {% for question in section.response_passage_questions %}
+            <div class="answer-question">
+                <div class="question-header">Question {{ question.id }}</div>
+                <div class="question-text">{{ question.text }}</div>
+                <div class="answer-options">
+                    {% for option_idx, option_text in question.options %}
+                    <div class="answer-option {% if option_idx == question.correct_answer %}correct{% endif %}">
+                        {{ option_text }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% else %}
+        <!-- Part 1: Correspondence section -->
+        <div class="section-divider">
+            Questions 1-6: Choose the best option according to the information given in the message.
+        </div>
+        
+        <div class="content-grid">
+            <div class="content-panel">
+                <h3>📧 Message from Greg</h3>
+                <div class="passage">{{ section.passage }}</div>
+            </div>
+            <div class="content-panel">
+                <h3>✅ Questions 1-6 Answers</h3>
+                {% for question in section.questions_1_6 %}
+                <div class="answer-question">
+                    <div class="question-header">Question {{ question.id }}</div>
+                    <div class="question-text">{{ question.text }}</div>
+                    <div class="answer-options">
+                        {% for option_idx, option_text in question.options %}
+                        <div class="answer-option {% if option_idx == question.correct_answer %}correct{% endif %}">
+                            {{ option_text }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="section-divider">
+            Questions 7-11: Complete the response by filling in the blanks.
+        </div>
+        
+        <div class="full-width-panel">
+            <h3 style="color: #003366; margin-bottom: 15px;">✅ Questions 7-11 Answers</h3>
+            {% for question in section.questions_7_11 %}
+            <div class="answer-question">
+                <div class="question-header">Question {{ question.id }}</div>
+                <div class="question-text">{{ question.text }}</div>
+                <div class="answer-options">
+                    {% for option_idx, option_text in question.options %}
+                    <div class="answer-option {% if option_idx == question.correct_answer %}correct{% endif %}">
+                        {{ option_text }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <!-- Navigation buttons -->
+        <div class="nav-buttons">
+            <a href="/test/{{ test_num }}/{{ skill }}/part{{ part_num }}" class="nav-btn secondary">← Back to Test</a>
+            {% if next_part %}
+            <a href="/test/{{ test_num }}/{{ skill }}/part{{ next_part }}" class="nav-btn">Next: Part {{ next_part }} →</a>
+            {% else %}
+            <a href="/test/{{ test_num }}" class="nav-btn">View All Skills</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
