@@ -488,8 +488,8 @@
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Validate all dropdowns are answered
-                const allDropdowns = document.querySelectorAll('.inline-dropdown');
+                // Validate all dropdowns are answered (check BOTH forms)
+                const allDropdowns = document.querySelectorAll('#testForm .inline-dropdown, #testForm2 .inline-dropdown');
                 const unansweredDropdowns = [];
                 
                 allDropdowns.forEach(dropdown => {
@@ -524,16 +524,44 @@
                 
                 clearInterval(timerInterval);
                 
-                // Collect all answers
-                const formData = new FormData(this);
+                // Collect all answers from BOTH forms (testForm and testForm2)
                 const answers = {};
                 
-                for (let [key, value] of formData.entries()) {
-                    if (key.startsWith('q')) {
-                        const qId = parseInt(key.substring(1));
-                        answers[qId] = parseInt(value);
+                // Collect from testForm
+                const form1 = document.getElementById('testForm');
+                if (form1) {
+                    const formData1 = new FormData(form1);
+                    for (let [key, value] of formData1.entries()) {
+                        if (key.startsWith('q')) {
+                            const qId = parseInt(key.substring(1));
+                            answers[qId] = parseInt(value);
+                        }
                     }
                 }
+                
+                // Collect from testForm2 (for Part 1, 2, 4 - Response/Email/Comments)
+                const form2 = document.getElementById('testForm2');
+                if (form2) {
+                    const formData2 = new FormData(form2);
+                    for (let [key, value] of formData2.entries()) {
+                        if (key.startsWith('q')) {
+                            const qId = parseInt(key.substring(1));
+                            answers[qId] = parseInt(value);
+                        }
+                    }
+                }
+                
+                // Also collect from selected text spans (for already answered questions)
+                document.querySelectorAll('.selected-text').forEach(span => {
+                    const value = span.dataset.selectedValue;
+                    const dropdownId = span.dataset.dropdownId;
+                    if (dropdownId && dropdownId.startsWith('q')) {
+                        const qId = parseInt(dropdownId.substring(1));
+                        if (!answers[qId] && value !== undefined) {
+                            answers[qId] = parseInt(value);
+                        }
+                    }
+                });
                 
                 // Submit to Test Mode endpoint
                 fetch('/submit_test_mode', {

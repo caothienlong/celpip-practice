@@ -825,7 +825,8 @@
         
         // Validation function
         function validateAndNavigate(url) {
-            const allDropdowns = document.querySelectorAll('.inline-dropdown');
+            // Check dropdowns in BOTH testForm and testForm2
+            const allDropdowns = document.querySelectorAll('#testForm .inline-dropdown, #testForm2 .inline-dropdown');
             const unansweredDropdowns = [];
             
             allDropdowns.forEach(dropdown => {
