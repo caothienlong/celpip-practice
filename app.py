@@ -399,7 +399,7 @@ def prepare_answer_key_data(test_data, skill, part_num):
             for q in questions_section['questions']:
                 q_data = {
                     'id': q['id'],
-                    'text': q['question'],
+                    'text': q.get('text', q.get('question', f"Question {q['id']}")),
                     'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
                     'correct_answer': correct_answers.get(q['id'])
                 }
@@ -441,7 +441,7 @@ def prepare_answer_key_data(test_data, skill, part_num):
             for q in questions_section['questions']:
                 q_data = {
                     'id': q['id'],
-                    'text': q['question'],
+                    'text': q.get('text', q.get('question', f"Question {q['id']}")),
                     'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
                     'correct_answer': correct_answers.get(q['id'])
                 }
@@ -462,7 +462,7 @@ def prepare_answer_key_data(test_data, skill, part_num):
             for q in questions_section['questions']:
                 q_data = {
                     'id': q['id'],
-                    'text': q['question'],
+                    'text': q.get('text', q.get('question', f"Question {q['id']}")),
                     'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
                     'correct_answer': correct_answers.get(q['id'])
                 }
@@ -483,7 +483,7 @@ def prepare_answer_key_data(test_data, skill, part_num):
             for q in questions_section['questions']:
                 q_data = {
                     'id': q['id'],
-                    'text': q['question'],
+                    'text': q.get('text', q.get('question', f"Question {q['id']}")),
                     'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
                     'correct_answer': correct_answers.get(q['id'])
                 }
