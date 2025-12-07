@@ -517,7 +517,7 @@
         {% if section.has_diagram %}
         <!-- Part 2: Diagram-based section -->
         <div class="content-grid">
-            <!-- Left Panel: Diagram + Email -->
+            <!-- Left Panel: Diagram Only -->
             <div class="content-panel">
                 <h3>📊 Activities Diagram</h3>
                 <div class="diagram-container">
@@ -532,24 +532,20 @@
                         </code>
                     </div>
                 </div>
-                
-                <div style="margin-top: 30px;">
-                    <h3>📧 Email Message</h3>
-                    <div class="passage">{{ section.email_content | safe }}</div>
-                </div>
             </div>
             
-            <!-- Right Panel: Questions -->
+            <!-- Right Panel: Email + Questions -->
             <div class="content-panel">
                 <div style="background: #e6f2ff; padding: 10px 15px; border-radius: 4px; font-size: 0.9em; font-weight: 600; color: #003366; margin-bottom: 15px;">
                     Questions 1-5: Complete the email by selecting from the dropdown menus.
                 </div>
                 
-                <div style="color: #666; font-size: 0.9em; font-style: italic; margin-bottom: 20px;">
-                    Use the dropdown menus in the email message on the left to answer questions 1-5.
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #003366; margin-bottom: 15px; font-size: 1em;">📧 Email Message</h3>
+                    <div class="passage">{{ section.email_content | safe }}</div>
                 </div>
                 
-                <div style="background: #e6f2ff; padding: 10px 15px; border-radius: 4px; font-size: 0.9em; font-weight: 600; color: #003366; margin-top: 30px; margin-bottom: 15px;">
+                <div style="background: #e6f2ff; padding: 10px 15px; border-radius: 4px; font-size: 0.9em; font-weight: 600; color: #003366; margin-bottom: 15px;">
                     Questions 6-8: Using the drop-down menu, choose the best option.
                 </div>
                 
