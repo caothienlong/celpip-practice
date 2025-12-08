@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CELPIP Practice</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 450px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo h1 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+        
+        .logo p {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .welcome-text {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .welcome-text h2 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .welcome-text p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .oauth-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .oauth-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: white;
+            color: #333;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .oauth-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .oauth-btn.google {
+            border-color: #4285f4;
+        }
+        
+        .oauth-btn.google:hover {
+            background: #4285f4;
+            color: white;
+        }
+        
+        .oauth-btn.facebook {
+            border-color: #1877f2;
+        }
+        
+        .oauth-btn.facebook:hover {
+            background: #1877f2;
+            color: white;
+        }
+        
+        .icon {
+            font-size: 1.5em;
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e0e0e0;
+        }
+        
+        .divider span {
+            background: white;
+            padding: 0 15px;
+            position: relative;
+            color: #999;
+            font-size: 0.9em;
+        }
+        
+        .guest-option {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .guest-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        
+        .guest-link:hover {
+            background: #f0f0f0;
+        }
+        
+        .features {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .features h3 {
+            color: #333;
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            color: #666;
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.9em;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .privacy-note {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.85em;
+            color: #666;
+            text-align: center;
+        }
+        
+        .error-message {
+            background: #fee;
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            color: #c00;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <h1>🎓 CELPIP Practice</h1>
+            <p>Professional Test Preparation Platform</p>
+        </div>
+        
+        <div class="welcome-text">
+            <h2>Welcome Back!</h2>
+            <p>Sign in to track your progress and access your test history</p>
+        </div>
+        
+        {% if error %}
+        <div class="error-message">
+            {{ error }}
+        </div>
+        {% endif %}
+        
+        <div class="oauth-buttons">
+            {% for provider in providers %}
+            <a href="/login/{{ provider.name }}" class="oauth-btn {{ provider.name }}">
+                <span class="icon">{{ provider.icon }}</span>
+                <span>Continue with {{ provider.display_name }}</span>
+            </a>
+            {% endfor %}
+        </div>
+        
+        <div class="divider">
+            <span>or</span>
+        </div>
+        
+        <div class="guest-option">
+            <a href="/" class="guest-link">
+                👤 Continue as Guest (Session Only)
+            </a>
+        </div>
+        
+        <div class="features">
+            <h3>Why sign in?</h3>
+            <ul class="feature-list">
+                <li>Save your progress permanently</li>
+                <li>Track test history over time</li>
+                <li>Access from any device</li>
+                <li>View detailed analytics</li>
+            </ul>
+        </div>
+        
+        <div class="privacy-note">
+            🔒 We only use your email for authentication.<br>
+            Your data is never shared with third parties.
+        </div>
+    </div>
+</body>
+</html>
+

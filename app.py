@@ -1,19 +1,124 @@
-from flask import Flask, render_template, request, jsonify, session
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 import secrets
 import uuid
+import os
+from dotenv import load_dotenv
 from utils.data_loader import TestDataLoader
 from utils.results_tracker import ResultsTracker
+from utils.auth import init_auth, User, login_required_optional, get_current_user_email
+from utils.oauth_providers import init_oauth, get_oauth_providers, extract_user_info
+from flask_login import login_user, logout_user, current_user
 from config import calculate_timeout, get_timeout
 
+# Load environment variables
+load_dotenv()
+
 app = Flask(__name__)
-app.secret_key = secrets.token_hex(16)
+app.secret_key = os.getenv('SECRET_KEY', secrets.token_hex(32))
 
 # Initialize data loader and results tracker
 data_loader = TestDataLoader(data_dir='data')
 results_tracker = ResultsTracker(users_dir='users')
 
+# Initialize authentication
+login_manager = init_auth(app, results_tracker)
+
+# Initialize OAuth
+oauth = init_oauth(app)
+
+
+# ============================================================================
+# AUTHENTICATION ROUTES
+# ============================================================================
+
+@app.route('/login')
+def login():
+    """Display login page with OAuth options"""
+    providers = get_oauth_providers()
+    error = request.args.get('error')
+    return render_template('login.html', providers=providers, error=error)
+
+
+@app.route('/login/<provider>')
+def oauth_login(provider):
+    """Initiate OAuth login with provider"""
+    try:
+        oauth_provider = oauth.create_client(provider)
+        redirect_uri = url_for('oauth_callback', provider=provider, _external=True)
+        return oauth_provider.authorize_redirect(redirect_uri)
+    except Exception as e:
+        return redirect(url_for('login', error=f'Failed to connect to {provider}'))
+
+
+@app.route('/callback/<provider>')
+def oauth_callback(provider):
+    """Handle OAuth callback from provider"""
+    try:
+        oauth_provider = oauth.create_client(provider)
+        token = oauth_provider.authorize_access_token()
+        
+        # Get user info
+        if provider == 'google':
+            user_info_raw = token.get('userinfo')
+        elif provider == 'facebook':
+            resp = oauth_provider.get('me?fields=id,name,email')
+            user_info_raw = resp.json()
+        else:
+            user_info_raw = {}
+        
+        # Extract user information
+        user_info = extract_user_info(provider, user_info_raw)
+        
+        if not user_info.get('email'):
+            return redirect(url_for('login', error='Could not get email from provider'))
+        
+        # Create or update user
+        email = user_info['email']
+        profile = results_tracker.get_user_profile(email)
+        
+        # Update profile with OAuth info
+        profile['name'] = user_info.get('name', profile.get('name'))
+        profile['provider'] = provider
+        profile['picture'] = user_info.get('picture')
+        
+        # Save profile
+        results_tracker._save_user_profile(email, profile)
+        
+        # Create User object and login
+        user = User(
+            user_id=email,
+            email=email,
+            name=user_info.get('name'),
+            provider=provider,
+            profile_data=profile
+        )
+        login_user(user, remember=True)
+        
+        # Set session email for backwards compatibility
+        session['user_email'] = email
+        session.modified = True
+        
+        return redirect(url_for('index'))
+        
+    except Exception as e:
+        print(f"OAuth callback error: {e}")
+        return redirect(url_for('login', error='Authentication failed. Please try again.'))
+
+
+@app.route('/logout')
+def logout():
+    """Logout user"""
+    logout_user()
+    session.pop('user_email', None)
+    return redirect(url_for('index'))
+
+
+# ============================================================================
+# MAIN ROUTES
+# ============================================================================
 
 @app.route('/')
+@login_required_optional
 def index():
     """Home page showing all available tests"""
     available_tests = data_loader.list_available_tests()
@@ -46,15 +151,16 @@ def index():
     
     # Get historical data from JSON if user email is set
     test_history = {}
-    if 'user_email' in session:
-        user_email = session['user_email']
+    user_email = get_current_user_email()
+    if user_email:
         test_history = results_tracker.get_all_tests_summary(user_email)
     
     return render_template('test_list.html', 
                          test_numbers=available_tests,
                          exam_status=exam_status,
                          test_history=test_history,
-                         user_email=session.get('user_email'))
+                         user_email=user_email,
+                         current_user=current_user)
 
 
 @app.route('/test/<int:test_num>')
