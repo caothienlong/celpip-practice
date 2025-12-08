@@ -353,6 +353,7 @@
             z-index: 1000;
             display: flex;
             flex-direction: column;
+            width: 60px;
         }
         
         .vocab-sidebar-item {
@@ -366,7 +367,9 @@
             color: inherit;
             border-bottom: 1px solid #f0f0f0;
             width: 60px;
-            overflow: hidden;
+            overflow: visible;
+            position: relative;
+            background: white;
         }
         
         .vocab-sidebar-item:first-child {
@@ -381,6 +384,8 @@
         .vocab-sidebar-item:hover {
             background: #f8f9fa;
             width: 240px;
+            box-shadow: -4px 0 12px rgba(0,0,0,0.2);
+            z-index: 1001;
         }
         
         .vocab-icon {
