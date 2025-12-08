@@ -511,52 +511,72 @@
         }
         
         /* Vocabulary Notes Section */
-        .vocab-note-btn {
+        .vocab-sidebar {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: #ffc107;
-            color: #333;
-            padding: 12px 20px;
-            border-radius: 50px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            cursor: pointer;
-            font-weight: 600;
-            border: none;
-            transition: all 0.3s ease;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 4px 0 12px rgba(0,0,0,0.15);
             z-index: 1000;
-            font-size: 0.9em;
+            transition: all 0.3s ease;
+            overflow: hidden;
         }
         
-        .vocab-note-btn:hover {
-            background: #e0a800;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        .vocab-sidebar:hover {
+            box-shadow: 6px 0 20px rgba(0,0,0,0.25);
         }
         
-        .vocab-view-btn {
-            position: fixed;
-            bottom: 90px;
-            left: 30px;
-            background: #0066cc;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 50px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        .vocab-sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
             cursor: pointer;
-            font-weight: 600;
-            border: none;
             transition: all 0.3s ease;
-            z-index: 1000;
-            font-size: 0.9em;
+            white-space: nowrap;
             text-decoration: none;
-            display: inline-block;
+            color: inherit;
+            border-bottom: 1px solid #f0f0f0;
         }
         
-        .vocab-view-btn:hover {
-            background: #003366;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        .vocab-sidebar-item:last-child {
+            border-bottom: none;
+        }
+        
+        .vocab-sidebar-item:hover {
+            background: #f8f9fa;
+        }
+        
+        .vocab-icon {
+            font-size: 24px;
+            min-width: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .vocab-text {
+            margin-left: 12px;
+            font-weight: 600;
+            font-size: 0.9em;
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .vocab-sidebar:hover .vocab-text {
+            max-width: 200px;
+            opacity: 1;
+        }
+        
+        .vocab-sidebar-item.view-all {
+            color: #0066cc;
+        }
+        
+        .vocab-sidebar-item.add-note {
+            color: #333;
         }
         
         .vocab-modal {
@@ -566,47 +586,52 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.3);
             z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            pointer-events: auto;
+            pointer-events: none;
         }
         
         .vocab-modal.active {
-            display: flex;
-        }
-        
-        /* Allow text selection in passage area even when modal is open */
-        .content-panel,
-        .passage {
-            user-select: text !important;
-            -webkit-user-select: text !important;
-            -moz-user-select: text !important;
-            -ms-user-select: text !important;
+            display: block;
+            pointer-events: auto;
         }
         
         .vocab-modal-content {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
             background: white;
             padding: 30px;
             border-radius: 15px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 90vh;
+            width: 500px;
+            max-width: calc(100vw - 40px);
+            max-height: calc(100vh - 80px);
             overflow-y: auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: modalSlideIn 0.3s ease;
-            position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: slideInFromRight 0.3s ease;
             z-index: 2001;
+            pointer-events: auto;
         }
         
         @keyframes modalSlideIn {
             from {
-                transform: translateY(-50px);
+                transform: translateY(-50%) translateX(50px);
                 opacity: 0;
             }
             to {
-                transform: translateY(0);
+                transform: translateY(-50%) translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideInFromRight {
+            from {
+                transform: translateY(-50%) translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(-50%) translateX(0);
                 opacity: 1;
             }
         }
@@ -1063,13 +1088,17 @@
     
     <!-- Vocabulary Notes Feature -->
     {% if current_user and current_user.is_authenticated %}
-    <!-- Floating Vocabulary Buttons -->
-    <a href="/test/{{ test_num }}/vocabulary" class="vocab-view-btn">
-        📚 View All Vocabulary
-    </a>
-    <button class="vocab-note-btn" onclick="openVocabModal()">
-        ✏️ Add Vocabulary Note
-    </button>
+    <!-- Floating Sidebar with Icons -->
+    <div class="vocab-sidebar">
+        <a href="/test/{{ test_num }}/vocabulary" class="vocab-sidebar-item view-all" title="View All Vocabulary">
+            <span class="vocab-icon">📚</span>
+            <span class="vocab-text">View All Vocabulary</span>
+        </a>
+        <div class="vocab-sidebar-item add-note" onclick="openVocabModal()" title="Add Vocabulary Note">
+            <span class="vocab-icon">✏️</span>
+            <span class="vocab-text">Add Vocabulary Note</span>
+        </div>
+    </div>
     
     <!-- Vocabulary Notes Modal -->
     <div class="vocab-modal" id="vocabModal">
@@ -1111,7 +1140,12 @@
             document.getElementById('vocabForm').reset();
         }
         
-        // Note: Removed click-outside-to-close to allow text selection from passage
+        // Close modal when clicking on the dark overlay (not the modal content)
+        document.getElementById('vocabModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVocabModal();
+            }
+        });
         
         // Handle form submission
         document.getElementById('vocabForm').addEventListener('submit', function(e) {
