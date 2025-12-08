@@ -1337,11 +1337,19 @@ def vocabulary_notes_page(test_num):
                 }
             notes_by_part[part_key]['notes'].append(note)
         
-        # Check if user came from test mode by looking at referrer
-        from_test_mode = False
-        referrer = request.referrer
-        if referrer and '/exam/' in referrer:
-            from_test_mode = True
+        # Get the referrer URL to provide correct back button
+        back_url = request.referrer
+        if not back_url:
+            # Default to test detail if no referrer
+            back_url = url_for('test_detail', test_num=test_num)
+        
+        # Determine back button text
+        if '/exam/' in back_url:
+            back_text = f'Resume Test {test_num} (Test Mode)'
+        elif '/reading/' in back_url or '/listening/' in back_url or '/writing/' in back_url or '/speaking/' in back_url:
+            back_text = 'Back to Practice'
+        else:
+            back_text = f'Back to Test {test_num}'
         
         return render_template(
             'vocabulary_notes.html',
@@ -1349,7 +1357,8 @@ def vocabulary_notes_page(test_num):
             notes_by_part=notes_by_part,
             total_notes=len(notes),
             current_user=current_user,
-            from_test_mode=from_test_mode
+            back_url=back_url,
+            back_text=back_text
         )
     
     except Exception as e:

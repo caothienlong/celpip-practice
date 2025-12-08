@@ -335,15 +335,9 @@
         <!-- Header -->
         <div class="header">
             <div>
-                {% if from_test_mode %}
-                <a href="{{ url_for('start_exam', test_num=test_num) }}" class="back-link">
-                    ← Resume Test {{ test_num }} (Test Mode)
+                <a href="{{ back_url }}" class="back-link">
+                    ← {{ back_text }}
                 </a>
-                {% else %}
-                <a href="{{ url_for('test_detail', test_num=test_num) }}" class="back-link">
-                    ← Back to Test {{ test_num }}
-                </a>
-                {% endif %}
                 <h1>📚 Vocabulary Notes</h1>
             </div>
             <div class="header-actions">
