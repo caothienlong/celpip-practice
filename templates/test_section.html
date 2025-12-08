@@ -513,19 +513,19 @@
         /* Vocabulary Notes Section */
         .vocab-sidebar {
             position: fixed;
-            left: 0;
+            right: 0;
             top: 50%;
             transform: translateY(-50%);
             background: white;
-            border-radius: 0 15px 15px 0;
-            box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+            border-radius: 15px 0 0 15px;
+            box-shadow: -4px 0 12px rgba(0,0,0,0.15);
             z-index: 1000;
             transition: all 0.3s ease;
             overflow: hidden;
         }
         
         .vocab-sidebar:hover {
-            box-shadow: 6px 0 20px rgba(0,0,0,0.25);
+            box-shadow: -6px 0 20px rgba(0,0,0,0.25);
         }
         
         .vocab-sidebar-item {
@@ -602,9 +602,9 @@
         
         .vocab-modal-content {
             position: fixed;
-            right: 20px;
+            left: 50%;
             top: 50%;
-            transform: translateY(-50%);
+            transform: translate(-50%, -50%);
             background: white;
             padding: 30px;
             border-radius: 15px;
@@ -613,29 +613,18 @@
             max-height: calc(100vh - 80px);
             overflow-y: auto;
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            animation: slideInFromRight 0.3s ease;
+            animation: modalPopIn 0.3s ease;
             z-index: 2001;
             pointer-events: auto;
         }
         
-        @keyframes modalSlideIn {
+        @keyframes modalPopIn {
             from {
-                transform: translateY(-50%) translateX(50px);
+                transform: translate(-50%, -50%) scale(0.9);
                 opacity: 0;
             }
             to {
-                transform: translateY(-50%) translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes slideInFromRight {
-            from {
-                transform: translateY(-50%) translateX(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(-50%) translateX(0);
+                transform: translate(-50%, -50%) scale(1);
                 opacity: 1;
             }
         }
@@ -897,10 +886,6 @@
             {% else %}
             <button onclick="validateAndNavigate('/test/{{ test_num }}/{{ skill }}/answer-key')" class="nav-btn" style="border: none; cursor: pointer;">Finish</button>
             {% endif %}
-        </div>
-        
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="/test/{{ test_num }}" class="back-btn">← Back to Test {{ test_num }} Overview</a>
         </div>
     </div>
 
