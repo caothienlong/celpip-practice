@@ -217,6 +217,19 @@
             margin-bottom: 10px;
         }
         
+        .edit-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .edit-label.required:after {
+            content: ' *';
+            color: #dc3545;
+        }
+        
         .edit-input:focus {
             outline: none;
             border-color: #5568d3;
@@ -389,9 +402,14 @@
                                 
                                 <!-- Edit Mode (hidden by default) -->
                                 <div class="edit-mode" style="display: none;">
-                                    <input type="text" class="edit-input edit-word" placeholder="Word or phrase">
-                                    <textarea class="edit-textarea edit-definition" placeholder="Definition or note"></textarea>
-                                    <textarea class="edit-textarea edit-context" placeholder="Context (optional)"></textarea>
+                                    <label class="edit-label required">Word or Phrase</label>
+                                    <input type="text" class="edit-input edit-word" placeholder="e.g., gregarious">
+                                    
+                                    <label class="edit-label required">Your Definition/Note</label>
+                                    <textarea class="edit-textarea edit-definition" placeholder="Write your understanding or translation here..."></textarea>
+                                    
+                                    <label class="edit-label">Context from Passage (Optional)</label>
+                                    <textarea class="edit-textarea edit-context" placeholder="Copy relevant text from the passage here..."></textarea>
                                     
                                     <div class="note-actions">
                                         <button class="btn btn-save" onclick="saveEdit('{{ note.note_id }}')">
