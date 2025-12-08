@@ -17,28 +17,30 @@ def init_oauth(app):
     oauth = OAuth(app)
     
     # Google OAuth
-    oauth.register(
-        name='google',
-        client_id=os.getenv('GOOGLE_CLIENT_ID'),
-        client_secret=os.getenv('GOOGLE_CLIENT_SECRET'),
-        server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
-        client_kwargs={
-            'scope': 'openid email profile'
-        }
-    )
+    if os.getenv('GOOGLE_CLIENT_ID') and os.getenv('GOOGLE_CLIENT_SECRET'):
+        oauth.register(
+            name='google',
+            client_id=os.getenv('GOOGLE_CLIENT_ID'),
+            client_secret=os.getenv('GOOGLE_CLIENT_SECRET'),
+            server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
+            client_kwargs={
+                'scope': 'openid email profile'
+            }
+        )
     
-    # Facebook OAuth
-    oauth.register(
-        name='facebook',
-        client_id=os.getenv('FACEBOOK_CLIENT_ID'),
-        client_secret=os.getenv('FACEBOOK_CLIENT_SECRET'),
-        access_token_url='https://graph.facebook.com/oauth/access_token',
-        access_token_params=None,
-        authorize_url='https://www.facebook.com/dialog/oauth',
-        authorize_params=None,
-        api_base_url='https://graph.facebook.com/',
-        client_kwargs={'scope': 'email public_profile'},
-    )
+    # Facebook OAuth (DISABLED - uncomment to enable)
+    # if os.getenv('FACEBOOK_CLIENT_ID') and os.getenv('FACEBOOK_CLIENT_SECRET'):
+    #     oauth.register(
+    #         name='facebook',
+    #         client_id=os.getenv('FACEBOOK_CLIENT_ID'),
+    #         client_secret=os.getenv('FACEBOOK_CLIENT_SECRET'),
+    #         access_token_url='https://graph.facebook.com/oauth/access_token',
+    #         access_token_params=None,
+    #         authorize_url='https://www.facebook.com/dialog/oauth',
+    #         authorize_params=None,
+    #         api_base_url='https://graph.facebook.com/',
+    #         client_kwargs={'scope': 'email public_profile'},
+    #     )
     
     return oauth
 
@@ -52,7 +54,7 @@ def get_oauth_providers():
     """
     providers = []
     
-    if os.getenv('GOOGLE_CLIENT_ID'):
+    if os.getenv('GOOGLE_CLIENT_ID') and os.getenv('GOOGLE_CLIENT_SECRET'):
         providers.append({
             'name': 'google',
             'display_name': 'Google',
@@ -60,13 +62,14 @@ def get_oauth_providers():
             'color': '#4285f4'
         })
     
-    if os.getenv('FACEBOOK_CLIENT_ID'):
-        providers.append({
-            'name': 'facebook',
-            'display_name': 'Facebook',
-            'icon': '📘',
-            'color': '#1877f2'
-        })
+    # Facebook disabled temporarily
+    # if os.getenv('FACEBOOK_CLIENT_ID') and os.getenv('FACEBOOK_CLIENT_SECRET'):
+    #     providers.append({
+    #         'name': 'facebook',
+    #         'display_name': 'Facebook',
+    #         'icon': '📘',
+    #         'color': '#1877f2'
+    #     })
     
     return providers
 
