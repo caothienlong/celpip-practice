@@ -137,7 +137,7 @@ class TestDataLoader:
             
             # For Part 3 (information type), dropdown comes BEFORE the text
             if test_type == 'information':
-                html += f'<select class="inline-dropdown" name="q{q_id}" data-question="{q_id}" required>'
+                html += f'<select class="inline-dropdown" name="q{q_id}" data-question="{q_id}">'
                 html += '<option value="" selected disabled>-- Select --</option>'
                 for idx, option in enumerate(question['options']):
                     html += f'<option value="{idx}">{option}</option>'
@@ -146,7 +146,7 @@ class TestDataLoader:
             else:
                 # Default: text comes before dropdown
                 html += f'<span class="question-label">{question["text"]}</span> '
-                html += f'<select class="inline-dropdown" name="q{q_id}" data-question="{q_id}" required>'
+                html += f'<select class="inline-dropdown" name="q{q_id}" data-question="{q_id}">'
                 html += '<option value="" selected disabled>-- Select --</option>'
                 for idx, option in enumerate(question['options']):
                     html += f'<option value="{idx}">{option}</option>'
