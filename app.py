@@ -306,7 +306,7 @@ def test_mode_part(test_num, skill, part_num):
     try:
         # Load test data
         test_data = data_loader.load_test_part(test_num, skill, part_num)
-        processed_data = prepare_test_data(test_data, skill, part_num)
+        processed_data = prepare_test_data(test_data, skill, part_num, require_answers=True)
         
         # Save current position in session
         test_key = f'exam_{test_num}'
@@ -525,7 +525,7 @@ def comprehensive_answer_key(test_num, skill):
         return jsonify({'error': str(e)}), 500
 
 
-def prepare_test_data(test_data, skill, part_num):
+def prepare_test_data(test_data, skill, part_num, require_answers=False):
     """
     Prepare test data for rendering
     
@@ -568,7 +568,8 @@ def prepare_test_data(test_data, skill, part_num):
         
         if questions_section:
             processed['questions_1_6_html'] = data_loader.build_question_dropdown_html(
-                questions_section['questions']
+                questions_section['questions'],
+                require_answers=require_answers
             )
         
         if response_section:
@@ -594,7 +595,8 @@ def prepare_test_data(test_data, skill, part_num):
         
         if questions_section:
             processed['questions_6_8_html'] = data_loader.build_question_dropdown_html(
-                questions_section['questions']
+                questions_section['questions'],
+                require_answers=require_answers
             )
     
     elif test_data['type'] == 'information':
@@ -611,7 +613,8 @@ def prepare_test_data(test_data, skill, part_num):
         if questions_section:
             processed['questions_html'] = data_loader.build_question_dropdown_html(
                 questions_section['questions'],
-                test_type='information'
+                test_type='information',
+                require_answers=require_answers
             )
     
     elif test_data['type'] == 'viewpoints':
@@ -627,7 +630,8 @@ def prepare_test_data(test_data, skill, part_num):
         
         if questions_section:
             processed['questions_html'] = data_loader.build_question_dropdown_html(
-                questions_section['questions']
+                questions_section['questions'],
+                require_answers=require_answers
             )
         
         if response_section:

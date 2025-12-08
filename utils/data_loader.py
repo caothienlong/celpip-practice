@@ -118,17 +118,19 @@ class TestDataLoader:
         
         return content
     
-    def build_question_dropdown_html(self, questions, test_type='default'):
+    def build_question_dropdown_html(self, questions, test_type='default', require_answers=False):
         """
         Build HTML for standalone questions with dropdowns
         
         Args:
             questions: List of question dictionaries
             test_type: Type of test ('information' for Part 3, 'default' for others)
+            require_answers: Whether to add 'required' attribute (True for Test Mode, False for Practice)
             
         Returns:
             str: HTML for questions
         """
+        required_attr = ' required' if require_answers else ''
         html = ''
         for question in questions:
             q_id = question['id']
@@ -137,8 +139,8 @@ class TestDataLoader:
             
             # For Part 3 (information type), dropdown comes BEFORE the text
             if test_type == 'information':
-                html += f'<select class="inline-dropdown" name="q{q_id}" data-question="{q_id}" required>'
-                html += '<option value="" selected disabled>-- Select --</option>'
+                html += f'<select class="inline-dropdown" name="q{q_id}" data-question="{q_id}"{required_attr}>'
+                html += '<option value="">-- Select --</option>'
                 for idx, option in enumerate(question['options']):
                     html += f'<option value="{idx}">{option}</option>'
                 html += '</select> '
@@ -146,8 +148,8 @@ class TestDataLoader:
             else:
                 # Default: text comes before dropdown
                 html += f'<span class="question-label">{question["text"]}</span> '
-                html += f'<select class="inline-dropdown" name="q{q_id}" data-question="{q_id}" required>'
-                html += '<option value="" selected disabled>-- Select --</option>'
+                html += f'<select class="inline-dropdown" name="q{q_id}" data-question="{q_id}"{required_attr}>'
+                html += '<option value="">-- Select --</option>'
                 for idx, option in enumerate(question['options']):
                     html += f'<option value="{idx}">{option}</option>'
                 html += '</select>'

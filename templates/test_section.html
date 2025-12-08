@@ -904,9 +904,9 @@
             {% endif %}
             
             {% if part_num < 4 %}
-            <button type="submit" form="testForm" class="nav-btn" id="nextBtn" style="border: none; cursor: pointer;">Next →</button>
+            <button onclick="navigateToNextPart()" class="nav-btn" id="nextBtn" style="border: none; cursor: pointer;">Next →</button>
             {% else %}
-            <button type="submit" form="testForm" class="nav-btn" style="border: none; cursor: pointer;">Finish</button>
+            <button onclick="navigateToNextPart()" class="nav-btn" style="border: none; cursor: pointer;">Finish</button>
             {% endif %}
         </div>
     </div>
@@ -1054,39 +1054,14 @@
             });
         });
         
-        // Handle form submission with HTML5 validation
-        document.addEventListener('DOMContentLoaded', function() {
-            const testForm = document.getElementById('testForm');
-            const testForm2 = document.getElementById('testForm2');
-            
-            if (testForm) {
-                testForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Check if testForm2 exists and validate it too
-                    if (testForm2) {
-                        // Check if testForm2 is valid
-                        if (!testForm2.checkValidity()) {
-                            // Focus on first invalid field in testForm2
-                            const firstInvalid = testForm2.querySelector(':invalid');
-                            if (firstInvalid) {
-                                firstInvalid.reportValidity();
-                                return;
-                            }
-                        }
-                    }
-                    
-                    // Both forms valid, save and navigate
-                    saveAnswersToSession();
-                    
-                    {% if part_num < 4 %}
-                    window.location.href = '/test/{{ test_num }}/{{ skill }}/part{{ part_num + 1 }}';
-                    {% else %}
-                    window.location.href = '/test/{{ test_num }}/{{ skill }}/answer-key';
-                    {% endif %}
-                });
-            }
-        });
+        // Handle navigation in Practice Mode (no validation required)
+        function navigateToNextPart() {
+            {% if part_num < 4 %}
+            window.location.href = '/test/{{ test_num }}/{{ skill }}/part{{ part_num + 1 }}';
+            {% else %}
+            window.location.href = '/test/{{ test_num }}/{{ skill }}/answer-key';
+            {% endif %}
+        }
     </script>
     
     <!-- Vocabulary Notes Feature -->
