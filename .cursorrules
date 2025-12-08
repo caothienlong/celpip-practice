@@ -1,0 +1,300 @@
+# 🤖 Cursor AI Assistant Rules for CELPIP Project
+
+## 🚨 CRITICAL GIT RULES (NEVER BREAK THESE)
+
+### ❌ ABSOLUTELY FORBIDDEN
+1. **NEVER commit directly to `main` or `master` branch**
+2. **NEVER push directly to `main` or `master` branch**
+3. **NEVER merge branches without user approval**
+4. **NEVER run `git push origin main` or `git push origin master`**
+5. **NEVER use `--force` or `--force-with-lease` on main/master**
+
+### ✅ ALWAYS DO THIS INSTEAD
+
+#### For ANY Code Changes:
+```bash
+# 1. Create a feature branch first
+git checkout -b feature/descriptive-name
+# or
+git checkout -b fix/bug-description
+# or
+git checkout -b docs/documentation-update
+
+# 2. Make your changes and commit
+git add -A
+git commit -m "descriptive commit message"
+
+# 3. Push to the feature branch (NOT main)
+git push origin feature/descriptive-name
+
+# 4. Let the USER create the Pull Request
+# DO NOT merge, let user review and merge
+```
+
+#### Branch Naming Conventions:
+- `feature/` - New features (e.g., `feature/oauth-login`)
+- `fix/` - Bug fixes (e.g., `fix/scoring-calculation`)
+- `docs/` - Documentation only (e.g., `docs/update-readme`)
+- `refactor/` - Code refactoring (e.g., `refactor/user-data-structure`)
+- `test/` - Test additions/changes (e.g., `test/add-unit-tests`)
+- `chore/` - Maintenance tasks (e.g., `chore/update-dependencies`)
+
+---
+
+## 📝 Commit Message Standards
+
+### Format:
+```
+<type>: <short description>
+
+<optional detailed explanation>
+
+<optional footer>
+```
+
+### Types:
+- `feat:` - New feature
+- `fix:` - Bug fix
+- `docs:` - Documentation only
+- `style:` - Formatting, missing semicolons, etc
+- `refactor:` - Code restructuring
+- `test:` - Adding tests
+- `chore:` - Maintenance tasks
+
+### Examples:
+```
+feat: Add Google OAuth login functionality
+
+fix: Correct scoring calculation for reading tests
+
+docs: Update deployment guide with OAuth setup
+
+refactor: Move user data to folder-per-user structure
+```
+
+---
+
+## 🔒 Security Rules
+
+### ❌ NEVER Commit These:
+- `.env` files (should be in `.gitignore`)
+- API keys or secrets
+- OAuth client secrets
+- Database passwords
+- Private keys
+- User data files
+
+### ✅ ALWAYS Check:
+- Secrets are in `.gitignore`
+- `.env.example` exists (without real secrets)
+- User data folder (`users/`) is gitignored
+- No hardcoded credentials in code
+
+---
+
+## 📁 File Management Rules
+
+### When Creating New Files:
+1. ✅ Check if file should be in `.gitignore`
+2. ✅ Use appropriate file structure
+3. ✅ Add documentation if needed
+
+### When Deleting Files:
+1. ✅ Ask user for confirmation first
+2. ✅ Explain impact of deletion
+3. ✅ Suggest alternatives if applicable
+
+### When Modifying Files:
+1. ✅ Read file first before editing
+2. ✅ Preserve existing formatting
+3. ✅ Test changes if possible
+
+---
+
+## 🧪 Testing Requirements
+
+### Before Committing:
+1. ✅ Ensure code runs without errors
+2. ✅ Check for linter errors if applicable
+3. ✅ Verify no breaking changes
+4. ✅ Test OAuth flow if authentication code changed
+5. ✅ Test both guest and authenticated modes
+
+---
+
+## 📚 Documentation Rules
+
+### When Adding Features:
+1. ✅ Update relevant documentation files
+2. ✅ Add code comments for complex logic
+3. ✅ Update README.md if user-facing
+4. ✅ Update CHANGELOG.md for significant changes
+
+### When Fixing Bugs:
+1. ✅ Document the fix in commit message
+2. ✅ Add troubleshooting section if applicable
+
+---
+
+## 🚀 Deployment Considerations
+
+### Before Suggesting Deployment:
+1. ✅ Ensure all dependencies in `requirements.txt`
+2. ✅ Check environment variables are documented
+3. ✅ Verify `.gitignore` is correct
+4. ✅ Test locally first
+5. ✅ Consider backward compatibility
+
+### When Updating Dependencies:
+1. ✅ Test locally after update
+2. ✅ Check for breaking changes
+3. ✅ Update documentation if needed
+4. ✅ Consider Python version compatibility
+
+---
+
+## 💬 Communication Rules
+
+### When Suggesting Changes:
+1. ✅ Explain WHY, not just WHAT
+2. ✅ Provide context and reasoning
+3. ✅ Suggest alternatives when possible
+4. ✅ Highlight potential risks
+
+### When User Says "Don't Do X":
+1. ✅ Remember it for entire session
+2. ✅ Add it to these rules if critical
+3. ✅ Never do X again without explicit permission
+
+---
+
+## 🎯 Project-Specific Rules
+
+### CELPIP Practice Platform:
+
+#### User Data:
+- All user data in `users/{username}/` folder
+- Each user has `profile.json` and `test_history.json`
+- Never commit user data to Git
+
+#### OAuth:
+- Google and Facebook OAuth supported
+- Environment variables in `.env` (local) or Render (production)
+- Never commit OAuth secrets
+
+#### Test Content:
+- Tests in `data/test_X/skill/partY.json`
+- Follow existing JSON structure
+- Validate JSON before committing
+
+#### Templates:
+- Jinja2 templates in `templates/`
+- Keep CELPIP-style UI consistent
+- Test both Practice and Test modes
+
+---
+
+## 🔧 Development Workflow
+
+### Standard Workflow:
+```bash
+# 1. Always start from main
+git checkout main
+git pull origin main
+
+# 2. Create feature branch
+git checkout -b feature/your-feature
+
+# 3. Make changes, test locally
+python app.py  # Test at http://127.0.0.1:5000
+
+# 4. Commit changes
+git add -A
+git commit -m "feat: Your feature description"
+
+# 5. Push to feature branch
+git push origin feature/your-feature
+
+# 6. User creates PR and merges
+```
+
+### For Urgent Fixes:
+```bash
+# Still use a branch (e.g., hotfix/critical-bug)
+git checkout -b hotfix/critical-bug
+# ... make changes ...
+git push origin hotfix/critical-bug
+# User can merge faster, but still review
+```
+
+---
+
+## 📋 Pre-Commit Checklist
+
+Before every commit, verify:
+- [ ] No `.env` file in commit
+- [ ] No user data in commit
+- [ ] No API keys or secrets
+- [ ] Code tested locally
+- [ ] Commit message is descriptive
+- [ ] On a feature branch (not main/master)
+- [ ] Changes are focused (one feature/fix per branch)
+
+---
+
+## 🚫 What to Do If Rules Are Broken
+
+If you accidentally:
+1. Commit to main → `git reset --soft HEAD~1` then create branch
+2. Include secrets → Remove commit, update `.gitignore`, recommit
+3. Break something → Create fix branch immediately
+
+**ALWAYS tell the user what happened and how to fix it!**
+
+---
+
+## 🎓 Learning from Mistakes
+
+### Past Mistakes to Never Repeat:
+1. ❌ Pushed to main directly (2025-12-08) - NEVER AGAIN
+2. ❌ (Add more as they occur)
+
+### Lessons Learned:
+1. ✅ Always create feature branch first
+2. ✅ User controls merging to main
+3. ✅ (Add more as we learn)
+
+---
+
+## 📞 When In Doubt
+
+### Ask the User:
+- "Should I create a new branch for this?"
+- "Is it OK to modify this file?"
+- "Should this be in .gitignore?"
+- "Do you want to review before I push?"
+
+### Better to Ask Than Assume!
+
+---
+
+## 🎯 Summary
+
+**Golden Rules:**
+1. 🚨 **NEVER touch main/master directly**
+2. 🌿 **ALWAYS use feature branches**
+3. 🔒 **NEVER commit secrets**
+4. 📝 **ALWAYS write clear commit messages**
+5. 🧪 **TEST before committing**
+6. 💬 **COMMUNICATE clearly with user**
+
+---
+
+**Last Updated:** December 8, 2025  
+**Version:** 1.0  
+**Status:** Active ✅
+
+---
+
+*These rules are mandatory for all AI assistant interactions with this repository.*
+
