@@ -37,13 +37,14 @@ def init_auth(app, results_tracker):
     login_manager.init_app(app)
     login_manager.login_view = 'login'
     login_manager.login_message = 'Please log in to access this page.'
+    login_manager.session_protection = 'strong'  # Stronger session protection
     
     @login_manager.user_loader
     def load_user(user_id):
         """Load user from user_id (email)"""
         try:
             profile = results_tracker.get_user_profile(user_id)
-            if profile:
+            if profile and profile.get('email'):
                 return User(
                     user_id=profile['email'],
                     email=profile['email'],

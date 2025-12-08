@@ -16,6 +16,12 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY', secrets.token_hex(32))
 
+# Session configuration for proper logout
+app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+app.config['SESSION_COOKIE_SECURE'] = False  # Set to True in production with HTTPS
+app.config['PERMANENT_SESSION_LIFETIME'] = 86400  # 24 hours
+app.config['SESSION_REFRESH_EACH_REQUEST'] = True
+
 # Initialize data loader and results tracker
 data_loader = TestDataLoader(data_dir='data')
 results_tracker = ResultsTracker(users_dir='users')
@@ -108,23 +114,29 @@ def oauth_callback(provider):
 @app.route('/logout')
 def logout():
     """Logout user and clear all session data"""
+    # Get all session keys to clear
+    session_keys = list(session.keys())
+    
     # Logout Flask-Login user
     logout_user()
     
-    # Store items we want to preserve (if any)
-    # Currently we want to clear everything
+    # Clear each session key explicitly
+    for key in session_keys:
+        session.pop(key, None)
     
-    # Clear all session data
+    # Also clear the entire session
     session.clear()
     
-    # Force session to be marked as modified
-    session.modified = True
-    
-    # Redirect with cache control to prevent back button issues
+    # Create response with cache busting
     response = redirect(url_for('index'))
-    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    
+    # Prevent caching
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate, private'
     response.headers['Pragma'] = 'no-cache'
     response.headers['Expires'] = '0'
+    
+    # Delete session cookie explicitly
+    response.set_cookie('session', '', expires=0, max_age=0)
     
     return response
 
