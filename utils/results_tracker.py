@@ -54,6 +54,10 @@ class ResultsTracker:
         """Get test_history.json path for user"""
         return os.path.join(self._get_user_folder(email), 'test_history.json')
     
+    def _get_vocabulary_notes_path(self, email: str) -> str:
+        """Get vocabulary_notes.json path for user"""
+        return os.path.join(self._get_user_folder(email), 'vocabulary_notes.json')
+    
     def _load_user_profile(self, email: str) -> Dict:
         """Load user profile data"""
         profile_path = self._get_profile_path(email)
@@ -332,3 +336,207 @@ class ResultsTracker:
         profile = self._load_user_profile(user_email)
         profile['role'] = role
         self._save_user_profile(user_email, profile)
+    
+    # ==================== Vocabulary Notes Methods ====================
+    
+    def _load_vocabulary_notes(self, email: str) -> Dict:
+        """Load vocabulary notes data"""
+        notes_path = self._get_vocabulary_notes_path(email)
+        
+        try:
+            if os.path.exists(notes_path):
+                with open(notes_path, 'r') as f:
+                    return json.load(f)
+            else:
+                # Return empty notes structure
+                return {'tests': {}}
+        except Exception as e:
+            print(f"Error loading vocabulary notes for {email}: {e}")
+            return {'tests': {}}
+    
+    def _save_vocabulary_notes(self, email: str, notes: Dict):
+        """Save vocabulary notes data"""
+        user_folder = self._get_user_folder(email)
+        os.makedirs(user_folder, exist_ok=True)
+        
+        notes_path = self._get_vocabulary_notes_path(email)
+        try:
+            with open(notes_path, 'w') as f:
+                json.dump(notes, f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            print(f"Error saving vocabulary notes for {email}: {e}")
+    
+    def save_vocabulary_note(self, 
+                            user_email: str,
+                            test_num: int,
+                            skill: str,
+                            part_num: int,
+                            word: str,
+                            definition: str,
+                            context: str = ''):
+        """
+        Save a vocabulary note
+        
+        Args:
+            user_email: User's email address
+            test_num: Test number (1, 2, 3, etc.)
+            skill: Skill name (reading, writing, listening, speaking)
+            part_num: Part number within the skill
+            word: The vocabulary word or phrase
+            definition: User's definition/note
+            context: Optional context from the passage
+        
+        Returns:
+            note_id: Unique identifier for the note
+        """
+        notes = self._load_vocabulary_notes(user_email)
+        test_key = f'test_{test_num}'
+        skill_key = f'{skill}_part_{part_num}'
+        
+        # Initialize structure if not exists
+        if test_key not in notes['tests']:
+            notes['tests'][test_key] = {}
+        if skill_key not in notes['tests'][test_key]:
+            notes['tests'][test_key][skill_key] = []
+        
+        # Generate note ID (timestamp-based)
+        note_id = f"{test_num}_{skill}_{part_num}_{datetime.now().strftime('%Y%m%d%H%M%S%f')}"
+        
+        # Create note
+        note = {
+            'note_id': note_id,
+            'word': word.strip(),
+            'definition': definition.strip(),
+            'context': context.strip(),
+            'created_at': datetime.now().isoformat(),
+            'test_num': test_num,
+            'skill': skill,
+            'part_num': part_num
+        }
+        
+        # Add note
+        notes['tests'][test_key][skill_key].append(note)
+        
+        # Save
+        self._save_vocabulary_notes(user_email, notes)
+        
+        return note_id
+    
+    def get_vocabulary_notes(self, 
+                            user_email: str,
+                            test_num: Optional[int] = None,
+                            skill: Optional[str] = None,
+                            part_num: Optional[int] = None) -> List[Dict]:
+        """
+        Get vocabulary notes with optional filtering
+        
+        Args:
+            user_email: User's email address
+            test_num: Optional test number filter
+            skill: Optional skill filter
+            part_num: Optional part number filter
+        
+        Returns:
+            List of vocabulary notes matching the filters
+        """
+        notes = self._load_vocabulary_notes(user_email)
+        all_notes = []
+        
+        for test_key, test_data in notes.get('tests', {}).items():
+            for skill_key, note_list in test_data.items():
+                all_notes.extend(note_list)
+        
+        # Apply filters
+        filtered_notes = all_notes
+        
+        if test_num is not None:
+            filtered_notes = [n for n in filtered_notes if n.get('test_num') == test_num]
+        
+        if skill is not None:
+            filtered_notes = [n for n in filtered_notes if n.get('skill') == skill]
+        
+        if part_num is not None:
+            filtered_notes = [n for n in filtered_notes if n.get('part_num') == part_num]
+        
+        # Sort by created_at (newest first)
+        filtered_notes.sort(key=lambda x: x.get('created_at', ''), reverse=True)
+        
+        return filtered_notes
+    
+    def delete_vocabulary_note(self, user_email: str, note_id: str) -> bool:
+        """
+        Delete a vocabulary note
+        
+        Args:
+            user_email: User's email address
+            note_id: ID of the note to delete
+        
+        Returns:
+            True if deleted, False if not found
+        """
+        notes = self._load_vocabulary_notes(user_email)
+        deleted = False
+        
+        # Search for and remove the note
+        for test_key, test_data in notes.get('tests', {}).items():
+            for skill_key, note_list in test_data.items():
+                for i, note in enumerate(note_list):
+                    if note.get('note_id') == note_id:
+                        del note_list[i]
+                        deleted = True
+                        break
+                if deleted:
+                    break
+            if deleted:
+                break
+        
+        if deleted:
+            self._save_vocabulary_notes(user_email, notes)
+        
+        return deleted
+    
+    def update_vocabulary_note(self, 
+                              user_email: str,
+                              note_id: str,
+                              word: Optional[str] = None,
+                              definition: Optional[str] = None,
+                              context: Optional[str] = None) -> bool:
+        """
+        Update a vocabulary note
+        
+        Args:
+            user_email: User's email address
+            note_id: ID of the note to update
+            word: Optional new word
+            definition: Optional new definition
+            context: Optional new context
+        
+        Returns:
+            True if updated, False if not found
+        """
+        notes = self._load_vocabulary_notes(user_email)
+        updated = False
+        
+        # Search for and update the note
+        for test_key, test_data in notes.get('tests', {}).items():
+            for skill_key, note_list in test_data.items():
+                for note in note_list:
+                    if note.get('note_id') == note_id:
+                        if word is not None:
+                            note['word'] = word.strip()
+                        if definition is not None:
+                            note['definition'] = definition.strip()
+                        if context is not None:
+                            note['context'] = context.strip()
+                        note['updated_at'] = datetime.now().isoformat()
+                        updated = True
+                        break
+                if updated:
+                    break
+            if updated:
+                break
+        
+        if updated:
+            self._save_vocabulary_notes(user_email, notes)
+        
+        return updated

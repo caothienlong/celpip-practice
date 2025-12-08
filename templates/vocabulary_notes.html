@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Notes - Test {{ test_num }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .stats {
+            background: #f0f0f0;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-edit {
+            background: #ffc107;
+            color: #333;
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+
+        .btn-edit:hover {
+            background: #e0a800;
+        }
+        
+        .btn-save {
+            background: #28a745;
+            color: white;
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+        
+        .btn-save:hover {
+            background: #218838;
+        }
+        
+        .btn-cancel {
+            background: #6c757d;
+            color: white;
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+        
+        .btn-cancel:hover {
+            background: #5a6268;
+        }
+
+        .empty-state {
+            background: white;
+            padding: 60px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .empty-state h2 {
+            color: #666;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .empty-state p {
+            color: #999;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .part-section {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        .part-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .part-title {
+            font-size: 20px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .part-count {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .note-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            position: relative;
+        }
+        
+        .note-card.editing {
+            background: #fff9e6;
+            border-left: 4px solid #ffc107;
+        }
+
+        .note-word {
+            font-size: 18px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .edit-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .edit-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .edit-label.required:after {
+            content: ' *';
+            color: #dc3545;
+        }
+        
+        .edit-input:focus {
+            outline: none;
+            border-color: #5568d3;
+        }
+
+        .note-definition {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .edit-textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 10px;
+            min-height: 80px;
+            resize: vertical;
+            font-family: inherit;
+            line-height: 1.6;
+        }
+        
+        .edit-textarea:focus {
+            outline: none;
+            border-color: #5568d3;
+        }
+
+        .note-context {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border-left: 3px solid #ffc107;
+        }
+
+        .note-meta {
+            font-size: 11px;
+            color: #999;
+            margin-top: 10px;
+        }
+
+        .note-actions {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .notes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .header-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div>
+                <a href="{{ back_url }}" class="back-link">
+                    ← {{ back_text }}
+                </a>
+                <h1>📚 Vocabulary Notes</h1>
+            </div>
+            <div class="header-actions">
+                <span class="stats">📝 Total Notes: {{ total_notes }}</span>
+            </div>
+        </div>
+
+        {% if total_notes == 0 %}
+            <!-- Empty State -->
+            <div class="empty-state">
+                <h2>📝 No Vocabulary Notes Yet</h2>
+                <p>Start taking notes while practicing to build your vocabulary!</p>
+                <a href="{{ url_for('test_detail', test_num=test_num) }}" class="btn btn-primary">
+                    Go to Test {{ test_num }}
+                </a>
+            </div>
+        {% else %}
+            <!-- Notes by Part -->
+            {% for part_key, part_data in notes_by_part.items() %}
+                <div class="part-section">
+                    <div class="part-header">
+                        <h2 class="part-title">
+                            📖 {{ part_data.skill|title }} - Part {{ part_data.part_num }}
+                        </h2>
+                        <span class="part-count">{{ part_data.notes|length }} notes</span>
+                    </div>
+
+                    <div class="notes-grid">
+                        {% for note in part_data.notes %}
+                            <div class="note-card" id="note-{{ note.note_id }}" data-note-id="{{ note.note_id }}">
+                                <!-- Display Mode -->
+                                <div class="display-mode">
+                                    <div class="note-word" data-word="{{ note.word }}">{{ note.word }}</div>
+                                    <div class="note-definition" data-definition="{{ note.definition }}">{{ note.definition }}</div>
+                                    
+                                    {% if note.context %}
+                                        <div class="note-context" data-context="{{ note.context }}">
+                                            "{{ note.context }}"
+                                        </div>
+                                    {% else %}
+                                        <div class="note-context" data-context="" style="display: none;">
+                                            ""
+                                        </div>
+                                    {% endif %}
+
+                                    <div class="note-meta">
+                                        Added: {{ note.created_at[:10] }} {{ note.created_at[11:16] }}
+                                        {% if note.updated_at %}
+                                            | Updated: {{ note.updated_at[:10] }}
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="note-actions">
+                                        <button class="btn btn-edit" onclick="startEdit('{{ note.note_id }}')">
+                                            ✏️ Edit
+                                        </button>
+                                        <button class="btn btn-danger" onclick="deleteNote('{{ note.note_id }}')">
+                                            🗑️ Delete
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Edit Mode (hidden by default) -->
+                                <div class="edit-mode" style="display: none;">
+                                    <label class="edit-label required">Word or Phrase</label>
+                                    <input type="text" class="edit-input edit-word" placeholder="e.g., gregarious">
+                                    
+                                    <label class="edit-label required">Your Definition/Note</label>
+                                    <textarea class="edit-textarea edit-definition" placeholder="Write your understanding or translation here..."></textarea>
+                                    
+                                    <label class="edit-label">Context from Passage (Optional)</label>
+                                    <textarea class="edit-textarea edit-context" placeholder="Copy relevant text from the passage here..."></textarea>
+                                    
+                                    <div class="note-actions">
+                                        <button class="btn btn-save" onclick="saveEdit('{{ note.note_id }}')">
+                                            ✓ Save
+                                        </button>
+                                        <button class="btn btn-cancel" onclick="cancelEdit('{{ note.note_id }}')">
+                                            ✕ Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <script>
+        function startEdit(noteId) {
+            const noteCard = document.getElementById(`note-${noteId}`);
+            const displayMode = noteCard.querySelector('.display-mode');
+            const editMode = noteCard.querySelector('.edit-mode');
+            
+            // Get current values
+            const word = noteCard.querySelector('.note-word').dataset.word;
+            const definition = noteCard.querySelector('.note-definition').dataset.definition;
+            const context = noteCard.querySelector('.note-context').dataset.context;
+            
+            // Populate edit fields
+            editMode.querySelector('.edit-word').value = word;
+            editMode.querySelector('.edit-definition').value = definition;
+            editMode.querySelector('.edit-context').value = context || '';
+            
+            // Switch modes
+            displayMode.style.display = 'none';
+            editMode.style.display = 'block';
+            noteCard.classList.add('editing');
+            
+            // Focus on word input
+            editMode.querySelector('.edit-word').focus();
+        }
+        
+        function cancelEdit(noteId) {
+            const noteCard = document.getElementById(`note-${noteId}`);
+            const displayMode = noteCard.querySelector('.display-mode');
+            const editMode = noteCard.querySelector('.edit-mode');
+            
+            // Switch back to display mode
+            displayMode.style.display = 'block';
+            editMode.style.display = 'none';
+            noteCard.classList.remove('editing');
+        }
+        
+        function saveEdit(noteId) {
+            const noteCard = document.getElementById(`note-${noteId}`);
+            const editMode = noteCard.querySelector('.edit-mode');
+            
+            const newWord = editMode.querySelector('.edit-word').value.trim();
+            const newDefinition = editMode.querySelector('.edit-definition').value.trim();
+            const newContext = editMode.querySelector('.edit-context').value.trim();
+            
+            if (!newWord || !newDefinition) {
+                showToast('Please fill in word and definition', 'error');
+                return;
+            }
+            
+            // Disable buttons during save
+            const saveBtn = editMode.querySelector('.btn-save');
+            const cancelBtn = editMode.querySelector('.btn-cancel');
+            saveBtn.disabled = true;
+            cancelBtn.disabled = true;
+            saveBtn.textContent = 'Saving...';
+            
+            fetch('/update_vocabulary_note', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    note_id: noteId,
+                    word: newWord,
+                    definition: newDefinition,
+                    context: newContext
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // Update display mode with new values
+                    noteCard.querySelector('.note-word').textContent = newWord;
+                    noteCard.querySelector('.note-word').dataset.word = newWord;
+                    
+                    noteCard.querySelector('.note-definition').textContent = newDefinition;
+                    noteCard.querySelector('.note-definition').dataset.definition = newDefinition;
+                    
+                    const contextEl = noteCard.querySelector('.note-context');
+                    if (newContext) {
+                        contextEl.textContent = `"${newContext}"`;
+                        contextEl.dataset.context = newContext;
+                        contextEl.style.display = 'block';
+                    } else {
+                        contextEl.textContent = '""';
+                        contextEl.dataset.context = '';
+                        contextEl.style.display = 'none';
+                    }
+                    
+                    // Reset buttons before switching modes
+                    saveBtn.disabled = false;
+                    cancelBtn.disabled = false;
+                    saveBtn.textContent = '✓ Save';
+                    
+                    // Switch back to display mode
+                    cancelEdit(noteId);
+                    
+                    showToast('Note updated successfully', 'success');
+                } else {
+                    // Re-enable buttons on error
+                    saveBtn.disabled = false;
+                    cancelBtn.disabled = false;
+                    saveBtn.textContent = '✓ Save';
+                    showToast('Error: ' + (data.error || 'Failed to update'), 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error updating note:', error);
+                // Re-enable buttons on error
+                saveBtn.disabled = false;
+                cancelBtn.disabled = false;
+                saveBtn.textContent = '✓ Save';
+                showToast('Failed to update note. Please try again.', 'error');
+            });
+        }
+        
+        function showToast(message, type) {
+            // Remove existing toast
+            const existing = document.querySelector('.toast');
+            if (existing) existing.remove();
+            
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            toast.style.position = 'fixed';
+            toast.style.bottom = '20px';
+            toast.style.right = '20px';
+            toast.style.padding = '12px 20px';
+            toast.style.borderRadius = '8px';
+            toast.style.color = 'white';
+            toast.style.fontWeight = '600';
+            toast.style.zIndex = '10000';
+            toast.style.animation = 'slideInRight 0.3s ease';
+            toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            
+            if (type === 'success') {
+                toast.style.background = '#28a745';
+            } else {
+                toast.style.background = '#dc3545';
+            }
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+        
+        function deleteNote(noteId) {
+            if (!confirm('Are you sure you want to delete this note?')) {
+                return;
+            }
+
+            fetch('/delete_vocabulary_note', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ note_id: noteId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Remove the note card from DOM
+                    const noteCard = document.getElementById(`note-${noteId}`);
+                    if (noteCard) {
+                        noteCard.style.transition = 'all 0.3s';
+                        noteCard.style.opacity = '0';
+                        noteCard.style.transform = 'scale(0.9)';
+                        setTimeout(() => {
+                            noteCard.remove();
+                            // Reload if no notes left in section
+                            location.reload();
+                        }, 300);
+                    }
+                } else {
+                    showToast('Error: ' + (data.error || 'Failed to delete'), 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showToast('Failed to delete note', 'error');
+            });
+        }
+    </script>
+</body>
+</html>
+

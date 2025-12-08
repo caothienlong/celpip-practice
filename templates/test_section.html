@@ -471,7 +471,7 @@
         
         .back-btn {
             display: inline-block;
-            background: #6c757d;
+            /* background: #6c757d; */
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
@@ -508,6 +508,241 @@
             .content-grid {
                 grid-template-columns: 1fr;
             }
+        }
+        
+        /* Vocabulary Notes Section */
+        .vocab-sidebar {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border-radius: 15px 0 0 15px;
+            box-shadow: -4px 0 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            width: 60px;
+            height: 180px;
+        }
+        
+        .vocab-sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            text-decoration: none;
+            color: inherit;
+            border-bottom: 1px solid #f0f0f0;
+            width: 60px;
+            height: 60px;
+            overflow: visible;
+            position: absolute;
+            right: 0;
+            background: white;
+        }
+        
+        .vocab-sidebar-item:first-child {
+            border-radius: 15px 0 0 0;
+        }
+        
+        .vocab-sidebar-item.back-btn:hover {
+            border-radius: 15px 0 0 0;
+        }
+        
+        .vocab-sidebar-item:last-child {
+            border-bottom: none;
+            border-radius: 0 0 0 15px;
+        }
+        
+        .vocab-sidebar-item.add-note:hover {
+            border-radius: 0 0 0 15px;
+        }
+        
+        .vocab-sidebar-item:hover {
+            background: #f8f9fa;
+            width: 240px;
+            box-shadow: -4px 0 12px rgba(0,0,0,0.2);
+            z-index: 1001;
+        }
+        
+        .vocab-icon {
+            font-size: 24px;
+            min-width: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .vocab-text {
+            margin-left: 12px;
+            font-weight: 600;
+            font-size: 0.9em;
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .vocab-sidebar-item:hover .vocab-text {
+            max-width: 200px;
+            opacity: 1;
+            display: inline-block;
+        }
+        
+        .vocab-sidebar-item.back-btn {
+            color: #0066cc;
+            top: -20px;
+        }
+        
+        .vocab-sidebar-item.view-all {
+            color: #0066cc;
+            top: 60px;
+        }
+        
+        .vocab-sidebar-item.add-note {
+            color: #0066cc;
+            top: 120px;
+        }
+        
+        .vocab-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            z-index: 2000;
+            pointer-events: none;
+        }
+        
+        .vocab-modal.active {
+            display: block;
+            pointer-events: auto;
+        }
+        
+        .vocab-modal-content {
+            position: fixed;
+            right: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 500px;
+            max-width: calc(50vw - 100px);
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+            box-shadow: -4px 0 40px rgba(0,0,0,0.3);
+            animation: slideInFromRight 0.3s ease;
+            z-index: 2001;
+            pointer-events: auto;
+        }
+        
+        @keyframes slideInFromRight {
+            from {
+                transform: translateY(-50%) translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(-50%) translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .vocab-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .vocab-modal-header h3 {
+            color: #333;
+            font-size: 1.4em;
+        }
+        
+        .vocab-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.2s;
+        }
+        
+        .vocab-close-btn:hover {
+            color: #333;
+        }
+        
+        .vocab-form-group {
+            margin-bottom: 20px;
+        }
+        
+        .vocab-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+        
+        .vocab-form-group input,
+        .vocab-form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.95em;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        
+        .vocab-form-group input:focus,
+        .vocab-form-group textarea:focus {
+            outline: none;
+            border-color: #ffc107;
+        }
+        
+        .vocab-form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .vocab-form-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        
+        .vocab-save-btn,
+        .vocab-cancel-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        
+        .vocab-save-btn {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .vocab-save-btn:hover {
+            background: #e0a800;
+        }
+        
+        .vocab-cancel-btn {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .vocab-cancel-btn:hover {
+            background: #5a6268;
         }
     </style>
 </head>
@@ -669,14 +904,10 @@
             {% endif %}
             
             {% if part_num < 4 %}
-            <button onclick="validateAndNavigate('/test/{{ test_num }}/{{ skill }}/part{{ part_num + 1 }}')" class="nav-btn" id="nextBtn" style="border: none; cursor: pointer;">Next →</button>
+            <button onclick="navigateToNextPart()" class="nav-btn" id="nextBtn" style="border: none; cursor: pointer;">Next →</button>
             {% else %}
-            <button onclick="validateAndNavigate('/test/{{ test_num }}/{{ skill }}/answer-key')" class="nav-btn" style="border: none; cursor: pointer;">Finish</button>
+            <button onclick="navigateToNextPart()" class="nav-btn" style="border: none; cursor: pointer;">Finish</button>
             {% endif %}
-        </div>
-        
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="/test/{{ test_num }}" class="back-btn">← Back to Test {{ test_num }} Overview</a>
         </div>
     </div>
 
@@ -823,47 +1054,158 @@
             });
         });
         
-        // Validation function
-        function validateAndNavigate(url) {
-            // Check dropdowns in BOTH testForm and testForm2
-            const allDropdowns = document.querySelectorAll('#testForm .inline-dropdown, #testForm2 .inline-dropdown');
-            const unansweredDropdowns = [];
-            
-            allDropdowns.forEach(dropdown => {
-                // Check if dropdown is selected (either has answered class or selected class)
-                const isAnswered = dropdown.classList.contains('answered') || 
-                                   dropdown.classList.contains('selected') ||
-                                   dropdown.value !== '' && dropdown.value !== undefined;
-                
-                if (!isAnswered) {
-                    unansweredDropdowns.push(dropdown.name || dropdown.dataset.question);
-                }
-            });
-            
-            if (unansweredDropdowns.length > 0) {
-                alert(`Please answer all questions before continuing.\n\nUnanswered: ${unansweredDropdowns.length} question(s)`);
-                
-                // Highlight first unanswered dropdown
-                const firstUnanswered = allDropdowns[Array.from(allDropdowns).findIndex(d => {
-                    return !(d.classList.contains('answered') || d.classList.contains('selected') || (d.value !== '' && d.value !== undefined));
-                })];
-                
-                if (firstUnanswered) {
-                    firstUnanswered.style.border = '2px solid red';
-                    firstUnanswered.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    
-                    // Remove highlight after 3 seconds
-                    setTimeout(() => {
-                        firstUnanswered.style.border = '';
-                    }, 3000);
-                }
-                
-                return false;
-            }
-            
-            // All answered, navigate
-            window.location.href = url;
+        // Handle navigation in Practice Mode (no validation required)
+        function navigateToNextPart() {
+            {% if part_num < 4 %}
+            window.location.href = '/test/{{ test_num }}/{{ skill }}/part{{ part_num + 1 }}';
+            {% else %}
+            window.location.href = '/test/{{ test_num }}/{{ skill }}/answer-key';
+            {% endif %}
         }
     </script>
+    
+    <!-- Vocabulary Notes Feature -->
+    {% if current_user and current_user.is_authenticated %}
+    <!-- Floating Sidebar with Icons -->
+    <div class="vocab-sidebar">
+        <a href="/test/{{ test_num }}" class="vocab-sidebar-item back-btn" title="Back to Test Overview">
+            <span class="vocab-icon">⬅️</span>
+            <span class="vocab-text">Back to Test {{ test_num }}</span>
+        </a>
+        <a href="/test/{{ test_num }}/vocabulary" class="vocab-sidebar-item view-all" title="View All Vocabulary">
+            <span class="vocab-icon">📚</span>
+            <span class="vocab-text">View All Vocabulary</span>
+        </a>
+        <div class="vocab-sidebar-item add-note" onclick="openVocabModal()" title="Add Vocabulary Note">
+            <span class="vocab-icon">✏️</span>
+            <span class="vocab-text">Add Vocabulary Note</span>
+        </div>
+    </div>
+    
+    <!-- Vocabulary Notes Modal -->
+    <div class="vocab-modal" id="vocabModal">
+        <div class="vocab-modal-content">
+            <div class="vocab-modal-header">
+                <h3>📚 Add Vocabulary Note</h3>
+                <button class="vocab-close-btn" onclick="closeVocabModal()">&times;</button>
+            </div>
+            <form id="vocabForm">
+                <div class="vocab-form-group">
+                    <label for="vocabWord">Word or Phrase *</label>
+                    <input type="text" id="vocabWord" placeholder="e.g., gregarious" required>
+                </div>
+                <div class="vocab-form-group">
+                    <label for="vocabDefinition">Your Definition/Note *</label>
+                    <textarea id="vocabDefinition" placeholder="Write your understanding or translation here..." required></textarea>
+                </div>
+                <div class="vocab-form-group">
+                    <label for="vocabContext">Context from Passage (Optional)</label>
+                    <textarea id="vocabContext" placeholder="Copy the sentence where you found this word..."></textarea>
+                </div>
+                <div class="vocab-form-actions">
+                    <button type="button" class="vocab-cancel-btn" onclick="closeVocabModal()">Cancel</button>
+                    <button type="submit" class="vocab-save-btn">💾 Save Note</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Vocabulary Notes JavaScript
+        function openVocabModal() {
+            document.getElementById('vocabModal').classList.add('active');
+        }
+        
+        function closeVocabModal() {
+            document.getElementById('vocabModal').classList.remove('active');
+            // Clear form
+            document.getElementById('vocabForm').reset();
+        }
+        
+        // Close modal when clicking on the dark overlay (not the modal content)
+        document.getElementById('vocabModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVocabModal();
+            }
+        });
+        
+        // Handle form submission
+        document.getElementById('vocabForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const word = document.getElementById('vocabWord').value.trim();
+            const definition = document.getElementById('vocabDefinition').value.trim();
+            const context = document.getElementById('vocabContext').value.trim();
+            
+            if (!word || !definition) {
+                alert('Please fill in word and definition');
+                return;
+            }
+            
+            // Save note via API
+            fetch('/save_vocabulary_note', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    test_num: {{ test_num }},
+                    skill: '{{ skill }}',
+                    part_num: {{ part_num }},
+                    word: word,
+                    definition: definition,
+                    context: context
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Show success message (toast notification)
+                    const successMsg = document.createElement('div');
+                    successMsg.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #28a745; color: white; padding: 15px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 3000; animation: slideInRight 0.3s ease;';
+                    successMsg.innerHTML = '✅ Vocabulary note saved!';
+                    document.body.appendChild(successMsg);
+                    
+                    // Remove after 3 seconds
+                    setTimeout(() => {
+                        successMsg.style.animation = 'fadeOut 0.3s ease';
+                        setTimeout(() => successMsg.remove(), 300);
+                    }, 3000);
+                    
+                    closeVocabModal();
+                } else {
+                    alert('❌ Error: ' + (data.error || 'Failed to save note'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('❌ Failed to save vocabulary note');
+            });
+        });
+        
+        // Add CSS animation for success message
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+            @keyframes fadeInUp {
+                from { transform: translateY(10px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+    {% else %}
+    <!-- Guest mode - only show back button in sidebar -->
+    <script>
+        // Guest users already have sidebar with back button only (no vocab features)
+    </script>
+    {% endif %}
 </body>
 </html>
