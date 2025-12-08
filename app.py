@@ -107,9 +107,10 @@ def oauth_callback(provider):
 
 @app.route('/logout')
 def logout():
-    """Logout user"""
+    """Logout user and clear all session data"""
     logout_user()
-    session.pop('user_email', None)
+    # Clear all session data
+    session.clear()
     return redirect(url_for('index'))
 
 
@@ -201,9 +202,9 @@ def test_detail(test_num):
 @app.route('/test/<int:test_num>/exam')
 def start_exam(test_num):
     """Start or Resume Test Mode"""
-    # Check if user email is set, if not redirect to email collection
-    if 'user_email' not in session or not session['user_email']:
-        return render_template('collect_email.html', test_num=test_num)
+    # Test Mode works for both logged in and guest users
+    # Logged in: History saved permanently
+    # Guest: History saved in session only
     
     test_key = f'exam_{test_num}'
     
@@ -230,8 +231,10 @@ def start_exam(test_num):
     }
     session.modified = True
     
-    # Create user in tracking system
-    results_tracker.get_or_create_user(session['user_email'])
+    # Create user in tracking system (only if logged in)
+    user_email = get_current_user_email()
+    if user_email:
+        results_tracker.get_or_create_user(user_email)
     
     # Redirect to reading part 1
     return test_mode_part(test_num, 'reading', 1)

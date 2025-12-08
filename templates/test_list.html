@@ -467,30 +467,7 @@
         <h1>🎓 CELPIP Practice Tests</h1>
         <p class="subtitle">Select a test to begin practicing</p>
         
-        <!-- Email Modal -->
-        <div id="emailModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeEmailModal()">&times;</span>
-            <h2 class="modal-title">📧 Set Email Address</h2>
-            <p class="modal-subtitle">Enter your email to track test results and progress</p>
-            
-            <form id="modalEmailForm" onsubmit="submitEmail(event)">
-                <input 
-                    type="email" 
-                    id="modalEmail" 
-                    class="modal-input"
-                    placeholder="your.email@example.com"
-                    required
-                >
-                <div class="error-message" id="modalError"></div>
-                <button type="submit" class="modal-btn" id="modalSubmitBtn">
-                    Save Email
-                </button>
-            </form>
-        </div>
-    </div>
-    
-    {% if user_email and not current_user.is_authenticated %}
+        {% if user_email and not current_user.is_authenticated %}
         <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f0f7ff; border-radius: 10px; border: 2px solid #667eea;">
             <strong>👤 Logged in as:</strong> {{ user_email }}
             <span style="margin-left: 15px;">
@@ -579,78 +556,6 @@
         </div>
     </div>
     
-    <script>
-        function showEmailModal() {
-            document.getElementById('emailModal').style.display = 'block';
-            document.getElementById('modalEmail').focus();
-        }
-        
-        function closeEmailModal() {
-            document.getElementById('emailModal').style.display = 'none';
-            document.getElementById('modalError').style.display = 'none';
-            document.getElementById('modalEmail').value = '';
-        }
-        
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('emailModal');
-            if (event.target == modal) {
-                closeEmailModal();
-            }
-        }
-        
-        // Close modal on Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeEmailModal();
-            }
-        });
-        
-        function submitEmail(event) {
-            event.preventDefault();
-            
-            const email = document.getElementById('modalEmail').value.trim();
-            const submitBtn = document.getElementById('modalSubmitBtn');
-            const errorMessage = document.getElementById('modalError');
-            
-            if (!email) {
-                errorMessage.textContent = 'Please enter a valid email address.';
-                errorMessage.style.display = 'block';
-                return;
-            }
-            
-            // Disable button
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Saving...';
-            errorMessage.style.display = 'none';
-            
-            // Send email to server
-            fetch('/set_user_email', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ email: email })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Reload page to show updated email
-                    window.location.reload();
-                } else {
-                    errorMessage.textContent = data.error || 'Failed to set email. Please try again.';
-                    errorMessage.style.display = 'block';
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Save Email';
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                errorMessage.textContent = 'An error occurred. Please try again.';
-                errorMessage.style.display = 'block';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Save Email';
-            });
-        }
-    </script>
 </body>
 </html>
 
