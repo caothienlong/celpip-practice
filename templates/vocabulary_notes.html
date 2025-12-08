@@ -480,6 +480,7 @@
             // Disable buttons during save
             const saveBtn = editMode.querySelector('.btn-save');
             const cancelBtn = editMode.querySelector('.btn-cancel');
+            const originalSaveText = saveBtn.textContent;
             saveBtn.disabled = true;
             cancelBtn.disabled = true;
             saveBtn.textContent = 'Saving...';
@@ -496,7 +497,12 @@
                     context: newContext
                 })
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.success) {
                     // Update display mode with new values
@@ -522,18 +528,20 @@
                     
                     showToast('Note updated successfully', 'success');
                 } else {
-                    showToast('Error: ' + (data.error || 'Failed to update'), 'error');
+                    // Re-enable buttons on error
                     saveBtn.disabled = false;
                     cancelBtn.disabled = false;
-                    saveBtn.textContent = '✓ Save';
+                    saveBtn.textContent = originalSaveText;
+                    showToast('Error: ' + (data.error || 'Failed to update'), 'error');
                 }
             })
             .catch(error => {
-                console.error('Error:', error);
-                showToast('Failed to update note', 'error');
+                console.error('Error updating note:', error);
+                // Re-enable buttons on error
                 saveBtn.disabled = false;
                 cancelBtn.disabled = false;
-                saveBtn.textContent = '✓ Save';
+                saveBtn.textContent = originalSaveText;
+                showToast('Failed to update note. Please try again.', 'error');
             });
         }
         
