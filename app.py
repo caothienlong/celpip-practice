@@ -10,7 +10,7 @@ app.secret_key = secrets.token_hex(16)
 
 # Initialize data loader and results tracker
 data_loader = TestDataLoader(data_dir='data')
-results_tracker = ResultsTracker(reports_dir='reports')
+results_tracker = ResultsTracker(users_dir='users')
 
 
 @app.route('/')
