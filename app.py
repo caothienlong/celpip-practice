@@ -108,10 +108,25 @@ def oauth_callback(provider):
 @app.route('/logout')
 def logout():
     """Logout user and clear all session data"""
+    # Logout Flask-Login user
     logout_user()
+    
+    # Store items we want to preserve (if any)
+    # Currently we want to clear everything
+    
     # Clear all session data
     session.clear()
-    return redirect(url_for('index'))
+    
+    # Force session to be marked as modified
+    session.modified = True
+    
+    # Redirect with cache control to prevent back button issues
+    response = redirect(url_for('index'))
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    
+    return response
 
 
 # ============================================================================
@@ -125,10 +140,13 @@ def index():
     available_tests = data_loader.list_available_tests()
     
     # Get exam completion status and scores from session
+    # Only show if session has valid data
     exam_status = {}
     for test_num in available_tests:
         test_key = f'exam_{test_num}'
-        if test_key in session:
+        
+        # Check if the exam data exists and is valid
+        if test_key in session and session[test_key]:
             if session[test_key].get('completed'):
                 exam_status[test_num] = {
                     'completed': True,
@@ -136,13 +154,19 @@ def index():
                     'total_score': session[test_key].get('total_score', 0),
                     'max_score': session[test_key].get('max_score', 0)
                 }
-            else:
-                # In progress
+            elif session[test_key].get('current_skill'):
+                # Only show in_progress if there's actually progress data
                 exam_status[test_num] = {
                     'completed': False,
                     'in_progress': True,
                     'current_skill': session[test_key].get('current_skill', 'reading'),
                     'current_part': session[test_key].get('current_part', 1)
+                }
+            else:
+                # No valid data
+                exam_status[test_num] = {
+                    'completed': False,
+                    'in_progress': False
                 }
         else:
             exam_status[test_num] = {
