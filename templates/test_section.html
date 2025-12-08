@@ -566,14 +566,24 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.4);
             z-index: 2000;
             justify-content: center;
             align-items: center;
+            pointer-events: auto;
         }
         
         .vocab-modal.active {
             display: flex;
+        }
+        
+        /* Allow text selection in passage area even when modal is open */
+        .content-panel,
+        .passage {
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
         }
         
         .vocab-modal-content {
@@ -582,8 +592,12 @@
             border-radius: 15px;
             max-width: 500px;
             width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             animation: modalSlideIn 0.3s ease;
+            position: relative;
+            z-index: 2001;
         }
         
         @keyframes modalSlideIn {
@@ -1097,12 +1111,7 @@
             document.getElementById('vocabForm').reset();
         }
         
-        // Close modal on outside click
-        document.getElementById('vocabModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeVocabModal();
-            }
-        });
+        // Note: Removed click-outside-to-close to allow text selection from passage
         
         // Handle form submission
         document.getElementById('vocabForm').addEventListener('submit', function(e) {
