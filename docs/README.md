@@ -30,11 +30,9 @@
 - **[CONFIG_GUIDE.md](CONFIG_GUIDE.md)** - Configuration options
 - **[UI_UX_GUIDE.md](UI_UX_GUIDE.md)** - UI/UX design patterns
 
-### For Deployment
-- **[DEPLOYMENT_SUMMARY.md](DEPLOYMENT_SUMMARY.md)** - Deployment overview
-- **[FREE_HOSTING.md](FREE_HOSTING.md)** - Free hosting options
+### For Deployment ⭐ NEW
+- **[DEPLOYMENT.md](DEPLOYMENT.md)** - **Complete deployment guide with OAuth** (Render + Google/Facebook)
 - **[LOCAL_NETWORK_HOSTING.md](LOCAL_NETWORK_HOSTING.md)** - Local network setup
-- **[GITHUB_SETUP.md](GITHUB_SETUP.md)** - Publishing to GitHub
 
 ### For Data Management
 - **[USER_DATA_STRUCTURE.md](USER_DATA_STRUCTURE.md)** - User data organization
@@ -50,9 +48,10 @@
 | I want to... | Read this |
 |--------------|-----------|
 | Set up the app for the first time | [COMPLETE_GUIDE.md](COMPLETE_GUIDE.md#getting-started) |
+| **Deploy to Render with OAuth** ⭐ | **[DEPLOYMENT.md](DEPLOYMENT.md)** |
+| Set up Google/Facebook login | [DEPLOYMENT.md](DEPLOYMENT.md#setup-oauth) |
 | Understand how it works | [ARCHITECTURE.md](ARCHITECTURE.md) |
 | Add a new test | [ADDING_TESTS.md](ADDING_TESTS.md) |
-| Deploy online | [FREE_HOSTING.md](FREE_HOSTING.md) |
 | Change time settings | [CONFIG_GUIDE.md](CONFIG_GUIDE.md) |
 | Understand user data | [USER_DATA_STRUCTURE.md](USER_DATA_STRUCTURE.md) |
 | Share on my network | [LOCAL_NETWORK_HOSTING.md](LOCAL_NETWORK_HOSTING.md) |
@@ -64,6 +63,7 @@
 
 | Document | Status | Last Updated |
 |----------|--------|--------------|
+| DEPLOYMENT.md | ✅ Current | Dec 8, 2025 |
 | COMPLETE_GUIDE.md | ✅ Current | Dec 8, 2025 |
 | USER_DATA_STRUCTURE.md | ✅ Current | Dec 8, 2025 |
 | UI_ENHANCEMENT_SUMMARY.md | ✅ Current | Dec 7, 2025 |
@@ -81,12 +81,12 @@
 3. **ARCHITECTURE.md** - Technical overview
 
 ### Reference Documents (As Needed)
+- **Deployment**: DEPLOYMENT.md (Render + OAuth) ⭐
 - Configuration: CONFIG_GUIDE.md
 - Content: ADDING_TESTS.md
-- Deployment: FREE_HOSTING.md, DEPLOYMENT_SUMMARY.md
 - UI/UX: UI_UX_GUIDE.md, UI_ENHANCEMENT_SUMMARY.md
 - Data: USER_DATA_STRUCTURE.md, MIGRATION_GUIDE.md
-- Hosting: LOCAL_NETWORK_HOSTING.md, GITHUB_SETUP.md
+- Hosting: LOCAL_NETWORK_HOSTING.md
 - Use Cases: USE_CASES.md
 
 ---
@@ -104,9 +104,9 @@
 3. Review [UI_UX_GUIDE.md](UI_UX_GUIDE.md) for design patterns
 
 ### For Deployment
-1. Start with [FREE_HOSTING.md](FREE_HOSTING.md) for options
-2. Follow [DEPLOYMENT_SUMMARY.md](DEPLOYMENT_SUMMARY.md) for steps
-3. Use [GITHUB_SETUP.md](GITHUB_SETUP.md) for repository setup
+1. Follow [DEPLOYMENT.md](DEPLOYMENT.md) for complete guide
+2. Includes OAuth setup (Google & Facebook)
+3. Render.com step-by-step instructions
 
 ---
 
@@ -115,6 +115,8 @@
 This documentation is actively maintained. Check the **Last Updated** date in each file.
 
 **Latest Changes:**
+- Dec 8, 2025: Added DEPLOYMENT.md (complete OAuth + Render guide) ⭐
+- Dec 8, 2025: Consolidated deployment docs (removed 5 redundant files)
 - Dec 8, 2025: Added COMPLETE_GUIDE.md (consolidated all-in-one)
 - Dec 8, 2025: Updated USER_DATA_STRUCTURE.md (new folder structure)
 - Dec 7, 2025: Added UI_ENHANCEMENT_SUMMARY.md (CELPIP-style UI)

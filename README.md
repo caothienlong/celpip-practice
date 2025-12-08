@@ -31,12 +31,16 @@
 - Smart inline dropdowns
 - Visual timer with warnings
 - Responsive design
+- Google OAuth login 🆕
+- Facebook OAuth login 🆕
+- Guest mode (no login required)
 
 ### 📊 Progress Tracking
-- Session-based (no email required)
-- Persistent history (with email)
-- Detailed statistics
-- Answer key with explanations
+- **Guest Mode**: Session-based (no login required)
+- **Authenticated Mode**: OAuth login (Google/Facebook)
+- Persistent history across sessions
+- Detailed statistics and analytics
+- Answer key with comprehensive results
 
 ---
 
@@ -70,11 +74,14 @@ http://127.0.0.1:5000
 ### 📘 [Complete Guide](docs/COMPLETE_GUIDE.md) ⭐ START HERE
 Everything you need in one comprehensive document
 
+### 🚀 [Deployment Guide](docs/DEPLOYMENT.md) ⭐ NEW
+Complete guide for deploying to Render.com with OAuth (Google/Facebook)
+
 ### 📂 Quick Links
 - **Setup**: [docs/SETUP.md](docs/SETUP.md)
+- **Deployment**: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) 🆕
 - **Architecture**: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
 - **Adding Tests**: [docs/ADDING_TESTS.md](docs/ADDING_TESTS.md)
-- **Deployment**: [docs/FREE_HOSTING.md](docs/FREE_HOSTING.md)
 - **All Docs**: [docs/README.md](docs/README.md)
 
 ---
@@ -121,15 +128,20 @@ celpip/
 ## 🎯 Current Status
 
 ### ✅ Completed
-- Reading section (Test 1 complete, Test 2 template)
-- Practice Mode
-- Test Mode
-- CELPIP-style UI
+- Reading section (Test 1-2 complete, Tests 3-5 templates)
+- Practice Mode with full navigation
+- Test Mode with realistic simulation
+- CELPIP-style UI with two-column layout
 - Auto-save functionality
-- Answer validation
+- Answer validation (all dropdowns required)
 - Comprehensive answer key
-- User data management
+- User authentication (OAuth)
+- Google login integration
+- Facebook login integration
+- Guest mode (no login required)
+- User data management (folder-per-user)
 - Session & persistent storage
+- Deployment ready (Render.com)
 
 ### 🚧 In Progress
 - Tests 2-20 content
@@ -138,16 +150,27 @@ celpip/
 - Speaking section
 
 ### 📋 Planned
-- User accounts (login/register)
-- Premium features
-- Progress analytics
-- Mobile app (iOS/Android)
-- PDF export
-- Study recommendations
+- Premium features (enhanced analytics)
+- Progress analytics dashboard
+- Mobile app (iOS/Android with Capacitor)
+- PDF export of results
+- Study recommendations based on performance
+- Email notifications for milestones
 
 ---
 
 ## 🌐 Deployment
+
+### Cloud Hosting (Recommended)
+
+**Render.com** - Full OAuth Support
+1. Push to GitHub
+2. Sign up at [render.com](https://render.com)
+3. Connect repository
+4. Set environment variables (OAuth keys)
+5. Deploy! ✨
+
+**See**: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for complete step-by-step guide
 
 ### Local Network
 ```python
@@ -156,20 +179,7 @@ app.run(host='0.0.0.0', port=5000)
 ```
 Access from any device: `http://YOUR_IP:5000`
 
-### Free Hosting
-
-**Render.com** (Recommended)
-1. Push to GitHub
-2. Sign up at render.com
-3. Connect repo
-4. Deploy! ✨
-
-**Other Options:**
-- PythonAnywhere
-- Heroku
-- Railway
-
-See [docs/FREE_HOSTING.md](docs/FREE_HOSTING.md) for details
+**See**: [docs/LOCAL_NETWORK_HOSTING.md](docs/LOCAL_NETWORK_HOSTING.md) for details
 
 ---
 
@@ -178,8 +188,11 @@ See [docs/FREE_HOSTING.md](docs/FREE_HOSTING.md) for details
 - **Backend**: Python 3.9+, Flask 3.0+
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
 - **Templates**: Jinja2
+- **Authentication**: OAuth 2.0 (Google, Facebook) via Authlib
+- **Session Management**: Flask-Login
 - **Data**: JSON files (future: PostgreSQL)
-- **Storage**: File-based (scalable to database)
+- **Storage**: File-based user folders (scalable to database)
+- **Deployment**: Render.com (or any Python host)
 
 ---
 
@@ -225,24 +238,29 @@ See [docs/FREE_HOSTING.md](docs/FREE_HOSTING.md) for details
 
 ## 🔐 Privacy & Data
 
-### Session-Only Mode
-- No email required
+### Guest Mode (Default)
+- No login required
 - Data in browser session only
 - Perfect for anonymous practice
+- Progress cleared on browser close
 
-### Persistent Mode
-- Optional email for tracking
-- Data stored locally
-- Never shared
-- GDPR-compliant deletion
+### Authenticated Mode (OAuth)
+- Login with Google or Facebook
+- No passwords stored (OAuth only)
+- Data stored locally in `users/` folder
+- Persistent history across sessions
+- Never shared with third parties
+- GDPR-compliant data isolation
 
 ### Data Structure
 ```
 users/
-  username/
+  {username}/
     profile.json       # Email, role, timestamps
     test_history.json  # Test attempts & scores
 ```
+
+**See**: [docs/USER_DATA_STRUCTURE.md](docs/USER_DATA_STRUCTURE.md)
 
 ---
 
@@ -327,6 +345,9 @@ See [docs/CONFIG_GUIDE.md](docs/CONFIG_GUIDE.md) for all options
 - [x] Practice & Test modes
 - [x] Answer validation
 - [x] User data management
+- [x] OAuth authentication (Google/Facebook)
+- [x] Guest mode
+- [x] Deployment guide
 
 ### Phase 2: Content 🚧
 - [ ] Tests 2-20
@@ -335,10 +356,11 @@ See [docs/CONFIG_GUIDE.md](docs/CONFIG_GUIDE.md) for all options
 - [ ] Speaking section
 
 ### Phase 3: Features 📋
-- [ ] User accounts
-- [ ] Progress analytics
-- [ ] Premium features
-- [ ] Mobile apps
+- [ ] Premium analytics dashboard
+- [ ] Progress recommendations
+- [ ] Email notifications
+- [ ] PDF export
+- [ ] Mobile apps (iOS/Android)
 
 ### Phase 4: Scale 🚀
 - [ ] PostgreSQL database
@@ -392,18 +414,21 @@ See [docs/COMPLETE_GUIDE.md#troubleshooting](docs/COMPLETE_GUIDE.md#troubleshoot
 
 ## 📊 Stats
 
-- **Lines of Code**: ~5,000+
-- **Test Questions**: 38+ (Test 1)
-- **Documentation**: 14 comprehensive guides
-- **Supported Platforms**: Web (iOS/Android coming)
+- **Lines of Code**: ~6,500+
+- **Test Questions**: 76 (Tests 1-2 complete)
+- **Documentation**: 11 comprehensive guides
+- **Supported Platforms**: Web (production ready)
+- **OAuth Providers**: Google, Facebook
+- **Deployment Platforms**: Render, PythonAnywhere, Railway, Heroku
 
 ---
 
 ## 🔖 Version
 
-**Current Version**: 2.0  
+**Current Version**: 3.0  
 **Last Updated**: December 8, 2025  
-**Status**: Production Ready 🚀
+**Status**: Production Ready 🚀  
+**OAuth**: ✅ Enabled (Google, Facebook)
 
 ---
 
