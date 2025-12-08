@@ -410,6 +410,10 @@
             color: #333;
         }
         
+        .vocab-sidebar-item.back-btn {
+            color: #6c757d;
+        }
+        
         .vocab-modal {
             display: none;
             position: fixed;
@@ -819,6 +823,10 @@
     {% if current_user and current_user.is_authenticated %}
     <!-- Floating Sidebar with Icons -->
     <div class="vocab-sidebar">
+        <a href="/" class="vocab-sidebar-item back-btn" title="Pause & Exit (Progress Saved)">
+            <span class="vocab-icon">⏸</span>
+            <span class="vocab-text">Pause & Exit</span>
+        </a>
         <a href="/test/{{ test_num }}/vocabulary" class="vocab-sidebar-item view-all" title="View All Vocabulary">
             <span class="vocab-icon">📚</span>
             <span class="vocab-text">View All Vocabulary</span>
@@ -943,6 +951,11 @@
             }
         `;
         document.head.appendChild(style);
+    </script>
+    {% else %}
+    <!-- Guest mode - only show back button in sidebar -->
+    <script>
+        // Guest users already have sidebar with back button only (no vocab features)
     </script>
     {% endif %}
 </body>
