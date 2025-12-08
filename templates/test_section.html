@@ -592,17 +592,17 @@
         
         .vocab-sidebar-item.back-btn {
             color: #0066cc;
-            top: 0;
+            top: -20px;
         }
         
         .vocab-sidebar-item.view-all {
             color: #0066cc;
-            top: 61px;
+            top: 60px;
         }
         
         .vocab-sidebar-item.add-note {
             color: #0066cc;
-            top: 122px;
+            top: 120px;
         }
         
         .vocab-modal {
@@ -1072,16 +1072,20 @@
             });
             
             if (unansweredDropdowns.length > 0) {
-                alert(`Please answer all questions before continuing.\n\nUnanswered: ${unansweredDropdowns.length} question(s)`);
-                
-                // Highlight first unanswered dropdown
+                // Find first unanswered dropdown
                 const firstUnanswered = allDropdowns[Array.from(allDropdowns).findIndex(d => {
                     return !(d.classList.contains('answered') || d.classList.contains('selected') || (d.value !== '' && d.value !== undefined));
                 })];
                 
                 if (firstUnanswered) {
-                    firstUnanswered.style.border = '2px solid red';
+                    // Scroll to it
                     firstUnanswered.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Add highlight
+                    firstUnanswered.style.border = '2px solid #e74c3c';
+                    
+                    // Show small popup near the dropdown
+                    showValidationPopup(firstUnanswered, 'Please fill in this blank');
                     
                     // Remove highlight after 3 seconds
                     setTimeout(() => {
@@ -1094,6 +1098,43 @@
             
             // All answered, navigate
             window.location.href = url;
+        }
+        
+        // Show validation popup
+        function showValidationPopup(element, message) {
+            // Remove any existing popup
+            const existingPopup = document.querySelector('.validation-popup');
+            if (existingPopup) {
+                existingPopup.remove();
+            }
+            
+            // Create popup
+            const popup = document.createElement('div');
+            popup.className = 'validation-popup';
+            popup.textContent = message;
+            
+            // Position popup near the element
+            const rect = element.getBoundingClientRect();
+            popup.style.position = 'fixed';
+            popup.style.left = rect.left + 'px';
+            popup.style.top = (rect.bottom + 5) + 'px';
+            popup.style.background = '#e74c3c';
+            popup.style.color = 'white';
+            popup.style.padding = '8px 12px';
+            popup.style.borderRadius = '5px';
+            popup.style.fontSize = '14px';
+            popup.style.fontWeight = '500';
+            popup.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
+            popup.style.zIndex = '10000';
+            popup.style.animation = 'fadeInUp 0.3s ease';
+            
+            document.body.appendChild(popup);
+            
+            // Auto-remove after 3 seconds
+            setTimeout(() => {
+                popup.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => popup.remove(), 300);
+            }, 3000);
         }
     </script>
     
@@ -1226,6 +1267,10 @@
             @keyframes fadeOut {
                 from { opacity: 1; }
                 to { opacity: 0; }
+            }
+            @keyframes fadeInUp {
+                from { transform: translateY(10px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
             }
         `;
         document.head.appendChild(style);
