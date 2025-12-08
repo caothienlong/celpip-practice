@@ -340,6 +340,216 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+        /* Vocabulary Notes Section - Same as test_section.html */
+        .vocab-note-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #ffc107;
+            color: #333;
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-size: 0.9em;
+        }
+        
+        .vocab-note-btn:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        
+        .vocab-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .vocab-modal.active {
+            display: flex;
+        }
+        
+        .vocab-modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .vocab-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .vocab-modal-header h3 {
+            color: #333;
+            font-size: 1.4em;
+        }
+        
+        .vocab-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.2s;
+        }
+        
+        .vocab-close-btn:hover {
+            color: #333;
+        }
+        
+        .vocab-form-group {
+            margin-bottom: 20px;
+        }
+        
+        .vocab-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+        
+        .vocab-form-group input,
+        .vocab-form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.95em;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        
+        .vocab-form-group input:focus,
+        .vocab-form-group textarea:focus {
+            outline: none;
+            border-color: #ffc107;
+        }
+        
+        .vocab-form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .vocab-form-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        
+        .vocab-save-btn,
+        .vocab-cancel-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        
+        .vocab-save-btn {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .vocab-save-btn:hover {
+            background: #e0a800;
+        }
+        
+        .vocab-cancel-btn {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .vocab-cancel-btn:hover {
+            background: #5a6268;
+        }
+        
+        .vocab-notes-list {
+            position: fixed;
+            bottom: 90px;
+            left: 30px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            max-width: 350px;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            z-index: 999;
+        }
+        
+        .vocab-notes-list.active {
+            display: block;
+        }
+        
+        .vocab-note-item {
+            padding: 10px;
+            border-left: 3px solid #ffc107;
+            background: #f8f9fa;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        
+        .vocab-note-word {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .vocab-note-def {
+            font-size: 0.85em;
+            color: #666;
+        }
+        
+        .view-all-vocab-btn {
+            background: #0066cc;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .view-all-vocab-btn:hover {
+            background: #003366;
+        }
     </style>
 </head>
 <body>
@@ -594,5 +804,150 @@
             });
         }
     </script>
+    
+    <!-- Vocabulary Notes Feature - Same as test_section.html -->
+    {% if current_user and current_user.is_authenticated %}
+    <!-- Floating Vocabulary Button -->
+    <button class="vocab-note-btn" onclick="openVocabModal()">
+        📚 Add Vocabulary Note
+    </button>
+    
+    <!-- Vocabulary Notes Modal -->
+    <div class="vocab-modal" id="vocabModal">
+        <div class="vocab-modal-content">
+            <div class="vocab-modal-header">
+                <h3>📚 Add Vocabulary Note</h3>
+                <button class="vocab-close-btn" onclick="closeVocabModal()">&times;</button>
+            </div>
+            <form id="vocabForm">
+                <div class="vocab-form-group">
+                    <label for="vocabWord">Word or Phrase *</label>
+                    <input type="text" id="vocabWord" placeholder="e.g., gregarious" required>
+                </div>
+                <div class="vocab-form-group">
+                    <label for="vocabDefinition">Your Definition/Note *</label>
+                    <textarea id="vocabDefinition" placeholder="Write your understanding or translation here..." required></textarea>
+                </div>
+                <div class="vocab-form-group">
+                    <label for="vocabContext">Context from Passage (Optional)</label>
+                    <textarea id="vocabContext" placeholder="Copy the sentence where you found this word..."></textarea>
+                </div>
+                <div class="vocab-form-actions">
+                    <button type="button" class="vocab-cancel-btn" onclick="closeVocabModal()">Cancel</button>
+                    <button type="submit" class="vocab-save-btn">💾 Save Note</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Recent Vocabulary Notes List -->
+    <div class="vocab-notes-list" id="vocabNotesList">
+        <h4 style="margin-bottom: 10px; color: #333;">📖 Your Notes (This Part)</h4>
+        <div id="vocabNotesContent">Loading...</div>
+        <a href="/test/{{ test_num }}/vocabulary" class="view-all-vocab-btn">View All Vocabulary →</a>
+    </div>
+    
+    <script>
+        // Vocabulary Notes JavaScript
+        function openVocabModal() {
+            document.getElementById('vocabModal').classList.add('active');
+            // Show recent notes
+            document.getElementById('vocabNotesList').classList.add('active');
+            loadRecentNotes();
+        }
+        
+        function closeVocabModal() {
+            document.getElementById('vocabModal').classList.remove('active');
+            // Clear form
+            document.getElementById('vocabForm').reset();
+        }
+        
+        // Close modal on outside click
+        document.getElementById('vocabModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVocabModal();
+            }
+        });
+        
+        // Handle form submission
+        document.getElementById('vocabForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const word = document.getElementById('vocabWord').value.trim();
+            const definition = document.getElementById('vocabDefinition').value.trim();
+            const context = document.getElementById('vocabContext').value.trim();
+            
+            if (!word || !definition) {
+                alert('Please fill in word and definition');
+                return;
+            }
+            
+            // Save note via API
+            fetch('/save_vocabulary_note', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    test_num: {{ test_num }},
+                    skill: '{{ skill }}',
+                    part_num: {{ part_num }},
+                    word: word,
+                    definition: definition,
+                    context: context
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('✅ Vocabulary note saved!');
+                    closeVocabModal();
+                    loadRecentNotes(); // Refresh the list
+                } else {
+                    alert('❌ Error: ' + (data.error || 'Failed to save note'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('❌ Failed to save vocabulary note');
+            });
+        });
+        
+        // Load recent notes for this part
+        function loadRecentNotes() {
+            fetch(`/get_vocabulary_notes?test_num={{ test_num }}&skill={{ skill }}&part_num={{ part_num }}`)
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('vocabNotesContent');
+                
+                if (data.success && data.notes && data.notes.length > 0) {
+                    const notesHtml = data.notes.slice(0, 5).map(note => `
+                        <div class="vocab-note-item">
+                            <div class="vocab-note-word">${escapeHtml(note.word)}</div>
+                            <div class="vocab-note-def">${escapeHtml(note.definition)}</div>
+                        </div>
+                    `).join('');
+                    container.innerHTML = notesHtml;
+                } else {
+                    container.innerHTML = '<p style="color: #999; font-size: 0.85em;">No notes yet for this part.</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Error loading notes:', error);
+                document.getElementById('vocabNotesContent').innerHTML = '<p style="color: #999;">Failed to load notes.</p>';
+            });
+        }
+        
+        // Helper function to escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // Load notes on page load (don't show list by default)
+        loadRecentNotes();
+    </script>
+    {% endif %}
 </body>
 </html>

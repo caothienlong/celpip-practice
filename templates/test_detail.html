@@ -218,6 +218,9 @@
         
         <!-- Action Buttons -->
         <div class="action-buttons">
+            {% if current_user and current_user.is_authenticated %}
+            <a href="/test/{{ test_num }}/vocabulary" class="action-btn answer-key-btn" style="background: #ffc107; color: #333;">📚 Vocabulary Notes</a>
+            {% endif %}
             <a href="/test/{{ test_num }}/reading/answer-key" class="action-btn answer-key-btn">📝 View Answer Key</a>
             <button onclick="resetTest()" class="action-btn reset-btn">🔄 Reset Test</button>
         </div>
