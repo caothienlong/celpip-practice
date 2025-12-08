@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer Key - Test {{ test_num }} {{ skill|title }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        /* CELPIP-style header */
+        .celpip-header {
+            background: #003366;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .celpip-header h1 {
+            font-size: 1.3em;
+            font-weight: normal;
+        }
+        
+        .badge {
+            background: #28a745;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        /* Main container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Instructions bar */
+        .instructions-bar {
+            background: #e6f2ff;
+            border-left: 4px solid #0066cc;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .instructions-bar strong {
+            color: #003366;
+        }
+        
+        /* Answer key table */
+        .answer-key-table {
+            width: 100%;
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .answer-key-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .answer-key-table th {
+            background: #003366;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #0066cc;
+        }
+        
+        .answer-key-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .answer-key-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .question-cell {
+            font-weight: 600;
+            color: #003366;
+            min-width: 200px;
+        }
+        
+        .correct-answer-cell {
+            color: #2e7d32;
+            font-weight: 600;
+        }
+        
+        .user-answer-cell {
+            color: #555;
+        }
+        
+        .icon-cell {
+            text-align: center;
+            font-size: 1.5em;
+            width: 80px;
+        }
+        
+        .icon-correct {
+            color: #4caf50;
+        }
+        
+        .icon-incorrect {
+            color: #f44336;
+        }
+        
+        .icon-unanswered {
+            color: #999;
+        }
+        
+        /* Part header */
+        .part-header {
+            background: #0066cc;
+            color: white;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-radius: 5px 5px 0 0;
+            margin-top: 20px;
+        }
+        
+        /* Navigation buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .nav-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+        
+        .nav-btn:hover {
+            background: #003366;
+        }
+        
+        .nav-btn.secondary {
+            background: #6c757d;
+        }
+        
+        .nav-btn.secondary:hover {
+            background: #5a6268;
+        }
+        
+        /* Summary stats */
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #003366;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- CELPIP-style header -->
+    <div class="celpip-header">
+        <h1>Answer Key - Test {{ test_num }} - {{ skill|title }}</h1>
+        <div class="badge">ANSWER KEY</div>
+    </div>
+    
+    <div class="main-container">
+        <!-- Instructions -->
+        <div class="instructions-bar">
+            <strong>Answer Key:</strong> This page shows all questions, correct answers, your answers, and results for {{ skill|title }} (all parts).
+        </div>
+        
+        <!-- Summary Stats -->
+        <div class="summary-stats">
+            <div class="stat-card">
+                <div class="stat-value">{{ summary.total_questions }}</div>
+                <div class="stat-label">Total Questions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color: #4caf50;">{{ summary.correct_answers }}</div>
+                <div class="stat-label">Correct</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color: #f44336;">{{ summary.incorrect_answers }}</div>
+                <div class="stat-label">Incorrect</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color: #999;">{{ summary.unanswered }}</div>
+                <div class="stat-label">Unanswered</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{{ summary.percentage }}%</div>
+                <div class="stat-label">Score</div>
+            </div>
+        </div>
+        
+        <!-- Answer Key Tables for Each Part -->
+        {% for part_data in parts_data %}
+        <div class="part-header">
+            {{ skill|title }} Part {{ part_data.part_num }}: {{ part_data.title }}
+        </div>
+        
+        <div class="answer-key-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Answer Key</th>
+                        <th>Your Answer</th>
+                        <th style="text-align: center;">Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for question in part_data.questions %}
+                    <tr>
+                        <td class="question-cell">{{ question.question_text }}</td>
+                        <td class="correct-answer-cell">{{ question.correct_answer_text }}</td>
+                        <td class="user-answer-cell">{{ question.user_answer_text or '—' }}</td>
+                        <td class="icon-cell">
+                            {% if question.is_correct %}
+                            <span class="icon-correct">✓</span>
+                            {% elif question.user_answer_text %}
+                            <span class="icon-incorrect">✗</span>
+                            {% else %}
+                            <span class="icon-unanswered">—</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+        
+        <!-- Navigation buttons -->
+        <div class="nav-buttons">
+            {% if is_test_mode %}
+            <a href="/" class="nav-btn secondary">← Back to Main Page</a>
+            {% else %}
+            <a href="/test/{{ test_num }}" class="nav-btn secondary">← Back to Test {{ test_num }}</a>
+            <a href="/test/{{ test_num }}/{{ skill }}/part1" class="nav-btn">Return to {{ skill|title }}</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+

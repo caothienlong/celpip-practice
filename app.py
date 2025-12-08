@@ -1,65 +1,206 @@
-from flask import Flask, render_template, request, jsonify, session, send_from_directory
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 import secrets
 import uuid
+import os
+from dotenv import load_dotenv
 from utils.data_loader import TestDataLoader
 from utils.results_tracker import ResultsTracker
+from utils.auth import init_auth, User, login_required_optional, get_current_user_email
+from utils.oauth_providers import init_oauth, get_oauth_providers, extract_user_info
+from flask_login import login_user, logout_user, current_user
 from config import calculate_timeout, get_timeout
 
+# Load environment variables
+load_dotenv()
+
 app = Flask(__name__)
-app.secret_key = secrets.token_hex(16)
+app.secret_key = os.getenv('SECRET_KEY', secrets.token_hex(32))
+
+# Session configuration for proper logout
+app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+app.config['SESSION_COOKIE_SECURE'] = False  # Set to True in production with HTTPS
+app.config['PERMANENT_SESSION_LIFETIME'] = 86400  # 24 hours
+app.config['SESSION_REFRESH_EACH_REQUEST'] = True
 
 # Initialize data loader and results tracker
 data_loader = TestDataLoader(data_dir='data')
-results_tracker = ResultsTracker(reports_dir='reports')
+results_tracker = ResultsTracker(users_dir='users')
+
+# Initialize authentication
+login_manager = init_auth(app, results_tracker)
+
+# Initialize OAuth
+oauth = init_oauth(app)
 
 
-@app.route('/offline')
-def offline():
-    """Offline page for PWA"""
-    return render_template('offline.html')
+# ============================================================================
+# AUTHENTICATION ROUTES
+# ============================================================================
+
+@app.route('/login')
+def login():
+    """Display login page with OAuth options"""
+    providers = get_oauth_providers()
+    error = request.args.get('error')
+    return render_template('login.html', providers=providers, error=error)
 
 
-@app.route('/manifest.json')
-def manifest():
-    """Serve PWA manifest"""
-    return send_from_directory('static', 'manifest.json', mimetype='application/manifest+json')
+@app.route('/login/<provider>')
+def oauth_login(provider):
+    """Initiate OAuth login with provider"""
+    try:
+        oauth_provider = oauth.create_client(provider)
+        redirect_uri = url_for('oauth_callback', provider=provider, _external=True)
+        return oauth_provider.authorize_redirect(redirect_uri)
+    except Exception as e:
+        return redirect(url_for('login', error=f'Failed to connect to {provider}'))
 
 
-@app.route('/sw.js')
-def service_worker():
-    """Serve service worker"""
-    return send_from_directory('static', 'sw.js', mimetype='application/javascript')
+@app.route('/callback/<provider>')
+def oauth_callback(provider):
+    """Handle OAuth callback from provider"""
+    try:
+        oauth_provider = oauth.create_client(provider)
+        token = oauth_provider.authorize_access_token()
+        
+        # Get user info
+        if provider == 'google':
+            user_info_raw = token.get('userinfo')
+        elif provider == 'facebook':
+            resp = oauth_provider.get('me?fields=id,name,email')
+            user_info_raw = resp.json()
+        else:
+            user_info_raw = {}
+        
+        # Extract user information
+        user_info = extract_user_info(provider, user_info_raw)
+        
+        if not user_info.get('email'):
+            return redirect(url_for('login', error='Could not get email from provider'))
+        
+        # Create or update user
+        email = user_info['email']
+        profile = results_tracker.get_user_profile(email)
+        
+        # Update profile with OAuth info
+        profile['name'] = user_info.get('name', profile.get('name'))
+        profile['provider'] = provider
+        profile['picture'] = user_info.get('picture')
+        
+        # Save profile
+        results_tracker._save_user_profile(email, profile)
+        
+        # Create User object and login
+        user = User(
+            user_id=email,
+            email=email,
+            name=user_info.get('name'),
+            provider=provider,
+            profile_data=profile
+        )
+        login_user(user, remember=True)
+        
+        # Set session email for backwards compatibility
+        session['user_email'] = email
+        session.modified = True
+        
+        return redirect(url_for('index'))
+        
+    except Exception as e:
+        print(f"OAuth callback error: {e}")
+        return redirect(url_for('login', error='Authentication failed. Please try again.'))
 
+
+@app.route('/logout')
+def logout():
+    """Logout user and clear all session data"""
+    # Get all session keys to clear
+    session_keys = list(session.keys())
+    
+    # Logout Flask-Login user
+    logout_user()
+    
+    # Clear each session key explicitly
+    for key in session_keys:
+        session.pop(key, None)
+    
+    # Also clear the entire session
+    session.clear()
+    
+    # Create response with cache busting
+    response = redirect(url_for('index'))
+    
+    # Prevent caching
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate, private'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    
+    # Delete session cookie explicitly
+    response.set_cookie('session', '', expires=0, max_age=0)
+    
+    return response
+
+
+# ============================================================================
+# MAIN ROUTES
+# ============================================================================
 
 @app.route('/')
+@login_required_optional
 def index():
     """Home page showing all available tests"""
     available_tests = data_loader.list_available_tests()
     
     # Get exam completion status and scores from session
+    # Only show if session has valid data
     exam_status = {}
     for test_num in available_tests:
         test_key = f'exam_{test_num}'
-        if test_key in session and session[test_key].get('completed'):
-            exam_status[test_num] = {
-                'completed': True,
-                'total_score': session[test_key].get('total_score', 0),
-                'max_score': session[test_key].get('max_score', 0)
-            }
+        
+        # Check if the exam data exists and is valid
+        if test_key in session and session[test_key]:
+            if session[test_key].get('completed'):
+                exam_status[test_num] = {
+                    'completed': True,
+                    'in_progress': False,
+                    'total_score': session[test_key].get('total_score', 0),
+                    'max_score': session[test_key].get('max_score', 0)
+                }
+            elif session[test_key].get('current_skill'):
+                # Only show in_progress if there's actually progress data
+                exam_status[test_num] = {
+                    'completed': False,
+                    'in_progress': True,
+                    'current_skill': session[test_key].get('current_skill', 'reading'),
+                    'current_part': session[test_key].get('current_part', 1)
+                }
+            else:
+                # No valid data
+                exam_status[test_num] = {
+                    'completed': False,
+                    'in_progress': False
+                }
         else:
-            exam_status[test_num] = {'completed': False}
+            exam_status[test_num] = {
+                'completed': False,
+                'in_progress': False
+            }
     
-    # Get historical data from JSON if user email is set
+    # Get historical data from JSON ONLY if user is authenticated
+    # Guest mode should not show any historical data
     test_history = {}
-    if 'user_email' in session:
-        user_email = session['user_email']
+    user_email = None
+    
+    if current_user.is_authenticated:
+        user_email = current_user.email
         test_history = results_tracker.get_all_tests_summary(user_email)
     
     return render_template('test_list.html', 
                          test_numbers=available_tests,
                          exam_status=exam_status,
                          test_history=test_history,
-                         user_email=session.get('user_email'))
+                         user_email=user_email,
+                         current_user=current_user)
 
 
 @app.route('/test/<int:test_num>')
@@ -99,16 +240,26 @@ def test_detail(test_num):
 
 @app.route('/test/<int:test_num>/exam')
 def start_exam(test_num):
-    """Start Test Mode - begins with Reading Part 1"""
-    # Check if user email is set, if not redirect to email collection
-    if 'user_email' not in session or not session['user_email']:
-        return render_template('collect_email.html', test_num=test_num)
+    """Start or Resume Test Mode"""
+    # Test Mode works for both logged in and guest users
+    # Logged in: History saved permanently
+    # Guest: History saved in session only
     
-    # Generate unique attempt ID for this test attempt
+    test_key = f'exam_{test_num}'
+    
+    # Check if there's an existing in-progress exam
+    if test_key in session and not session[test_key].get('completed', False):
+        # Resume existing exam - get current position
+        current_skill = session[test_key].get('current_skill', 'reading')
+        current_part = session[test_key].get('current_part', 1)
+        
+        # Redirect to current position
+        return test_mode_part(test_num, current_skill, current_part)
+    
+    # Start new exam - generate unique attempt ID
     attempt_id = str(uuid.uuid4())
     
-    # Clear any existing exam session (for retakes)
-    test_key = f'exam_{test_num}'
+    # Initialize new exam session
     session[test_key] = {
         'mode': 'exam',
         'current_skill': 'reading',
@@ -119,8 +270,10 @@ def start_exam(test_num):
     }
     session.modified = True
     
-    # Create user in tracking system
-    results_tracker.get_or_create_user(session['user_email'])
+    # Create user in tracking system (only if logged in)
+    user_email = get_current_user_email()
+    if user_email:
+        results_tracker.get_or_create_user(user_email)
     
     # Redirect to reading part 1
     return test_mode_part(test_num, 'reading', 1)
@@ -154,6 +307,13 @@ def test_mode_part(test_num, skill, part_num):
         # Load test data
         test_data = data_loader.load_test_part(test_num, skill, part_num)
         processed_data = prepare_test_data(test_data, skill, part_num)
+        
+        # Save current position in session
+        test_key = f'exam_{test_num}'
+        if test_key in session:
+            session[test_key]['current_skill'] = skill
+            session[test_key]['current_part'] = part_num
+            session.modified = True
         
         # Determine skill order and progress
         skill_order = ['reading', 'listening', 'writing', 'speaking']
@@ -210,17 +370,159 @@ def test_part(test_num, skill, part_num):
         # Process the test data based on type
         processed_data = prepare_test_data(test_data, skill, part_num)
         
+        # Get saved answers for this part from session
+        test_key = f'test_{test_num}'
+        saved_answers = session.get('answers', {}).get(test_key, {}).get(skill, {}).get(str(part_num), {})
+        
         return render_template(
             'test_section.html',
             section=processed_data,
             test_num=test_num,
             skill=skill,
-            part_num=part_num
+            part_num=part_num,
+            saved_answers=saved_answers
         )
     except FileNotFoundError as e:
         return f"Test not found: {e}", 404
     except Exception as e:
         return f"Error loading test: {e}", 500
+
+
+@app.route('/test/<int:test_num>/<skill>/part<int:part_num>/answers')
+def answer_key(test_num, skill, part_num):
+    """
+    Display answer key for a specific test part (Practice Mode only)
+    
+    Args:
+        test_num: Test number (1-20)
+        skill: Skill name (reading, writing, speaking, listening)
+        part_num: Part number
+    """
+    try:
+        # Load test data from JSON
+        test_data = data_loader.load_test_part(test_num, skill, part_num)
+        
+        # Process the test data for answer key display
+        processed_data = prepare_answer_key_data(test_data, skill, part_num)
+        
+        # Determine next part
+        next_part = None
+        skill_parts = data_loader.list_available_parts(test_num, skill)
+        if part_num in skill_parts:
+            current_index = skill_parts.index(part_num)
+            if current_index + 1 < len(skill_parts):
+                next_part = skill_parts[current_index + 1]
+        
+        return render_template(
+            'answer_key.html',
+            section=processed_data,
+            test_num=test_num,
+            skill=skill,
+            part_num=part_num,
+            next_part=next_part
+        )
+    except FileNotFoundError as e:
+        return f"Test not found: {e}", 404
+    except Exception as e:
+        return f"Error loading answer key: {e}", 500
+
+
+@app.route('/test/<int:test_num>/<skill>/answer-key')
+def comprehensive_answer_key(test_num, skill):
+    """
+    Display comprehensive answer key for all parts of a skill
+    Shows correct answers, user answers, and comparison
+    """
+    try:
+        # Get all parts for this skill
+        skill_parts = data_loader.list_available_parts(test_num, skill)
+        
+        # Get user's saved answers from session (try both Practice and Test Mode)
+        test_key = f'test_{test_num}'
+        exam_key = f'exam_{test_num}'
+        
+        # Check if this is from Test Mode or Practice Mode
+        is_test_mode = exam_key in session.get('exam_answers', {})
+        
+        if is_test_mode:
+            saved_answers = session.get('exam_answers', {}).get(exam_key, {}).get(skill, {})
+        else:
+            saved_answers = session.get('answers', {}).get(test_key, {}).get(skill, {})
+        
+        parts_data = []
+        total_questions = 0
+        correct_answers = 0
+        incorrect_answers = 0
+        unanswered = 0
+        
+        for part_num in skill_parts:
+            # Load test data
+            test_data = data_loader.load_test_part(test_num, skill, part_num)
+            all_questions = data_loader.get_all_questions(test_data)
+            correct_answer_map = data_loader.get_correct_answers(test_data)
+            
+            # Get user's answers for this part
+            part_answers = saved_answers.get(str(part_num), {})
+            
+            # Build questions list with answers
+            questions_list = []
+            for q in all_questions:
+                q_id = q['id']  # Use int
+                q_id_str = str(q_id)  # String version for part_answers lookup
+                correct_idx = correct_answer_map.get(q_id)
+                # Convert user answer to int if it's a string
+                user_answer_idx = part_answers.get(q_id_str)
+                if user_answer_idx is not None:
+                    user_answer_idx = int(user_answer_idx) if isinstance(user_answer_idx, str) else user_answer_idx
+                
+                # Get answer texts
+                correct_answer_text = q['options'][correct_idx] if correct_idx is not None else '—'
+                user_answer_text = q['options'][user_answer_idx] if user_answer_idx is not None and user_answer_idx < len(q['options']) else None
+                
+                is_correct = user_answer_idx == correct_idx if user_answer_idx is not None else False
+                
+                questions_list.append({
+                    'question_text': f"Q{q['id']}. {q.get('text', q.get('question', ''))}",
+                    'correct_answer_text': correct_answer_text,
+                    'user_answer_text': user_answer_text,
+                    'is_correct': is_correct
+                })
+                
+                total_questions += 1
+                if user_answer_text is None:
+                    unanswered += 1
+                elif is_correct:
+                    correct_answers += 1
+                else:
+                    incorrect_answers += 1
+            
+            parts_data.append({
+                'part_num': part_num,
+                'title': test_data.get('title', f'Part {part_num}'),
+                'questions': questions_list
+            })
+        
+        # Calculate summary
+        percentage = round((correct_answers / total_questions) * 100, 1) if total_questions > 0 else 0
+        
+        summary = {
+            'total_questions': total_questions,
+            'correct_answers': correct_answers,
+            'incorrect_answers': incorrect_answers,
+            'unanswered': unanswered,
+            'percentage': percentage
+        }
+        
+        return render_template(
+            'comprehensive_answer_key.html',
+            test_num=test_num,
+            skill=skill,
+            parts_data=parts_data,
+            summary=summary,
+            is_test_mode=is_test_mode
+        )
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 def prepare_test_data(test_data, skill, part_num):
@@ -308,7 +610,8 @@ def prepare_test_data(test_data, skill, part_num):
         
         if questions_section:
             processed['questions_html'] = data_loader.build_question_dropdown_html(
-                questions_section['questions']
+                questions_section['questions'],
+                test_type='information'
             )
     
     elif test_data['type'] == 'viewpoints':
@@ -334,6 +637,153 @@ def prepare_test_data(test_data, skill, part_num):
             )
             processed['response_title'] = response_section.get('title', 'Response')
             processed['section_divider_text'] = response_section.get('instruction_text', '')
+    
+    return processed
+
+
+def prepare_answer_key_data(test_data, skill, part_num):
+    """
+    Prepare test data for answer key display
+    
+    Args:
+        test_data: Raw test data from JSON
+        skill: Skill name
+        part_num: Part number
+        
+    Returns:
+        dict: Processed data ready for answer key template
+    """
+    # Get all questions
+    all_questions = data_loader.get_all_questions(test_data)
+    correct_answers = data_loader.get_correct_answers(test_data)
+    
+    processed = {
+        'title': f"Part {part_num}: {test_data['title']}",
+        'instructions': test_data['instructions'],
+        'type': test_data['type'],
+        'all_questions': []
+    }
+    
+    # Process based on test type
+    if test_data['type'] == 'correspondence':
+        # Part 1: Reading Correspondence
+        passage_section = data_loader.get_section_by_type(test_data, 'passage')
+        response_section = data_loader.get_section_by_type(test_data, 'response_passage')
+        questions_section = data_loader.get_section_by_type(test_data, 'questions')
+        
+        if passage_section:
+            processed['passage'] = passage_section['content']
+        
+        processed['questions_1_6'] = []
+        processed['questions_7_11'] = []
+        
+        if questions_section:
+            for q in questions_section['questions']:
+                q_data = {
+                    'id': q['id'],
+                    'text': q.get('text', q.get('question', f"Question {q['id']}")),
+                    'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
+                    'correct_answer': correct_answers.get(q['id'])
+                }
+                processed['questions_1_6'].append(q_data)
+        
+        if response_section and 'questions' in response_section:
+            for q in response_section['questions']:
+                q_data = {
+                    'id': q['id'],
+                    'text': q.get('question', f"Question {q['id']}"),
+                    'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
+                    'correct_answer': correct_answers.get(q['id'])
+                }
+                processed['questions_7_11'].append(q_data)
+    
+    elif test_data['type'] == 'diagram':
+        # Part 2: Reading to Apply a Diagram
+        diagram_section = data_loader.get_section_by_type(test_data, 'diagram_email')
+        questions_section = data_loader.get_section_by_type(test_data, 'questions')
+        
+        processed['has_diagram'] = True
+        
+        if diagram_section:
+            processed['diagram_image'] = diagram_section.get('diagram_image')
+            processed['email_text'] = diagram_section['content']
+        
+        # Collect all questions
+        if diagram_section and 'questions' in diagram_section:
+            for q in diagram_section['questions']:
+                q_data = {
+                    'id': q['id'],
+                    'text': q.get('question', f"Question {q['id']}"),
+                    'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
+                    'correct_answer': correct_answers.get(q['id'])
+                }
+                processed['all_questions'].append(q_data)
+        
+        if questions_section:
+            for q in questions_section['questions']:
+                q_data = {
+                    'id': q['id'],
+                    'text': q.get('text', q.get('question', f"Question {q['id']}")),
+                    'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
+                    'correct_answer': correct_answers.get(q['id'])
+                }
+                processed['all_questions'].append(q_data)
+    
+    elif test_data['type'] == 'information':
+        # Part 3: Reading for Information
+        passage_section = data_loader.get_section_by_type(test_data, 'passage')
+        questions_section = data_loader.get_section_by_type(test_data, 'questions')
+        
+        processed['is_information_type'] = True
+        
+        if passage_section:
+            processed['passage'] = passage_section['content']
+            processed['passage_note'] = passage_section.get('note', '')
+        
+        if questions_section:
+            for q in questions_section['questions']:
+                q_data = {
+                    'id': q['id'],
+                    'text': q.get('text', q.get('question', f"Question {q['id']}")),
+                    'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
+                    'correct_answer': correct_answers.get(q['id'])
+                }
+                processed['all_questions'].append(q_data)
+    
+    elif test_data['type'] == 'viewpoints':
+        # Part 4: Reading for Viewpoints
+        passage_section = data_loader.get_section_by_type(test_data, 'passage')
+        questions_section = data_loader.get_section_by_type(test_data, 'questions')
+        response_section = data_loader.get_section_by_type(test_data, 'response_passage')
+        
+        processed['is_viewpoints_type'] = True
+        
+        if passage_section:
+            processed['passage'] = passage_section['content']
+        
+        if questions_section:
+            for q in questions_section['questions']:
+                q_data = {
+                    'id': q['id'],
+                    'text': q.get('text', q.get('question', f"Question {q['id']}")),
+                    'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
+                    'correct_answer': correct_answers.get(q['id'])
+                }
+                processed['all_questions'].append(q_data)
+        
+        processed['response_passage_questions'] = []
+        if response_section and 'questions' in response_section:
+            processed['response_title'] = response_section.get('title', 'Response')
+            processed['section_divider_text'] = response_section.get('instruction_text', '')
+            
+            for q in response_section['questions']:
+                q_data = {
+                    'id': q['id'],
+                    'text': q.get('question', f"Question {q['id']}"),
+                    'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
+                    'correct_answer': correct_answers.get(q['id'])
+                }
+                processed['response_passage_questions'].append(q_data)
     
     return processed
 
@@ -454,6 +904,10 @@ def submit_test_mode():
             current_index = skill_parts.index(part_num)
             next_part = skill_parts[current_index + 1]
             
+            # Update session with next position
+            session[test_key]['current_part'] = next_part
+            session.modified = True
+            
             return jsonify({
                 'show_skill_score': False,
                 'next_part': next_part,
@@ -491,14 +945,17 @@ def submit_answers():
         # Load test data
         test_data = data_loader.load_test_part(test_num, skill, part_num)
         
-        # Get correct answers
+        # Get correct answers (returns {int: int})
         correct_answers = data_loader.get_correct_answers(test_data)
+        
+        # Convert answers keys to int for comparison
+        int_answers = {int(k): int(v) for k, v in answers.items()}
         
         # Calculate score
         score = 0
         results = {}
         
-        for question_id, user_answer in answers.items():
+        for question_id, user_answer in int_answers.items():
             if question_id in correct_answers:
                 is_correct = user_answer == correct_answers[question_id]
                 if is_correct:
@@ -558,6 +1015,137 @@ def submit_answers():
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 400
+
+
+@app.route('/save_answer', methods=['POST'])
+def save_answer():
+    """
+    Save a single answer to session (auto-save when dropdown changes)
+    
+    Request JSON:
+        {
+            "test_num": 1,
+            "skill": "reading",
+            "part_num": 1,
+            "question_id": "1",
+            "answer": 0
+        }
+    
+    Returns:
+        JSON with success status
+    """
+    data = request.json
+    test_num = data.get('test_num')
+    skill = data.get('skill')
+    part_num = data.get('part_num')
+    question_id = str(data.get('question_id'))
+    answer = data.get('answer')
+    
+    try:
+        # Initialize session structure if needed
+        if 'answers' not in session:
+            session['answers'] = {}
+        
+        test_key = f'test_{test_num}'
+        if test_key not in session['answers']:
+            session['answers'][test_key] = {}
+        if skill not in session['answers'][test_key]:
+            session['answers'][test_key][skill] = {}
+        if str(part_num) not in session['answers'][test_key][skill]:
+            session['answers'][test_key][skill][str(part_num)] = {}
+        
+        # Save the answer
+        session['answers'][test_key][skill][str(part_num)][question_id] = answer
+        session.modified = True
+        
+        return jsonify({'success': True})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 400
+
+
+@app.route('/reset_test/<int:test_num>/<skill>', methods=['POST'])
+def reset_test(test_num, skill):
+    """
+    Reset a test by clearing all saved answers for that test and skill
+    
+    Args:
+        test_num: Test number (1-20)
+        skill: Skill name (reading, writing, speaking, listening)
+    
+    Returns:
+        JSON with success status
+    """
+    try:
+        test_key = f'test_{test_num}'
+        
+        # Clear answers from session
+        if 'answers' in session and test_key in session['answers']:
+            if skill in session['answers'][test_key]:
+                del session['answers'][test_key][skill]
+                # Clean up if no skills left
+                if not session['answers'][test_key]:
+                    del session['answers'][test_key]
+        
+        # Clear scores from session (if any)
+        if 'scores' in session and test_key in session['scores']:
+            if skill in session['scores'][test_key]:
+                del session['scores'][test_key][skill]
+                # Clean up if no skills left
+                if not session['scores'][test_key]:
+                    del session['scores'][test_key]
+        
+        session.modified = True
+        
+        return jsonify({'success': True})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 400
+
+
+@app.route('/save_test_mode_answer', methods=['POST'])
+def save_test_mode_answer():
+    """
+    Save a single answer to session in Test Mode (auto-save when dropdown changes)
+    Uses exam_<test_num> key to separate from Practice Mode
+    
+    Request JSON:
+        {
+            "test_num": 1,
+            "skill": "reading",
+            "part_num": 1,
+            "question_id": "1",
+            "answer": 0
+        }
+    
+    Returns:
+        JSON with success status
+    """
+    data = request.json
+    test_num = data.get('test_num')
+    skill = data.get('skill')
+    part_num = data.get('part_num')
+    question_id = str(data.get('question_id'))
+    answer = data.get('answer')
+    
+    try:
+        # Initialize session structure for Test Mode
+        if 'exam_answers' not in session:
+            session['exam_answers'] = {}
+        
+        test_key = f'exam_{test_num}'
+        if test_key not in session['exam_answers']:
+            session['exam_answers'][test_key] = {}
+        if skill not in session['exam_answers'][test_key]:
+            session['exam_answers'][test_key][skill] = {}
+        if str(part_num) not in session['exam_answers'][test_key][skill]:
+            session['exam_answers'][test_key][skill][str(part_num)] = {}
+        
+        # Save the answer
+        session['exam_answers'][test_key][skill][str(part_num)][question_id] = answer
+        session.modified = True
+        
+        return jsonify({'success': True})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 400
 
 
 # Legacy routes for backward compatibility

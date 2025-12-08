@@ -19,6 +19,10 @@ instance/
 .webassets-cache
 flask_session/
 
+# Environment variables
+.env
+.env.local
+
 # IDE
 .vscode/
 .idea/
@@ -37,6 +41,8 @@ Thumbs.db
 # PDF source files (large files)
 *.pdf
 
-# User results data (per-user reports)
+# User results data (organized by user folder)
+users/
+!users/.gitkeep
 reports/
 data/test_results.json

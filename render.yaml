@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: celpip-practice
+    runtime: python
+    plan: free  # Change to 'starter' for paid plan ($7/month)
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true  # Auto-generates secure random key
+      - key: PYTHON_VERSION
+        value: "3.11"
+      # Add Google OAuth credentials in Render dashboard after deployment:
+      # - GOOGLE_CLIENT_ID
+      # - GOOGLE_CLIENT_SECRET
+      # - APP_URL (e.g., https://celpip-practice.onrender.com)
+      # - REDIRECT_URI_BASE (same as APP_URL)
+    healthCheckPath: /
+

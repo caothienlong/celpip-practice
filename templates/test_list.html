@@ -2,46 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CELPIP Practice Tests</title>
-    
-    <!-- PWA Meta Tags -->
-    <meta name="description" content="Practice test platform for CELPIP (Canadian English Language Proficiency Index Program)">
-    <meta name="theme-color" content="#667eea">
-    
-    <!-- iOS Specific Meta Tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="CELPIP Practice">
-    
-    <!-- iOS Icons -->
-    <link rel="apple-touch-icon" href="/static/icons/icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/static/icons/icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="96x96" href="/static/icons/icon-96x96.png">
-    <link rel="apple-touch-icon" sizes="128x128" href="/static/icons/icon-128x128.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/static/icons/icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/static/icons/icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="/static/icons/icon-192x192.png">
-    <link rel="apple-touch-icon" sizes="384x384" href="/static/icons/icon-384x384.png">
-    <link rel="apple-touch-icon" sizes="512x512" href="/static/icons/icon-512x512.png">
-    
-    <!-- iOS Splash Screens -->
-    <link rel="apple-touch-startup-image" href="/static/splash/splash-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
-    <link rel="apple-touch-startup-image" href="/static/splash/splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)">
-    <link rel="apple-touch-startup-image" href="/static/splash/splash-1242x2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)">
-    <link rel="apple-touch-startup-image" href="/static/splash/splash-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)">
-    <link rel="apple-touch-startup-image" href="/static/splash/splash-1536x2048.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)">
-    <link rel="apple-touch-startup-image" href="/static/splash/splash-1668x2224.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)">
-    <link rel="apple-touch-startup-image" href="/static/splash/splash-2048x2732.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)">
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/static/manifest.json">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/icon-72x72.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/icon-72x72.png">
-    
-    <style>
     <style>
         * {
             margin: 0;
@@ -63,6 +25,90 @@
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .user-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .user-details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .user-name {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .user-email {
+            font-size: 0.85em;
+            color: #999;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .auth-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .auth-btn.login {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .auth-btn.login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .auth-btn.logout {
+            background: #f0f0f0;
+            color: #666;
+        }
+        
+        .auth-btn.logout:hover {
+            background: #e0e0e0;
         }
         
         h1 {
@@ -139,6 +185,19 @@
             padding: 10px 16px;
         }
         
+        .status-in-progress {
+            background: linear-gradient(135deg, #ffd89b 0%, #ff9a56 100%);
+            color: white;
+            font-size: 0.95em;
+            padding: 10px 16px;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+        
         .test-buttons {
             display: flex;
             flex-direction: column;
@@ -201,6 +260,24 @@
         .retake-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(161, 140, 209, 0.5);
+        }
+        
+        .resume-btn {
+            background: linear-gradient(135deg, #ffd89b 0%, #ff9a56 100%);
+            color: white;
+            box-shadow: 0 3px 10px rgba(255, 154, 86, 0.3);
+            animation: pulse-button 2s ease-in-out infinite;
+        }
+        
+        .resume-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 154, 86, 0.5);
+            animation: none;
+        }
+        
+        @keyframes pulse-button {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
         
         .test-history {
@@ -350,165 +427,45 @@
             margin-bottom: 15px;
             display: none;
         }
-        
-        @keyframes slideUp {
-            from {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Email Modal -->
-    <div id="emailModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeEmailModal()">&times;</span>
-            <h2 class="modal-title">📧 Set Email Address</h2>
-            <p class="modal-subtitle">Enter your email to track test results and progress</p>
-            
-            <form id="modalEmailForm" onsubmit="submitEmail(event)">
-                <input 
-                    type="email" 
-                    id="modalEmail" 
-                    class="modal-input"
-                    placeholder="your.email@example.com"
-                    required
-                >
-                <div class="error-message" id="modalError"></div>
-                <button type="submit" class="modal-btn" id="modalSubmitBtn">
-                    Save Email
-                </button>
-            </form>
-        </div>
-    </div>
-    
-    <!-- iOS Installation Instructions -->
-    <div id="iosInstallBanner" style="display: none;">
-        <div style="
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px 20px;
-            text-align: center;
-            z-index: 1001;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
-            animation: slideUp 0.3s ease-out;
-            max-height: 90vh;
-            overflow-y: auto;
-        ">
-            <div style="margin-bottom: 20px; font-size: 1.3em; font-weight: bold;">
-                📱 How to Install on iPhone/iPad
-            </div>
-            
-            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: left;">
-                <div style="margin-bottom: 15px; font-size: 1.1em; display: flex; align-items: center; gap: 10px;">
-                    <span style="background: white; color: #667eea; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">1</span>
-                    <span>Make sure you're using <strong>Safari</strong> browser</span>
-                </div>
-                
-                <div style="margin-bottom: 15px; font-size: 1.1em; display: flex; align-items: flex-start; gap: 10px;">
-                    <span style="background: white; color: #667eea; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">2</span>
-                    <span>Tap the <strong>Share</strong> button 
-                        <svg style="display: inline-block; width: 24px; height: 24px; vertical-align: middle; margin: 0 5px; background: white; border-radius: 5px; padding: 2px;" fill="#667eea" viewBox="0 0 24 24">
-                            <path d="M18 16v2H6v-2H4v2c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-2h-2zm-1-4l-1.41-1.41L13 13.17V4h-2v9.17L8.41 10.59 7 12l5 5 5-5z"/>
-                        </svg>
-                        <br/>
-                        <span style="font-size: 0.9em; opacity: 0.9;">(Square with arrow - at bottom on iPhone, top on iPad)</span>
-                    </span>
-                </div>
-                
-                <div style="margin-bottom: 15px; font-size: 1.1em; display: flex; align-items: flex-start; gap: 10px;">
-                    <span style="background: white; color: #667eea; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">3</span>
-                    <span>Scroll down and tap <strong>"Add to Home Screen"</strong> ➕</span>
-                </div>
-                
-                <div style="margin-bottom: 0; font-size: 1.1em; display: flex; align-items: center; gap: 10px;">
-                    <span style="background: white; color: #667eea; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">4</span>
-                    <span>Tap <strong>"Add"</strong> (top-right) - Done! 🎉</span>
-                </div>
-            </div>
-            
-            <div style="font-size: 0.9em; opacity: 0.9; margin-bottom: 15px;">
-                ⚠️ Note: Installation can only be done through Safari's Share menu.<br/>
-                Apple doesn't allow websites to install apps directly.
-            </div>
-            
-            <button onclick="document.getElementById('iosInstallBanner').style.display='none'" style="
-                padding: 12px 30px;
-                background: white;
-                border: none;
-                color: #667eea;
-                border-radius: 8px;
-                cursor: pointer;
-                font-weight: 600;
-                font-size: 1.1em;
-                transition: all 0.3s;
-                box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                Got it! I'll try now
-            </button>
-        </div>
-    </div>
-    
-    <!-- Install App Button (Always Visible) -->
-    <div id="installButtonContainer" style="
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-    ">
-        <button id="installAppButton" onclick="showInstallInstructions()" style="
-            padding: 15px 25px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1em;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 20px rgba(102, 126, 234, 0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(102, 126, 234, 0.4)'">
-            <span style="font-size: 1.2em;">📱</span>
-            <span>Install App</span>
-        </button>
-    </div>
     <div class="container">
-        <h1>📚 CELPIP Practice Tests</h1>
-        <p class="subtitle">Select a test to begin practicing</p>
+        <!-- User Bar -->
+        <div class="user-bar">
+            <div class="user-info">
+                {% if current_user.is_authenticated %}
+                <div class="user-avatar">
+                    {% if current_user.profile_data.get('picture') %}
+                    <img src="{{ current_user.profile_data.get('picture') }}" alt="Avatar">
+                    {% else %}
+                    {{ current_user.name[0]|upper if current_user.name else current_user.email[0]|upper }}
+                    {% endif %}
+                </div>
+                <div class="user-details">
+                    <div class="user-name">{{ current_user.name or 'User' }}</div>
+                    <div class="user-email">{{ current_user.email }}</div>
+                </div>
+                {% else %}
+                <div class="user-avatar">👤</div>
+                <div class="user-details">
+                    <div class="user-name">Guest Mode</div>
+                    <div class="user-email">Progress not saved</div>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="auth-buttons">
+                {% if current_user.is_authenticated %}
+                <a href="/logout" class="auth-btn logout" onclick="handleLogout(event)">🚪 Logout</a>
+                {% else %}
+                <a href="/login" class="auth-btn login">🔐 Login</a>
+                {% endif %}
+            </div>
+        </div>
         
-        {% if user_email %}
-        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f0f7ff; border-radius: 10px; border: 2px solid #667eea;">
-            <strong>👤 Logged in as:</strong> {{ user_email }}
-            <span style="margin-left: 15px;">
-                <a href="#" onclick="showEmailModal(); return false;" style="color: #667eea; text-decoration: none; font-size: 0.9em;">✏️ Change Email</a>
-            </span>
-            <span style="margin-left: 15px;">
-                <a href="/clear_session" style="color: #f44336; text-decoration: none; font-size: 0.9em;">✕ Clear Session</a>
-            </span>
-        </div>
-        {% else %}
-        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #fff3cd; border-radius: 10px; border: 2px solid #ffc107;">
-            <strong>⚠️ No email set</strong>
-            <span style="margin-left: 15px;">
-                <a href="#" onclick="showEmailModal(); return false;" style="color: #667eea; text-decoration: none; font-weight: 600;">📧 Set Email Address</a>
-            </span>
-            <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
-                Setting your email will enable test result tracking and history.
-            </p>
-        </div>
-        {% endif %}
+        <h1>🎓 CELPIP Practice Tests</h1>
+        <p class="subtitle">Select a test to begin practicing</p>
         
         <div class="test-grid">
             {% for test_num in test_numbers %}
@@ -519,6 +476,10 @@
                 {% if exam_status[test_num].completed %}
                 <div class="test-status status-completed">
                     ✅ Current Session - {{ exam_status[test_num].total_score }}/{{ exam_status[test_num].max_score }}
+                </div>
+                {% elif exam_status[test_num].in_progress %}
+                <div class="test-status status-in-progress">
+                    ⏸️ In Progress - {{ exam_status[test_num].current_skill|title }} Part {{ exam_status[test_num].current_part }}
                 </div>
                 {% elif test_num in [1, 2] %}
                 <div class="test-status">
@@ -553,6 +514,10 @@
                         <a href="/test/{{ test_num }}/exam" class="mode-btn retake-btn">
                             🔄 Retake Test
                         </a>
+                        {% elif exam_status[test_num].in_progress %}
+                        <a href="/test/{{ test_num }}/exam" class="mode-btn resume-btn">
+                            ▶️ Resume Test
+                        </a>
                         {% else %}
                         <a href="/test/{{ test_num }}/exam" class="mode-btn exam-btn">
                             🎯 Test Mode
@@ -570,132 +535,20 @@
     </div>
     
     <script>
-        function showEmailModal() {
-            document.getElementById('emailModal').style.display = 'block';
-            document.getElementById('modalEmail').focus();
-        }
-        
-        function closeEmailModal() {
-            document.getElementById('emailModal').style.display = 'none';
-            document.getElementById('modalError').style.display = 'none';
-            document.getElementById('modalEmail').value = '';
-        }
-        
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('emailModal');
-            if (event.target == modal) {
-                closeEmailModal();
-            }
-        }
-        
-        // Close modal on Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeEmailModal();
-            }
-        });
-        
-        function submitEmail(event) {
+        function handleLogout(event) {
             event.preventDefault();
             
-            const email = document.getElementById('modalEmail').value.trim();
-            const submitBtn = document.getElementById('modalSubmitBtn');
-            const errorMessage = document.getElementById('modalError');
-            
-            if (!email) {
-                errorMessage.textContent = 'Please enter a valid email address.';
-                errorMessage.style.display = 'block';
-                return;
-            }
-            
-            // Disable button
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Saving...';
-            errorMessage.style.display = 'none';
-            
-            // Send email to server
-            fetch('/set_user_email', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ email: email })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Reload page to show updated email
-                    window.location.reload();
-                } else {
-                    errorMessage.textContent = data.error || 'Failed to set email. Please try again.';
-                    errorMessage.style.display = 'block';
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Save Email';
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                errorMessage.textContent = 'An error occurred. Please try again.';
-                errorMessage.style.display = 'block';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Save Email';
+            // Call logout endpoint
+            fetch('/logout', {
+                method: 'GET',
+                credentials: 'same-origin'
+            }).then(() => {
+                // Force full page reload (no cache)
+                window.location.href = '/?t=' + Date.now();
             });
         }
-        
-        // PWA Install functionality
-        let deferredPrompt;
-        
-        // iOS Detection
-        function isIOS() {
-            const userAgent = window.navigator.userAgent.toLowerCase();
-            return /iphone|ipad|ipod/.test(userAgent);
-        }
-        
-        function isInStandaloneMode() {
-            return window.matchMedia('(display-mode: standalone)').matches || 
-                   window.navigator.standalone === true;
-        }
-        
-        function showInstallInstructions() {
-            console.log('Install button clicked');
-            console.log('Is iOS?', isIOS());
-            
-            const banner = document.getElementById('iosInstallBanner');
-            console.log('Banner element found:', !!banner);
-            
-            if (banner) {
-                banner.style.display = 'block';
-                console.log('Banner displayed');
-                
-                // Scroll to make it visible
-                setTimeout(() => {
-                    window.scrollTo({
-                        top: document.body.scrollHeight,
-                        behavior: 'smooth'
-                    });
-                }, 100);
-            } else {
-                console.error('Banner element not found!');
-                // Fallback alert
-                alert('Installation Instructions:\n\n' +
-                      '1. Tap the Share button ⬆️ (at bottom of Safari)\n' +
-                      '2. Scroll down in the menu\n' +
-                      '3. Tap "Add to Home Screen" ➕\n' +
-                      '4. Tap "Add"\n\n' +
-                      'Note: You must use Safari browser on iPhone/iPad!');
-            }
-        }
-        
-        // Hide install button if already installed
-        if (isInStandaloneMode()) {
-            console.log('Running in standalone mode');
-            const installBtn = document.getElementById('installButtonContainer');
-            if (installBtn) {
-                installBtn.style.display = 'none';
-            }
-        }
-        
-        console.log('PWA script loaded successfully');
     </script>
+    
 </body>
 </html>
 

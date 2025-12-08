@@ -12,50 +12,94 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            min-height: 100vh;
-            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f0f0f0;
+            color: #333;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        /* CELPIP-style header with Test Mode badge */
+        .celpip-header {
+            background: #c8102e;  /* Red for Test Mode */
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #f0f0f0;
+        .celpip-header h1 {
+            font-size: 1.3em;
+            font-weight: normal;
+        }
+        
+        .header-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
         }
         
         .test-mode-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 5px;
             font-weight: bold;
-            margin-bottom: 15px;
             font-size: 0.9em;
         }
         
+        .question-counter {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        
+        .timer-box {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: bold;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .timer-box.warning {
+            background: #8b0000;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Main container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Progress bar */
+        .progress-bar-container {
+            background: white;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
         .progress-bar {
-            margin: 20px 0;
-            background: #f0f0f0;
+            background: #e0e0e0;
             border-radius: 10px;
             height: 10px;
             overflow: hidden;
+            margin-bottom: 10px;
         }
         
         .progress-fill {
             height: 100%;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: #c8102e;
             transition: width 0.3s ease;
         }
         
@@ -63,157 +107,294 @@
             text-align: center;
             color: #666;
             font-size: 0.9em;
-            margin-top: 5px;
         }
         
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
+        /* Instructions bar */
+        .instructions-bar {
+            background: #fff3cd;
+            border-left: 4px solid #c8102e;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
         }
         
-        .subtitle {
-            color: #666;
+        .instructions-bar strong {
+            color: #856404;
+        }
+        
+        /* Two-column layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .content-panel {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            max-height: calc(100vh - 350px);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        
+        .content-panel::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .content-panel::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .content-panel::-webkit-scrollbar-thumb {
+            background: #c8102e;
+            border-radius: 4px;
+        }
+        
+        .content-panel::-webkit-scrollbar-thumb:hover {
+            background: #8b0000;
+        }
+        
+        .content-panel h3 {
+            color: #c8102e;
             font-size: 1.1em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #c8102e;
         }
         
-        .timer {
-            font-size: 2em;
-            color: #667eea;
-            font-weight: bold;
-            text-align: center;
-            margin: 20px 0;
+        /* Passage styling */
+        .passage {
+            background: #fafafa;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            line-height: 1.8;
+            white-space: pre-line;
+            font-size: 1em;
+            color: #222;
+        }
+        
+        /* Question styling - same as Practice Mode */
+        .question-inline {
+            margin-bottom: 20px;
             padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            display: block;
+            line-height: 1.8;
         }
         
-        .timer.warning {
-            color: #f5576c;
-            animation: pulse 1s infinite;
+        .question-number {
+            font-weight: bold;
+            color: #c8102e;
+            font-size: 1em;
+            display: inline;
         }
         
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+        .question-label {
+            font-weight: normal;
+            color: #333;
+            display: inline;
+            line-height: 1.8;
         }
         
-        .quit-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            background: #f44336;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
+        /* Dropdown styling - same as Practice Mode */
+        .inline-dropdown {
+            display: inline;
+            padding: 6px 30px 6px 10px;
+            border: 2px solid #c8102e;
+            border-radius: 3px;
+            background: white;
+            color: #333;
+            font-size: 0.95em;
+            cursor: pointer;
+            margin: 0 4px;
+            width: 150px;
+            font-family: inherit;
+            transition: all 0.2s ease;
+            text-align: left;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c8102e' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+        }
+        
+        .passage .inline-dropdown {
+            width: 150px;
+            max-width: 150px;
+        }
+        
+        .inline-dropdown option {
+            white-space: normal;
+            padding: 8px;
+        }
+        
+        .question-inline .inline-dropdown {
+            display: inline;
+            width: 150px;
+            min-width: 150px;
+        }
+        
+        .inline-dropdown.answered {
+            background: #ffe6e6;
+            border-color: #c8102e;
+        }
+        
+        /* Selected text displayed after choosing an option */
+        .selected-text {
+            display: inline;
             font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 3px 10px rgba(244, 67, 54, 0.3);
-            z-index: 1000;
+            color: #c8102e;
+            background: #ffe6e6;
+            padding: 4px 8px;
+            border-radius: 3px;
+            line-height: 1.8;
         }
         
-        .quit-btn:hover {
-            background: #d32f2f;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.5);
+        .passage .selected-text {
+            display: inline;
+            font-weight: 600;
+            color: #c8102e;
+            background: #ffe6e6;
+            padding: 2px 6px;
+            border-radius: 3px;
         }
         
-        /* Reuse existing styles from test_section.html */
-        .content-wrapper { display: flex; gap: 30px; margin: 20px 0; }
-        .left-panel, .right-panel { flex: 1; }
-        .passage { background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 20px; line-height: 1.8; white-space: pre-wrap; }
-        .passage-box { background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 20px; line-height: 1.8; white-space: pre-wrap; }
-        .questions-list { list-style: none; }
-        .question-item { margin: 15px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; display: flex; align-items: flex-start; gap: 10px; }
-        .question-container { background: transparent; padding: 20px; border-radius: 10px; }
-        .inline-dropdown { padding: 8px 12px; border: 2px solid #667eea; border-radius: 6px; font-size: 1em; cursor: pointer; background: white; min-width: 200px; }
-        .inline-dropdown.answered { background: #e8f5e9; border-color: #4caf50; }
-        .submit-btn { display: block; width: 100%; padding: 15px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border: none; border-radius: 10px; font-size: 1.1em; font-weight: bold; cursor: pointer; margin-top: 20px; transition: all 0.3s; }
-        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4); }
-        .submit-btn:disabled { background: #ccc; cursor: not-allowed; }
-        .section-divider { margin: 30px 0 20px 0; border-top: 2px solid #e0e0e0; padding-top: 20px; }
-        .section-title { color: #667eea; font-size: 1.3em; margin-bottom: 15px; font-weight: 600; }
+        .question-inline .selected-text {
+            display: inline;
+            line-height: 1.8;
+        }
         
-        .final-score {
+        .inline-dropdown.selected {
             display: none;
-            text-align: center;
-            padding: 40px;
-            background: linear-gradient(135deg, #76c7a1 0%, #56ab2f 100%);
-            color: white;
-            border-radius: 15px;
+        }
+        
+        /* Section divider */
+        .section-divider {
+            background: #fff3cd;
+            padding: 12px 20px;
+            border-left: 4px solid #c8102e;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #856404;
+            margin: 20px 0;
+        }
+        
+        /* Full-width panel */
+        .full-width-panel {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        /* Navigation buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
             margin: 30px 0;
         }
         
-        .final-score h2 {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-        }
-        
-        .final-score .score {
-            font-size: 4em;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-        
-        .next-skill-btn, .finish-btn {
+        .nav-btn {
             display: inline-block;
-            padding: 15px 40px;
-            background: white;
-            color: #56ab2f;
+            padding: 12px 40px;
+            background: #c8102e;
+            color: white;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 5px;
             font-weight: 600;
             font-size: 1.1em;
-            margin-top: 20px;
-            transition: all 0.3s;
+            transition: background 0.2s ease;
+            border: none;
+            cursor: pointer;
         }
         
-        .next-skill-btn:hover, .finish-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        .nav-btn:hover {
+            background: #8b0000;
+        }
+        
+        .nav-btn.secondary {
+            background: #6c757d;
+        }
+        
+        .nav-btn.secondary:hover {
+            background: #5a6268;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <a href="/" class="quit-btn">✕ Quit Test</a>
-    
-    <div class="container">
-        <div class="header">
+    <!-- CELPIP-style header with Test Mode styling -->
+    <div class="celpip-header">
+        <h1>Test {{ test_num }} - {{ skill|title }} - {{ section.title }}</h1>
+        <div class="header-right">
             <div class="test-mode-badge">🎯 TEST MODE</div>
-            <h1>{{ section.title }}</h1>
-            <p class="subtitle">Test {{ test_num }} - {{ skill|title }}</p>
-            
+            <div class="question-counter">{{ section.questions|length }} Questions</div>
+            <div class="timer-box" id="timer">
+                {{ "%.1f"|format(section.timeout_minutes) }} min
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-container">
+        <!-- Progress bar -->
+        <div class="progress-bar-container">
             <div class="progress-bar">
                 <div class="progress-fill" style="width: {{ progress }}%"></div>
             </div>
             <div class="progress-text">Part {{ part_num }}/{{ total_parts }} - {{ skill|title }}</div>
         </div>
         
-        <div class="timer" id="timer">{{ section.timeout_minutes }}:00</div>
+        <!-- Instructions -->
+        <div class="instructions-bar">
+            <strong>Instructions:</strong> {{ section.instructions }}
+        </div>
         
-        <p style="color: #666; margin-bottom: 20px;">{{ section.instructions }}</p>
+        {% include 'test_content_partial.html' %}
         
-        <form id="testForm">
-            {% include 'test_content_partial.html' %}
-            
-            <button type="submit" class="submit-btn" id="submitBtn">
-                {% if is_last_part_of_skill %}
-                    Finish {{ skill|title }} Section →
+        <!-- Navigation Buttons (No Back in Test Mode) -->
+        <div class="nav-buttons">
+            {% if is_last_part_of_skill %}
+                {% if next_skill %}
+                <button type="submit" form="testForm" class="nav-btn">Continue to {{ next_skill|title }} →</button>
                 {% else %}
-                    Next Part →
+                <button type="submit" form="testForm" class="nav-btn">Finish Test</button>
                 {% endif %}
-            </button>
-        </form>
+            {% else %}
+            <button type="submit" form="testForm" class="nav-btn">Next Part →</button>
+            {% endif %}
+        </div>
         
-        <div class="final-score" id="finalScore">
-            <h2><span id="skillName"></span> Section Complete!</h2>
-            <div class="score" id="skillScoreDisplay"></div>
-            <p style="font-size: 1.2em; margin-bottom: 10px;">You got <span id="skillScoreText"></span></p>
-            <div id="nextActionButtons"></div>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="/" class="back-btn" style="display: inline-block; background: #6c757d; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; transition: background 0.2s ease;">⏸ Pause & Exit (Progress Saved)</a>
         </div>
     </div>
-    
+
     <script>
+        // Saved answers from session (for Test Mode)
+        const savedAnswers = {};  // Test Mode doesn't restore - starts fresh
+        
+        // Pre-populate dropdowns would go here but Test Mode starts fresh
+        
         // Timer functionality
         let timeLeft = {{ section.timeout_minutes }} * 60;
         const timerElement = document.getElementById('timer');
@@ -230,7 +411,7 @@
             if (timeLeft <= 0) {
                 clearInterval(timerInterval);
                 alert('Time is up! Moving to next part...');
-                document.getElementById('submitBtn').click();
+                document.querySelector('.nav-btn').click();
             }
             
             timeLeft--;
@@ -239,80 +420,179 @@
         const timerInterval = setInterval(updateTimer, 1000);
         updateTimer();
         
-        // Form submission
-        document.getElementById('testForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            clearInterval(timerInterval);
-            
-            const formData = new FormData(this);
-            const answers = {};
-            
-            for (let [key, value] of formData.entries()) {
-                if (key.startsWith('q')) {
-                    const qId = parseInt(key.substring(1));
-                    answers[qId] = parseInt(value);
-                }
-            }
-            
-            fetch('/submit_test_mode', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    answers: answers,
-                    test_num: {{ test_num }},
-                    skill: '{{ skill }}',
-                    part_num: {{ part_num }},
-                    is_last_part: {{ 'true' if is_last_part_of_skill else 'false' }}
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.show_skill_score) {
-                    // Show final skill score
-                    document.getElementById('skillName').textContent = '{{ skill|title }}';
-                    document.getElementById('skillScoreDisplay').textContent = 
-                        `${data.skill_total}/${data.skill_max}`;
-                    document.getElementById('skillScoreText').textContent = 
-                        `${data.skill_total} out of ${data.skill_max} correct (${data.skill_percentage}%)`;
+        // Dropdown selection visual feedback and auto-save
+        document.querySelectorAll('.inline-dropdown').forEach(dropdown => {
+            dropdown.addEventListener('change', function() {
+                const questionId = this.dataset.question || this.name.substring(1);
+                const selectedValue = this.value;
+                
+                if (selectedValue !== '') {
+                    this.classList.add('answered');
                     
-                    // Show appropriate button based on whether it's the final skill
-                    const nextActionButtons = document.getElementById('nextActionButtons');
-                    if (data.is_final) {
-                        nextActionButtons.innerHTML = `
-                            <div style="background: white; color: #56ab2f; padding: 20px; border-radius: 10px; margin: 20px 0;">
-                                <h3 style="margin-bottom: 10px;">🎉 Test Complete!</h3>
-                                <p style="margin: 0;">All sections finished. Great job!</p>
-                            </div>
-                            <a href="/" class="finish-btn">
-                                Back to Home
-                            </a>
-                        `;
-                    } else {
-                        // Find next skill
-                        const skillOrder = ['reading', 'listening', 'writing', 'speaking'];
-                        const currentIndex = skillOrder.indexOf('{{ skill }}');
-                        let nextSkill = '{{ next_skill }}';
-                        
-                        nextActionButtons.innerHTML = `
-                            <a href="/test/{{ test_num }}/exam/${nextSkill}/part1" class="next-skill-btn">
-                                Continue to ${nextSkill.charAt(0).toUpperCase() + nextSkill.slice(1)} →
-                            </a>
-                        `;
-                    }
+                    // Auto-save to session (Test Mode)
+                    fetch('/save_test_mode_answer', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            test_num: {{ test_num }},
+                            skill: '{{ skill }}',
+                            part_num: {{ part_num }},
+                            question_id: questionId,
+                            answer: parseInt(selectedValue)
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.success) {
+                            console.error('Failed to save answer');
+                        }
+                    });
                     
-                    document.getElementById('finalScore').style.display = 'block';
-                    document.getElementById('submitBtn').style.display = 'none';
+                    // Get selected option text
+                    const selectedText = this.options[this.selectedIndex].text;
                     
-                    // Scroll to show the final score card (scroll down)
-                    const finalScoreElement = document.getElementById('finalScore');
-                    finalScoreElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Create a span element to show the selected text
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'selected-text';
+                    textSpan.textContent = selectedText;
+                    textSpan.dataset.dropdownId = this.id || this.name;
+                    textSpan.dataset.selectedValue = selectedValue;
+                    
+                    // Store the dropdown for potential resubmission
+                    textSpan.style.cursor = 'pointer';
+                    textSpan.title = 'Click to change answer';
+                    
+                    // Add click event to restore dropdown
+                    textSpan.addEventListener('click', function() {
+                        const originalDropdown = this.nextElementSibling || this.previousElementSibling;
+                        if (originalDropdown && originalDropdown.classList.contains('inline-dropdown')) {
+                            originalDropdown.classList.remove('selected');
+                            this.remove();
+                        }
+                    });
+                    
+                    // Hide dropdown and insert text
+                    this.classList.add('selected');
+                    this.parentNode.insertBefore(textSpan, this);
                 } else {
-                    // Auto-navigate to next part
-                    window.location.href = `/test/${data.test_num}/exam/${data.skill}/part${data.next_part}`;
+                    this.classList.remove('answered');
                 }
             });
         });
+        
+        // Form submission (auto-submit on button click)
+        const form = document.getElementById('testForm');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate all dropdowns are answered (check BOTH forms)
+                const allDropdowns = document.querySelectorAll('#testForm .inline-dropdown, #testForm2 .inline-dropdown');
+                const unansweredDropdowns = [];
+                
+                allDropdowns.forEach(dropdown => {
+                    const isAnswered = dropdown.classList.contains('answered') || 
+                                       dropdown.classList.contains('selected') ||
+                                       dropdown.value !== '' && dropdown.value !== undefined;
+                    
+                    if (!isAnswered) {
+                        unansweredDropdowns.push(dropdown.name || dropdown.dataset.question);
+                    }
+                });
+                
+                if (unansweredDropdowns.length > 0) {
+                    alert(`Please answer all questions before continuing.\n\nUnanswered: ${unansweredDropdowns.length} question(s)`);
+                    
+                    // Highlight first unanswered dropdown
+                    const firstUnanswered = allDropdowns[Array.from(allDropdowns).findIndex(d => {
+                        return !(d.classList.contains('answered') || d.classList.contains('selected') || (d.value !== '' && d.value !== undefined));
+                    })];
+                    
+                    if (firstUnanswered) {
+                        firstUnanswered.style.border = '2px solid red';
+                        firstUnanswered.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        setTimeout(() => {
+                            firstUnanswered.style.border = '';
+                        }, 3000);
+                    }
+                    
+                    return false;
+                }
+                
+                clearInterval(timerInterval);
+                
+                // Collect all answers from BOTH forms (testForm and testForm2)
+                const answers = {};
+                
+                // Collect from testForm
+                const form1 = document.getElementById('testForm');
+                if (form1) {
+                    const formData1 = new FormData(form1);
+                    for (let [key, value] of formData1.entries()) {
+                        if (key.startsWith('q')) {
+                            const qId = parseInt(key.substring(1));
+                            answers[qId] = parseInt(value);
+                        }
+                    }
+                }
+                
+                // Collect from testForm2 (for Part 1, 2, 4 - Response/Email/Comments)
+                const form2 = document.getElementById('testForm2');
+                if (form2) {
+                    const formData2 = new FormData(form2);
+                    for (let [key, value] of formData2.entries()) {
+                        if (key.startsWith('q')) {
+                            const qId = parseInt(key.substring(1));
+                            answers[qId] = parseInt(value);
+                        }
+                    }
+                }
+                
+                // Also collect from selected text spans (for already answered questions)
+                document.querySelectorAll('.selected-text').forEach(span => {
+                    const value = span.dataset.selectedValue;
+                    const dropdownId = span.dataset.dropdownId;
+                    if (dropdownId && dropdownId.startsWith('q')) {
+                        const qId = parseInt(dropdownId.substring(1));
+                        if (!answers[qId] && value !== undefined) {
+                            answers[qId] = parseInt(value);
+                        }
+                    }
+                });
+                
+                // Submit to Test Mode endpoint
+                fetch('/submit_test_mode', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        answers: answers,
+                        test_num: {{ test_num }},
+                        skill: '{{ skill }}',
+                        part_num: {{ part_num }},
+                        is_last_part: {{ 'true' if is_last_part_of_skill else 'false' }}
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.show_skill_score) {
+                        // Last part of skill - redirect to answer key
+                        if (data.is_final) {
+                            window.location.href = `/test/{{ test_num }}/{{ skill }}/answer-key`;
+                        } else {
+                            // Go to next skill
+                            const nextSkill = '{{ next_skill }}';
+                            window.location.href = `/test/{{ test_num }}/exam/${nextSkill}/part1`;
+                        }
+                    } else {
+                        // Go to next part
+                        window.location.href = `/test/${data.test_num}/exam/${data.skill}/part${data.next_part}`;
+                    }
+                });
+            });
+        }
     </script>
 </body>
 </html>
-

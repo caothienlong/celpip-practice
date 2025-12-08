@@ -1,11 +1,11 @@
 {
   "time_per_question": {
-    "reading": 1.5,
+    "reading": 1.0,
     "writing": 30.0,
-    "speaking": 1.5,
-    "listening": 1.5
+    "speaking": 1.0,
+    "listening": 1.0
   },
-  "default_time_per_question": 1.5,
+  "default_time_per_question": 1.0,
   "custom_timeouts": {
     "comment": "Format: 'test_skill_part': minutes. Example: '1_reading_1': 20.0",
     "examples": {

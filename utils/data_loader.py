@@ -118,12 +118,13 @@ class TestDataLoader:
         
         return content
     
-    def build_question_dropdown_html(self, questions):
+    def build_question_dropdown_html(self, questions, test_type='default'):
         """
         Build HTML for standalone questions with dropdowns
         
         Args:
             questions: List of question dictionaries
+            test_type: Type of test ('information' for Part 3, 'default' for others)
             
         Returns:
             str: HTML for questions
@@ -133,12 +134,25 @@ class TestDataLoader:
             q_id = question['id']
             html += f'<div class="question-inline">'
             html += f'<span class="question-number">{q_id}.</span> '
-            html += f'<span class="question-label">{question["text"]}</span> '
-            html += f'<select class="inline-dropdown" name="q{q_id}" data-question="{q_id}" required>'
-            html += '<option value="" selected disabled>-- Select --</option>'
-            for idx, option in enumerate(question['options']):
-                html += f'<option value="{idx}">{option}</option>'
-            html += '</select></div>'
+            
+            # For Part 3 (information type), dropdown comes BEFORE the text
+            if test_type == 'information':
+                html += f'<select class="inline-dropdown" name="q{q_id}" data-question="{q_id}" required>'
+                html += '<option value="" selected disabled>-- Select --</option>'
+                for idx, option in enumerate(question['options']):
+                    html += f'<option value="{idx}">{option}</option>'
+                html += '</select> '
+                html += f'<span class="question-label">{question["text"]}</span>'
+            else:
+                # Default: text comes before dropdown
+                html += f'<span class="question-label">{question["text"]}</span> '
+                html += f'<select class="inline-dropdown" name="q{q_id}" data-question="{q_id}" required>'
+                html += '<option value="" selected disabled>-- Select --</option>'
+                for idx, option in enumerate(question['options']):
+                    html += f'<option value="{idx}">{option}</option>'
+                html += '</select>'
+            
+            html += '</div>'
         return html
     
     def list_available_tests(self):
@@ -191,8 +205,8 @@ class TestDataLoader:
             test_data: Test part data dictionary
             
         Returns:
-            dict: Mapping of question ID to correct answer index
+            dict: Mapping of question ID (int) to correct answer index (int)
         """
         questions = self.get_all_questions(test_data)
-        return {str(q['id']): q['answer'] for q in questions}
+        return {q['id']: q['answer'] for q in questions}
 
