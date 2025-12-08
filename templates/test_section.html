@@ -1078,19 +1078,22 @@
                 })];
                 
                 if (firstUnanswered) {
-                    // Scroll to it
+                    // Scroll to it first
                     firstUnanswered.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     
-                    // Add highlight
-                    firstUnanswered.style.border = '2px solid #e74c3c';
-                    
-                    // Show small popup near the dropdown
-                    showValidationPopup(firstUnanswered, 'Please fill in this blank');
-                    
-                    // Remove highlight after 3 seconds
+                    // Wait for scroll to complete, then show popup
                     setTimeout(() => {
-                        firstUnanswered.style.border = '';
-                    }, 3000);
+                        // Add highlight
+                        firstUnanswered.style.border = '2px solid #e74c3c';
+                        
+                        // Show popup after scroll completes
+                        showValidationPopup(firstUnanswered, 'Please fill in this blank');
+                        
+                        // Remove highlight after 3 seconds
+                        setTimeout(() => {
+                            firstUnanswered.style.border = '';
+                        }, 3000);
+                    }, 500); // Wait 500ms for smooth scroll to complete
                 }
                 
                 return false;
