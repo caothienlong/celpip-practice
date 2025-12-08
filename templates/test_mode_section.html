@@ -503,10 +503,11 @@
             left: 30px;
             background: white;
             padding: 15px;
+            padding-top: 10px;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            max-width: 350px;
-            max-height: 400px;
+            max-width: 300px;
+            max-height: 350px;
             overflow-y: auto;
             display: none;
             z-index: 999;
@@ -514,6 +515,52 @@
         
         .vocab-notes-list.active {
             display: block;
+            animation: slideUp 0.3s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .vocab-notes-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .vocab-notes-header h4 {
+            margin: 0;
+            color: #333;
+            font-size: 0.95em;
+        }
+        
+        .vocab-notes-close {
+            background: none;
+            border: none;
+            font-size: 1.3em;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        
+        .vocab-notes-close:hover {
+            background: #f0f0f0;
+            color: #333;
         }
         
         .vocab-note-item {
@@ -842,24 +889,43 @@
     
     <!-- Recent Vocabulary Notes List -->
     <div class="vocab-notes-list" id="vocabNotesList">
-        <h4 style="margin-bottom: 10px; color: #333;">📖 Your Notes (This Part)</h4>
+        <div class="vocab-notes-header">
+            <h4>📖 Your Notes (This Part)</h4>
+            <button class="vocab-notes-close" onclick="closeNotesList()" title="Close">&times;</button>
+        </div>
         <div id="vocabNotesContent">Loading...</div>
         <a href="/test/{{ test_num }}/vocabulary" class="view-all-vocab-btn">View All Vocabulary →</a>
     </div>
     
     <script>
         // Vocabulary Notes JavaScript
+        let notesListTimeout;
+        
         function openVocabModal() {
             document.getElementById('vocabModal').classList.add('active');
-            // Show recent notes
-            document.getElementById('vocabNotesList').classList.add('active');
-            loadRecentNotes();
+            // Don't auto-show notes list when opening modal
         }
         
         function closeVocabModal() {
             document.getElementById('vocabModal').classList.remove('active');
             // Clear form
             document.getElementById('vocabForm').reset();
+        }
+        
+        function closeNotesList() {
+            document.getElementById('vocabNotesList').classList.remove('active');
+            clearTimeout(notesListTimeout);
+        }
+        
+        function showNotesList() {
+            const notesList = document.getElementById('vocabNotesList');
+            notesList.classList.add('active');
+            
+            // Auto-dismiss after 10 seconds
+            clearTimeout(notesListTimeout);
+            notesListTimeout = setTimeout(() => {
+                closeNotesList();
+            }, 10000);
         }
         
         // Close modal on outside click
@@ -900,9 +966,21 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert('✅ Vocabulary note saved!');
+                    // Show success message (brief)
+                    const successMsg = document.createElement('div');
+                    successMsg.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #28a745; color: white; padding: 15px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 3000; animation: slideInRight 0.3s ease;';
+                    successMsg.innerHTML = '✅ Vocabulary note saved!';
+                    document.body.appendChild(successMsg);
+                    
+                    // Remove after 3 seconds
+                    setTimeout(() => {
+                        successMsg.style.animation = 'fadeOut 0.3s ease';
+                        setTimeout(() => successMsg.remove(), 300);
+                    }, 3000);
+                    
                     closeVocabModal();
                     loadRecentNotes(); // Refresh the list
+                    showNotesList(); // Show the notes list with auto-dismiss
                 } else {
                     alert('❌ Error: ' + (data.error || 'Failed to save note'));
                 }
@@ -947,6 +1025,20 @@
         
         // Load notes on page load (don't show list by default)
         loadRecentNotes();
+        
+        // Add CSS animation for success message
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
     {% endif %}
 </body>
