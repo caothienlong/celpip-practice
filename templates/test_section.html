@@ -534,6 +534,31 @@
             box-shadow: 0 6px 16px rgba(0,0,0,0.3);
         }
         
+        .vocab-view-btn {
+            position: fixed;
+            bottom: 90px;
+            left: 30px;
+            background: #0066cc;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-size: 0.9em;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .vocab-view-btn:hover {
+            background: #003366;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        
         .vocab-modal {
             display: none;
             position: fixed;
@@ -664,107 +689,6 @@
         
         .vocab-cancel-btn:hover {
             background: #5a6268;
-        }
-        
-        .vocab-notes-list {
-            position: fixed;
-            bottom: 90px;
-            left: 30px;
-            background: white;
-            padding: 15px;
-            padding-top: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            max-width: 300px;
-            max-height: 350px;
-            overflow-y: auto;
-            display: none;
-            z-index: 999;
-        }
-        
-        .vocab-notes-list.active {
-            display: block;
-            animation: slideUp 0.3s ease;
-        }
-        
-        @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        .vocab-notes-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        
-        .vocab-notes-header h4 {
-            margin: 0;
-            color: #333;
-            font-size: 0.95em;
-        }
-        
-        .vocab-notes-close {
-            background: none;
-            border: none;
-            font-size: 1.3em;
-            cursor: pointer;
-            color: #999;
-            padding: 0;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.2s;
-        }
-        
-        .vocab-notes-close:hover {
-            background: #f0f0f0;
-            color: #333;
-        }
-        
-        .vocab-note-item {
-            padding: 10px;
-            border-left: 3px solid #ffc107;
-            background: #f8f9fa;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-        
-        .vocab-note-word {
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 5px;
-        }
-        
-        .vocab-note-def {
-            font-size: 0.85em;
-            color: #666;
-        }
-        
-        .view-all-vocab-btn {
-            background: #0066cc;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 5px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 10px;
-            font-size: 0.85em;
-            font-weight: 600;
-        }
-        
-        .view-all-vocab-btn:hover {
-            background: #003366;
         }
     </style>
 </head>
@@ -1125,9 +1049,12 @@
     
     <!-- Vocabulary Notes Feature -->
     {% if current_user and current_user.is_authenticated %}
-    <!-- Floating Vocabulary Button -->
+    <!-- Floating Vocabulary Buttons -->
+    <a href="/test/{{ test_num }}/vocabulary" class="vocab-view-btn">
+        📚 View All Vocabulary
+    </a>
     <button class="vocab-note-btn" onclick="openVocabModal()">
-        📚 Add Vocabulary Note
+        ✏️ Add Vocabulary Note
     </button>
     
     <!-- Vocabulary Notes Modal -->
@@ -1158,45 +1085,16 @@
         </div>
     </div>
     
-    <!-- Recent Vocabulary Notes List -->
-    <div class="vocab-notes-list" id="vocabNotesList">
-        <div class="vocab-notes-header">
-            <h4>📖 Your Notes (This Part)</h4>
-            <button class="vocab-notes-close" onclick="closeNotesList()" title="Close">&times;</button>
-        </div>
-        <div id="vocabNotesContent">Loading...</div>
-        <a href="/test/{{ test_num }}/vocabulary" class="view-all-vocab-btn">View All Vocabulary →</a>
-    </div>
-    
     <script>
         // Vocabulary Notes JavaScript
-        let notesListTimeout;
-        
         function openVocabModal() {
             document.getElementById('vocabModal').classList.add('active');
-            // Don't auto-show notes list when opening modal
         }
         
         function closeVocabModal() {
             document.getElementById('vocabModal').classList.remove('active');
             // Clear form
             document.getElementById('vocabForm').reset();
-        }
-        
-        function closeNotesList() {
-            document.getElementById('vocabNotesList').classList.remove('active');
-            clearTimeout(notesListTimeout);
-        }
-        
-        function showNotesList() {
-            const notesList = document.getElementById('vocabNotesList');
-            notesList.classList.add('active');
-            
-            // Auto-dismiss after 10 seconds
-            clearTimeout(notesListTimeout);
-            notesListTimeout = setTimeout(() => {
-                closeNotesList();
-            }, 10000);
         }
         
         // Close modal on outside click
@@ -1237,7 +1135,7 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // Show success message (brief)
+                    // Show success message (toast notification)
                     const successMsg = document.createElement('div');
                     successMsg.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #28a745; color: white; padding: 15px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 3000; animation: slideInRight 0.3s ease;';
                     successMsg.innerHTML = '✅ Vocabulary note saved!';
@@ -1250,8 +1148,6 @@
                     }, 3000);
                     
                     closeVocabModal();
-                    loadRecentNotes(); // Refresh the list
-                    showNotesList(); // Show the notes list with auto-dismiss
                 } else {
                     alert('❌ Error: ' + (data.error || 'Failed to save note'));
                 }
@@ -1261,41 +1157,6 @@
                 alert('❌ Failed to save vocabulary note');
             });
         });
-        
-        // Load recent notes for this part
-        function loadRecentNotes() {
-            fetch(`/get_vocabulary_notes?test_num={{ test_num }}&skill={{ skill }}&part_num={{ part_num }}`)
-            .then(response => response.json())
-            .then(data => {
-                const container = document.getElementById('vocabNotesContent');
-                
-                if (data.success && data.notes && data.notes.length > 0) {
-                    const notesHtml = data.notes.slice(0, 5).map(note => `
-                        <div class="vocab-note-item">
-                            <div class="vocab-note-word">${escapeHtml(note.word)}</div>
-                            <div class="vocab-note-def">${escapeHtml(note.definition)}</div>
-                        </div>
-                    `).join('');
-                    container.innerHTML = notesHtml;
-                } else {
-                    container.innerHTML = '<p style="color: #999; font-size: 0.85em;">No notes yet for this part.</p>';
-                }
-            })
-            .catch(error => {
-                console.error('Error loading notes:', error);
-                document.getElementById('vocabNotesContent').innerHTML = '<p style="color: #999;">Failed to load notes.</p>';
-            });
-        }
-        
-        // Helper function to escape HTML
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-        
-        // Load notes on page load (don't show list by default)
-        loadRecentNotes();
         
         // Add CSS animation for success message
         const style = document.createElement('style');
