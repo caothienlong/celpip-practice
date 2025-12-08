@@ -457,7 +457,7 @@
             
             <div class="auth-buttons">
                 {% if current_user.is_authenticated %}
-                <a href="/logout" class="auth-btn logout">🚪 Logout</a>
+                <a href="/logout" class="auth-btn logout" onclick="handleLogout(event)">🚪 Logout</a>
                 {% else %}
                 <a href="/login" class="auth-btn login">🔐 Login</a>
                 {% endif %}
@@ -466,28 +466,6 @@
         
         <h1>🎓 CELPIP Practice Tests</h1>
         <p class="subtitle">Select a test to begin practicing</p>
-        
-        {% if user_email and not current_user.is_authenticated %}
-        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f0f7ff; border-radius: 10px; border: 2px solid #667eea;">
-            <strong>👤 Logged in as:</strong> {{ user_email }}
-            <span style="margin-left: 15px;">
-                <a href="#" onclick="showEmailModal(); return false;" style="color: #667eea; text-decoration: none; font-size: 0.9em;">✏️ Change Email</a>
-            </span>
-            <span style="margin-left: 15px;">
-                <a href="/clear_session" style="color: #f44336; text-decoration: none; font-size: 0.9em;">✕ Clear Session</a>
-            </span>
-        </div>
-        {% else %}
-        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #fff3cd; border-radius: 10px; border: 2px solid #ffc107;">
-            <strong>⚠️ No email set</strong>
-            <span style="margin-left: 15px;">
-                <a href="#" onclick="showEmailModal(); return false;" style="color: #667eea; text-decoration: none; font-weight: 600;">📧 Set Email Address</a>
-            </span>
-            <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
-                Setting your email will enable test result tracking and history.
-            </p>
-        </div>
-        {% endif %}
         
         <div class="test-grid">
             {% for test_num in test_numbers %}
@@ -555,6 +533,21 @@
             {% endfor %}
         </div>
     </div>
+    
+    <script>
+        function handleLogout(event) {
+            event.preventDefault();
+            
+            // Call logout endpoint
+            fetch('/logout', {
+                method: 'GET',
+                credentials: 'same-origin'
+            }).then(() => {
+                // Force full page reload (no cache)
+                window.location.href = '/?t=' + Date.now();
+            });
+        }
+    </script>
     
 </body>
 </html>
