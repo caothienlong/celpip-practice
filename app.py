@@ -1337,12 +1337,19 @@ def vocabulary_notes_page(test_num):
                 }
             notes_by_part[part_key]['notes'].append(note)
         
+        # Check if user came from test mode by looking at referrer
+        from_test_mode = False
+        referrer = request.referrer
+        if referrer and '/exam/' in referrer:
+            from_test_mode = True
+        
         return render_template(
             'vocabulary_notes.html',
             test_num=test_num,
             notes_by_part=notes_by_part,
             total_notes=len(notes),
-            current_user=current_user
+            current_user=current_user,
+            from_test_mode=from_test_mode
         )
     
     except Exception as e:

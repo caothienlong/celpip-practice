@@ -335,9 +335,15 @@
         <!-- Header -->
         <div class="header">
             <div>
+                {% if from_test_mode %}
+                <a href="{{ url_for('start_exam', test_num=test_num) }}" class="back-link">
+                    ← Resume Test {{ test_num }} (Test Mode)
+                </a>
+                {% else %}
                 <a href="{{ url_for('test_detail', test_num=test_num) }}" class="back-link">
                     ← Back to Test {{ test_num }}
                 </a>
+                {% endif %}
                 <h1>📚 Vocabulary Notes</h1>
             </div>
             <div class="header-actions">
@@ -480,7 +486,6 @@
             // Disable buttons during save
             const saveBtn = editMode.querySelector('.btn-save');
             const cancelBtn = editMode.querySelector('.btn-cancel');
-            const originalSaveText = saveBtn.textContent;
             saveBtn.disabled = true;
             cancelBtn.disabled = true;
             saveBtn.textContent = 'Saving...';
@@ -523,6 +528,11 @@
                         contextEl.style.display = 'none';
                     }
                     
+                    // Reset buttons before switching modes
+                    saveBtn.disabled = false;
+                    cancelBtn.disabled = false;
+                    saveBtn.textContent = '✓ Save';
+                    
                     // Switch back to display mode
                     cancelEdit(noteId);
                     
@@ -531,7 +541,7 @@
                     // Re-enable buttons on error
                     saveBtn.disabled = false;
                     cancelBtn.disabled = false;
-                    saveBtn.textContent = originalSaveText;
+                    saveBtn.textContent = '✓ Save';
                     showToast('Error: ' + (data.error || 'Failed to update'), 'error');
                 }
             })
@@ -540,7 +550,7 @@
                 // Re-enable buttons on error
                 saveBtn.disabled = false;
                 cancelBtn.disabled = false;
-                saveBtn.textContent = originalSaveText;
+                saveBtn.textContent = '✓ Save';
                 showToast('Failed to update note. Please try again.', 'error');
             });
         }
