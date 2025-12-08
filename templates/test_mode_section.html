@@ -369,6 +369,7 @@
             width: 60px;
             overflow: visible;
             position: relative;
+            right: 0;
             background: white;
         }
         
@@ -376,7 +377,7 @@
             border-radius: 15px 0 0 0;
         }
         
-        .vocab-sidebar-item:first-child:hover {
+        .vocab-sidebar-item.back-btn:hover {
             border-radius: 15px 0 0 0;
         }
         
@@ -385,7 +386,7 @@
             border-radius: 0 0 0 15px;
         }
         
-        .vocab-sidebar-item:last-child:hover {
+        .vocab-sidebar-item.add-note:hover {
             border-radius: 0 0 0 15px;
         }
         
@@ -394,6 +395,8 @@
             width: 240px;
             box-shadow: -4px 0 12px rgba(0,0,0,0.2);
             z-index: 1001;
+            position: absolute;
+            right: 0;
         }
         
         .vocab-icon {
@@ -420,16 +423,19 @@
             display: inline-block;
         }
         
+        .vocab-sidebar-item.back-btn {
+            color: #0066cc;
+            top: 0;
+        }
+        
         .vocab-sidebar-item.view-all {
             color: #0066cc;
+            top: 60px;
         }
         
         .vocab-sidebar-item.add-note {
             color: #0066cc;
-        }
-        
-        .vocab-sidebar-item.back-btn {
-            color: #0066cc;
+            top: 120px;
         }
         
         .vocab-modal {
