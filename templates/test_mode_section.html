@@ -376,8 +376,16 @@
             border-radius: 15px 0 0 0;
         }
         
+        .vocab-sidebar-item:first-child:hover {
+            border-radius: 15px 0 0 0;
+        }
+        
         .vocab-sidebar-item:last-child {
             border-bottom: none;
+            border-radius: 0 0 0 15px;
+        }
+        
+        .vocab-sidebar-item:last-child:hover {
             border-radius: 0 0 0 15px;
         }
         
@@ -409,6 +417,7 @@
         .vocab-sidebar-item:hover .vocab-text {
             max-width: 200px;
             opacity: 1;
+            display: inline-block;
         }
         
         .vocab-sidebar-item.view-all {
