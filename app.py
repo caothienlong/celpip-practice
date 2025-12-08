@@ -186,10 +186,13 @@ def index():
                 'in_progress': False
             }
     
-    # Get historical data from JSON if user email is set
+    # Get historical data from JSON ONLY if user is authenticated
+    # Guest mode should not show any historical data
     test_history = {}
-    user_email = get_current_user_email()
-    if user_email:
+    user_email = None
+    
+    if current_user.is_authenticated:
+        user_email = current_user.email
         test_history = results_tracker.get_all_tests_summary(user_email)
     
     return render_template('test_list.html', 
