@@ -1161,6 +1161,194 @@ def test1_part2():
     return test_part(1, 'reading', 2)
 
 
+# ============================================================================
+# VOCABULARY NOTES ROUTES
+# ============================================================================
+
+@app.route('/save_vocabulary_note', methods=['POST'])
+@login_required_optional
+def save_vocabulary_note():
+    """Save a vocabulary note"""
+    # Check if user is authenticated
+    if not current_user.is_authenticated:
+        return jsonify({'success': False, 'error': 'Please login to save vocabulary notes'}), 401
+    
+    try:
+        data = request.get_json()
+        
+        # Validate required fields
+        required_fields = ['test_num', 'skill', 'part_num', 'word', 'definition']
+        for field in required_fields:
+            if field not in data:
+                return jsonify({'success': False, 'error': f'Missing field: {field}'}), 400
+        
+        # Save note
+        note_id = results_tracker.save_vocabulary_note(
+            user_email=current_user.email,
+            test_num=int(data['test_num']),
+            skill=data['skill'],
+            part_num=int(data['part_num']),
+            word=data['word'],
+            definition=data['definition'],
+            context=data.get('context', '')
+        )
+        
+        return jsonify({
+            'success': True,
+            'note_id': note_id,
+            'message': 'Vocabulary note saved!'
+        })
+    
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/get_vocabulary_notes', methods=['GET'])
+@login_required_optional
+def get_vocabulary_notes_route():
+    """Get vocabulary notes with optional filtering"""
+    # Check if user is authenticated
+    if not current_user.is_authenticated:
+        return jsonify({'success': False, 'notes': [], 'error': 'Please login to view notes'}), 401
+    
+    try:
+        # Get filter parameters
+        test_num = request.args.get('test_num', type=int)
+        skill = request.args.get('skill', type=str)
+        part_num = request.args.get('part_num', type=int)
+        
+        # Get notes
+        notes = results_tracker.get_vocabulary_notes(
+            user_email=current_user.email,
+            test_num=test_num,
+            skill=skill,
+            part_num=part_num
+        )
+        
+        return jsonify({
+            'success': True,
+            'notes': notes,
+            'count': len(notes)
+        })
+    
+    except Exception as e:
+        return jsonify({'success': False, 'notes': [], 'error': str(e)}), 500
+
+
+@app.route('/delete_vocabulary_note', methods=['POST'])
+@login_required_optional
+def delete_vocabulary_note_route():
+    """Delete a vocabulary note"""
+    # Check if user is authenticated
+    if not current_user.is_authenticated:
+        return jsonify({'success': False, 'error': 'Authentication required'}), 401
+    
+    try:
+        data = request.get_json()
+        note_id = data.get('note_id')
+        
+        if not note_id:
+            return jsonify({'success': False, 'error': 'Missing note_id'}), 400
+        
+        # Delete note
+        deleted = results_tracker.delete_vocabulary_note(
+            user_email=current_user.email,
+            note_id=note_id
+        )
+        
+        if deleted:
+            return jsonify({
+                'success': True,
+                'message': 'Note deleted successfully'
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': 'Note not found'
+            }), 404
+    
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/update_vocabulary_note', methods=['POST'])
+@login_required_optional
+def update_vocabulary_note_route():
+    """Update a vocabulary note"""
+    # Check if user is authenticated
+    if not current_user.is_authenticated:
+        return jsonify({'success': False, 'error': 'Authentication required'}), 401
+    
+    try:
+        data = request.get_json()
+        note_id = data.get('note_id')
+        
+        if not note_id:
+            return jsonify({'success': False, 'error': 'Missing note_id'}), 400
+        
+        # Update note
+        updated = results_tracker.update_vocabulary_note(
+            user_email=current_user.email,
+            note_id=note_id,
+            word=data.get('word'),
+            definition=data.get('definition'),
+            context=data.get('context')
+        )
+        
+        if updated:
+            return jsonify({
+                'success': True,
+                'message': 'Note updated successfully'
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': 'Note not found'
+            }), 404
+    
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/test/<int:test_num>/vocabulary')
+@login_required_optional
+def vocabulary_notes_page(test_num):
+    """Display all vocabulary notes for a test"""
+    # Check if user is authenticated
+    if not current_user.is_authenticated:
+        return redirect(url_for('login'))
+    
+    try:
+        # Get all notes for this test
+        notes = results_tracker.get_vocabulary_notes(
+            user_email=current_user.email,
+            test_num=test_num
+        )
+        
+        # Group notes by part
+        notes_by_part = {}
+        for note in notes:
+            part_key = f"{note['skill']}_part_{note['part_num']}"
+            if part_key not in notes_by_part:
+                notes_by_part[part_key] = {
+                    'skill': note['skill'],
+                    'part_num': note['part_num'],
+                    'notes': []
+                }
+            notes_by_part[part_key]['notes'].append(note)
+        
+        return render_template(
+            'vocabulary_notes.html',
+            test_num=test_num,
+            notes_by_part=notes_by_part,
+            total_notes=len(notes),
+            current_user=current_user
+        )
+    
+    except Exception as e:
+        return f"Error loading vocabulary notes: {str(e)}", 500
+
+
 if __name__ == '__main__':
     import os
     import sys
