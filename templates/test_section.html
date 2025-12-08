@@ -904,9 +904,9 @@
             {% endif %}
             
             {% if part_num < 4 %}
-            <button onclick="validateAndNavigate('/test/{{ test_num }}/{{ skill }}/part{{ part_num + 1 }}')" class="nav-btn" id="nextBtn" style="border: none; cursor: pointer;">Next →</button>
+            <button type="submit" form="testForm" class="nav-btn" id="nextBtn" style="border: none; cursor: pointer;">Next →</button>
             {% else %}
-            <button onclick="validateAndNavigate('/test/{{ test_num }}/{{ skill }}/answer-key')" class="nav-btn" style="border: none; cursor: pointer;">Finish</button>
+            <button type="submit" form="testForm" class="nav-btn" style="border: none; cursor: pointer;">Finish</button>
             {% endif %}
         </div>
     </div>
@@ -1054,91 +1054,39 @@
             });
         });
         
-        // Validation function
-        function validateAndNavigate(url) {
-            // Check dropdowns in BOTH testForm and testForm2
-            const allDropdowns = document.querySelectorAll('#testForm .inline-dropdown, #testForm2 .inline-dropdown');
-            const unansweredDropdowns = [];
+        // Handle form submission with HTML5 validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const testForm = document.getElementById('testForm');
+            const testForm2 = document.getElementById('testForm2');
             
-            allDropdowns.forEach(dropdown => {
-                // Check if dropdown is selected (either has answered class or selected class)
-                const isAnswered = dropdown.classList.contains('answered') || 
-                                   dropdown.classList.contains('selected') ||
-                                   dropdown.value !== '' && dropdown.value !== undefined;
-                
-                if (!isAnswered) {
-                    unansweredDropdowns.push(dropdown.name || dropdown.dataset.question);
-                }
-            });
-            
-            if (unansweredDropdowns.length > 0) {
-                // Find first unanswered dropdown
-                const firstUnanswered = allDropdowns[Array.from(allDropdowns).findIndex(d => {
-                    return !(d.classList.contains('answered') || d.classList.contains('selected') || (d.value !== '' && d.value !== undefined));
-                })];
-                
-                if (firstUnanswered) {
-                    // Scroll to it first
-                    firstUnanswered.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if (testForm) {
+                testForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
                     
-                    // Wait for scroll to complete, then show popup
-                    setTimeout(() => {
-                        // Add highlight
-                        firstUnanswered.style.border = '2px solid #e74c3c';
-                        
-                        // Show popup after scroll completes
-                        showValidationPopup(firstUnanswered, 'Please fill in this blank');
-                        
-                        // Remove highlight after 3 seconds
-                        setTimeout(() => {
-                            firstUnanswered.style.border = '';
-                        }, 3000);
-                    }, 500); // Wait 500ms for smooth scroll to complete
-                }
-                
-                return false;
+                    // Check if testForm2 exists and validate it too
+                    if (testForm2) {
+                        // Check if testForm2 is valid
+                        if (!testForm2.checkValidity()) {
+                            // Focus on first invalid field in testForm2
+                            const firstInvalid = testForm2.querySelector(':invalid');
+                            if (firstInvalid) {
+                                firstInvalid.reportValidity();
+                                return;
+                            }
+                        }
+                    }
+                    
+                    // Both forms valid, save and navigate
+                    saveAnswersToSession();
+                    
+                    {% if part_num < 4 %}
+                    window.location.href = '/test/{{ test_num }}/{{ skill }}/part{{ part_num + 1 }}';
+                    {% else %}
+                    window.location.href = '/test/{{ test_num }}/{{ skill }}/answer-key';
+                    {% endif %}
+                });
             }
-            
-            // All answered, navigate
-            window.location.href = url;
-        }
-        
-        // Show validation popup
-        function showValidationPopup(element, message) {
-            // Remove any existing popup
-            const existingPopup = document.querySelector('.validation-popup');
-            if (existingPopup) {
-                existingPopup.remove();
-            }
-            
-            // Create popup
-            const popup = document.createElement('div');
-            popup.className = 'validation-popup';
-            popup.textContent = message;
-            
-            // Position popup near the element
-            const rect = element.getBoundingClientRect();
-            popup.style.position = 'fixed';
-            popup.style.left = rect.left + 'px';
-            popup.style.top = (rect.bottom + 5) + 'px';
-            popup.style.background = '#e74c3c';
-            popup.style.color = 'white';
-            popup.style.padding = '8px 12px';
-            popup.style.borderRadius = '5px';
-            popup.style.fontSize = '14px';
-            popup.style.fontWeight = '500';
-            popup.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
-            popup.style.zIndex = '10000';
-            popup.style.animation = 'fadeInUp 0.3s ease';
-            
-            document.body.appendChild(popup);
-            
-            // Auto-remove after 3 seconds
-            setTimeout(() => {
-                popup.style.animation = 'fadeOut 0.3s ease';
-                setTimeout(() => popup.remove(), 300);
-            }, 3000);
-        }
+        });
     </script>
     
     <!-- Vocabulary Notes Feature -->

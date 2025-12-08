@@ -719,85 +719,18 @@
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Validate all dropdowns are answered (check BOTH forms)
-                const allDropdowns = document.querySelectorAll('#testForm .inline-dropdown, #testForm2 .inline-dropdown');
-                const unansweredDropdowns = [];
-                
-                allDropdowns.forEach(dropdown => {
-                    const isAnswered = dropdown.classList.contains('answered') || 
-                                       dropdown.classList.contains('selected') ||
-                                       dropdown.value !== '' && dropdown.value !== undefined;
-                    
-                    if (!isAnswered) {
-                        unansweredDropdowns.push(dropdown.name || dropdown.dataset.question);
+                // Check if testForm2 exists and validate it with HTML5
+                const testForm2 = document.getElementById('testForm2');
+                if (testForm2 && !testForm2.checkValidity()) {
+                    // testForm2 has invalid fields, show browser validation
+                    const firstInvalid = testForm2.querySelector(':invalid');
+                    if (firstInvalid) {
+                        firstInvalid.reportValidity();
+                        return;
                     }
-                });
-                
-                if (unansweredDropdowns.length > 0) {
-                    // Find first unanswered dropdown
-                    const firstUnanswered = allDropdowns[Array.from(allDropdowns).findIndex(d => {
-                        return !(d.classList.contains('answered') || d.classList.contains('selected') || (d.value !== '' && d.value !== undefined));
-                    })];
-                    
-                    if (firstUnanswered) {
-                        // Scroll to it first
-                        firstUnanswered.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        
-                        // Wait for scroll to complete, then show popup
-                        setTimeout(() => {
-                            // Add highlight
-                            firstUnanswered.style.border = '2px solid #e74c3c';
-                            
-                            // Show popup after scroll completes
-                            showValidationPopup(firstUnanswered, 'Please fill in this blank');
-                            
-                            // Remove highlight after 3 seconds
-                            setTimeout(() => {
-                                firstUnanswered.style.border = '';
-                            }, 3000);
-                        }, 500); // Wait 500ms for smooth scroll to complete
-                    }
-                    
-                    return false;
                 }
                 
-                // Show validation popup function
-                function showValidationPopup(element, message) {
-                    // Remove any existing popup
-                    const existingPopup = document.querySelector('.validation-popup');
-                    if (existingPopup) {
-                        existingPopup.remove();
-                    }
-                    
-                    // Create popup
-                    const popup = document.createElement('div');
-                    popup.className = 'validation-popup';
-                    popup.textContent = message;
-                    
-                    // Position popup near the element
-                    const rect = element.getBoundingClientRect();
-                    popup.style.position = 'fixed';
-                    popup.style.left = rect.left + 'px';
-                    popup.style.top = (rect.bottom + 5) + 'px';
-                    popup.style.background = '#e74c3c';
-                    popup.style.color = 'white';
-                    popup.style.padding = '8px 12px';
-                    popup.style.borderRadius = '5px';
-                    popup.style.fontSize = '14px';
-                    popup.style.fontWeight = '500';
-                    popup.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
-                    popup.style.zIndex = '10000';
-                    popup.style.animation = 'fadeInUp 0.3s ease';
-                    
-                    document.body.appendChild(popup);
-                    
-                    // Auto-remove after 3 seconds
-                    setTimeout(() => {
-                        popup.style.animation = 'fadeOut 0.3s ease';
-                        setTimeout(() => popup.remove(), 300);
-                    }, 3000);
-                }
-                
+                // HTML5 validation passed, proceed with submission
                 clearInterval(timerInterval);
                 
                 // Collect all answers from BOTH forms (testForm and testForm2)
