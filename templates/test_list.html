@@ -481,13 +481,9 @@
                 <div class="test-status status-in-progress">
                     ⏸️ In Progress - {{ exam_status[test_num].current_skill|title }} Part {{ exam_status[test_num].current_part }}
                 </div>
-                {% elif test_num in [1, 2] %}
-                <div class="test-status">
-                    📖 Ready for Test
-                </div>
                 {% else %}
                 <div class="test-status">
-                    📝 Template
+                    📖 Ready for Test
                 </div>
                 {% endif %}
                 
@@ -509,24 +505,18 @@
                     <a href="/test/{{ test_num }}" class="mode-btn practice-btn">
                         📚 Practice Mode
                     </a>
-                    {% if test_num in [1, 2] %}
-                        {% if exam_status[test_num].completed %}
-                        <a href="/test/{{ test_num }}/exam" class="mode-btn retake-btn">
-                            🔄 Retake Test
-                        </a>
-                        {% elif exam_status[test_num].in_progress %}
-                        <a href="/test/{{ test_num }}/exam" class="mode-btn resume-btn">
-                            ▶️ Resume Test
-                        </a>
-                        {% else %}
-                        <a href="/test/{{ test_num }}/exam" class="mode-btn exam-btn">
-                            🎯 Test Mode
-                        </a>
-                        {% endif %}
+                    {% if exam_status[test_num].completed %}
+                    <a href="/test/{{ test_num }}/exam" class="mode-btn retake-btn">
+                        🔄 Retake Test
+                    </a>
+                    {% elif exam_status[test_num].in_progress %}
+                    <a href="/test/{{ test_num }}/exam" class="mode-btn resume-btn">
+                        ▶️ Resume Test
+                    </a>
                     {% else %}
-                    <button class="mode-btn exam-btn disabled" disabled>
+                    <a href="/test/{{ test_num }}/exam" class="mode-btn exam-btn">
                         🎯 Test Mode
-                    </button>
+                    </a>
                     {% endif %}
                 </div>
             </div>
