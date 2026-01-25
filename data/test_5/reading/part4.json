@@ -6,8 +6,8 @@
   "sections": [
     {
       "section_type": "passage",
-      "title": "Article (Test 5)",
-      "content": "TODO: Add article content here. This should be an opinion piece or article with different viewpoints."
+      "title": "Website Article",
+      "content": "Valhalla Air is continuing to fly its Fortuna 3000 Intercontinental jet, touted by the airline's CEO Goran Pekarchuk as \"the world's best commercial aircraft,\" despite its having been grounded in 2014 after several engine failures. For still-unknown reasons, the turbine engine's ultra-lightweight carbon fibre blades crack and break in midflight. This disrupts engine flow and requires engine shutdown. Some suspect that the company responsible for manufacturing these parts, Mexico's Power Tech Corporation, is trying to save time and cut costs at the expense of quality.\n\nRacing against European rival Nimbus Air to bring its new product to the skies, the 3000's manufacturer, Fortuna Aeronautics, hastily reinforced the blades on affected aircraft; conducted quick, semi-scientific tests convincing the US Federal Aviation Administration (FAA) the blade was safe; and acquired that regulator's approval to re-launch the 3000. This all occurred before the National Transportation Safety Board (NTSB) had finished its incident investigation. The NTSB responded with a stern letter urging more guidance from independent experts and more stringent and standardized verification procedures for aircraft components.\n\nDespite the band-aid solution, the 3000 Intercontinental is applauded by environmentalists like Eveline Ryall, who praises its enhanced fuel efficiency and reduced carbon emissions. \"In a world where three to six percent of greenhouse gases come from jet exhaust, the 3000 Intercontinental is a step in the right direction.\"\n\nInterviewed London-Toronto passengers, like Hamida Barzun, gushed over the 3000's in-flight entertainment system and interior design while dismissing safety concerns. \"If there were problems, Transport Canada would have intervened.\"\n\nValhalla Air has welcomed the latest addition to its fleet with an extravagant marketing campaign. In one video, First Officer Andre Pierre says 3000 Intercontinental passengers \"just go, Wow.\" (\"They'll say the same thing when flames start shooting from the turbines over the Atlantic,\" quipped the Globe and Mail's Sheldon Blumfeld, who lambasted the ads and dubbed the Fortuna aircraft \"the Misfortuna.\")\n\nMarketing professor Caitlin Harwood labels the 3000 Intercontinental \"a flawed product, flawlessly marketed.\" She notes how Valhalla Air's videos shrewdly ignore overseas outsourcing while emphasizing its made-in-Canada components. \"It's a case study in the triumph of marketing over matter.\""
     },
     {
       "section_type": "questions",
@@ -16,58 +16,58 @@
       "questions": [
         {
           "id": 1,
-          "text": "Question 1 text here",
+          "text": "Whose opinion is similar to Sheldon Blumfeld's?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "Caitlin Harwood",
+            "Eveline Ryall",
+            "Goran Pekarchuk",
+            "Hamida Barzun"
           ],
           "answer": 0
         },
         {
           "id": 2,
-          "text": "Question 2 text here",
+          "text": "What did Fortuna do to stay competitive?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "gained the confidence of the Transportation Safety Board",
+            "launched an aggressive response to adversity",
+            "prevented turbine engine failures aboard new aircraft",
+            "standardized quality control testing of outsourced components"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 3,
-          "text": "Question 3 text here",
+          "text": "Fortuna benefited most from its relationship with",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "the Federal Aviation Administration.",
+            "the Globe and Mail media.",
+            "the Nimbus Company.",
+            "the Power Tech Corporation."
           ],
           "answer": 0
         },
         {
           "id": 4,
-          "text": "Question 4 text here",
+          "text": "We can reasonably conclude that",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "Fortuna collaborated with its regulators.",
+            "Nimbus Air produces safer jetliners.",
+            "Power Tech Corporation was negligent.",
+            "Valhalla Air flies only 3000s."
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 5,
-          "text": "Question 5 text here",
+          "text": "The best title for this article would be \"The Fortuna 3000 Intercontinental:",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "Better Than Airworthy, Claims FAA.\"",
+            "Faulty Engine Still Puzzles Experts.\"",
+            "Marketing Dream, Safety Nightmare.\"",
+            "New Technology Cuts Carbon Emissions.\""
           ],
-          "answer": 0
+          "answer": 2
         }
       ]
     },
@@ -75,16 +75,16 @@
       "section_type": "response_passage",
       "title": "Website Comment",
       "instruction_text": "The following is a comment by a visitor to the website page. Complete the comment by choosing the best option to fill in each blank.",
-      "content": "TODO: Add comment content with __DROPDOWN_6__, __DROPDOWN_7__, __DROPDOWN_8__, __DROPDOWN_9__, __DROPDOWN_10__ placeholders.",
+      "content": "This is clearly a tale of __DROPDOWN_6__ The situation could have been avoided if __DROPDOWN_7__ The government should require Fortuna to be more __DROPDOWN_8__. Now I hear a number of Asian aircraft companies are demanding compensation for mechanical problems with the 3000s that they purchased, and these are problems that go beyond the __DROPDOWN_9__-related ones the writer describes. But I honestly can't see Transport Canada taking any action that might wreak havoc with the profits of one of the country's largest corporations. Valhalla Air had a flotilla of 3000s on order from Fortuna in 2014, and it's no surprise their __DROPDOWN_10__ as they hyped the plane while remaining, along with Transport Canada, shrewdly silent on its many defects.",
       "questions": [
         {
           "id": 6,
           "text": "6.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "a corporation showing disregard for due process",
+            "a regulator operating independently from a business",
+            "an authority ignoring binding recommendations",
+            "an investigation being hampered by a journalist"
           ],
           "answer": 0
         },
@@ -92,45 +92,45 @@
           "id": 7,
           "text": "7.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "consumers had been given more safety reassurances",
+            "designers of European jets had been consulted",
+            "manufacturers had known more about marketing",
+            "regulators had been forced to act in the public's interest"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 8,
           "text": "8.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "accessible",
+            "accountable",
+            "fuel-conscious",
+            "scientific"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 9,
           "text": "9.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "electrical",
+            "landing",
+            "navigation",
+            "propulsion"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 10,
           "text": "10.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "entire fleet improved",
+            "federal regulator erred",
+            "marketing plan tanked",
+            "share prices soared"
           ],
-          "answer": 0
+          "answer": 3
         }
       ]
     }

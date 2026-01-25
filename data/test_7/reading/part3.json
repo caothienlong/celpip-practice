@@ -1,0 +1,30 @@
+{
+  "part": 3,
+  "title": "Reading for Information",
+  "type": "information",
+  "instructions": "Read the following passage and answer the questions. Decide which paragraph (A to D) has the information given in each statement. Select E if the information is not given in any of the paragraphs.",
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Reading Passage",
+      "content": "A. In this age of global connectedness and social networking, it is hard to imagine that lost tribes still exist. However, the Sentinelese tribe of the Andaman Islands are just that. This indigenous group has been living on North Sentinel Island in the Indian Ocean's Bay of Bengal for thousands of years. Living on a sea route that has been travelled since ancient times, the Sentinelese have impressively managed to avoid influence from outside civilizations. They are the last tribe of the Andaman Islands to maintain their isolation, mainly because of their hostile resistance to outsiders' attempts at contact.\n\nB. Due to lack of access, little is known about the Sentinelese people. What knowledge exists comes either from observation from a distance or is based on comparison with other Andaman tribes. A hunter-gatherer society, the Sentinelese subsist mainly by hunting, fishing, and collecting wild plants, and do not appear to have developed any agricultural practices. The majority of their tools and weapons are made from stone and animal bones; however, there is some evidence that they make use of metal fragments that wash ashore. They use javelins and flatbows as weapons, in addition to a variety of arrows. Canoes, nets, and harpoons serve as fishing gear.\n\nC. Because contact with the Sentinelese tribe is nearly impossible, it is difficult to estimate the size of their population. Based on a limited number of encounters by outsiders and attempts by census officials to infer numbers by counting from a distance, it is estimated that there could be anywhere between 20 and 60 individuals. The island's inhabitants tend to live in two types of dwellings. There are shelter-style huts that can house a group of three or four people. These huts have no walls, and their floors are covered in palm leaves. Additionally, there are more elaborate communal huts with raised floors and specific areas for fire.\n\nD. Starting in 1967, attempts at peaceful contact were made by the Indian government with the support of anthropologists. During these contact expeditions, gifts of coconuts were left on the shore on several occasions in an effort to diminish the aggressiveness the Sentinelese demonstrated toward strangers. The Indian authorities had limited success before finally discontinuing the expeditions out of concern for the tribe. Due to their isolation from the outside world, it was decided that contact with the tribe only put them at risk of contracting diseases. Since then, the government policy has been to leave the tribe alone.",
+      "note": "E. Not given in any of the above paragraphs."
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Decide which paragraph, A to D, has the information given in each statement below. Select E if the information is not given in any of the paragraphs.",
+      "question_format": "dropdown",
+      "questions": [
+        {"id": 1, "text": "Sentinelese isolation is surprising because travellers have long known about their island.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 0},
+        {"id": 2, "text": "The Indian government used to leave food offerings for the Sentinelese.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 3},
+        {"id": 3, "text": "The government is passing a bill to protect the Sentinelese community from modern diseases.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 4},
+        {"id": 4, "text": "Census data on the Sentinelese have been collected by indirect observation.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 2},
+        {"id": 5, "text": "The Indian government stopped visiting the Sentinelese for fear of contagion.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 3},
+        {"id": 6, "text": "The Sentinelese aggressively reject any outside technology that washes ashore.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 4},
+        {"id": 7, "text": "Food production on North Sentinel Island has remained very basic.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 1},
+        {"id": 8, "text": "The floors in Sentinelese huts may be elevated or covered with foliage.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 2},
+        {"id": 9, "text": "The Sentinelese are the last remaining tribe on the Andaman Islands.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 4}
+      ]
+    }
+  ]
+}

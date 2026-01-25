@@ -1,0 +1,39 @@
+{
+  "part": 1,
+  "title": "Reading Correspondence",
+  "type": "correspondence",
+  "instructions": "Read the following message and answer the questions.",
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Letter to Peter",
+      "content": "Dear Peter,\n\nI feel bad about not being there for my little brother's big day today—you're finally sixteen! At last you can learn to drive! You'll soon be receiving a package in the mail that will hopefully make up for my absence. I won't ruin the surprise, but it's something to do with music. I found it during my travels in South America.\n\nSpeaking of music, Mom and Dad said you're getting really good at guitar! I guess those lessons paid off. I always wanted to learn as well, but I was never as passionate about music as you. You'll have to teach me some chords when I get back home next month.\n\nAs for me, traveling has been incredible. I've just spent the past week exploring the Ecuadorian Amazon with local guides. The rainforest grows on you. At first, I found it a bit intimidating with the deadly insects and intense weather changes. But soon I started seeing the beauty of it all; I could peer under a leaf and come across rainbow-coloured insects, and, when looking overhead, I could see a flock of beautiful, colourful parrots passing by. Everything has been great so far, except when I was bitten by a black ant the size of my thumb. Apparently it's called a Bullet Ant because being bitten feels like getting shot! It certainly was the worst pain I've ever experienced. Still, I took a picture of it anyway and also one of my swollen arm. I'm fine now and ready for more adventures.\n\nI'm currently in Quito, the capital city of Ecuador and also my final stop. It was only a 20-minute plane ride from the rainforest. The weather is pleasantly different: dry and cool. The people are amazing! Everyone is very welcoming and helpful. When I first got here, I didn't have a map, so I walked into a store and asked the shop owner where my hostel was. She couldn't really speak English, so she locked up her shop and took me all the way there, which was 2 kilometres away! Amazing! If only people were like that back home!\n\nI can't wait to see you. I promise we'll celebrate your birthday properly when I return!\n\nSusie"
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Questions 1-6: Choose the best option according to the information given in the message.",
+      "question_format": "dropdown",
+      "questions": [
+        {"id": 1, "text": "Susie", "options": ["will be back for Peter's birthday.", "sent Peter a birthday gift.", "will travel to South America.", "forgot Peter's birthday."], "answer": 1},
+        {"id": 2, "text": "Peter", "options": ["has had some guitar lessons.", "is teaching guitar lessons.", "hopes to play the guitar.", "got a guitar from his parents."], "answer": 0},
+        {"id": 3, "text": "Susie", "options": ["visited the jungle with Ecuadorian guides.", "is traveling with friends to the local jungle.", "enjoyed the warm jungle weather.", "was shot during her trip to the rainforest."], "answer": 0},
+        {"id": 4, "text": "Susie", "options": ["fell instantly in love with the rainforest.", "enjoyed the rainforest's weather.", "delighted in the sounds of the rainforest.", "began to enjoy the rainforest."], "answer": 3},
+        {"id": 5, "text": "Susie is now", "options": ["packing to return home.", "enjoying the last part of her trip.", "flying to the capital city.", "exploring the Ecuadorian jungle."], "answer": 1},
+        {"id": 6, "text": "In Quito, Susie was surprised by the", "options": ["people's goodwill.", "distance to the hostel.", "cooler weather.", "availability of maps."], "answer": 0}
+      ]
+    },
+    {
+      "section_type": "response_passage",
+      "title": "Response Message",
+      "instruction_text": "Questions 7-11: Complete the response by filling in the blanks.",
+      "content": "Hey Susie,\n\nYou're right that I __DROPDOWN_7__ now. The trouble is that it's really expensive. Since you'll be home soon, I figured out a great solution. You can teach me in exchange for the __DROPDOWN_8__ you want.\n\nI'm sorry to hear about your nasty experience in the jungle. I just googled the ant! It looks huge, and I read that its bite can be __DROPDOWN_9__. You may want to see a doctor when you get home.\n\nBy the way, I wonder if that Ecuadorian shopkeeper was just __DROPDOWN_10__ because you were a foreigner. Do you think she would shut up her business and __DROPDOWN_11__ if you lived in Quito?\n\nFinally, Mom says to email her and tell her when your flight gets in.\n\nLove,\nPeter",
+      "questions": [
+        {"id": 7, "text": "7.", "options": ["want to visit Ecuador", "am learning guitar", "can learn to drive", "am celebrating my birthday"], "answer": 2},
+        {"id": 8, "text": "8.", "options": ["driving lessons", "package", "guitar lessons", "foreign adventures"], "answer": 2},
+        {"id": 9, "text": "9.", "options": ["harmful", "harmless", "itchy", "insignificant"], "answer": 0},
+        {"id": 10, "text": "10.", "options": ["being friendly", "selling a map", "asking for help", "being uncooperative"], "answer": 0},
+        {"id": 11, "text": "11.", "options": ["show the way", "give directions", "take a rest", "find a map"], "answer": 0}
+      ]
+    }
+  ]
+}

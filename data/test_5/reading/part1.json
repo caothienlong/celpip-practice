@@ -6,8 +6,8 @@
   "sections": [
     {
       "section_type": "passage",
-      "title": "Message (Test 5)",
-      "content": "TODO: Add the reading passage here.\n\nThis should be a letter or email from the PDF."
+      "title": "Letter from Sandro Cavalli",
+      "content": "Dear Mrs. Smith,\n\nI am writing in response to your reservation request for the \"Blue Oasis\" vacation property. I sincerely appreciate your choosing my rental property for your family's Christmas holidays; however, I regret to inform you that the home you've chosen has already been booked. The good news is that in the same neighbourhood I own another property which is larger - \"Seaside Escape.\" It has a pool and is desirably situated closer to the ocean. I think this house would be an excellent choice for a family with kids, such as yours, as the amenities include high speed wireless internet, video game consoles, and a four-player table tennis set, not to mention a home theatre system. Although I usually rent it at a higher rate than the slightly less roomy \"Blue Oasis,\" I am willing to offer it to you for the same price.\n\nThe available house is more spacious and luxurious than your original choice. This three-level villa offers a total of 4 bedrooms and 4 bathrooms that are spread out over two floors and can sleep up to 8 people comfortably. On the main level is a large living room and a formal dining room off the open gourmet kitchen. Beside the kitchen is a recreation room and a separate entertainment room with a large-screen TV. There is also a stunning outdoor pool which has a waterfall on one side and is completely surrounded by tropical landscaping to maintain privacy. Just off the pool is a large seating area with an outside shower and a large barbecue. The home's wrap-around decks overlook the elegant pool, ocean and dock. There are also many other attractions in the neighborhood, such as restaurants, movie theatres, an amusement park, and a shopping mall.\n\nIf you are interested in taking me up on this offer, please let me know by September 21st. As previously mentioned, I am willing to rent you this property for a reduced rate of $1200 a week. Please be advised that a $450 deposit must be made at the time of the reservation, and the remainder must be paid by October 31st.\n\nI look forward to hearing from you regarding your decision.\n\nSincerely,\nSandro Cavalli"
     },
     {
       "section_type": "questions",
@@ -16,69 +16,69 @@
       "questions": [
         {
           "id": 1,
-          "text": "Question 1 text here",
+          "text": "What kind of letter is this?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "offer",
+            "advice",
+            "apology",
+            "agreement"
           ],
           "answer": 0
         },
         {
           "id": 2,
-          "text": "Question 2 text here",
+          "text": "Who is Mr. Cavalli?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "a seller",
+            "a parent",
+            "an agent",
+            "a landlord"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 3,
-          "text": "Question 3 text here",
+          "text": "\"Blue Oasis\" is",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "taken.",
+            "sold.",
+            "roomy.",
+            "vacant."
           ],
           "answer": 0
         },
         {
           "id": 4,
-          "text": "Question 4 text here",
+          "text": "Compared to Blue Oasis, \"Seaside Escape\" has",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "more flexible payment terms.",
+            "more convenient beach access.",
+            "higher quality kitchen appliances.",
+            "fewer entertainment options."
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 5,
-          "text": "Question 5 text here",
+          "text": "What does Sandro suggest the children will enjoy?",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "the gourmet kitchen",
+            "mall shopping",
+            "game playing",
+            "outdoor swimming"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 6,
-          "text": "Question 6 text here",
+          "text": "Four hundred and fifty dollars is to...",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "cover travel costs.",
+            "confirm the booking.",
+            "pay for damages.",
+            "finalize the payment."
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     },
@@ -86,27 +86,27 @@
       "section_type": "response_passage",
       "title": "Response Message",
       "instruction_text": "Questions 7-11: Complete the response by filling in the blanks.",
-      "content": "TODO: Add response message with __DROPDOWN_7__, __DROPDOWN_8__, __DROPDOWN_9__, __DROPDOWN_10__, __DROPDOWN_11__ placeholders.",
+      "content": "Dear Mr. Cavalli,\n\nMany thanks for your message concerning the alternate property. You've given me a thorough __DROPDOWN_7__ of the residence, which, on one level at least, would seem an appealing substitute for my own more __DROPDOWN_8__ initial selection. Obviously your pricing is __DROPDOWN_9__ compared with Seaside Escape. However, I do have two concerns to address before I'm ready to __DROPDOWN_10__. I understand this is a multi-storey house and that it has a pool, both of which seem to be considered __DROPDOWN_11__ features. That said, I have a one-year-old child and am wondering if there are stairway safety gates and a pool enclosure. Could you advise?\n\nKind regards,\nOlean Smith",
       "questions": [
         {
           "id": 7,
           "text": "7.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "apology",
+            "confirmation",
+            "description",
+            "contract"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 8,
           "text": "8.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "modest",
+            "private",
+            "coastal",
+            "expensive"
           ],
           "answer": 0
         },
@@ -114,34 +114,34 @@
           "id": 9,
           "text": "9.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "complex",
+            "favourable",
+            "standard",
+            "inflexible"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 10,
           "text": "10.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "move",
+            "buy",
+            "bid",
+            "choose"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 11,
           "text": "11.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "exotic",
+            "brand-new",
+            "desirable",
+            "unusual"
           ],
-          "answer": 0
+          "answer": 2
         }
       ]
     }

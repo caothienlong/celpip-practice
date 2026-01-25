@@ -2,44 +2,44 @@
   "part": 2,
   "title": "Reading to Apply a Diagram",
   "type": "diagram",
-  "instructions": "Read the following email message about the diagram. Complete the email by filling in the blanks.",
+  "instructions": "Read the following email message about the diagram. Complete the email by filling in the blanks. Select the best choice for each blank from the drop-down menu.",
   "sections": [
     {
       "section_type": "diagram_email",
       "diagram_image": "part2_diagram.png",
       "email_title": "Email Message",
-      "content": "Subject: TODO - Add subject\nTo: TODO\nFrom: TODO\n\nTODO: Add email content with __DROPDOWN_1__, __DROPDOWN_2__, __DROPDOWN_3__, __DROPDOWN_4__, __DROPDOWN_5__ placeholders.",
+      "content": "Subject: Are you free for lunch?\nTo: Alina Lee <alinal22@xmail.ca>\nFrom: Janet Foster <jfoster@xmail.ca>\n\nHey Alina,\n\nHow are you enjoying the __DROPDOWN_1__ so far? Listen, since you're going to be __DROPDOWN_2__ because of your presentation, I can order lunch for you and save you a seat at our table. Management wants us to meet up with our teams at lunch to discuss the morning workshops. I saw the __DROPDOWN_3__ when I passed the dining hall this morning. The selections sound pretty good. There's cream of asparagus soup or __DROPDOWN_4__ to start. For the main course, there's a wrap. Which would you prefer: vegetarian, chicken, beef, or pork? They all come with fresh veggies and __DROPDOWN_5__ with your choice of side. There are some really interesting desserts as well. I know sweets aren't your cup of tea, but they come with fresh berries and look delicious.\n\nLet me know, and I'll see you at lunch,\nJanet",
       "questions": [
         {
           "id": 1,
           "text": "1.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "workshop",
+            "conference",
+            "presentation",
+            "celebration"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 2,
           "text": "2.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "leaving early",
+            "meeting new people",
+            "late for lunch",
+            "sharing your ideas"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 3,
           "text": "3.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "menu",
+            "schedule",
+            "recipes",
+            "advertisement"
           ],
           "answer": 0
         },
@@ -47,23 +47,23 @@
           "id": 4,
           "text": "4.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "chicken wraps",
+            "french fries",
+            "lettuce and tomatoes",
+            "Mediterranean salad"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 5,
           "text": "5.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "black olives",
+            "roasted red pepper mayo",
+            "a hint of lemon",
+            "white wine vinaigrette"
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     },
@@ -74,36 +74,36 @@
       "questions": [
         {
           "id": 6,
-          "text": "Question 6 text here",
+          "text": "Janet and Alina know each other because",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "Janet is Alina's boss.",
+            "they are both managers.",
+            "they met at the morning workshop.",
+            "they work together."
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 7,
-          "text": "Question 7 text here",
+          "text": "Janet and Alina are planning to eat lunch together to",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "share what they learned.",
+            "decide which workshops to attend.",
+            "present topics from the conference.",
+            "introduce ideas to management."
           ],
           "answer": 0
         },
         {
           "id": 8,
-          "text": "Question 8 text here",
+          "text": "When Janet says that sweets are not Alina's \"cup of tea,\" she means that Alina",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "prefers tea to sweets.",
+            "likes tea with her desserts.",
+            "doesn't usually like dessert.",
+            "only likes fresh desserts."
           ],
-          "answer": 0
+          "answer": 2
         }
       ]
     }

@@ -1,0 +1,31 @@
+{
+  "part": 2,
+  "title": "Reading to Apply a Diagram",
+  "type": "diagram",
+  "instructions": "Read the following email message about the diagram. Complete the email by filling in the blanks. Select the best choice for each blank from the drop-down menu.",
+  "sections": [
+    {
+      "section_type": "diagram_email",
+      "diagram_image": "part2_diagram.png",
+      "email_title": "Email Message",
+      "content": "From: <tie@smail.ca>\nTo: <kev88@nckcollege.ca>\nSubject: Infographic\n\nHey Kevin,\n\nHow's your weekend going?\n\nI came across this infographic on a magazine's website today and thought you might want to take a look. The research revealed __DROPDOWN_1__. I think the fact that __DROPDOWN_2__ really says something about our country's trend towards healthier choices in general. Another point I found interesting was that three of the beverage choices mention __DROPDOWN_3__ in their explanations. However, I guess that information is more relevant in Professor Talebi's class!\n\nAlthough the information may be written a little __DROPDOWN_4__, I was wondering if you thought this infographic could be useful for our group presentation next week in Nutrition 101. Do you think it is OK to use something that is based on __DROPDOWN_5__?\n\nCan you let me know before this Thursday's class?\n\nThanks,\nTie",
+      "questions": [
+        {"id": 1, "text": "1.", "options": ["changes in junk food consumption", "patterns in beverage choices", "options for people worried about their health", "reasons for growth in beverage sales"], "answer": 1},
+        {"id": 2, "text": "2.", "options": ["coffee is in third place", "sales of black tea are low", "sweet drinks are the least popular", "water consumption is declining"], "answer": 2},
+        {"id": 3, "text": "3.", "options": ["health", "money", "caffeine", "sugar"], "answer": 1},
+        {"id": 4, "text": "4.", "options": ["informally", "seriously", "sentimentally", "gloomily"], "answer": 0},
+        {"id": 5, "text": "5.", "options": ["a survey of individual Canadians", "an interview with a business expert", "an approach that ignores historical data", "a set of assumptions about Canadian habits"], "answer": 0}
+      ]
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Using the drop-down menu, choose the best option.",
+      "question_format": "dropdown",
+      "questions": [
+        {"id": 6, "text": "Tie most likely wrote this email on a", "options": ["Saturday.", "Wednesday.", "Thursday.", "Friday."], "answer": 0},
+        {"id": 7, "text": "Tie would like Kevin's", "options": ["acceptance.", "permission.", "assistance.", "opinion."], "answer": 3},
+        {"id": 8, "text": "How does Tie feel about using the infographic in the presentation?", "options": ["excited", "disappointed", "confident", "unsure"], "answer": 3}
+      ]
+    }
+  ]
+}

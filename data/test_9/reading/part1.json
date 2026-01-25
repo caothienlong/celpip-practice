@@ -1,0 +1,39 @@
+{
+  "part": 1,
+  "title": "Reading Correspondence",
+  "type": "correspondence",
+  "instructions": "Read the following message and answer the questions.",
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Letter to Mr. Albertson",
+      "content": "Dear Mr. Albertson,\n\nWe are interested in renting your charming cottage for the first two weeks of September. I found your ad on the internet, and the pictures are really attractive. Living that close to the ocean would be a real treat for a few weeks. I can already smell the refreshing salt air!\n\nI've heard that the Atlantic Ocean is quite cold and that swimming isn't always possible. Is that true? Your ad mentions nearby Martinique Beach, a 5-km-long white sand beach with beautiful waves enjoyed by surfers. The pictures I've seen show surfers in protective wetsuits, but perhaps that's winter surfing? We're hoping to put in long hours lying on the beach, and then cooling off in the fresh ocean water.\n\nAnother thing I've heard is that Nova Scotia gets hurricanes, especially in September. Is that true? I've read all about Hurricane Juan that hit in late September, 2003. I learned that the power was out for some residents for as long as three weeks. How can anyone survive without electricity for that long? It's unimaginable. In a situation such as this, what do you do for food and coffee, for heat and water? Do you keep emergency supplies and information in the cottage? I just can't imagine winds of 160 km/h! Wow. The waves must be spectacular with that much wind. It would be fantastic watching the waves from the comfort of your lovely cottage!\n\nWe really enjoy sampling the local cuisine, and we've read about Nova Scotian specialties such as lobster and scallops. On the internet I found one food place—it can't really be called a restaurant—that serves seafood. This is Scallopini's, which is supposed to be a short drive from your cottage. It features two dishes worth trying, a scallop sauté and a cold lobster roll. Would you recommend Scallopini's, or should we go into the city to a real restaurant?\n\nAnyway, we would like to reserve your cottage. Please let me know what details you need and how to send the deposit.\n\nThanks,\nAlison MacGregor"
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Questions 1-6: Choose the best option according to the information given in the message.",
+      "question_format": "dropdown",
+      "questions": [
+        {"id": 1, "text": "Alison's main reason for writing the email is to", "options": ["make a cottage reservation.", "ask about the nearby beach.", "learn more about the cottage.", "understand more about hurricanes."], "answer": 0},
+        {"id": 2, "text": "Alison is interested in", "options": ["watching a surfing competition.", "buying a house by the ocean.", "eating in quality restaurants.", "reading more about hurricanes."], "answer": 2},
+        {"id": 3, "text": "Why does Alison think the Atlantic Ocean might be cold?", "options": ["She knows oceans are cold.", "She was told that it's cold.", "She has a friend who surfs there.", "She read about Atlantic temperatures."], "answer": 1},
+        {"id": 4, "text": "Alison is worried about hurricanes because", "options": ["she needs survival training.", "she read about a famous one.", "the waves would be too big.", "the wind may be too strong."], "answer": 1},
+        {"id": 5, "text": "Alison has never experienced", "options": ["cheap restaurants.", "cold water.", "sand beaches.", "severe weather."], "answer": 3},
+        {"id": 6, "text": "Why does Alison want to rent this cottage?", "options": ["It's near the ocean.", "It's famous with surfers.", "It's close to restaurants.", "It's in Nova Scotia."], "answer": 0}
+      ]
+    },
+    {
+      "section_type": "response_passage",
+      "title": "Response Message",
+      "instruction_text": "Questions 7-11: Complete the response by filling in the blanks.",
+      "content": "Dear Ms. MacGregor,\n\nWe would be delighted to have you rent our cottage in September. Consider it booked.\n\nAnswering your question about the __DROPDOWN_7__, it may be true, depending on what you're used to. We think it's pleasant, and early September is when it's warmest. If you're interested in surfing, you need to bring your own __DROPDOWN_8__, but we provide the boards.\n\nPeople experience considerable __DROPDOWN_9__ when hurricanes hit, but these storms usually miss us, which is why you've read about just one, Juan. The belief is that a bad one hits every 50 years, so you don't need to worry. To answer your questions, the cottage has __DROPDOWN_10__.\n\nYes, we recommend Scallopini's, and there are several other excellent __DROPDOWN_11__ close by.\n\nSee you in September!\nJohn Albertson",
+      "questions": [
+        {"id": 7, "text": "7.", "options": ["hot white sand", "ocean being cold", "beauty of the beach", "cold salt air"], "answer": 1},
+        {"id": 8, "text": "8.", "options": ["swimsuits", "goggles", "towels", "wetsuits"], "answer": 3},
+        {"id": 9, "text": "9.", "options": ["inconvenience", "excitement", "support", "pleasure"], "answer": 0},
+        {"id": 10, "text": "10.", "options": ["a number of useful tools", "a lot of raincoats", "an emergency supply kit", "a new well-built roof"], "answer": 2},
+        {"id": 11, "text": "11.", "options": ["spots to dine", "places to fish", "souvenir shops", "cottage rentals"], "answer": 0}
+      ]
+    }
+  ]
+}

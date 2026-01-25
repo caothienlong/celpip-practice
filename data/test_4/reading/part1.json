@@ -6,8 +6,8 @@
   "sections": [
     {
       "section_type": "passage",
-      "title": "Message (Test 4)",
-      "content": "TODO: Add the reading passage here.\n\nThis should be a letter or email from the PDF."
+      "title": "Letter to Simon Theroux",
+      "content": "Attention: Simon Theroux\n\nI'm writing regarding a recent incident involving the City of Montreal. On January 3rd, after filling up my car, I returned to my residence around 10:30 p.m. and inadvertently parked near an orange \"No Parking\" sign. It was quite hard to see this sign as it was covered in blowing snow. I carried one bag of groceries to my apartment and when I came back for the second bag, I discovered that my unlocked vehicle was gone.\n\nI checked your website and it said that cars were being towed to a lot at the end of Henri-Bourassa Street to make way for snow removal trucks. The next day, I took a $3 bus ride to the stated address, but my car was not there. I called the City and Customer Service Representative Viviane Belanger was able to finally solve the mystery. It turned out that it had been necessary to establish a secondary lot in order to accommodate all of the cars that needed to be towed. Unfortunately the website had not been updated to include the second address. Thus, visitors to the website only saw information related to the primary lot.\n\nOnce I obtained the address of the secondary lot, I set off to find my car. It was snowing again and -32°C. I waited for over half an hour for another bus, paid the driver another $3, and headed two kilometres in the opposite direction. Twenty minutes later, I found my car at the other address, its wheels stuck in snow, its exterior covered with grime, and its windshield displaying a $115 towing bill. To make matters worse, someone managed to steal $80 worth of my gasoline, presumably by siphoning it out of the fuel tank.\n\nThe fine is due tomorrow. I've tried repeatedly to pay it online but always receive a message saying the information hasn't been entered into your system. I don't dispute the charges, but I just want to confirm that I should pay the invoice in spite of the mistakes made by the City.\n\nSincerely,\nFatima Djaout"
     },
     {
       "section_type": "questions",
@@ -16,67 +16,67 @@
       "questions": [
         {
           "id": 1,
-          "text": "Question 1 text here",
+          "text": "Fatima's purpose in writing is",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "to explain a late payment.",
+            "to make an apology.",
+            "to claim compensation.",
+            "to seek clarification."
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 2,
-          "text": "Question 2 text here",
+          "text": "Simon Theroux works",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "in the city government.",
+            "at a towing company.",
+            "at a collection agency.",
+            "at a police station."
           ],
           "answer": 0
         },
         {
           "id": 3,
-          "text": "Question 3 text here",
+          "text": "The wrong information was provided by",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "the customer service representative.",
+            "the recipient of the letter.",
+            "the municipal government.",
+            "the bus driver."
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 4,
-          "text": "Question 4 text here",
+          "text": "The car disappeared because it was",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "blocking a city-owned vehicle.",
+            "in an unpaid parking spot.",
+            "stuck in snow with no gas.",
+            "easy for thieves to steal."
           ],
           "answer": 0
         },
         {
           "id": 5,
-          "text": "Question 5 text here",
+          "text": "Fatima's vehicle was",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "black.",
+            "empty.",
+            "dirty.",
+            "stolen."
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 6,
-          "text": "Question 6 text here",
+          "text": "The mistake involved a misreported",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "location.",
+            "time.",
+            "sign.",
+            "fee."
           ],
           "answer": 0
         }
@@ -86,38 +86,38 @@
       "section_type": "response_passage",
       "title": "Response Message",
       "instruction_text": "Questions 7-11: Complete the response by filling in the blanks.",
-      "content": "TODO: Add response message with __DROPDOWN_7__, __DROPDOWN_8__, __DROPDOWN_9__, __DROPDOWN_10__, __DROPDOWN_11__ placeholders.",
+      "content": "Dear Ms. Djaout,\n\nThank you for your message. I can understand how __DROPDOWN_7__ the situation must be for you. To answer your question, I'm afraid you will still have to __DROPDOWN_8__ despite the problems you have experienced. We have had several users report issues related to payment of fines via our website. The need for additional snow removal services has led to an increase in the number of __DROPDOWN_9__ and this in turn has put pressure on our data entry systems. We expect these problems to be resolved by __DROPDOWN_10__ We are granting __DROPDOWN_11__ for all outstanding tickets until then.",
       "questions": [
         {
           "id": 7,
           "text": "7.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "odd",
+            "interesting",
+            "frustrating",
+            "satisfying"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 8,
           "text": "8.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "take the bus",
+            "find your car",
+            "pay the fine",
+            "check the website"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 9,
           "text": "9.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "cars being towed",
+            "visitors to the city of Montreal",
+            "unlocked vehicles",
+            "bus passengers"
           ],
           "answer": 0
         },
@@ -125,23 +125,23 @@
           "id": 10,
           "text": "10.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "warmer temperatures and less snowfall.",
+            "the end of this week.",
+            "our customer service representatives.",
+            "the time you locate your car."
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 11,
           "text": "11.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "excuses",
+            "extensions",
+            "permission",
+            "wishes"
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     }

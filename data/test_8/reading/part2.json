@@ -1,0 +1,31 @@
+{
+  "part": 2,
+  "title": "Reading to Apply a Diagram",
+  "type": "diagram",
+  "instructions": "Read the following email message about the diagram. Complete the email by filling in the blanks. Select the best choice for each blank from the drop-down menu.",
+  "sections": [
+    {
+      "section_type": "diagram_email",
+      "diagram_image": "part2_diagram.png",
+      "email_title": "Email Message",
+      "content": "Subject: Job Application\nTo: Michael Jenson\nFrom: Alfonso Copelli\n\nDear Michael,\n\nIt was a pleasure to meet you yesterday. Thank you for dropping off your __DROPDOWN_1__ for the position of cashier at Alfonso's Groceries. Based on your prior __DROPDOWN_2__ experience, I'd like to invite you for an interview.\n\nMy company will soon be opening two more locations, and I need to increase my team. I'm seeking an employee who is already familiar with __DROPDOWN_3__, is a quick learner, and has good interpersonal skills. I am also looking for people who are good at __DROPDOWN_4__, which may come in handy when greeting customers.\n\nCould you please provide the name and contact information for your current supervisor at __DROPDOWN_5__ for a reference? I will be holding interviews next Tuesday afternoon between 1:00 p.m. - 6:00 p.m. Please let me know what time is most convenient for you. The interview will likely last 30 to 45 minutes.\n\nKind regards,\nAlfonso Copelli",
+      "questions": [
+        {"id": 1, "text": "1.", "options": ["contact", "invitation", "application", "advertisement"], "answer": 2},
+        {"id": 2, "text": "2.", "options": ["customer service", "employee training", "sales marketing", "active volunteering"], "answer": 0},
+        {"id": 3, "text": "3.", "options": ["cash registers", "commercial policies", "grocery stock", "imported products"], "answer": 0},
+        {"id": 4, "text": "4.", "options": ["additional languages", "managing others", "marketing reports", "using computers"], "answer": 0},
+        {"id": 5, "text": "5.", "options": ["City Foods", "Drumwood High", "FoodSafe", "Willow Video"], "answer": 0}
+      ]
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Using the drop-down menu, choose the best option.",
+      "question_format": "dropdown",
+      "questions": [
+        {"id": 6, "text": "Michael applied for the job", "options": ["in person.", "online.", "through a friend.", "through a recruiter."], "answer": 0},
+        {"id": 7, "text": "Alfonso's Groceries is", "options": ["reorganizing.", "expanding.", "relocating.", "downsizing."], "answer": 1},
+        {"id": 8, "text": "The purpose of the email is to", "options": ["arrange an interview.", "discuss a new reference.", "inquire about a service.", "offer someone a job."], "answer": 0}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "part": 1,
+  "title": "Reading Correspondence",
+  "type": "correspondence",
+  "instructions": "Read the following message and answer the questions.",
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Email to Ms. Wilkes",
+      "content": "From: <s.sychov@email.com>\nTo: <pam.wilkes@dfsb.ca>\nSubject: Requesting Extra Help for French\n\nDear Ms. Wilkes,\n\nMy name is Sergiy Sychov, and I am Nadia's father. Although I have driven from work to the school to get Nadia a few times, we have not yet had a chance to formally meet.\n\nNadia has spoken very highly of you since the first day of school. Every evening at dinner, she tells us \"a Ms. Wilkes story.\" The stories are usually about something funny you told the class or an interesting way you teach, such as having the students sing a song in order to learn one of your math lessons. I think she is your biggest fan!\n\nThe reason I am writing to you is that I am worried about Nadia keeping up in French class. Our family immigrated to Canada from the Ukraine just last year. Nadia has done very well with learning English since we arrived, but we are concerned about her French. You know what they say—kids are like sponges when it comes to learning languages! But, as French is her third language, I wonder if she is struggling more than the other kids. When we ask her about French class, she usually lowers her head and says she doesn't want to talk about it.\n\nI have called the school's main office and spoken with someone, but, since I don't know the French teacher's name, I'm hoping you can tell me how to get in touch with her. Also, since you are clearly a passionate educator, I would be very grateful if you had any suggestions for us to make sure Nadia doesn't fall behind. I know that the school year is just getting started, but I don't want to wait until it is too late for her to catch up. I have heard that some families hire private tutors or sign their kids up for after-school lessons. Would you be able to recommend either a class or a tutor? She could use some help in science as well.\n\nThank you for any help you can give us. If you think it would be a good idea, I would be happy to meet with you or the French teacher sometime this week to talk about Nadia.\n\nSincerely,\nSergiy Sychov"
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Questions 1-6: Choose the best option according to the information given in the message.",
+      "question_format": "dropdown",
+      "questions": [
+        {"id": 1, "text": "Sergiy and Ms. Wilkes", "options": ["both speak highly of each other.", "do not personally know each other.", "have an appointment to meet soon.", "know the girl's other teachers."], "answer": 1},
+        {"id": 2, "text": "We know for sure that Ms. Wilkes teaches", "options": ["English.", "French.", "science.", "math."], "answer": 3},
+        {"id": 3, "text": "The email indicates that Nadia", "options": ["is good at learning mathematics.", "pays attention in Ms. Wilkes' class.", "can sing funny songs in French.", "wants Ms. Wilkes as a private tutor."], "answer": 1},
+        {"id": 4, "text": "Sergiy is likely writing this email", "options": ["during the summer holidays.", "at the end of the school year.", "near the December holiday.", "near the start of the school year."], "answer": 3},
+        {"id": 5, "text": "Nadia seems to", "options": ["look forward to French class.", "be uncomfortable about French class.", "participate often in French class.", "talk often about French class."], "answer": 1},
+        {"id": 6, "text": "Sergiy's main purpose for writing the email is to", "options": ["ask what work Nadia has missed.", "compliment an effective teacher.", "find out why Nadia dislikes French.", "obtain information and advice."], "answer": 3}
+      ]
+    },
+    {
+      "section_type": "response_passage",
+      "title": "Response Message",
+      "instruction_text": "Questions 7-11: Complete the response by filling in the blanks.",
+      "content": "From: <pam.wilkes@dfsb.ca>\nTo: <s.sychov@email.com>\nSubject: Re: Requesting Extra Help for French\n\nHello Mr. Sychov,\n\nI did not realize that Nadia is such __DROPDOWN_7__ newcomer! As you say, her English is __DROPDOWN_8__. With regard to Nadia's French, I appreciate that you are willing to __DROPDOWN_9__ to get her some extra help, but that may not be necessary. Let's explore other options first. I'm surprised our main office has __DROPDOWN_10__. Our French teacher's name is Sylvie Gagnon, and she can be reached at sylvie.gagnon@dfsb.ca. If I can be of any assistance, let me know.\n\nIn the meantime, I thank you for __DROPDOWN_11__.\n\nYours truly,\nMs. Pam Wilkes",
+      "questions": [
+        {"id": 7, "text": "7.", "options": ["a recent", "a reluctant", "an unhappy", "an anxious"], "answer": 0},
+        {"id": 8, "text": "8.", "options": ["challenging", "fluent", "intermediate", "native"], "answer": 1},
+        {"id": 9, "text": "9.", "options": ["change schools", "spend money", "drive some distance", "take time off work"], "answer": 1},
+        {"id": 10, "text": "10.", "options": ["not been very helpful", "been closed when you called", "given you the wrong information", "discouraged a meeting"], "answer": 0},
+        {"id": 11, "text": "11.", "options": ["bringing to my attention Nadia's love for music theory", "your kind words about my efforts to engage the class", "sharing Nadia's recent language test results with me", "your suggestions about teaching through storytelling"], "answer": 1}
+      ]
+    }
+  ]
+}

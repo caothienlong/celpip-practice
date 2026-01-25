@@ -1,0 +1,38 @@
+{
+  "part": 4,
+  "title": "Reading for Viewpoints",
+  "type": "viewpoints",
+  "instructions": "Read the following article from a website and answer the questions.",
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Website Article",
+      "content": "The Canada Pension Plan (CPP) covers all eligible Canadians. Based on the amount of earnings, a deduction is made from each pay cheque and deposited into Canada's Pension Plan fund. Employers are also required to contribute to the plan for each of their employees. When an employee reaches 65 years of age, he or she is entitled to receive payments from the plan.\n\nMany people believe that participation should be voluntary, but having a guaranteed stream of revenue into the plan means that the government can hopefully provide a stable return to contributors.\n\nAnother criticism of the plan is that the people who need it the most are the ones who receive the least. This is because the size of payments depends on the amount contributed, and the amount contributed depends on one's level of income. People who have had little or low-paying employment thus receive low payments. And yet they are the ones who have been least able to put aside money of their own for their old age. It should be noted, however, that other government programs can provide financial assistance for people in need.\n\nSome companies (especially large ones) have, in addition to this government plan, their own pension plans that work in essentially the same way. Deductions are also based on level of income, but part-time employees are often not eligible at all. This again seems to put those with lower incomes at a disadvantage. Even if someone has two part-time jobs that together equal a full-time job, he or she would be eligible to participate only in the Canada Pension Plan and probably not in the pension plans offered by either employer. But again, there are other programs.\n\nSome critics consider both the government and employer pension plans to be patronizing. They believe that people should have complete freedom in whether and how much they save for their old age, along with how they invest what they save. Such critics seem to forget that they then wouldn't benefit from government or employer contributions!"
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Using the drop-down menu, choose the best option according to the information given on the website.",
+      "question_format": "dropdown",
+      "questions": [
+        {"id": 1, "text": "The author's purpose of the first paragraph is to", "options": ["make a prediction.", "provide background information.", "indicate a solution.", "present a personal anecdote."], "answer": 1},
+        {"id": 2, "text": "The CPP and company pension plans are similar with respect to", "options": ["low-income earners.", "eligibility criteria.", "government contributions.", "investment decisions."], "answer": 0},
+        {"id": 3, "text": "At 65 years of age, people with low-income part-time jobs will most likely", "options": ["utilize company pension plans.", "be content with CPP payments.", "require monetary support.", "keep working at their jobs."], "answer": 2},
+        {"id": 4, "text": "If pension plans were voluntary, the critics mentioned in the last paragraph would likely", "options": ["refrain from participating.", "make high-risk investments.", "lose all their retirement money.", "seek government assistance."], "answer": 0},
+        {"id": 5, "text": "Critics believe that the pension plans are patronizing because", "options": ["they are mandatory.", "they advantage full-time employees.", "companies provide pension plans.", "employers make contributions."], "answer": 0}
+      ]
+    },
+    {
+      "section_type": "response_passage",
+      "title": "Website Comment",
+      "instruction_text": "The following is a comment by a visitor to the website page. Complete the comment by choosing the best option to fill in each blank.",
+      "content": "I don't understand why employers are required to make CPP contributions. It shouldn't be their responsibility to ensure the government has a constant source of __DROPDOWN_6__ for re-investments. My guess is that having to contribute to the CPP __DROPDOWN_7__ many businesses. Even for larger companies, I was surprised by the author's opinion. Why is it problematic that most employer pension programs __DROPDOWN_8__? Companies and individuals should be free to do what they want with their money. I can understand providing __DROPDOWN_9__; employers want to see their employees at the workplace as much as possible, not absent due to illness. However, I agree with the critics, even if it means I miss out on __DROPDOWN_10__.",
+      "questions": [
+        {"id": 6, "text": "6.", "options": ["revenue", "employees", "accounts", "taxes"], "answer": 0},
+        {"id": 7, "text": "7.", "options": ["disadvantages", "confuses", "fuels", "controls"], "answer": 0},
+        {"id": 8, "text": "8.", "options": ["encourage employees to make extra CPP payments", "make smaller deductions for part-time workers", "fund only a company's full-time employees", "make a profit from employee contributions"], "answer": 2},
+        {"id": 9, "text": "9.", "options": ["recreation facilities", "health care plans", "gym memberships", "investment advice"], "answer": 1},
+        {"id": 10, "text": "10.", "options": ["employer contributions", "career opportunities", "early retirement", "extended healthcare"], "answer": 0}
+      ]
+    }
+  ]
+}

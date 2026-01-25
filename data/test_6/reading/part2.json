@@ -1,0 +1,111 @@
+{
+  "part": 2,
+  "title": "Reading to Apply a Diagram",
+  "type": "diagram",
+  "instructions": "Read the following email message about the diagram. Complete the email by filling in the blanks. Select the best choice for each blank from the drop-down menu.",
+  "sections": [
+    {
+      "section_type": "diagram_email",
+      "diagram_image": "part2_diagram.png",
+      "email_title": "Email Message",
+      "content": "Subject: Obedience Classes Inquiry\nTo: George Masters <georgem@cicschool.com>\nFrom: Michelle O'Brien <mobrien@mailcanada.ca>\n\nHello George,\n\nI am the owner of a one-year-old golden retriever, and I see you have many classes that __DROPDOWN_1__ I want to give Nellie lots of training. However, she's too gentle for __DROPDOWN_2__ Also, Nellie's already had obedience training elsewhere. Still, she'd actually learn from your Basic class since she is still mastering __DROPDOWN_3__ Ideally, I had hoped that Saturdays in January, Nellie could take obedience in the morning, followed immediately by Show Dogs in the afternoon, but I see that __DROPDOWN_4__ I see, though, that in April I could sequence back-to-back classes in Basic Obedience and Search and Rescue (which would be good exercise for both of us). Is it possible to __DROPDOWN_5__?\n\nCheers,\nMichelle O'Brien",
+      "questions": [
+        {
+          "id": 1,
+          "text": "1.",
+          "options": [
+            "provide intensive training.",
+            "encourage child participation.",
+            "are offered all year round.",
+            "focus on dog competitions."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "text": "2.",
+          "options": [
+            "walking to heel.",
+            "your extended courses.",
+            "guard dog training.",
+            "wilderness training."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 3,
+          "text": "3.",
+          "options": [
+            "basic rescue techniques.",
+            "simple show skills.",
+            "long sitting times.",
+            "simple instructions."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 4,
+          "text": "4.",
+          "options": [
+            "this is possible only in April.",
+            "the two class times conflict.",
+            "the start dates are different.",
+            "Basic is not offered at that time."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 5,
+          "text": "5.",
+          "options": [
+            "get to the afternoon class in time",
+            "take the Sunday afternoon class",
+            "get to your centre by 1PM",
+            "switch to the morning Search and Rescue"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Using the drop-down menu, choose the best option.",
+      "question_format": "dropdown",
+      "questions": [
+        {
+          "id": 6,
+          "text": "Michelle wants Nellie to",
+          "options": [
+            "keep her safe.",
+            "be very well trained.",
+            "participate in shows.",
+            "be very friendly."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 7,
+          "text": "In this message, Michelle is trying to",
+          "options": [
+            "figure out a schedule.",
+            "get course information.",
+            "learn more training techniques.",
+            "ask for a location change."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 8,
+          "text": "It appears that the Canine Intelligence Centre",
+          "options": [
+            "organizes dog shows.",
+            "has one trainer.",
+            "is a part-time operation.",
+            "is fully licensed."
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}

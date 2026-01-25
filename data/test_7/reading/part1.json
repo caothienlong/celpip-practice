@@ -1,0 +1,39 @@
+{
+  "part": 1,
+  "title": "Reading Correspondence",
+  "type": "correspondence",
+  "instructions": "Read the following message and answer the questions.",
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Letter to Mrs. Johnson",
+      "content": "Dear Mrs. Johnson,\n\nPlease accept my application for the position of sales clerk in your department store, as advertised on your website. I have had the pleasure of reviewing your company's website and am very enthusiastic about the position advertised. I believe that my skills and abilities make me the perfect candidate for this position, and I would be an asset to your sales team.\n\nWith four years of experience selling footwear, and having worked for two years in a women's clothing store at a local mall, I have developed effective customer service techniques. I enjoy working with the public, assisting shoppers by inquiring about their needs, and suggesting suitable products to meet their tastes and budget. The management team in the clothing store where I worked recognized my strong customer service skills by choosing me as 'Employee of the Month' on more than one occasion. I completed a customer service course at a local college, and attended additional training offered by my employer.\n\nAs a sales associate, not only did I assist customers, but I also handled cash, credit card, and debit transactions. I processed returns, as well as performed opening and closing procedures in the store. These responsibilities show the level of trust that my employers put in me and my abilities. Finally, the store environment required that the staff work as part of a team, which is one of my strengths. I am also comfortable working on my own. Other important skills I gained in that role include completing sales reports, meeting sales targets, and ordering stock.\n\nPlease find attached a resume outlining my retail experience, skills, and training. I feel that these qualifications equip me to make a valuable contribution to your retail establishment. I would appreciate the opportunity to discuss the position with you. I will contact you in ten days time to answer any questions you may have and to see if you need any other information from me. Thank you for your consideration.\n\nSincerely,\nBrenda Ashburn"
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Questions 1-6: Choose the best option according to the information given in the message.",
+      "question_format": "dropdown",
+      "questions": [
+        {"id": 1, "text": "Brenda wrote Mrs. Johnson a", "options": ["reference letter.", "letter of request.", "letter of complaint.", "cover letter."], "answer": 3},
+        {"id": 2, "text": "Mrs. Johnson and Brenda are", "options": ["employer and job seeker.", "employee and client.", "manager and employee.", "employee and sales rep."], "answer": 0},
+        {"id": 3, "text": "Brenda is responding to", "options": ["a letter from a co-worker.", "a memo from an employment centre.", "a job advertisement.", "a personal ad."], "answer": 2},
+        {"id": 4, "text": "Brenda has shown she is good at", "options": ["management.", "customer service.", "training others.", "making a budget."], "answer": 1},
+        {"id": 5, "text": "By working in retail, Brenda learned how to", "options": ["trust others.", "work as part of a team.", "write cheques.", "run sales meetings."], "answer": 1},
+        {"id": 6, "text": "Because of her skills, experience, and training, Brenda will probably", "options": ["hire Mrs. Johnson.", "be called for an interview.", "get a promotion.", "become 'Employee of the Month.'"], "answer": 1}
+      ]
+    },
+    {
+      "section_type": "response_passage",
+      "title": "Response Message",
+      "instruction_text": "Questions 7-11: Complete the response by filling in the blanks.",
+      "content": "Dear Ms. Ashburn,\n\nThank you for your application and interest in our company. I am glad to hear that you are __DROPDOWN_7__ working at our store.\n\nYou mentioned that you worked in a __DROPDOWN_8__ and a women's clothing store. However, __DROPDOWN_9__ in the housewares department. Do you have any experience in this area? We do offer some training, but it's limited.\n\nYour experience helping customers by __DROPDOWN_10__ and staying within their price range is exactly what we are looking for. The fact that you have experience __DROPDOWN_11__ makes you a suitable candidate for the position, as this job requires a large volume of sales.\n\nI would like to meet with you to discuss your resume and your skills. My assistant will be in touch in the next couple of days to schedule a meeting.\n\nSincerely,\nMrs. Johnson",
+      "questions": [
+        {"id": 7, "text": "7.", "options": ["happy to be", "not tired of", "sure about", "excited about"], "answer": 3},
+        {"id": 8, "text": "8.", "options": ["sports store", "boutique", "shoe store", "call centre"], "answer": 2},
+        {"id": 9, "text": "9.", "options": ["the position is for a manager", "we are not hiring anyone", "the opening we have is", "the manager has experience"], "answer": 2},
+        {"id": 10, "text": "10.", "options": ["targeting their needs", "finding someone to help them", "selling them expensive items", "giving them a discount"], "answer": 0},
+        {"id": 11, "text": "11.", "options": ["winning awards", "processing purchases", "training staff", "opening the store"], "answer": 1}
+      ]
+    }
+  ]
+}
