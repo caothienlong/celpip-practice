@@ -2,22 +2,22 @@
   "part": 2,
   "title": "Reading to Apply a Diagram",
   "type": "diagram",
-  "instructions": "Read the following email message about the diagram. Complete the email by filling in the blanks.",
+  "instructions": "Read the following email message about the diagram. Complete the email by filling in the blanks. Select the best choice for each blank from the drop-down menu.",
   "sections": [
     {
       "section_type": "diagram_email",
       "diagram_image": "part2_diagram.png",
       "email_title": "Email Message",
-      "content": "Subject: TODO - Add subject\nTo: TODO\nFrom: TODO\n\nTODO: Add email content with __DROPDOWN_1__, __DROPDOWN_2__, __DROPDOWN_3__, __DROPDOWN_4__, __DROPDOWN_5__ placeholders.",
+      "content": "Subject: English as a Second Language Summer Camp\nTo: Ray Carly <r.carly@ubz.ca>\nFrom: Aries Singler <a.singler@ubz.ca>\n\nHi Ray,\n\nSarah and I met this morning to finalize the Summer Camp schedule but we need your input before we make it official, and inform the teachers about their __DROPDOWN_1__ Last year, a couple of teachers had to rush through the material, do you think that __DROPDOWN_2__ would resolve the problem?\n\nYou will see that this year __DROPDOWN_3__ I dedicated the afternoons for sightseeing instead. How do you feel about that?\n\nAlso, neither of us knows whether we are providing all meals or just breakfast and supper like last year. We only know that the __DROPDOWN_4__ are included in the tuition under social activities. Finally, we need to make a final decision about __DROPDOWN_5__ the campsite after the ferry ride to Victoria Island. Sarah suggested we charter a bus to pick us up at the ferry station but I thought this year's campsite was only accessible by boat.\n\nPlease let us know,\nAries",
       "questions": [
         {
           "id": 1,
           "text": "1.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "class times.",
+            "students' names.",
+            "schedule changes.",
+            "work benefits."
           ],
           "answer": 0
         },
@@ -25,32 +25,32 @@
           "id": 2,
           "text": "2.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "allowing students to get more sleep in the morning",
+            "giving students opportunities to socialize outside campus",
+            "making the material more appealing for teachers",
+            "starting the day at 9 a.m. instead of 9:35 a.m."
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 3,
           "text": "3.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "there is only one social activity per day.",
+            "all classes are concentrated before lunch.",
+            "there are no social activities in the morning.",
+            "students will not leave the campus everyday."
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 4,
           "text": "4.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "outings",
+            "lessons",
+            "books",
+            "accommodation"
           ],
           "answer": 0
         },
@@ -58,12 +58,12 @@
           "id": 5,
           "text": "5.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "who's chaperoning the students to",
+            "the transportation to and from",
+            "how long we'll be staying at",
+            "the facilities we'll have access to at"
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     },
@@ -74,36 +74,36 @@
       "questions": [
         {
           "id": 6,
-          "text": "Question 6 text here",
+          "text": "Aries is emailing Ray",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "to make a complaint.",
+            "to ask for advice.",
+            "to request changes.",
+            "to relieve him of duties."
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 7,
-          "text": "Question 7 text here",
+          "text": "Last year's camp",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "did not take students on a camping trip.",
+            "provided students with all meals.",
+            "focused exclusively on academic activities.",
+            "featured social activities in the morning."
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 8,
-          "text": "Question 8 text here",
+          "text": "Aries",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "needs Ray to authorize the proposal before presenting it to the teachers.",
+            "created the schedule for this year's camp all by herself.",
+            "will be joining the students on the camping trip.",
+            "hasn't made any changes to the previous schedule."
           ],
-          "answer": 0
+          "answer": 2
         }
       ]
     }

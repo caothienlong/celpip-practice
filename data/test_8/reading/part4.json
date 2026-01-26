@@ -1,0 +1,38 @@
+{
+  "part": 4,
+  "title": "Reading for Viewpoints",
+  "type": "viewpoints",
+  "instructions": "Read the following article from a website and answer the questions.",
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Website Article",
+      "content": "It's a tradition. Thousands of Canadian children don skates and train in minor hockey leagues, some from the time they learn to walk. Good sportsmanship and teamwork are supposed to be the main lessons learned, but they've recently been overshadowed by the drive to win at any cost. Nowadays, belligerent parents, sometimes captured on YouTube, yell at their offspring to \"hit harder\" on the ice while they fight amongst themselves in the stands. Parents exchange insults, shoves, punches, slaps, and threats. Homicides have even occurred.\n\nOnly a small fraction of parents are guilty of this hockey madness, but their actions carry broad repercussions, including costly litigation, wasted resources, and damage to the reputation of a time-honoured sport. Now minor hockey organizations in most provinces try to safeguard players' enthusiasm by making parents pass a \"respect in sports\" course before their kids hit the ice.\n\nAt a recent community awareness event hosted by Sports4Kids, most parents interviewed bemoaned the current state of minor hockey, insisting that problems caused by a few were ruining things for everyone. Fredericton parent Janis Fanshaw said both her sons started playing at age 5, burned out after multiple injuries, and now, to her disappointment, shun all team sports. She blames her sons' injuries on \"hockey parents who bullied their kids to bully mine.\" Former hockey parent Meg Nakamura felt her daughter had a milder experience with bullies, but a fair bit of peer pressure. \"She eventually turned to soccer instead,\" Nakamura recalled.\n\nAddressing the 100 attendees, Sports4Kids director Luigi Pubnico offered this advice to parents: \"Let kids choose their own sports. They'll not only get off the couch and get moving, they'll excel at doing what they love. Just don't let them develop big egos—they're a lifelong hindrance.\" In the subsequent open-mic discussion, one parent, Jose Aldana, insisted that even reluctantly playing any competitive sport will give kids the self-discipline they need to succeed in life. However, self-described \"recovering hockey dad\" Steve Kosinski said, \"Organized sports destroy a kid's spirit and bring out the worst in parents. Just forget organized sports entirely until your kid's at least eighteen.\""
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Using the drop-down menu, choose the best option according to the information given on the website.",
+      "question_format": "dropdown",
+      "questions": [
+        {"id": 1, "text": "According to the article, minor hockey improves players'", "options": ["activity level.", "self-esteem.", "peer relationships.", "self-discipline."], "answer": 2},
+        {"id": 2, "text": "What is one result of hockey madness?", "options": ["fraudulent lawsuits", "injured hockey coaches", "parental training", "more soccer teams"], "answer": 2},
+        {"id": 3, "text": "According to the writer, what is the primary source of peer pressure?", "options": ["aggressive guardians", "egotistical coaches", "competitive siblings", "organized sports"], "answer": 0},
+        {"id": 4, "text": "Who would most want hockey parents to take the course?", "options": ["Janice Fanshaw", "Steve Kosinski", "Meg Nakamura", "Luigi Pubnico"], "answer": 0},
+        {"id": 5, "text": "Hockey madness can harm a child's", "options": ["personal reputation.", "competitive spirit.", "motivation to exercise.", "passion for sports."], "answer": 3}
+      ]
+    },
+    {
+      "section_type": "response_passage",
+      "title": "Website Comment",
+      "instruction_text": "The following is a comment by a visitor to the website page. Complete the comment by choosing the best option to fill in each blank.",
+      "content": "I was one of the parents at the meeting, and, as one can glean from the article, the majority of parents who spoke __DROPDOWN_6__ minor hockey's present state. This being said, it's hard to buy into Kosinski's __DROPDOWN_7__. Minor hockey was a disaster for my kids. However, consistent with what the Sports4Kids representative says, I think that's because they __DROPDOWN_8__ sport. In contrast, I completely disagree with one of his points and would argue that it's entirely possible for kids to __DROPDOWN_9__. My overall takeaway from the article is that parents should strive to be __DROPDOWN_10__.",
+      "questions": [
+        {"id": 6, "text": "6.", "options": ["argued in support of", "felt frustrated with", "regretted their role in", "were unsure how to fix"], "answer": 1},
+        {"id": 7, "text": "7.", "options": ["spiteful predictions", "angry accusations", "pessimistic outlook", "vengeful perspective"], "answer": 2},
+        {"id": 8, "text": "8.", "options": ["had difficulty choosing a", "were modest about their", "wanted to play a different", "needed a less competitive"], "answer": 2},
+        {"id": 9, "text": "9.", "options": ["choose hockey but still be bullied", "develop egos but still succeed", "make choices on their own", "play well but still want to quit"], "answer": 1},
+        {"id": 10, "text": "10.", "options": ["aggressive fans", "sideline coaches", "supportive spectators", "leaders in the community"], "answer": 2}
+      ]
+    }
+  ]
+}

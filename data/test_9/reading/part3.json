@@ -1,0 +1,30 @@
+{
+  "part": 3,
+  "title": "Reading for Information",
+  "type": "information",
+  "instructions": "Read the following passage and answer the questions. Decide which paragraph (A to D) has the information given in each statement. Select E if the information is not given in any of the paragraphs.",
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Reading Passage",
+      "content": "A. For some, it may be hard to imagine how a small stainless steel needle put into one's left palm can soothe a stomachache. Yet in the practice of acupuncture, such fine needles are used to pierce specific points on the body for pain relief or therapeutic purposes. Acupuncture began in China thousands of years ago and remains a leading form of medical treatment in some Asian cultures. However, the practice of acupuncture has only taken hold beyond its traditional homelands over the last three decades. Over that time, its popularity in Western culture has greatly increased. It is now being hailed by many Westerners as a safe, drug-free remedy for ailments such as arthritis, chronic pain, addiction, and depression.\n\nB. Traditional acupuncture is based on the East Asian belief that the body's internal organs are connected by a system of energy channels. A very simple explanation is that vital energy travels along these channels in the body, like water in a stream. Diseases are caused by a blockage in these natural energy flows, just as a fallen tree would obstruct a stream. The acupuncturist must find the obstruction, isolate the area, and clear the blockage. To do this, fine stainless steel needles are inserted into a related acupuncture point. These disposable needles are gently twirled and then removed, and the energy flow can be restored to a natural state.\n\nC. People who have been helped by acupuncture have little problem accepting its success. Yet some in the Western medical community find the unfamiliar concepts of energy and channels hard to believe. As a result, experts in this community have tried to find more scientific reasons for how acupuncture works. After decades of research, some Western medical researchers have proposed theories.\n\nD. Experimental research suggests that acupuncture needles put into certain points on the body can stimulate the central nervous system (brain and spinal cord). Once stimulated, the central nervous system can release \"feel good\" chemicals into the muscles, spinal cord, and brain. These natural painkillers block pain signals from going to the brain, leading to a feeling of physical and emotional well-being. In light of the research, a growing number of scientists and medical practitioners are suggesting the use of acupuncture under certain conditions. In fact, it is becoming so popular that many people in North America are using it to treat their ailing household pets!",
+      "note": "E. Not given in any of the above paragraphs."
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Decide which paragraph, A to D, has the information given in each statement below. Select E if the information is not given in any of the paragraphs.",
+      "question_format": "dropdown",
+      "questions": [
+        {"id": 1, "text": "Skepticism has led to investigations into acupuncture's efficacy.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 2},
+        {"id": 2, "text": "In acupuncture, illness can be alleviated by clearing obstructions within the body.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 1},
+        {"id": 3, "text": "Some studies have shown that acupuncture has little more than a placebo effect.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 4},
+        {"id": 4, "text": "Some believe that acupuncture works because it causes the body to produce its own anesthetic.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 3},
+        {"id": 5, "text": "Acupuncture is a well established medical practice in East Asia.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 0},
+        {"id": 6, "text": "Only in recent years has acupuncture become an accepted treatment around the world.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 0},
+        {"id": 7, "text": "The analogy of acupuncture is akin to hydro-irrigation systems.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 1},
+        {"id": 8, "text": "Scientific studies are beginning to provide evidence for the efficacy of acupuncture.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 3},
+        {"id": 9, "text": "Scientific evidence shows that acupuncture cures damaged nerves and muscles.", "options": ["Paragraph A", "Paragraph B", "Paragraph C", "Paragraph D", "Not given (E)"], "answer": 4}
+      ]
+    }
+  ]
+}

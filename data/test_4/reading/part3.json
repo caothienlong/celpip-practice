@@ -6,8 +6,8 @@
   "sections": [
     {
       "section_type": "passage",
-      "title": "Reading Passage (Test 4)",
-      "content": "A. TODO: Add paragraph A content here.\n\nB. TODO: Add paragraph B content here.\n\nC. TODO: Add paragraph C content here.\n\nD. TODO: Add paragraph D content here.",
+      "title": "Reading Passage",
+      "content": "A. As crude oil becomes scarcer and high gasoline prices threaten the world economy, it is clear that alternative energy sources must be found soon. The best alternatives to petroleum would be renewable forms of energy that are sustainable and cause less pollution. One such alternative is biodiesel fuel made from plant and animal material. This idea is not a new one: In 1893, a German engineer, Rudolph Diesel, invented an engine that ran on peanut oil and other plant oils, but by the 1920s the abundance of inexpensive petroleum meant that gasoline soon became the main source of energy for cars and trucks.\n\nB. Today, biodiesel fuel can be made from a wide variety of easily renewable plants such as soybeans and canola. It can even be made from waste vegetable oil and animal fats. Biodiesel engines produce much less pollution than gasoline engines, and, fortunately, engines designed for gas consumption need only minor modifications to run on biodiesel fuel. This feature of biodiesel is important when weighing its merits against other options such as hydrogen fuel cells. These other options, though less polluting than biodiesel, are nonetheless based on technology that is still some years away from general use.\n\nC. Despite their benefits, biodiesel fuels can be expensive to produce and can still negatively impact the environment. To be economically viable, biodiesel fuels have to produce more energy than is required to make them, but energy—petroleum-based energy, in fact—is needed to grow the crops these fuels are made from and to produce the fuel itself. Moreover, petroleum-based fertilizers and pesticides are still used in producing these plants. Another drawback is the shortage of land available in the world to grow food, let alone crops for fuel. This last problem, however, may be solved by making biofuel from algae. This green plant produces more energy than other plants and can be grown in areas unsuitable for food production.\n\nD. Currently, low consumer demand for biodiesel fuel makes it both more expensive to produce and less available than gasoline. However, as the growing scarcity of crude oil drives gasoline prices higher, the demand for biodiesel fuel will likely increase. The price of gasoline could rise even higher if the costs of its impact on the environment and public health are taken into account. Biodiesel has yet to become the fuel of choice, but it may be in the near future.",
       "note": "E. Not given in any of the above paragraphs."
     },
     {
@@ -17,7 +17,7 @@
       "questions": [
         {
           "id": 1,
-          "text": "Statement 1 - TODO: Add statement text",
+          "text": "It's relatively easy to convert traditional vehicles to biodiesel fuelled vehicles.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -25,11 +25,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 2,
-          "text": "Statement 2 - TODO: Add statement text",
+          "text": "Biodiesel fuel's profitability will depend on how efficiently it can be made.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -37,11 +37,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 3,
-          "text": "Statement 3 - TODO: Add statement text",
+          "text": "The development of fuel derived from plants is limited by market forces.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -49,11 +49,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 4,
-          "text": "Statement 4 - TODO: Add statement text",
+          "text": "Farmers may replace their food crops with fuel crops to maximize revenue.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -61,11 +61,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 4
         },
         {
           "id": 5,
-          "text": "Statement 5 - TODO: Add statement text",
+          "text": "One disadvantage of biodiesel fuel is its doubtful cost-effectiveness.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -73,11 +73,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 6,
-          "text": "Statement 6 - TODO: Add statement text",
+          "text": "Biodiesel fuel may become more feasible as crude oil supplies diminish.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -85,11 +85,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 7,
-          "text": "Statement 7 - TODO: Add statement text",
+          "text": "Early biodiesel fuels were replaced by cheaper fuels.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -101,7 +101,7 @@
         },
         {
           "id": 8,
-          "text": "Statement 8 - TODO: Add statement text",
+          "text": "Biodiesel fuel will reduce our dependency on foreign fuel sources.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -109,11 +109,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 4
         },
         {
           "id": 9,
-          "text": "Statement 9 - TODO: Add statement text",
+          "text": "Ecologically friendly alternatives to biofuel are forthcoming.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -121,7 +121,7 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     }

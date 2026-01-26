@@ -1,0 +1,149 @@
+{
+  "part": 1,
+  "title": "Reading Correspondence",
+  "type": "correspondence",
+  "instructions": "Read the following message and answer the questions.",
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Letter to Jack",
+      "content": "Dear Jack,\n\nI have the most incredible news! Of course, it would be so much better if I could tell you in person, but since I'm near bursting with the excitement of it all, waiting until you get back from Chicago is simply out of the question. If you can believe it, I've been offered a promotion! To be honest I think I might still be in shock. I really didn't think this day would ever come. Thankfully, I listened to you and all your wisdom, honey, when it came to sticking things out. I was convinced I'd be stuck in that cubicle writing boring memos for the rest of my life, but you assured me, if I just had patience, something great would come out of it all. Now, after five long years, something great has finally arrived; I've been promoted to Manager of International Accounts!\n\nOf course, I know what you're probably thinking: the title doesn't sound too glamorous, and it's a long way off from my dream job as a travel writer. However, although I won't be doing any writing in this position, I will be getting paid to travel all over the world—so at least the travel bug inside of me will be content. Also, there would be a significant salary increase with this position, meaning we would be able to afford that beautiful two-bedroom condo we've had our eye on. Imagine, soon we might actually be able to say we own a little piece of Toronto!\n\nI am, of course, getting ahead of myself and before I officially accept the position, there are some important things to consider. For one, as excited as I am about all the travel involved, it would mean delaying having children for another few years; something I'm not sure we want to do. Also, the workload will be pretty intense. In fact, I could see it being the case that although I'll get to travel to beautiful places like Thailand, I won't actually have the time to see any of them.\n\nAnyways, I'm anxious to hear what you think. If you have time after the conference today, write me back!\n\nKaty"
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Questions 1-6: Choose the best option according to the information given in the message.",
+      "question_format": "dropdown",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Jack is",
+          "options": [
+            "staying with friends in Toronto.",
+            "working temporarily in Chicago.",
+            "attending a conference in Toronto.",
+            "visiting his children in Chicago."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "text": "Katy has worked",
+          "options": [
+            "at the same place for five years.",
+            "in international journalism.",
+            "in many different countries.",
+            "for several different employers."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "text": "Katy has written Jack to tell him",
+          "options": [
+            "about an exciting job offer.",
+            "how well her interview went.",
+            "about a real estate opportunity.",
+            "how her new job is going."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "text": "Katy",
+          "options": [
+            "likes travelling to other countries.",
+            "doesn't want to have children.",
+            "owns a condo in Toronto.",
+            "finds her current job interesting."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "text": "Manager of International Accounts is a job that Katy",
+          "options": [
+            "will apply for.",
+            "currently holds.",
+            "only dreams of.",
+            "might accept."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 6,
+          "text": "Katy believes that Jack",
+          "options": [
+            "doesn't want to travel with children.",
+            "has given her good advice in the past.",
+            "cannot afford to buy a condo.",
+            "should ask his boss for a raise."
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "section_type": "response_passage",
+      "title": "Response Message",
+      "instruction_text": "Questions 7-11: Complete the response by filling in the blanks.",
+      "content": "Dear Katy,\n\nThat is amazing! I knew that with a bit of time they'd see how lucky they are to have you as __DROPDOWN_7__ It sounds like an incredible opportunity and with all the travelling to tropical places, you might even __DROPDOWN_8__ That would be one step closer to your goal! However, I agree there are some things __DROPDOWN_9__ first. While the extra __DROPDOWN_10__ would certainly be nice, I'm a bit worried about the workload. I don't want it to be that I never get to see my __DROPDOWN_11__\n\nAnyways, we can talk more about it when I get back but know that whatever you decide, you'll always have my full support.\n\nJack",
+      "questions": [
+        {
+          "id": 7,
+          "text": "7.",
+          "options": [
+            "a mother.",
+            "an intern.",
+            "a manager.",
+            "a friend."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 8,
+          "text": "8.",
+          "options": [
+            "be inspired to write about it.",
+            "overcome your fear of bugs.",
+            "have the chance to visit Thailand.",
+            "get used to flying in planes."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 9,
+          "text": "9.",
+          "options": [
+            "you'll want to experience",
+            "that should be bought",
+            "I'll have to organize",
+            "we'll want to think about"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 10,
+          "text": "10.",
+          "options": [
+            "money",
+            "training",
+            "shifts",
+            "holidays"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 11,
+          "text": "11.",
+          "options": [
+            "wife.",
+            "daughter.",
+            "mother.",
+            "friend."
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}

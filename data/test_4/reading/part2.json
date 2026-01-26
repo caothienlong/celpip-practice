@@ -2,22 +2,22 @@
   "part": 2,
   "title": "Reading to Apply a Diagram",
   "type": "diagram",
-  "instructions": "Read the following email message about the diagram. Complete the email by filling in the blanks.",
+  "instructions": "Read the following email message about the diagram. Complete the email by filling in the blanks. Select the best choice for each blank from the drop-down menu.",
   "sections": [
     {
       "section_type": "diagram_email",
       "diagram_image": "part2_diagram.png",
       "email_title": "Email Message",
-      "content": "Subject: TODO - Add subject\nTo: TODO\nFrom: TODO\n\nTODO: Add email content with __DROPDOWN_1__, __DROPDOWN_2__, __DROPDOWN_3__, __DROPDOWN_4__, __DROPDOWN_5__ placeholders.",
+      "content": "Subject: Halifax Hotels\nTo: Mary Kaczinski <kaczinski@lightmail.bc.ca>\nFrom: Beth Middleton <b.middleton@sterlings.ca>\n\nHi Mary,\n\nI went online and found a few options for our three-night stay in Halifax. The cheapest is The Affordable Inn. It's __DROPDOWN_1__ There's no restaurant or room service. But really, why would we even consider The Affordable Inn when __DROPDOWN_2__ is only a little more expensive, right downtown, and only opened this year. Then again, the __DROPDOWN_3__ is probably the most luxurious. It's certainly got a luxury price tag (for Halifax anyway). The website gave it the highest rating of the four hotels listed, which is probably a good sign.\n\nNote that all the listed hotels have __DROPDOWN_4__ and also internet. Funnily enough, The Brooke Suites doesn't __DROPDOWN_5__ but I can hardly imagine you'll miss that too much when visiting Halifax in the winter.\n\nLet me know what you think.\nBeth",
       "questions": [
         {
           "id": 1,
           "text": "1.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "very basic.",
+            "in the city centre.",
+            "got a great rating.",
+            "just been renovated."
           ],
           "answer": 0
         },
@@ -25,21 +25,21 @@
           "id": 2,
           "text": "2.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "The Brooke Suites",
+            "Halifax Garden Hotel",
+            "The Affordable Inn",
+            "The Thunderbird Suites"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 3,
           "text": "3.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "The Brooke Suites",
+            "Halifax Garden Hotel",
+            "The Affordable Inn",
+            "The Thunderbird Suites"
           ],
           "answer": 0
         },
@@ -47,21 +47,21 @@
           "id": 4,
           "text": "4.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "a restaurant",
+            "a fitness centre",
+            "room service",
+            "wheelchair access"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 5,
           "text": "5.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "have a swimming pool,",
+            "allow pets in the rooms,",
+            "have a fitness room,",
+            "serve food in the hotel,"
           ],
           "answer": 0
         }
@@ -74,36 +74,36 @@
       "questions": [
         {
           "id": 6,
-          "text": "Question 6 text here",
+          "text": "Beth is",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "selling a hotel package to Mary.",
+            "arranging for Mary to visit her.",
+            "planning a trip with Mary.",
+            "planning to visit Mary in Halifax."
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 7,
-          "text": "Question 7 text here",
+          "text": "Beth seems to prefer a hotel that",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "is as cheap as possible.",
+            "is fairly comfortable.",
+            "has a swimming pool.",
+            "allows pets in the rooms."
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 8,
-          "text": "Question 8 text here",
+          "text": "Beth thinks that the website ratings are",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "quite misleading.",
+            "somewhat helpful.",
+            "very unreliable.",
+            "very accurate."
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     }

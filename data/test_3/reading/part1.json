@@ -6,8 +6,8 @@
   "sections": [
     {
       "section_type": "passage",
-      "title": "Message (Test 3)",
-      "content": "TODO: Add the reading passage here.\n\nThis should be a letter or email from the PDF."
+      "title": "Letter to Mr. Meyer",
+      "content": "Dear Mr. Meyer,\n\nI am writing about the new driving restrictions your government department is suggesting for new drivers in the province. I definitely agree that certain restrictions are necessary to ensure road safety. However, I disagree with one major point.\n\nYour department is proposing a \"single passenger\" restriction that allows a novice driver to have one passenger, unless the passengers are immediate family members. Your logic is simply that novice drivers are usually teenagers, and a car full of teenagers is distracting to the driver. You state that this rule has done much to reduce the incidence of crashes in other provinces.\n\nThere is simply no conclusive evidence to support this claim. In fact, there's a major reason why the \"one-passenger\" rule might actually lead to more accidents on the road. Take for example a situation that happened last Saturday. My 16-year-old son, John, who recently got his novice driver's license, needed to work on a school project with five of his classmates. They were making a short film for their history class, which required them to drive around the city visiting various museums. John has use of my van, which seats six people. Under the current law, he can drive his friends. He is a safe driver and no accidents happened. Under the proposed restriction, John would be legally allowed to drive only one passenger. His friends, who are also new drivers, would then have to take two other vehicles. Therefore, the \"one-passenger\" rule would actually triple the possibility of a crash by requiring the use of three cars, when only one was needed! Where's the safety in that?\n\nBecause most novice drivers are teenagers, the proposal for the \"one-passenger\" rule will lead to more inexperienced teenage drivers being on the road at one time. Where two or three teenagers are following each other in separate cars, they may act foolishly by driving too fast or passing dangerously. I recognize the good intention behind your proposal, but I wonder if it will actually be effective.\n\nSincerely,\nJames Brandt"
     },
     {
       "section_type": "questions",
@@ -16,69 +16,69 @@
       "questions": [
         {
           "id": 1,
-          "text": "Question 1 text here",
+          "text": "James Brandt is a",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "teenage driver.",
+            "driving instructor.",
+            "new driver's parent.",
+            "novice driver."
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 2,
-          "text": "Question 2 text here",
+          "text": "The proposed rule will prohibit new drivers from carrying",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "more than one non-family passenger.",
+            "teenagers as passengers.",
+            "non-family members as passengers.",
+            "other new drivers as passengers."
           ],
           "answer": 0
         },
         {
           "id": 3,
-          "text": "Question 3 text here",
+          "text": "According to James, the proposed rule",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "may reduce accidents by new drivers.",
+            "is based on a careful study of the facts.",
+            "is unfair for the parents of new drivers.",
+            "may increase the risk of accidents."
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 4,
-          "text": "Question 4 text here",
+          "text": "If the proposed rule becomes law, John",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "can't drive his 5 classmates.",
+            "can drive a van with 5 passengers.",
+            "can drive without his parent's knowledge.",
+            "can't drive his family members."
           ],
           "answer": 0
         },
         {
           "id": 5,
-          "text": "Question 5 text here",
+          "text": "John",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "acted irresponsibly with his passengers.",
+            "didn't take any passengers.",
+            "knows his responsibilities as a driver.",
+            "was pressured to drive foolishly and dangerously."
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 6,
-          "text": "Question 6 text here",
+          "text": "James Brandt believes the proposed rule",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "might stop new drivers from practicing.",
+            "will put more new drivers on the road.",
+            "may prevent young people from getting around.",
+            "will make parents of new drivers more responsible."
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     },
@@ -86,16 +86,16 @@
       "section_type": "response_passage",
       "title": "Response Message",
       "instruction_text": "Questions 7-11: Complete the response by filling in the blanks.",
-      "content": "TODO: Add response message with __DROPDOWN_7__, __DROPDOWN_8__, __DROPDOWN_9__, __DROPDOWN_10__, __DROPDOWN_11__ placeholders.",
+      "content": "Dear Mr. Brandt,\n\nOn behalf of Gerry Meyer, I would like to thank you for __DROPDOWN_7__ You argued that the \"single passenger\" restriction __DROPDOWN_8__\n\nWe understand your concerns. In fact, we initially shared your concerns about this issue. However, research has shown us that our proposed rule will work. We found that the highest risk of accidents occurs when young drivers are driving __DROPDOWN_9__ In addition, research shows that parents often discourage their teenagers from driving with their friends, so the proposed rule actually __DROPDOWN_10__ majority opinion.\n\nClearly, we both __DROPDOWN_11__\n\nRespectfully yours,\nMariel Singh",
       "questions": [
         {
           "id": 7,
           "text": "7.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "sharing your opinions.",
+            "supporting our policies.",
+            "explaining the rules to your son.",
+            "suggesting the \"single passenger\" rule."
           ],
           "answer": 0
         },
@@ -103,45 +103,45 @@
           "id": 8,
           "text": "8.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "will stop young drivers from helping their families.",
+            "is a very good way to increase road safety.",
+            "may increase the risk of accident and injury.",
+            "will teach young drivers to be more responsible."
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 9,
           "text": "9.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "in separate cars.",
+            "family members.",
+            "their parents.",
+            "several teenagers."
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 10,
           "text": "10.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "disagrees with",
+            "supports",
+            "results from",
+            "contradicts"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 11,
           "text": "11.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "agree with the new proposal.",
+            "care about the safety of young drivers.",
+            "have concerns about the new proposal.",
+            "disagree with Mr. Brandt's ideas."
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     }

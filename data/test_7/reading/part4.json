@@ -1,0 +1,38 @@
+{
+  "part": 4,
+  "title": "Reading for Viewpoints",
+  "type": "viewpoints",
+  "instructions": "Read the following article from a website and answer the questions.",
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Website Article",
+      "content": "When a small town loses a major employer, the impact is enormous. Consider a community of about 20,000 people where 1,200 are employed at one business that suddenly lays off half of its employees. This happened recently at a Nova Scotia factory, Queenston Paper. The 600 dismissed employees were offered relocation, early retirement, or severance packages. One hundred fifty of the previous employees opted to relocate to another Queenston Paper factory in Nova Scotia. About 200, primarily those having built up a large enough pension, are considering retirement. Many others will receive a severance package of more than half their annual earnings. However, many feel this has little appeal since government taxes will take at least 40 percent. The rest have yet to choose their future.\n\nJanice Witherspoon says that she and her husband wanted to enjoy their attractive Queenston salaries for five more years. Feeling secure in working at the 50-year-old factory and with their seniority status, they have been spending instead of saving. Moving isn't an option, she says. Real estate prices are far higher at the other Queenston Paper town, so the Witherspoons would end up in debt again. She scoffed at the ridiculous severance package. \"Three choices\", she says, \"but not one is really viable for us at this time of life.\"\n\nGinny Rousseau is more optimistic. An immigrant from France, Ginny loves the area. She and her family intend to stay. \"It doesn't cost a lot to live here,\" she says, \"so we're going for early retirement. We're already doing a little farming, a little gardening, and trying to be self-sustainable. It's very rewarding.\" Like Ginny, many Queenston Paper employees are not native to Canada, but they don't all share her complacency. Without jobs, these relative newcomers have no reason to remain. Quite a few have packed their bags and headed west in search of work. \"It's unfortunate\", says David Santos, a Brazilian. \"With the low cost of rent, I have managed to save a lot. I had hoped to eventually save enough to bring my family over from Brazil. This would have been a great place for my kids to grow up. Without work though, there is no point in sticking around.\""
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Using the drop-down menu, choose the best option according to the information given on the website.",
+      "question_format": "dropdown",
+      "questions": [
+        {"id": 1, "text": "Which option is least attractive to the laid-off employees?", "options": ["early retirement", "moving reimbursement", "relocation", "severance package"], "answer": 3},
+        {"id": 2, "text": "What do David and Ginny have in common?", "options": ["outlooks", "backgrounds", "savings", "goals"], "answer": 1},
+        {"id": 3, "text": "David would agree with Janice that", "options": ["layoffs should be based on seniority.", "housing is affordable in their town.", "relocation is the best choice.", "retirement is an attractive option."], "answer": 1},
+        {"id": 4, "text": "Why are some of the laid-off employees moving away?", "options": ["Getting into farming is easier elsewhere.", "They do not feel welcome in the community.", "They took jobs at another manufacturing plant.", "Industry salaries are higher in Western Canada."], "answer": 2},
+        {"id": 5, "text": "Ginny and David would agree that", "options": ["Farming is becoming more common in the area.", "The town is a pleasant place to settle down.", "People need to go where the jobs are.", "It is difficult for newcomers to find work."], "answer": 1}
+      ]
+    },
+    {
+      "section_type": "response_passage",
+      "title": "Website Comment",
+      "instruction_text": "The following is a comment by a visitor to the website page. Complete the comment by choosing the best option to fill in each blank.",
+      "content": "It mystifies me why those laid off complain about their situation. Jobs come and go; our town is not unique. In my opinion, these people were lucky to get such generous layoff options. When I was laid off several years ago, I was certainly not offered __DROPDOWN_6__ Also, why would anyone be upset about having to __DROPDOWN_7__? These charges are standard, so it shouldn't be surprising to see them taken from a __DROPDOWN_8__ agreement. Furthermore, the tax credit you get when you move closer to your job would pay for the difference in __DROPDOWN_9__ between the one town and the other Queenston Paper location. I agree with __DROPDOWN_10__, one needs to look on the bright side of the situation.",
+      "questions": [
+        {"id": 6, "text": "6.", "options": ["40% of my annual salary", "the opportunity to work elsewhere", "continued pension contributions", "financial help to move"], "answer": 1},
+        {"id": 7, "text": "7.", "options": ["pay income taxes", "contribute to their pension", "cover their moving costs", "dip into their savings"], "answer": 0},
+        {"id": 8, "text": "8.", "options": ["layoff", "relocation", "retirement", "severance"], "answer": 3},
+        {"id": 9, "text": "9.", "options": ["commuting costs", "accommodation costs", "government taxes", "salaries"], "answer": 1},
+        {"id": 10, "text": "10.", "options": ["Queenston", "Santos", "Rousseau", "Witherspoon"], "answer": 2}
+      ]
+    }
+  ]
+}

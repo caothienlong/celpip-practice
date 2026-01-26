@@ -6,8 +6,8 @@
   "sections": [
     {
       "section_type": "passage",
-      "title": "Reading Passage (Test 5)",
-      "content": "A. TODO: Add paragraph A content here.\n\nB. TODO: Add paragraph B content here.\n\nC. TODO: Add paragraph C content here.\n\nD. TODO: Add paragraph D content here.",
+      "title": "Reading Passage",
+      "content": "A. Regarded as a work of human creative genius, the Rideau Canal is designated as a UNESCO World Heritage Site and a National Historic Site of Canada. Stretching over 202 km from Ottawa to Kingston, it is North America's oldest, continuously operated canal system. The overall design involves a series of 52 dams that control the water levels, and 47 stone locks that allow watercraft to pass through a series of enclosures containing different levels of water. Remarkably, these locks work much the same way today as they did when it originally opened.\n\nB. The motivation for the canal's construction came from a need for defense. At the time, the St. Lawrence River served as the primary supply line for the British colony. However, following the War of 1812 against the Americans, the British loyalists recognized the vulnerability of the St. Lawrence to American attack. In 1826, Lieutenant Colonel John By of Britain's Royal Engineers was tasked with designing a navigable waterway that could serve as a secure military supply route between Montreal and Kingston. The project posed severe logistical and engineering challenges since the desired route consisted of virgin forest, rocky terrain, and untouched rivers and lakes.\n\nC. The construction began in 1826. Independent contractors were in charge of building the waterway, while the Royal Engineers oversaw its design. The skilled work was done primarily by French Canadians, including stonemasons, blacksmiths, and carpenters. The unskilled labour was carried out by immigrants, mainly from Ireland. Over the years, thousands of labourers were involved in the canal's construction. The vast majority of the work was done manually, with some assistance from draft animals. The excavation was done using shovels, axes, and wheelbarrows. Even the large stones of the locks were set in place using manual cranes. The canal was completed in November 1831 and officially opened in 1832.\n\nD. Although the canal was never used for its intended purpose, it was a commercial success. It became a path for early settlement and a supply route for local resources such as lumber, grains, minerals, and farming products. Presently, the canal functions chiefly as a waterway for leisure craft and recreation. The scenic location offers entertainment for every season including dining, museums, fishing, cycling, hiking, canoeing, snowshoeing, skiing, and skating. In the winter, a 7.8 km section is transformed into the world's longest skating rink. The Rideau Canal is popular with tourists and locals alike due to its rich history and variety of attractions.",
       "note": "E. Not given in any of the above paragraphs."
     },
     {
@@ -17,7 +17,7 @@
       "questions": [
         {
           "id": 1,
-          "text": "Statement 1 - TODO: Add statement text",
+          "text": "The canal was built mostly by hand.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -25,11 +25,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 2,
-          "text": "Statement 2 - TODO: Add statement text",
+          "text": "Workers came from different backgrounds and countries.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -37,11 +37,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 3,
-          "text": "Statement 3 - TODO: Add statement text",
+          "text": "The canal was originally intended for military purposes.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -49,11 +49,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 4,
-          "text": "Statement 4 - TODO: Add statement text",
+          "text": "The canal is now used mainly for recreational activities.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -61,11 +61,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 5,
-          "text": "Statement 5 - TODO: Add statement text",
+          "text": "The canal's locks still operate using the original mechanism.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -77,7 +77,7 @@
         },
         {
           "id": 6,
-          "text": "Statement 6 - TODO: Add statement text",
+          "text": "The canal is one of the busiest waterways in North America.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -85,11 +85,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 4
         },
         {
           "id": 7,
-          "text": "Statement 7 - TODO: Add statement text",
+          "text": "The construction of the canal took less than five years.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -97,11 +97,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 4
         },
         {
           "id": 8,
-          "text": "Statement 8 - TODO: Add statement text",
+          "text": "The construction of the canal was completed in 1832.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -109,11 +109,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 9,
-          "text": "Statement 9 - TODO: Add statement text",
+          "text": "The canal has a section that becomes a skating rink in winter.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -121,7 +121,7 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 3
         }
       ]
     }

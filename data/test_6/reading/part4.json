@@ -1,0 +1,138 @@
+{
+  "part": 4,
+  "title": "Reading for Viewpoints",
+  "type": "viewpoints",
+  "instructions": "Read the following article from a website and answer the questions.",
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Website Article",
+      "content": "Global warming has drastically reduced the extent of sea ice in the Canadian high Arctic, whose islands are now navigable in summer without ice-breaking equipment. Recently a Danish coal carrier vessel, the Aurora Borealis, navigated this route from Vancouver, Canada to Pori, Finland. \"We've proven the Northwest Passage is open to the world as a viable transoceanic shipping route. It shaved four days, 2,000 kilometres, and $200,000 off the Panama Canal route, and its deeper waters let us carry 25% more cargo,\" said company spokesman Marcus Lindstrom.\n\nLike its Scandinavian and Russian counterparts, the Canadian government considers its arctic passage a national territorial waterway. Deemed \"historic internal waters,\" the route falls unquestionably under Canadian jurisdiction, explains Northern Development Minister Bruce Anderson. Anderson applauds a new atlas produced by cartographer Adriana Chevrier and Inuit elders, showing Inuit land and sea ice routes dating back centuries and shoring up Canada's claim to the Arctic archipelago by virtue of the legal principle of long-time use and occupancy. Modern commercial traffic helps, too. As international law professor Zachary Michaels said in a public lecture, \"Valuable legal precedents are established every time a foreign vessel makes the crossing while complying with its legal obligation to register with and be monitored by the Canadian Coast Guard.\" Beyond that, annual prime ministerial visits and Canadian Forces exercises in the region bolster Canada's claim.\n\nHowever, Canadian arctic sovereignty is recognized by neither the EU nor the US, the latter due to Republican-backed non-ratification of UNCLOS (the UN Convention on the Law of the Sea). The US considers the Northwest Passage an international waterway, balking at its northern neighbour's registration and monitoring requirements and once allegedly steering a nuclear-powered submarine through the route without permission. \"Recognition of Canadian arctic sovereignty would be detrimental to our economic interests,\" said Republican senator Morris Homeniuk, who points out that Canada still owns no reliable modern patrol vessels, often depending on the US Talisman to escort its ageing Canadian icebreaker to safety. \"This is not what sovereignty looks like,\" says Homeniuk."
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Using the drop-down menu, choose the best option according to the information given on the website.",
+      "question_format": "dropdown",
+      "questions": [
+        {
+          "id": 1,
+          "text": "The Aurora Borealis serves as evidence of the",
+          "options": [
+            "advantage of the Panama Canal over the Northwest Passage.",
+            "beneficial effect of global warming on one industry sector.",
+            "defiance of Canadian shipping laws by a foreign vessel.",
+            "need for military reinforcements in the Canadian Arctic."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "text": "The best title for Michaels' lecture would be \"Arctic Sovereignty:",
+          "options": [
+            "A Historical Passage.\"",
+            "Maybe This Time: The Impacts of Climate Change.\"",
+            "The American Dream.\"",
+            "Use It or Lose It.\""
+          ],
+          "answer": 3
+        },
+        {
+          "id": 3,
+          "text": "Homeniuk's opinion rests on his country's",
+          "options": [
+            "economic strength.",
+            "historical precedents.",
+            "nuclear capability.",
+            "cartographic superiority."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "text": "The controversy will probably be resolved if",
+          "options": [
+            "ageing Canadian icebreakers are retired.",
+            "American senators ratify the convention.",
+            "evidence of use and occupancy is uncovered.",
+            "present polar icecap melting rates continue."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "text": "Homeniuk doubts the effectiveness of the",
+          "options": [
+            "Coast Guard.",
+            "Aurora Borealis.",
+            "Northwest Passage.",
+            "US Talisman."
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "section_type": "response_passage",
+      "title": "Website Comment",
+      "instruction_text": "The following is a comment by a visitor to the website page. Complete the comment by choosing the best option to fill in each blank.",
+      "content": "Well, the Cold-War era feds tried to strengthen their \"use and occupancy\"-based sovereignty claim by relocating Inuit families from northern Quebec to remote, barely inhabitable islands in the highest Arctic—in effect, using people as __DROPDOWN_6__ The sovereignty issue persists, except now the threat isn't Stalin; it's __DROPDOWN_7__ With the __DROPDOWN_8__ and the military operations, Ottawa's grip on the Northwest Passage has been strengthened. But what about community stakeholders? For us, Arctic sovereignty is not the international __DROPDOWN_9__ problem that it is for the federal government. We are instead worried that heavy commercial traffic through the archipelago will court ecological calamity. Therefore, we believe that every discussion about Arctic sovereignty should also be a discussion about responsible __DROPDOWN_10__",
+      "questions": [
+        {
+          "id": 6,
+          "text": "6.",
+          "options": [
+            "bait.",
+            "flags.",
+            "shields.",
+            "weapons."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 7,
+          "text": "7.",
+          "options": [
+            "the US.",
+            "Denmark.",
+            "the EU.",
+            "Panama."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 8,
+          "text": "8.",
+          "options": [
+            "historical mapping",
+            "escorted icebreakers",
+            "nuclear submarines",
+            "year-round access"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 9,
+          "text": "9.",
+          "options": [
+            "health and safety",
+            "legal and military",
+            "moral and ethical",
+            "culture and preservation"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 10,
+          "text": "10.",
+          "options": [
+            "operation of ice-breaking equipment",
+            "fuel alternatives for northern communities",
+            "negotiation with the US government",
+            "conservation of endangered waterways"
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ]
+}

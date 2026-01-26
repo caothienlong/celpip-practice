@@ -1,0 +1,31 @@
+{
+  "part": 2,
+  "title": "Reading to Apply a Diagram",
+  "type": "diagram",
+  "instructions": "Read the following email message about the diagram. Complete the email by filling in the blanks. Select the best choice for each blank from the drop-down menu.",
+  "sections": [
+    {
+      "section_type": "diagram_email",
+      "diagram_image": "part2_diagram.png",
+      "email_title": "Email Message",
+      "content": "Subject: Are you free for lunch?\nTo: Anna Smith <ansmith@dunderson.com>\nFrom: Jeanette LeBlanc <jeanb@ses.com>\n\nHi Anna,\n\nRemember how you mentioned wanting to be more active? Well, I got this flyer in the mail for the recreation centre near our office and thought you might be interested in __DROPDOWN_1__. I'd only be available evenings though. Since changing departments, I'm at my desk by 7:00 a.m. every day (I miss getting picked up on your way to work!).\n\nAs far as classes go, I'm hoping to get in shape before summer, meaning I'd like to go as many nights a week as possible. So my preference would be the __DROPDOWN_2__ class. Actually, I'm trying to convince my entire family to do the same. However, this place might not be the best for them since __DROPDOWN_3__. Anyways, I know you had mentioned wanting to try a bootcamp class, but, unfortunately, it isn't __DROPDOWN_4__. Hopefully one of the other classes will work.\n\nAlso, if we were to buy the monthly membership __DROPDOWN_5__. Definitely worth considering!\n\nLet me know!\nJeanette",
+      "questions": [
+        {"id": 1, "text": "1.", "options": ["signing up for a drop-in class", "trying out a weekend fitness class", "registering for a free trial class", "joining their team sports league"], "answer": 0},
+        {"id": 2, "text": "2.", "options": ["Beginner Spin Class", "Circuit Weight Training", "Intermediate Pilates", "Yoga for Adults"], "answer": 3},
+        {"id": 3, "text": "3.", "options": ["children must be over 16", "most classes are for women", "there isn't a family rate", "most classes are for adults"], "answer": 3},
+        {"id": 4, "text": "4.", "options": ["a drop-in class", "meant for beginners", "a challenging workout", "intended for adults"], "answer": 1},
+        {"id": 5, "text": "5.", "options": ["our husbands get free memberships", "we get a reduced rate on classes", "our first month of classes are free", "we can attend any class for free"], "answer": 3}
+      ]
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Using the drop-down menu, choose the best option.",
+      "question_format": "dropdown",
+      "questions": [
+        {"id": 6, "text": "What is Jeanette's relationship to Anna?", "options": ["client", "friend", "boss", "neighbour"], "answer": 1},
+        {"id": 7, "text": "Why does Jeanette want to take evening classes?", "options": ["She works in the morning.", "She can get a ride with Anna.", "She wants to avoid getting up early.", "She prefers the classes being offered."], "answer": 0},
+        {"id": 8, "text": "What does Jeanette think about the membership?", "options": ["The family membership would be best.", "It's a great value for the money.", "The trial membership is a good price.", "It's not as good as drop-in classes."], "answer": 1}
+      ]
+    }
+  ]
+}

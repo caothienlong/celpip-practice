@@ -6,8 +6,8 @@
   "sections": [
     {
       "section_type": "passage",
-      "title": "Article (Test 3)",
-      "content": "TODO: Add article content here. This should be an opinion piece or article with different viewpoints."
+      "title": "Website Article",
+      "content": "BC's Annual School Report released today has officials, teachers, parents, and students lined up on both sides of the debate over province-wide standardized testing of grade 4 and 7 students. No one was surprised to hear students slander the five-hour battery of reading, writing, and math exams, but most interviewed parents supported the yearly assessment, whose results are used to publicly rank schools based on students' overall scores. Sophie Bloom, mother of a Whitesands Elementary School kindergartener, applauds the test—and heeds the rankings. \"As a taxpayer and parent, I expect access to this kind of information. I want my child at the top school. Whitesands doesn't measure up. I'm considering Oceanview.\"\n\nOceanview School principal Christine Shelley admits she has mixed feelings about compelling teachers to administer the provincially mandated tests but agrees parents have every right to expect statistics on school outcomes, provided they don't use them to unfairly compare public and private schools. \"Standardized tests hold teachers and schools appropriately answerable to their stakeholders. Without statistics on learning outcomes, how could we ensure schools are doing what they're publicly funded and mandated to do?\"\n\nAdam Birch, who teaches Grade Four at Forestgrove Elementary, is skeptical of the assessments but grudgingly complies. \"Standardized testing reinforces the social myth that if we're not competing, we're unproductive,\" says Birch. \"It overlooks many forms of intelligence and mostly rewards test-taking ability. Many gifted students fail these tests. And the tests are like a snapshot; they tell us nothing about a student's improvement.\"\n\nAt Valleyside Middle School, grade seven teacher Gilles Legault is on the brink of mutiny. \"Every classroom hour I spend on 'test prep' is one hour stolen from an actually beneficial learning activity.\" Legault, whose school outperformed both Oceanview and Forestgrove, concedes the tests provide relevant comparative data but thinks such comparisons merely confirm what we already know: schools in affluent neighborhoods do better. \"For this common knowledge,\" Legault says, \"standardized testing squanders 15 million dollars of provincial funds annually. Instead, why not hire more teachers, reduce class sizes, improve services?\""
     },
     {
       "section_type": "questions",
@@ -16,58 +16,58 @@
       "questions": [
         {
           "id": 1,
-          "text": "Question 1 text here",
+          "text": "Birch says that standardized testing",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "makes schools less productive.",
+            "doesn't measure student progress.",
+            "undermines healthy competition.",
+            "overlooks genuine intelligence."
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 2,
-          "text": "Question 2 text here",
+          "text": "Bloom would be most satisfied with",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "Forestgrove.",
+            "Oceanview.",
+            "Valleyside.",
+            "Whitesands."
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 3,
-          "text": "Question 3 text here",
+          "text": "Legault and Shelley agree standardized testing offers an opportunity to",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "gather statistical data.",
+            "improve study skills.",
+            "negotiate class sizes.",
+            "clarify school mandates."
           ],
           "answer": 0
         },
         {
           "id": 4,
-          "text": "Question 4 text here",
+          "text": "Both teachers would be happier if the scope of standardized testing was",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "much broader.",
+            "more limited.",
+            "applied to public schools only.",
+            "used to intensify competition."
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 5,
-          "text": "Question 5 text here",
+          "text": "Overall, the article implies that standardized testing is",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "outdated.",
+            "jeopardized.",
+            "invaluable.",
+            "divisive."
           ],
-          "answer": 0
+          "answer": 3
         }
       ]
     },
@@ -75,16 +75,16 @@
       "section_type": "response_passage",
       "title": "Website Comment",
       "instruction_text": "The following is a comment by a visitor to the website page. Complete the comment by choosing the best option to fill in each blank.",
-      "content": "TODO: Add comment content with __DROPDOWN_6__, __DROPDOWN_7__, __DROPDOWN_8__, __DROPDOWN_9__, __DROPDOWN_10__ placeholders.",
+      "content": "While I have genuine sympathy for the teachers' opinions, I hope none chooses to __DROPDOWN_6__ their boss's orders anytime soon. School teachers may be right in saying that standardized testing is __DROPDOWN_7__ but as long as they are collecting salaries, they need to follow the procedures set out in their job descriptions. After all, as was implied in the article, school teachers are civil servants answerable to __DROPDOWN_8__ stakeholders. The issue of whether or not these stakeholders' agendas have children's best interests at heart was __DROPDOWN_9__ in Legault's comments. But that's a separate issue. The way to stop standardized testing in schools, if that's what is wanted, is to remove from power the __DROPDOWN_10__ that mandate them.",
       "questions": [
         {
           "id": 6,
           "text": "6.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "defy",
+            "accept",
+            "mock",
+            "forget"
           ],
           "answer": 0
         },
@@ -92,21 +92,21 @@
           "id": 7,
           "text": "7.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "outdated and inefficient,",
+            "gaining in popularity,",
+            "of limited value,",
+            "targeting private schools,"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 8,
           "text": "8.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "public",
+            "provincial",
+            "powerful",
+            "community"
           ],
           "answer": 0
         },
@@ -114,21 +114,21 @@
           "id": 9,
           "text": "9.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "glossed over",
+            "touched on",
+            "brushed off",
+            "pointed out"
           ],
-          "answer": 0
+          "answer": 1
         },
         {
           "id": 10,
           "text": "10.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "provincial governments",
+            "boards of education",
+            "parent committees",
+            "school principals"
           ],
           "answer": 0
         }

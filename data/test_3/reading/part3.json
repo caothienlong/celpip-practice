@@ -6,8 +6,8 @@
   "sections": [
     {
       "section_type": "passage",
-      "title": "Reading Passage (Test 3)",
-      "content": "A. TODO: Add paragraph A content here.\n\nB. TODO: Add paragraph B content here.\n\nC. TODO: Add paragraph C content here.\n\nD. TODO: Add paragraph D content here.",
+      "title": "Reading Passage",
+      "content": "A. Anyone who has ever lived in a city or suburb has likely encountered crows. Over 31 species can be found worldwide, with the exception of South America and Antarctica. Historically, these creatures were synonymous with death and the afterlife in many cultures. Nowadays, most people regard crows as a nuisance since they are loud and messy, especially in large groups. Recent research, however, has revealed that these birds are actually far more remarkable than previously thought. In fact, crow behavior has striking similarities to that of humans.\n\nB. Like people, crows are highly social creatures. Their lives revolve around the family. Crow families generally consist of two parents and anywhere from two to fifteen offspring, though the average family size is four. Most species of crows do not breed until approximately four years old, and only about half of their offspring survive the first year of life. During the phase prior to reproduction, young crows help their parents rear their siblings. Groups of crows, often referred to as a \"murder,\" also cooperate to guard their territory from predators.\n\nC. Although classified as songbirds, crows lack melodic voices. Their call is often perceived as a coarse \"caw\" to the human ear. Nonetheless, these creatures have an intricate communication system consisting of over 250 distinct cries that convey a variety of messages such as alarm, feeding, assembly, and fighting. Their language comprises two dialects, one for interacting with neighbouring crows and another quieter dialect reserved for relatives. Crows are also able to imitate the sounds of other species, including some elements of human speech. Because crows in different geographical areas may not use or comprehend the same calls, it makes deciphering the language difficult for researchers.\n\nD. Scientists have only recently begun studying crows and have been astonished by the extent of their intelligence. One study has revealed that crows can both use and make tools. This is a significant discovery as only two other species of animals can do so—elephants and chimpanzees. In another study, crows discovered and taught others how to get nuts from a vending machine by inserting coins that were scattered on the ground. Crows are also very adaptable creatures that thrive in cities. In Tokyo, where many people hang their laundry outside to dry, crows gather metal hangers to build nests since they are more readily available than the proper size twigs. Scientists now realize that crows have the intellectual capacity to plan, solve problems, and teach new behaviours to others.",
       "note": "E. Not given in any of the above paragraphs."
     },
     {
@@ -17,7 +17,7 @@
       "questions": [
         {
           "id": 1,
-          "text": "Statement 1 - TODO: Add statement text",
+          "text": "Crows have demonstrated construction skills that are rare among animals.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -25,11 +25,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 2,
-          "text": "Statement 2 - TODO: Add statement text",
+          "text": "The life expectancy of crows is approximately 15 years.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -37,11 +37,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 4
         },
         {
           "id": 3,
-          "text": "Statement 3 - TODO: Add statement text",
+          "text": "Crows can copy the tones made by other beings.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -49,11 +49,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 4,
-          "text": "Statement 4 - TODO: Add statement text",
+          "text": "Crows manage particularly well in urban environments.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -61,11 +61,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 5,
-          "text": "Statement 5 - TODO: Add statement text",
+          "text": "Crows have demonstrated the ability to creatively overcome challenges.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -73,11 +73,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 6,
-          "text": "Statement 6 - TODO: Add statement text",
+          "text": "Young crows assist in raising the offspring of neighbours.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -85,11 +85,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 4
         },
         {
           "id": 7,
-          "text": "Statement 7 - TODO: Add statement text",
+          "text": "At least one variety of crows exists in most continents.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -101,7 +101,7 @@
         },
         {
           "id": 8,
-          "text": "Statement 8 - TODO: Add statement text",
+          "text": "Different voices are used by crows for different social connections.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -109,11 +109,11 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 9,
-          "text": "Statement 9 - TODO: Add statement text",
+          "text": "Crows work collaboratively to protect each other from threats.",
           "options": [
             "Paragraph A",
             "Paragraph B",
@@ -121,7 +121,7 @@
             "Paragraph D",
             "Not given (E)"
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     }

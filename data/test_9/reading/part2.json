@@ -1,0 +1,31 @@
+{
+  "part": 2,
+  "title": "Reading to Apply a Diagram",
+  "type": "diagram",
+  "instructions": "Read the following email message about the diagram. Complete the email by filling in the blanks. Select the best choice for each blank from the drop-down menu.",
+  "sections": [
+    {
+      "section_type": "diagram_email",
+      "diagram_image": "part2_diagram.png",
+      "email_title": "Email Message",
+      "content": "To: <farrah@newmail.com>\nFrom: <marjan29@gomail.ca>\nSubject: Information\n\nHi Farrah,\n\nNice meeting you today! As promised, here is the __DROPDOWN_1__. (To go to it, just click HERE.) As I mentioned, I think your family is in the Thompson Public School area like us, but if you click on the __DROPDOWN_2__ tab near the top, you should be able to find your designated location.\n\nI noticed that the dates have not yet been announced for __DROPDOWN_3__, so I guess you'll have to keep checking. Also, I saw that they had some news about childcare spaces __DROPDOWN_4__, which may be of interest to you.\n\nBy the way, as evening ESL students at the school, it looks like we are eligible for __DROPDOWN_5__. I'm excited to try that out in the evenings!\n\nSee you tomorrow!\nMarjan",
+      "questions": [
+        {"id": 1, "text": "1.", "options": ["contact information for the teacher", "details about the e-learning course", "local school board website", "brochure for my daughter's school"], "answer": 2},
+        {"id": 2, "text": "2.", "options": ["Schools", "E-learning Portal", "Employment", "News"], "answer": 0},
+        {"id": 3, "text": "3.", "options": ["kindergarten registration", "spring break", "volunteer information sessions", "board-wide meetings"], "answer": 0},
+        {"id": 4, "text": "4.", "options": ["at the provincial government sites", "paid for by the provincial government", "throughout the province", "for a limited time only"], "answer": 1},
+        {"id": 5, "text": "5.", "options": ["free daycare", "volunteer training", "online learning", "employment opportunities"], "answer": 2}
+      ]
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Using the drop-down menu, choose the best option.",
+      "question_format": "dropdown",
+      "questions": [
+        {"id": 6, "text": "Farrah and Marjan are likely", "options": ["old friends.", "new classmates.", "former colleagues.", "school teachers."], "answer": 1},
+        {"id": 7, "text": "Farrah probably has a", "options": ["young child living with her.", "lot of experience with volunteering.", "background in technology.", "job in the evenings."], "answer": 0},
+        {"id": 8, "text": "The overall purpose of Marjan's message is to", "options": ["confirm an informal meeting.", "give some requested advice.", "provide helpful instructions.", "share useful information."], "answer": 3}
+      ]
+    }
+  ]
+}

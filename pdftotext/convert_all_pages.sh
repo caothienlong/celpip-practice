@@ -3,9 +3,12 @@
 # OCR Script - Convert all PDF pages to text
 # Usage: ./convert_all_pages.sh
 
-PDF_FILE="FULL READING TEST.pdf"
-OUTPUT_FILE="full_reading_test_ocr.txt"
+DEFAULT_PDF_FILE="FULL READING TEST.pdf"
+DEFAULT_OUTPUT_FILE="full_reading_test_ocr.txt"
 TEMP_DIR="temp_ocr"
+
+PDF_FILE=${1:-$DEFAULT_PDF_FILE}
+OUTPUT_FILE=${2:-$DEFAULT_OUTPUT_FILE}
 
 echo "🚀 Starting OCR conversion..."
 echo "PDF: $PDF_FILE"

@@ -1,0 +1,129 @@
+{
+  "part": 3,
+  "title": "Reading for Information",
+  "type": "information",
+  "instructions": "Read the following passage and answer the questions. Decide which paragraph (A to D) has the information given in each statement. Select E if the information is not given in any of the paragraphs.",
+  "sections": [
+    {
+      "section_type": "passage",
+      "title": "Reading Passage",
+      "content": "A. As well as a complex road system for car owners, an important aspect of urban infrastructure is a cost-effective public transit system which is fast and easily available for use by the general public. In Canada, all cities and most major towns utilize a public transportation system. In most areas, networks of buses provide the main mode of public transportation. Although bus services are not as fast as private cars, they are able to carry many passengers and can operate on conventional roads with numerous stops that easily connect to other forms of transit, such as trains and ferries. These services are operated at either a provincial or municipal level; for example, public transit in Metro Vancouver is provided by Translink, whereas other areas of British Columbia are serviced by the provincial agency, BC Transit.\n\nB. In densely populated urban areas, the ability to move large numbers of people rapidly becomes even more important. Accordingly, most large cities provide rapid transit lines which facilitate the transport of people across greater distances and in less time than alternative transit systems. These systems, commonly referred to as metros or subways, use rail tracks and are separate from regular traffic. Citywide systems can be found in places such as Montreal (\"Metro\"), Calgary (\"C-Train\"), and Edmonton (\"LRT\"). In addition, some rapid transit systems, such as Vancouver's Skytrain, span across the sprawling city limits and link to neighbouring municipalities.\n\nC. In addition to buses and rapid transit lines, some metropolises also offer other ecologically friendly and economical forms of public transit. These additions to the public transit system supplement the regular bus services and faster train services. For example, the public transit system in Toronto includes a unique system of streetcars or \"trolleys\" which run along tracks on public streets. These rail vehicles are lighter and shorter than conventional trains, and are classified as \"light rail.\" In Vancouver, the public transit network includes a \"Seabus\" (or passenger-only ferry) which provides public transportation across the Burrard Inlet.\n\nD. Well-developed public transportation systems have many benefits including efficient transportation for large populations, eco-friendly alternatives to private vehicles, and significant savings for transit users. A much-neglected truth is that the average Canadian driver spends approximately $9,500 per year, while the amount paid for monthly public transit passes in Canada comes to only $740 to $1550 annually. With this cost difference, Canadians who are willing to trade in their cars for public transportation stand to save thousands of dollars a year.",
+      "note": "E. Not given in any of the above paragraphs."
+    },
+    {
+      "section_type": "questions",
+      "instruction_text": "Decide which paragraph, A to D, has the information given in each statement below. Select E if the information is not given in any of the paragraphs.",
+      "question_format": "dropdown",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Some city transportation systems connect to nearby urban areas.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "text": "Some cities incorporate alternative types of transport into their transit infrastructure.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 3,
+          "text": "New eco-friendly cars cost almost the same as taking public transit.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 4
+        },
+        {
+          "id": 4,
+          "text": "A public transit system is a fundamental facility of Canadian cities.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "text": "Bus systems in major cities are upgraded every decade to meet commuters' needs.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 4
+        },
+        {
+          "id": 6,
+          "text": "Metropolises tend to have the most efficient transit systems.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 7,
+          "text": "Some cities have seen a boost in tourism due to their light railway systems.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 4
+        },
+        {
+          "id": 8,
+          "text": "Public transit remains one of the most cost-effective forms of transportation.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 9,
+          "text": "The level of government responsible for public transit systems varies.",
+          "options": [
+            "Paragraph A",
+            "Paragraph B",
+            "Paragraph C",
+            "Paragraph D",
+            "Not given (E)"
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}

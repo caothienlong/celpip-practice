@@ -6,8 +6,8 @@
   "sections": [
     {
       "section_type": "passage",
-      "title": "Article (Test 4)",
-      "content": "TODO: Add article content here. This should be an opinion piece or article with different viewpoints."
+      "title": "Website Article",
+      "content": "Live-in Caregiver Amy Mercado is concerned that current policy reforms in the Canadian Temporary Foreign Worker Program are simply band-aid solutions to bigger issues. The program allows Canadian families to hire foreign workers to live temporarily in their homes and care for elderly, young, or disabled citizens. The program is one of three ways that immigrants can acquire permanent Canadian residency. Originally trained as a nurse, Mercado came to Canada from the Philippines 13 years ago to work as a live-in caregiver. She is now a Canadian citizen. Suffering verbal harassment in the first few years of her employment, she's only too aware of how often live-in caregivers face unsafe working standards. \"Although foreign live-in caregivers are technically under the same labour laws as Canadian workers, they work and live in someone else's private home,\" Mercado explains. \"They can suffer a lot of unseen damage.\"\n\nMinistry Official Mark Swanson says that while the program is nowhere near perfect, they're trying their best to reform it. \"Recent protections, such as the implementation of a standardized employment contract between caregivers and families and a phone help line for caregivers, have made a big difference,\" Swanson says. One of the major changes was allowing caregivers to apply for open work permits while waiting for residency. However, the program is currently backlogged with about 80,000 applicants, and wait times can be up to 38 months.\n\nMercado says policy changes are helpful, but are not enough. One of the greatest challenges that caregivers face is having to leave their own children and families behind in their home country. The wait time for residency means they are separated for several years. \"It's sad and ironic, I took care of other people's children for 3 years while I was separated from my own,\" Mercado says. \"Family reunification needs to be made the top priority for policy reform.\"\n\nAlthough the Live-in Caregiver Program needs to be reformed, it appears what's subsequently needed is federal investment in childcare and old-age programs. Foreign supply of labour is a mere band-aid solution to Canada's lack of funding for such programs."
     },
     {
       "section_type": "questions",
@@ -16,56 +16,56 @@
       "questions": [
         {
           "id": 1,
-          "text": "Question 1 text here",
+          "text": "Mercado would probably agree that",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "caregivers should be paid more.",
+            "caregivers are lucky to have jobs.",
+            "caregivers should live with their families.",
+            "caregivers should translate their contracts."
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 2,
-          "text": "Question 2 text here",
+          "text": "In addition to the current reform plan, Mercado would probably want",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "a more efficient process for residency.",
+            "better protection against employer abuse.",
+            "quicker ways of bringing her family to Canada.",
+            "an ability to change caregiver jobs."
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 3,
-          "text": "Question 3 text here",
+          "text": "The Temporary Foreign Worker Program is popular because",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "it requires the immigrant to have a job.",
+            "it allows immigrants to work at a variety of jobs.",
+            "it speeds up citizenship application.",
+            "it provides an opportunity to apply for residency."
           ],
-          "answer": 0
+          "answer": 3
         },
         {
           "id": 4,
-          "text": "Question 4 text here",
+          "text": "According to Swanson, the Temporary Foreign Worker Program",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "is undergoing successful reform.",
+            "is no longer a government priority.",
+            "requires many more reforms to be effective.",
+            "will have reduced wait times in the near future."
           ],
           "answer": 0
         },
         {
           "id": 5,
-          "text": "Question 5 text here",
+          "text": "The author of the article thinks that a bigger need than these policy reforms is",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "better budgeting for senior-care programs.",
+            "better schooling in childcare programs.",
+            "improved protection against harassment.",
+            "quicker availability of open work permits."
           ],
           "answer": 0
         }
@@ -75,16 +75,16 @@
       "section_type": "response_passage",
       "title": "Website Comment",
       "instruction_text": "The following is a comment by a visitor to the website page. Complete the comment by choosing the best option to fill in each blank.",
-      "content": "TODO: Add comment content with __DROPDOWN_6__, __DROPDOWN_7__, __DROPDOWN_8__, __DROPDOWN_9__, __DROPDOWN_10__ placeholders.",
+      "content": "After reading today's article, I was shocked to learn that __DROPDOWN_6__ This has been reported for many years. Why is it still happening? Caregivers should be able to __DROPDOWN_7__ just like anyone else. Caregivers should receive fair pay and be protected by __DROPDOWN_8__ How can help lines work? If a caregiver is being harassed, a chat on the helpline __DROPDOWN_9__ How are the open work permits going to help? By the time caregivers are allowed to change jobs, perhaps __DROPDOWN_10__ Considering everything, I think caregivers must be admired for their hard-work and dedication.",
       "questions": [
         {
           "id": 6,
           "text": "6.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "abuse still happens to caregivers.",
+            "caregivers are still living with families.",
+            "the government isn't supporting caregivers.",
+            "caregivers can't change jobs."
           ],
           "answer": 0
         },
@@ -92,10 +92,10 @@
           "id": 7,
           "text": "7.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "complain about their workplace conditions,",
+            "complain to their employers,",
+            "visit with their families and friends,",
+            "take vacations to visit family,"
           ],
           "answer": 0
         },
@@ -103,21 +103,21 @@
           "id": 8,
           "text": "8.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "their contracts.",
+            "the local police.",
+            "the labour laws.",
+            "their employers."
           ],
-          "answer": 0
+          "answer": 2
         },
         {
           "id": 9,
           "text": "9.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "won't solve the problem.",
+            "will alert the police.",
+            "won't change the family.",
+            "will increase the problems."
           ],
           "answer": 0
         },
@@ -125,12 +125,12 @@
           "id": 10,
           "text": "10.",
           "options": [
-            "Option A",
-            "Option B",
-            "Option C",
-            "Option D"
+            "another caregiver position will not be available.",
+            "they will want to leave Canada.",
+            "the wait for work permits may be even longer.",
+            "they can get jobs as nurses."
           ],
-          "answer": 0
+          "answer": 1
         }
       ]
     }
