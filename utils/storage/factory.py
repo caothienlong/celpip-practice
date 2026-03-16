@@ -7,7 +7,7 @@ repository instances the application needs.
 
 import logging
 import os
-from typing import Tuple
+from typing import Optional, Tuple
 
 from .interfaces import UserRepository, TestRepository, VocabularyRepository
 
@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 def make_repositories(
     users_dir: str = "users",
-    database_url: str | None = None,
+    database_url: Optional[str] = None,
 ) -> Tuple[UserRepository, TestRepository, VocabularyRepository]:
     """
     Return (user_repo, test_repo, vocab_repo).

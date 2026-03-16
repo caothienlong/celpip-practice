@@ -23,7 +23,7 @@ from utils.storage import make_repositories, UserRepository, TestRepository, Voc
 class ResultsTracker:
     """Thin facade that delegates to the appropriate storage repositories."""
 
-    def __init__(self, users_dir: str = "users", database_url: str | None = None):
+    def __init__(self, users_dir: str = "users", database_url: Optional[str] = None):
         self._users: UserRepository
         self._tests: TestRepository
         self._vocab: VocabularyRepository
