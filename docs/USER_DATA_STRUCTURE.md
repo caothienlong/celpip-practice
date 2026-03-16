@@ -2,18 +2,67 @@
 
 ## Overview
 
-User data is organized in a **folder-per-user** structure for better organization and scalability.
+User data is stored in **PostgreSQL** when `DATABASE_URL` is configured (production on Render), and falls back transparently to a **folder-per-user JSON structure** for local development.
 
-## Directory Structure
+The application never hard-codes which backend to use — it is selected at startup by `utils/storage/factory.py` via the repository pattern.
+
+## Storage Backends
+
+| Environment | Backend | Location |
+|-------------|---------|----------|
+| Production (Render) | PostgreSQL | `users`, `test_history`, `vocabulary_notes` tables |
+| Local development | JSON files | `users/{sanitized_email}/*.json` |
+
+## PostgreSQL Schema
+
+```sql
+users (
+    email          TEXT PRIMARY KEY,
+    name           TEXT,
+    provider       TEXT,       -- 'google' or 'facebook'
+    picture        TEXT,
+    role           TEXT DEFAULT 'Basic',
+    created_at     TIMESTAMPTZ,
+    last_accessed  TIMESTAMPTZ
+)
+
+test_history (
+    id          SERIAL PRIMARY KEY,
+    user_email  TEXT REFERENCES users(email) ON DELETE CASCADE,
+    test_num    INTEGER,
+    data        JSONB,         -- full attempt history
+    updated_at  TIMESTAMPTZ,
+    UNIQUE(user_email, test_num)
+)
+
+vocabulary_notes (
+    note_id     TEXT PRIMARY KEY,
+    user_email  TEXT REFERENCES users(email) ON DELETE CASCADE,
+    test_num    INTEGER,
+    skill       TEXT,
+    part_num    INTEGER,
+    word        TEXT,
+    definition  TEXT,
+    context     TEXT,
+    created_at  TIMESTAMPTZ,
+    updated_at  TIMESTAMPTZ
+)
+```
+
+Tables are **auto-created** on first startup — no manual migrations needed.
+
+## File-Based Fallback Directory Structure
 
 ```
 users/
-  caothienlong_gmail/           # Username (domain extension removed)
+  caothienlong_gmail/           # Sanitized email (domain extension removed)
     ├── profile.json            # User profile & metadata
-    └── test_history.json       # Test attempts & scores
+    ├── test_history.json       # Test attempts & scores
+    └── vocabulary_notes.json   # Vocabulary notes
   another_user/
     ├── profile.json
-    └── test_history.json
+    ├── test_history.json
+    └── vocabulary_notes.json
 ```
 
 ## File Formats
@@ -174,35 +223,62 @@ users/
     └── test_history.json
 ```
 
-## Database Migration (Future)
+## Migrating from File Storage to PostgreSQL
 
-When ready for PostgreSQL:
+If you have existing users stored in `users/` JSON files and want to move them to PostgreSQL:
 
-1. **Keep folder structure** for backups
-2. **Import to database** via migration script
-3. **Sync both ways** (DB primary, files backup)
-4. **Easy rollback** if needed
+```bash
+# Ensure DATABASE_URL is set in your .env
+python migrate_user_data.py
+```
 
-See `docs/DATABASE_MIGRATION.md` for details (when ready).
+This reads all `users/*/profile.json`, `test_history.json`, and `vocabulary_notes.json` files and upserts them into PostgreSQL.  The original files are left intact as a backup.
 
 ## API Usage
 
+`ResultsTracker` is the single entry point for all user data operations.  
+Storage backend is chosen automatically — no changes to call sites.
+
 ```python
+import os
 from utils.results_tracker import ResultsTracker
 
-tracker = ResultsTracker(users_dir='users')
+tracker = ResultsTracker(
+    users_dir='users',
+    database_url=os.getenv('DATABASE_URL'),  # None → file fallback
+)
 
-# Get or create user
+# --- User profile ---
 profile = tracker.get_or_create_user('user@example.com')
-
-# Get test history
-history = tracker.get_all_tests_summary('user@example.com')
-
-# Update role
-tracker.update_user_role('user@example.com', 'Premium')
-
-# Get profile
 profile = tracker.get_user_profile('user@example.com')
+tracker.save_user_profile('user@example.com', profile)
+tracker.update_user_role('user@example.com', 'Premium')
+users   = tracker.list_all_users()
+
+# --- Test history ---
+tracker.save_test_result(user_email, test_num, skill, part_num,
+                         answers, correct_answers, score, max_score, attempt_id)
+tracker.complete_test_attempt(user_email, test_num, attempt_id)
+history = tracker.get_user_test_history(user_email, test_num)
+summary = tracker.get_all_tests_summary(user_email)
+
+# --- Vocabulary notes ---
+note_id = tracker.save_vocabulary_note(user_email, test_num, skill, part_num,
+                                        word, definition, context)
+notes   = tracker.get_vocabulary_notes(user_email, test_num=1, skill='reading')
+tracker.update_vocabulary_note(user_email, note_id, definition='new definition')
+tracker.delete_vocabulary_note(user_email, note_id)
+```
+
+### Direct repository access (advanced)
+
+```python
+from utils.storage import make_repositories
+
+user_repo, test_repo, vocab_repo = make_repositories(
+    users_dir='users',
+    database_url=os.getenv('DATABASE_URL'),
+)
 ```
 
 ## Backup Strategy
@@ -248,6 +324,6 @@ print(users)  # ['user1@example.com', 'user2@example.com']
 
 ---
 
-**Last Updated:** December 7, 2025  
-**Version:** 1.0
+**Last Updated:** March 16, 2026  
+**Version:** 2.0 (PostgreSQL + repository pattern)
 

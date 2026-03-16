@@ -1,6 +1,6 @@
 # 🚀 Complete Deployment Guide
 
-**Deploy CELPIP Practice Platform with OAuth Authentication**
+**Deploy CELPIP Practice Platform with PostgreSQL Database & OAuth Authentication**
 
 ---
 
@@ -9,8 +9,9 @@
 1. [Prerequisites](#prerequisites)
 2. [Setup OAuth (Google & Facebook)](#setup-oauth)
 3. [Deploy to Render.com](#deploy-to-render)
-4. [Post-Deployment Configuration](#post-deployment)
-5. [Troubleshooting](#troubleshooting)
+4. [Database Setup](#database-setup)
+5. [Post-Deployment Configuration](#post-deployment)
+6. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -22,6 +23,8 @@
 ✅ **Render.com Account** (free) - For hosting  
 ✅ **Google Cloud Account** (free) - For OAuth  
 ✅ **Domain/URL** - Will be provided by Render (e.g., `your-app.onrender.com`)
+
+> 💡 **Database is built-in**: This project ships with full PostgreSQL support via `render.yaml`. No extra database setup is needed — Render provisions it automatically.
 
 ### Local Setup First
 
@@ -146,28 +149,7 @@ Visit `http://127.0.0.1:5000` to verify it works locally.
 
 ### 1. Prepare Repository
 
-#### Create `.env.example` (for reference)
-
-Create file `.env.example` in your project root:
-
-```bash
-# Flask Secret Key (generate with: python -c "import secrets; print(secrets.token_hex(32))")
-SECRET_KEY=your-secret-key-here
-
-# Google OAuth
-GOOGLE_CLIENT_ID=your-id.apps.googleusercontent.com
-GOOGLE_CLIENT_SECRET=your-secret
-
-# Facebook OAuth (Optional)
-FACEBOOK_CLIENT_ID=your-facebook-app-id
-FACEBOOK_CLIENT_SECRET=your-facebook-app-secret
-
-# App URLs (update after deployment)
-APP_URL=http://127.0.0.1:5000
-REDIRECT_URI_BASE=http://127.0.0.1:5000
-```
-
-#### Update `.gitignore`
+#### Commit and Push
 
 Ensure `.gitignore` includes:
 
@@ -188,17 +170,19 @@ __pycache__/
 .DS_Store
 ```
 
-#### Commit and Push
+Then push your latest code:
 
 ```bash
 git add -A
-git commit -m "Prepare for Render deployment with OAuth"
+git commit -m "Prepare for Render deployment"
 git push origin main
 ```
 
 ---
 
-### 2. Create Render Web Service
+### 2. Deploy via Blueprint (Recommended)
+
+The project ships with a `render.yaml` that provisions **both the web service and a PostgreSQL database** automatically.
 
 #### 2.1 Sign Up & Connect
 
@@ -206,64 +190,157 @@ git push origin main
 2. Sign up with **GitHub** (recommended)
 3. Authorize Render to access your repositories
 
-#### 2.2 Create New Web Service
+#### 2.2 Create Blueprint
 
-1. Click **"New +"** → **"Web Service"**
-2. Connect your repository:
-   - Click **"Connect account"** (if needed)
-   - Select your CELPIP repository
-3. Click **"Connect"**
+1. Click **"New +"** → **"Blueprint"**
+2. Select your CELPIP repository
+3. Render will detect `render.yaml` and show a preview:
+   - 🗄️ `celpip-db` — Free PostgreSQL database
+   - 🌐 `celpip-practice` — Python web service
+4. Click **"Apply"**
 
-#### 2.3 Configure Service
+Render will provision both resources and **automatically wire `DATABASE_URL`** from the database to the web service — no manual copy-paste needed.
 
-**Name & Region:**
-- **Name**: `celpip-practice` (will be `celpip-practice.onrender.com`)
-- **Region**: Choose closest to your users
-- **Branch**: `main`
+#### 2.3 Add OAuth Environment Variables
 
-**Build Settings:**
-- **Runtime**: `Python 3`
-- **Build Command**: 
-  ```bash
-  pip install -r requirements.txt
-  ```
-- **Start Command**:
-  ```bash
-  gunicorn app:app
-  ```
-
-**Instance Type:**
-- **Free** - Good for testing (spins down after 15 min of inactivity)
-- **Starter** ($7/month) - Recommended for production (always on)
-
-#### 2.4 Add Environment Variables
-
-**Before clicking "Create Web Service"**, scroll down to **Environment Variables** and add:
+After the Blueprint deploys, go to **Dashboard → celpip-practice → Environment** and add:
 
 | Key | Value |
 |-----|-------|
-| `SECRET_KEY` | Generate with: `python -c "import secrets; print(secrets.token_hex(32))"` |
 | `GOOGLE_CLIENT_ID` | Your Google Client ID |
 | `GOOGLE_CLIENT_SECRET` | Your Google Client Secret |
-| `APP_URL` | `https://celpip-practice.onrender.com` (use your actual URL) |
-| `REDIRECT_URI_BASE` | `https://celpip-practice.onrender.com` (same as APP_URL) |
+| `APP_URL` | `https://celpip-practice.onrender.com` |
+| `REDIRECT_URI_BASE` | `https://celpip-practice.onrender.com` (same as `APP_URL`) |
 | `FACEBOOK_CLIENT_ID` | (Optional) Your Facebook App ID |
 | `FACEBOOK_CLIENT_SECRET` | (Optional) Your Facebook App Secret |
 
-> 💡 **Tip**: You can also add these after deployment in the **Environment** tab.
+> ⚠️ **Do NOT manually add `DATABASE_URL` or `SECRET_KEY`** — these are already handled by `render.yaml` (`DATABASE_URL` is linked from the DB, `SECRET_KEY` is auto-generated).
 
-#### 2.5 Deploy!
+Click **"Save Changes"** — the service will restart with the new variables.
 
-1. Click **"Create Web Service"**
-2. Wait 2-5 minutes for deployment
-3. Watch the build logs for any errors
-4. Once deployed, you'll see: ✅ **"Live"** with a green dot
+#### 2.4 Your app is live! 🎉
 
-Your app is now live at: `https://your-app.onrender.com` 🎉
+Visit: `https://celpip-practice.onrender.com`
+
+**Instance Type:**
+- **Free** - Good for testing (spins down after 15 min of inactivity; ~30s cold start)
+- **Starter** ($7/month) - Recommended for production (always on)
 
 ---
 
-### 3. Update OAuth Redirect URIs
+### 3. Manual Deploy (Alternative to Blueprint)
+
+If you prefer to set everything up manually:
+
+#### 3.1 Create PostgreSQL Database
+
+1. **New +** → **PostgreSQL**
+2. Set:
+   - **Name**: `celpip-db`
+   - **Database**: `celpip`
+   - **User**: `celpip_user`
+   - **Plan**: Free
+3. Click **Create Database**
+4. Copy the **Internal Database URL** from the database dashboard
+
+#### 3.2 Create Web Service
+
+1. **New +** → **Web Service**
+2. Connect your repository, then configure:
+   - **Runtime**: Python 3
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `gunicorn app:app --bind 0.0.0.0:$PORT`
+   - **Plan**: Free or Starter
+
+#### 3.3 Add Environment Variables
+
+| Key | Value |
+|-----|-------|
+| `SECRET_KEY` | Run locally: `python -c "import secrets; print(secrets.token_hex(32))"` |
+| `DATABASE_URL` | Paste the **Internal Database URL** from step 3.1 |
+| `GOOGLE_CLIENT_ID` | Your Google Client ID |
+| `GOOGLE_CLIENT_SECRET` | Your Google Client Secret |
+| `APP_URL` | `https://celpip-practice.onrender.com` |
+| `REDIRECT_URI_BASE` | `https://celpip-practice.onrender.com` |
+| `FACEBOOK_CLIENT_ID` | (Optional) Your Facebook App ID |
+| `FACEBOOK_CLIENT_SECRET` | (Optional) Your Facebook App Secret |
+
+3. Click **Create Web Service**
+
+---
+
+---
+
+## Database Setup
+
+### How It Works
+
+The app uses **PostgreSQL as the primary data store** with a transparent fallback to JSON files when no database is configured (useful for local development).
+
+| Scenario | Storage |
+|----------|---------|
+| `DATABASE_URL` is set | PostgreSQL |
+| `DATABASE_URL` is not set | JSON files in `users/` |
+
+On first startup, the app **automatically creates all required tables** — no manual migrations needed.
+
+### Database Schema
+
+```sql
+-- User profiles
+users (
+    email          TEXT PRIMARY KEY,
+    name           TEXT,
+    provider       TEXT,       -- 'google' or 'facebook'
+    picture        TEXT,
+    role           TEXT,       -- 'Basic' or 'Premium'
+    created_at     TIMESTAMPTZ,
+    last_accessed  TIMESTAMPTZ
+)
+
+-- Test results per user per test number
+test_history (
+    id          SERIAL PRIMARY KEY,
+    user_email  TEXT REFERENCES users(email),
+    test_num    INTEGER,
+    data        JSONB,         -- full attempt history
+    updated_at  TIMESTAMPTZ,
+    UNIQUE(user_email, test_num)
+)
+
+-- Individual vocabulary notes
+vocabulary_notes (
+    note_id     TEXT PRIMARY KEY,
+    user_email  TEXT REFERENCES users(email),
+    test_num    INTEGER,
+    skill       TEXT,          -- 'reading', 'listening', etc.
+    part_num    INTEGER,
+    word        TEXT,
+    definition  TEXT,
+    context     TEXT,
+    created_at  TIMESTAMPTZ,
+    updated_at  TIMESTAMPTZ
+)
+```
+
+### Verify Database Connection
+
+After deployment, check the Render logs for:
+```
+PostgreSQL database connected successfully
+```
+
+If you see `DATABASE_URL not set - using file-based storage`, the env var is missing or not linked correctly.
+
+### Free Tier Database Expiry
+
+> ⚠️ Render's **free PostgreSQL databases expire after 90 days**. Before expiry:
+> 1. Export your data or upgrade to a paid plan
+> 2. If you recreate the free DB, update the `DATABASE_URL` env var in the web service
+
+---
+
+### 4. Update OAuth Redirect URIs
 
 **CRITICAL STEP:** Now that you have your Render URL, update OAuth settings:
 
@@ -438,14 +515,24 @@ git push
 - Upgrade to **Starter** plan ($7/month) for always-on service
 - Or use a service like [UptimeRobot](https://uptimerobot.com/) to ping every 14 minutes
 
-#### Database Errors
+#### Database Connection Failed
 
-**Problem**: JSON file storage conflicts in multi-instance deployments.
+**Problem**: App starts but logs show `Failed to connect to PostgreSQL`.
 
 **Solution**:
-- Consider upgrading to PostgreSQL for production
-- Use Render's PostgreSQL addon
-- Follow migration guide: `docs/USER_DATA_STRUCTURE.md`
+1. Go to Render dashboard → **celpip-practice** → **Environment**
+2. Verify `DATABASE_URL` is present (it should be auto-linked if you used Blueprint)
+3. If missing, go to your **celpip-db** database dashboard and copy the **Internal Database URL**
+4. Add it as `DATABASE_URL` in the web service environment
+5. Click **Save Changes** to restart the service
+
+#### App Falling Back to File Storage
+
+**Problem**: Logs show `DATABASE_URL not set - using file-based storage`.
+
+**Solution**:
+- Same as above — ensure `DATABASE_URL` is set and linked correctly
+- This fallback is intentional for local development without a database
 
 ---
 
@@ -467,10 +554,10 @@ git push
 
 ### 3. User Data
 
-✅ User data stored in `users/` folder (gitignored)  
+✅ User data stored in **PostgreSQL** (when `DATABASE_URL` is set)  
+✅ Falls back to `users/` JSON files for local dev (gitignored)  
 ✅ No passwords stored (OAuth only)  
-✅ Email addresses sanitized in folder names  
-✅ Data isolated per user
+✅ Data isolated per user with foreign key constraints
 
 ---
 
@@ -552,14 +639,16 @@ Render will **auto-deploy** (if enabled) within 1-2 minutes.
 3. Click **"Add Custom Domain"**
 4. Follow DNS setup instructions
 
-### 2. Database Upgrade (Future)
+### 2. Migrate Existing User Data (from JSON files)
 
-When you outgrow JSON files:
+If you had users stored in `users/` JSON files before the database was set up:
 
-1. Add PostgreSQL to Render
-2. Update code to use database
-3. Migrate existing user data
-4. See: `docs/USER_DATA_STRUCTURE.md`
+```bash
+# Run the migration script locally (ensure DATABASE_URL is set in .env)
+python migrate_user_data.py
+```
+
+This script reads from `users/` and writes all profiles, test history, and vocabulary notes into PostgreSQL.
 
 ### 3. Add More Tests
 
@@ -600,20 +689,23 @@ When you outgrow JSON files:
 - [ ] Set up Facebook OAuth (optional)
 
 ### Deployment
-- [ ] Created Render web service
-- [ ] Set environment variables
-- [ ] Deployed successfully
-- [ ] Updated OAuth redirect URIs
+- [ ] Deployed via Blueprint (or manually created DB + web service)
+- [ ] Confirmed `DATABASE_URL` is linked in web service environment
+- [ ] Added OAuth environment variables (`GOOGLE_CLIENT_ID`, etc.)
+- [ ] Deployed successfully — service shows ✅ Live
+- [ ] Updated OAuth redirect URIs in Google/Facebook console
 - [ ] Tested login with Google
 - [ ] Tested login with Facebook (if enabled)
 - [ ] Verified guest mode works
 
 ### Post-Deployment
+- [ ] Render logs show `PostgreSQL database connected successfully`
 - [ ] Took a test as logged-in user
-- [ ] Verified data persistence
+- [ ] Verified test history is saved (logout → login → check history)
+- [ ] Verified vocabulary notes persist across sessions
 - [ ] Checked logout functionality
 - [ ] Tested on mobile device
-- [ ] Reviewed Render logs
+- [ ] Reviewed Render logs for any errors
 
 ---
 
@@ -623,6 +715,6 @@ Share your URL: `https://your-app.onrender.com`
 
 ---
 
-**Last Updated**: December 8, 2025  
-**Version**: 3.0 (with OAuth)
+**Last Updated**: March 16, 2026  
+**Version**: 4.0 (with PostgreSQL + OAuth)
 

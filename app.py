@@ -24,7 +24,10 @@ app.config['SESSION_REFRESH_EACH_REQUEST'] = True
 
 # Initialize data loader and results tracker
 data_loader = TestDataLoader(data_dir='data')
-results_tracker = ResultsTracker(users_dir='users')
+results_tracker = ResultsTracker(
+    users_dir='users',
+    database_url=os.getenv('DATABASE_URL')
+)
 
 # Initialize authentication
 login_manager = init_auth(app, results_tracker)
@@ -88,7 +91,7 @@ def oauth_callback(provider):
         profile['picture'] = user_info.get('picture')
         
         # Save profile
-        results_tracker._save_user_profile(email, profile)
+        results_tracker.save_user_profile(email, profile)
         
         # Create User object and login
         user = User(
