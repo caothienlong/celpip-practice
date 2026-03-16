@@ -10,20 +10,30 @@ This application is designed with a **data-driven, platform-agnostic architectur
 ## Design Principles
 
 ### 1. Separation of Concerns
-- **Data Layer**: JSON files in `data/` directory
+- **Test Data Layer**: JSON files in `data/` directory
+- **Storage Layer**: Repository pattern in `utils/storage/` (pluggable backends)
 - **Business Logic**: Python utilities in `utils/`
 - **Presentation**: Flask routes and Jinja2 templates
 - **Static Assets**: Images organized by set and skill
 
-### 2. Platform Agnostic
+### 2. Repository Pattern (Storage)
+User data access is decoupled from storage technology via abstract repository interfaces:
+- `UserRepository` — profiles and roles
+- `TestRepository` — test attempts and results
+- `VocabularyRepository` — vocabulary notes
+
+Concrete implementations (`FileUserRepository`, `DbUserRepository`, etc.) are selected at startup by a factory, keeping the rest of the application storage-agnostic.
+
+### 3. Platform Agnostic
 - All test data in JSON format
 - Can be consumed by any platform
 - No platform-specific data structures
 
-### 3. Scalability
+### 4. Scalability
 - Easy to add new test sets (just add JSON files)
 - Automatic discovery of available tests
 - No code changes needed for new content
+- Adding a new storage backend only requires implementing three interfaces
 
 ## Directory Structure
 
@@ -67,9 +77,19 @@ celpip/
 │   ├── index.html
 │   └── test_section.html
 │
-└── utils/                     # Business logic (reusable)
+└── utils/                          # Business logic (reusable)
     ├── __init__.py
-    └── data_loader.py        # Data loading & processing
+    ├── auth.py                     # Flask-Login integration
+    ├── data_loader.py              # Test data loading & processing
+    ├── database.py                 # PostgreSQL connection pool & raw SQL
+    ├── oauth_providers.py          # OAuth provider configuration
+    ├── results_tracker.py          # Thin facade — public API for app.py
+    └── storage/                    # Storage layer (repository pattern)
+        ├── __init__.py             # Public exports + make_repositories()
+        ├── interfaces.py           # Abstract base classes
+        ├── file_storage.py         # File-based implementations (local dev)
+        ├── db_storage.py           # PostgreSQL implementations
+        └── factory.py              # Selects backend from DATABASE_URL
 ```
 
 ## Data Flow
@@ -114,28 +134,77 @@ JSON Response with results
 
 ### 1. Data Loader (`utils/data_loader.py`)
 
-**Purpose**: Platform-agnostic data loading and processing
+**Purpose**: Platform-agnostic test data loading and processing
 
 **Key Methods**:
-- `load_test_part(set, skill, part)` - Load test data from JSON
-- `get_all_questions(data)` - Extract all questions
-- `get_correct_answers(data)` - Get answer key
-- `process_dropdown_content(content, questions)` - Replace placeholders with HTML (Web)
-- `build_question_dropdown_html(questions)` - Generate question HTML (Web)
+- `load_test_part(set, skill, part)` — Load test data from JSON
+- `get_all_questions(data)` — Extract all questions
+- `get_correct_answers(data)` — Get answer key
+- `process_dropdown_content(content, questions)` — Replace placeholders with HTML (Web)
+- `build_question_dropdown_html(questions)` — Generate question HTML (Web)
 
-**Platform Notes**:
-- Core methods (load, get_questions, get_answers) are platform-agnostic
-- HTML generation methods are Web-specific
-- iOS/Android would implement their own UI generation
+### 2. Storage Layer (`utils/storage/`)
 
-### 2. Flask Application (`app.py`)
+**Purpose**: Pluggable persistence for user data
+
+**Architecture**:
+```
+make_repositories(users_dir, database_url)
+        │
+        ├─ DATABASE_URL set & reachable ──► DbUserRepository
+        │                                   DbTestRepository
+        │                                   DbVocabularyRepository
+        │                                         │
+        │                                   utils/database.py (psycopg2 pool)
+        │
+        └─ no DATABASE_URL (local dev) ──► FileUserRepository
+                                            FileTestRepository
+                                            FileVocabularyRepository
+                                                  │
+                                            users/{email}/*.json
+```
+
+**Interfaces** (`utils/storage/interfaces.py`):
+
+| Interface | Responsibility |
+|-----------|----------------|
+| `UserRepository` | `get`, `save`, `get_or_create`, `update_role`, `list_all` |
+| `TestRepository` | `save_result`, `complete_attempt`, `get_history`, `get_all_summary` |
+| `VocabularyRepository` | `save`, `get`, `delete`, `update` |
+
+### 3. Results Tracker (`utils/results_tracker.py`)
+
+**Purpose**: Thin application-level facade over the storage layer
+
+Exposes a single stable public API to the rest of the app.  
+Contains **no storage logic** — delegates entirely to the three repositories.
+
+```python
+tracker = ResultsTracker(users_dir='users', database_url=os.getenv('DATABASE_URL'))
+
+# All three domains through one object:
+tracker.get_user_profile(email)
+tracker.save_test_result(...)
+tracker.save_vocabulary_note(...)
+```
+
+### 4. Database (`utils/database.py`)
+
+**Purpose**: Raw PostgreSQL access — connection pooling, table creation, SQL queries
+
+Used exclusively by `DbUserRepository`, `DbTestRepository`, and `DbVocabularyRepository`.  
+Not imported directly anywhere else in the application.
+
+**Tables**: `users`, `test_history`, `vocabulary_notes`
+
+### 5. Flask Application (`app.py`)
 
 **Purpose**: Web platform implementation
 
 **Key Routes**:
-- `GET /` - Home page, list all available tests
-- `GET /test/<set>/<skill>/part<part>` - Display test
-- `POST /submit_answers` - Process and score answers
+- `GET /` — Home page, list all available tests
+- `GET /test/<set>/<skill>/part<part>` — Display test
+- `POST /submit_answers` — Process and score answers
 
 **Platform-Specific**: Only for Web app
 
@@ -313,10 +382,11 @@ cp data/set_1/reading/part1.json data/set_X/skill/partY.json
 
 ## Future Enhancements
 
-- [ ] Database backend for user progress
+- [x] Database backend for user progress (PostgreSQL via repository pattern)
 - [ ] API for mobile apps
 - [ ] Real-time synchronization
 - [ ] Offline mode support
 - [ ] Analytics and reporting
 - [ ] Admin panel for content management
+- [ ] Additional storage backends (e.g. Redis cache, S3 backup) via new repository implementations
 

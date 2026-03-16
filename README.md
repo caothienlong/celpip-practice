@@ -113,12 +113,19 @@ celpip/
 │
 ├── utils/                  # Python utilities
 │   ├── data_loader.py     # Load test data
-│   └── results_tracker.py # Manage user data
+│   ├── database.py        # PostgreSQL connection & queries
+│   ├── results_tracker.py # Public facade for app.py
+│   └── storage/           # Repository pattern (pluggable backends)
+│       ├── interfaces.py  # Abstract contracts
+│       ├── file_storage.py # File-based implementation
+│       ├── db_storage.py  # PostgreSQL implementation
+│       └── factory.py     # Selects backend at startup
 │
-├── users/                  # User data (gitignored)
+├── users/                  # User data — file fallback (gitignored)
 │   └── {username}/
 │       ├── profile.json
-│       └── test_history.json
+│       ├── test_history.json
+│       └── vocabulary_notes.json
 │
 └── docs/                   # Documentation
 ```
@@ -139,9 +146,12 @@ celpip/
 - Google login integration
 - Facebook login integration
 - Guest mode (no login required)
-- User data management (folder-per-user)
+- User data management (folder-per-user + PostgreSQL)
+- Vocabulary notes (per test/skill/part)
+- PostgreSQL storage with file-based fallback
+- Repository pattern — pluggable storage backends
 - Session & persistent storage
-- Deployment ready (Render.com)
+- Deployment ready (Render.com with `render.yaml` Blueprint)
 
 ### 🚧 In Progress
 - Tests 2-20 content
@@ -190,8 +200,9 @@ Access from any device: `http://YOUR_IP:5000`
 - **Templates**: Jinja2
 - **Authentication**: OAuth 2.0 (Google, Facebook) via Authlib
 - **Session Management**: Flask-Login
-- **Data**: JSON files (future: PostgreSQL)
-- **Storage**: File-based user folders (scalable to database)
+- **Test Data**: JSON files (platform-agnostic)
+- **User Storage**: PostgreSQL (production) / JSON files (local dev fallback)
+- **Storage Architecture**: Repository pattern — `UserRepository`, `TestRepository`, `VocabularyRepository`
 - **Deployment**: Render.com (or any Python host)
 
 ---
@@ -247,17 +258,24 @@ Access from any device: `http://YOUR_IP:5000`
 ### Authenticated Mode (OAuth)
 - Login with Google or Facebook
 - No passwords stored (OAuth only)
-- Data stored locally in `users/` folder
+- Data stored in **PostgreSQL** (production) or `users/` JSON files (local dev)
 - Persistent history across sessions
 - Never shared with third parties
 - GDPR-compliant data isolation
 
 ### Data Structure
 ```
+# Production (PostgreSQL)
+table: users              # Email, role, timestamps
+table: test_history       # Test attempts & scores (JSONB)
+table: vocabulary_notes   # Per-word notes with context
+
+# Local dev fallback (file-based)
 users/
   {username}/
-    profile.json       # Email, role, timestamps
-    test_history.json  # Test attempts & scores
+    profile.json
+    test_history.json
+    vocabulary_notes.json
 ```
 
 **See**: [docs/USER_DATA_STRUCTURE.md](docs/USER_DATA_STRUCTURE.md)
@@ -363,10 +381,10 @@ See [docs/CONFIG_GUIDE.md](docs/CONFIG_GUIDE.md) for all options
 - [ ] Mobile apps (iOS/Android)
 
 ### Phase 4: Scale 🚀
-- [ ] PostgreSQL database
+- [x] PostgreSQL database (repository pattern, auto-fallback to files)
+- [x] Cloud hosting (Render.com with `render.yaml` Blueprint)
 - [ ] API for mobile
 - [ ] Admin dashboard
-- [ ] Cloud hosting
 
 ---
 
@@ -425,10 +443,11 @@ See [docs/COMPLETE_GUIDE.md#troubleshooting](docs/COMPLETE_GUIDE.md#troubleshoot
 
 ## 🔖 Version
 
-**Current Version**: 3.0  
-**Last Updated**: December 8, 2025  
+**Current Version**: 4.0  
+**Last Updated**: March 16, 2026  
 **Status**: Production Ready 🚀  
-**OAuth**: ✅ Enabled (Google, Facebook)
+**OAuth**: ✅ Enabled (Google, Facebook)  
+**Database**: ✅ PostgreSQL with file-based fallback
 
 ---
 

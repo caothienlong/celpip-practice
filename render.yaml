@@ -1,19 +1,28 @@
+databases:
+  - name: celpip-db
+    plan: free
+    databaseName: celpip
+    user: celpip_user
+
 services:
   - type: web
     name: celpip-practice
     runtime: python
-    plan: free  # Change to 'starter' for paid plan ($7/month)
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
     envVars:
       - key: SECRET_KEY
-        generateValue: true  # Auto-generates secure random key
+        generateValue: true
       - key: PYTHON_VERSION
         value: "3.11"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: celpip-db
+          property: connectionString
       # Add Google OAuth credentials in Render dashboard after deployment:
       # - GOOGLE_CLIENT_ID
       # - GOOGLE_CLIENT_SECRET
       # - APP_URL (e.g., https://celpip-practice.onrender.com)
       # - REDIRECT_URI_BASE (same as APP_URL)
     healthCheckPath: /
-
