@@ -2,6 +2,98 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-03-16] - Listening: Image-Based Questions, Audio URL Fix, Skip Button for All Parts
+
+### Added
+- **"Skip to Questions" button for Parts 4-6** — All parts now have a "Skip to Questions" button on the passage state in both Practice and Test Mode, consistent with Parts 1-3.
+
+### Fixed
+- **Passage audio URLs (Parts 2-6)** — Corrected Cloudinary filenames from `partN.m4a` to `partN_passage.m4a`. All passage audio was returning 404; now returns 200.
+- **Question image display broken after first load** — The `onerror` handler on `<img id="questionImage">` was destroying the element with `outerHTML`, making it unreachable for subsequent questions. Replaced with non-destructive show/hide approach using a sibling placeholder.
+- **MIME type mismatch** — Removed incorrect `type="audio/mpeg"` from `<source>` tags (files are `.m4a` = `audio/mp4`). Browser now auto-detects format.
+- **Part 1 Q4 missing data in sections block** — `sections` block had `"options": [], "answer": null` for Q4. Updated to match `sub_parts` data with options, imageUrl, and correct answer.
+
+### Changed
+- **Question-specific images (Parts 1-2)** — Questions with an `imageUrl` field (e.g., Part 1 Q4) now swap the left-panel image to show the question-specific reference image instead of the passage image. Reverts to passage image for questions without `imageUrl`.
+- **Answer key shows question images** — Listening answer key now displays the reference image for questions that have `imageUrl`.
+- **`app.py`** — `prepare_test_data()` passes `image_url` through in question steps; `prepare_answer_key_data()` includes `image_url` for listening questions.
+
+---
+
+## [2026-03-16] - Listening: Practice Mode Replay & Skip Button
+
+### Changed
+- **Practice Mode: Replay allowed** — Passage and question audio can be replayed freely in Practice Mode. Button changes to "Replay" after first play.
+- **Practice Mode: "Skip to Questions" button** — Added skip button on passage state so users can jump directly to questions without listening to the full passage.
+- **Test Mode unchanged** — Remains play-once only, no skip button, auto-play passage.
+
+---
+
+## [2026-03-16] - Listening: Sequential Flow
+
+### Changed
+- **Parts 1-3: One question at a time** — Replaced multi-question display with a sequential state machine. Each question shown individually in a split-pane layout (left: image + audio player, right: single question). Per-question countdown timer (30 seconds).
+- **Part 1: Sequential flow** — Replaced tab navigation with linear flow: Passage 1.1 → Q1 → Q2 → Passage 1.2 → Q3 → Q4 → Passage 1.3 → Q5 → Next Part. Continuous question numbering across sub-parts.
+- **`app.py`** — `prepare_test_data()` now builds a flat `steps` array for the JS state machine to consume.
+
+---
+
+## [2026-03-16] - Listening Module UI Revision
+
+### Changed
+- **Parts 4-6: Dropdown select boxes** — Replaced radio buttons with inline dropdown selects (matching Reading Part 3/4 pattern). After selection, dropdown is replaced by a styled "completed sentence" text span. Clicking the text re-opens the dropdown.
+- **Parts 1-3: Per-question audio** — Each question now has its own individual audio file (`audioUrl`). The audio IS the question, so no question text is displayed during the test. Each question shows a play button with progress bar.
+- **Part 1: Sub-parts** — Part 1 is now split into 3 sub-parts (1.1, 1.2, 1.3), each with its own passage audio and questions.
+- **JSON data** — `part1.json` through `part3.json` updated with `layout: "per_question_audio"`, individual `audioUrl` per question, and `sub_parts` for Part 1.
+- **`app.py`** — Extended `prepare_test_data()` to generate dropdown HTML for Parts 4-6 and process per-question audio/sub-parts for Parts 1-3.
+
+---
+
+## [2026-03-16] - Listening Module Implementation
+
+### Added
+- **Listening Module** — Full implementation of the CELPIP Listening test with 6 parts
+  - State machine architecture: Passage Playback → Question Set transition
+  - Audio player with animated progress bar and sound visualizer
+  - Video support for Part 5 (Discussion)
+  - Practice Mode: replay allowed, Back + Next navigation
+  - Test Mode: auto-play, no replay, forward-only navigation, progress bar
+
+- **New Templates**
+  - `listening_section.html` — Practice Mode with state machine, blue theme (`#003366`)
+  - `listening_test_mode_section.html` — Test Mode with red theme (`#c8102e`)
+
+- **Test 1 Listening Data** (6 parts, 33 questions total)
+  - Part 1: Listening to Problem Solving (5 questions, audio, split pane)
+  - Part 2: Daily Life Conversation (5 questions, audio, split pane)
+  - Part 3: Listening for Information (5 questions, audio, split pane)
+  - Part 4: Listening to a News Item (6 questions, audio, full-width)
+  - Part 5: Listening to a Discussion (6 questions, video, full-width)
+  - Part 6: Listening for Viewpoints (6 questions, audio, full-width)
+
+- **Listening-specific features**
+  - Auto-transition from audio/video playback to questions on media end
+  - Graceful fallback when media files are missing (skip to questions)
+  - Page refresh prevention during active test
+  - Answer auto-save for both Practice and Test Mode
+  - Vocabulary notes sidebar support
+  - Comprehensive answer key for all 6 listening parts
+
+### Changed
+- `app.py` — Added `listening` type handling in `prepare_test_data()` and `prepare_answer_key_data()`
+- `app.py` — Routes now select listening-specific templates when `skill == 'listening'`
+- `test_detail.html` — Listening card shows dynamic parts instead of "Coming Soon"
+- `test_detail.html` — Added Listening Answer Key button
+- `test_detail.html` — Reset now clears all skills (not just reading)
+- `answer_key.html` — Added `is_listening_type` branch for per-part answer key display
+
+### Static Asset Directories
+- `static/audio/test_1/listening/` — for MP3 files
+- `static/video/test_1/listening/` — for MP4 files (Part 5)
+- `static/images/test_1/listening/` — for scene illustration images
+
+---
+
 ## [2024-12-04] - Test 1 & 2 Complete + Dynamic Timeout
 
 ### Added

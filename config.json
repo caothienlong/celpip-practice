@@ -3,15 +3,18 @@
     "reading": 1.0,
     "writing": 30.0,
     "speaking": 1.0,
-    "listening": 1.0
+    "listening": 0.5
   },
   "default_time_per_question": 1.0,
-  "custom_timeouts": {
-    "comment": "Format: 'test_skill_part': minutes. Example: '1_reading_1': 20.0",
-    "examples": {
-      "1_reading_1": 16.5,
-      "1_reading_2": 12.0
-    }
+  "time_adjustments": {
+    "comment": "Format: 'skill_partN': extra minutes added to calculated timeout. Final = (num_questions x time_per_question) + adjustment",
+    "reading_part1": 0,
+    "reading_part2": 0,
+    "reading_part3": 0,
+    "reading_part4": 0,
+    "listening_part4": 0,
+    "listening_part5": 0,
+    "listening_part6": 0
   },
   "ui_settings": {
     "timer_warning_seconds": 60,

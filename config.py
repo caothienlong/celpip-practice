@@ -39,7 +39,7 @@ def load_config():
                     'listening': 1.5
                 },
                 'default_time_per_question': 1.5,
-                'custom_timeouts': {}
+                'time_adjustments': {}
             }
     
     return _config_cache
@@ -124,7 +124,8 @@ def get_timeout(test_num, skill, part_num, num_questions):
     """
     Get timeout for a specific test part
     
-    Checks custom overrides first, then calculates based on questions
+    Calculates base timeout from (num_questions * time_per_question),
+    then applies any time_adjustment for that skill/part combination.
     
     Args:
         test_num: Test number
@@ -135,17 +136,15 @@ def get_timeout(test_num, skill, part_num, num_questions):
     Returns:
         float: Timeout in minutes
     """
+    base_timeout = calculate_timeout(num_questions, skill)
+    
     config = load_config()
-    custom_timeouts = config.get('custom_timeouts', {})
+    adjustments = config.get('time_adjustments', {})
     
-    # Check for custom override using string key format
-    key = f"{test_num}_{skill}_{part_num}"
+    key = f"{skill}_part{part_num}"
+    adjustment = adjustments.get(key, 0)
     
-    if key in custom_timeouts:
-        return custom_timeouts[key]
-    
-    # Calculate based on number of questions
-    return calculate_timeout(num_questions, skill)
+    return base_timeout + adjustment
 
 
 # UI Settings helpers

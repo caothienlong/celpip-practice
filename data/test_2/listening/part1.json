@@ -1,0 +1,150 @@
+{
+  "part": 1,
+  "title": "Listening to Problem Solving",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation in 3 sections. You will hear each section only once. After each section, you will hear 2 or 3 questions. You will hear the questions only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "imageAlt": "A man and a woman at a store",
+  "layout": "per_question_audio",
+  "context": "You are about to hear a conversation between a man and a woman at a store. The man is a salesperson and the woman is a customer.",
+  "sub_parts": [
+    {
+      "id": "1.1",
+      "title": "Section 1",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688412/p1-1.m4a",
+      "imageUrl": "/static/images/test_2/listening/p1_passage.png",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688412/p1-q1.m4a",
+          "text": "Question 1",
+          "options": [
+            "a tent",
+            "a hat",
+            "a fishing rod",
+            "a life jacket"
+          ],
+          "imageUrl": "/static/images/test_2/listening/p1_q1.png",
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688412/p1-q2.m4a",
+          "text": "Question 2",
+          "options": [
+            "It is practical.",
+            "It is a new product.",
+            "It is uncommon.",
+            "It is easy to use."
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "1.2",
+      "title": "Section 2",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688412/p1-2.m4a",
+      "imageUrl": "/static/images/test_2/listening/p1_passage.png",
+      "questions": [
+        {
+          "id": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688412/p1-q3.m4a",
+          "text": "Question 3",
+          "options": [
+            "She dislikes online ordering.",
+            "She lost her membership card.",
+            "She misunderstood a store policy.",
+            "She wants to avoid extra fees."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 4,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688412/p1-q4.m4a",
+          "text": "Question 4",
+          "options": [
+            "$20",
+            "$40",
+            "$50",
+            "$60"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688412/p1-q5.m4a",
+          "text": "Question 5",
+          "options": [
+            "He disagrees with the store policy.",
+            "He knows she is a regular customer.",
+            "He understands the woman's situation.",
+            "He gets a commission on her purchase."
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "1.3",
+      "title": "Section 3",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688412/p1-3.m4a",
+      "imageUrl": "/static/images/test_2/listening/p1_passage.png",
+      "questions": [
+        {
+          "id": 6,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688412/p1-q6.m4a",
+          "text": "Question 6",
+          "options": [
+            "She has ordered the hat she wants.",
+            "The man found the hat in the store.",
+            "She is going to renew her daughter's membership.",
+            "The man is offering an extra discount on her purchase."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 7,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688412/p1-q7.m4a",
+          "text": "Question 7",
+          "options": [
+            "defensive",
+            "suspicious",
+            "hesitant",
+            "discouraged"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 8,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688412/p1-q8.m4a",
+          "text": "Question 8",
+          "options": [
+            "She does not like shopping online.",
+            "She has just cancelled her store membership.",
+            "She does not like playing sports.",
+            "She has bought items from this store before."
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ],
+  "transcript": "Section 1:\nMAN: Can I help you find anything?\nWOMAN: Yes. I'm looking for a Norgus. I just tried the outdoor supply store next door, but they're sold out.\nMAN: Hmm. I'm not familiar with Norgus. Is that a type of tent?\nWOMAN: No, but you can use it while camping! You wear it on your head and it's got this wide brim to prevent sunburn. There's a zippered pocket inside for your credit cards. And, in a boating emergency, you can inflate it and use it as a flotation device.\nMAN: Ohhhh, I've heard of those! They're those ones with the net you that you can pull down over your face to keep the bugs away. Let me just check my computer. No, sorry, we don't have them in the store, but you can order one online.\nWOMAN: Your store online?\nMAN: Yes, we have a wider selection of clothing online. This store is so small; we mainly carry sports equipment.\nWOMAN: Okay, thanks!\n\nSection 2:\nMAN: Any luck with the Norgus hat?\nWOMAN: Sort of. I started to order one, but I stopped before paying. Your store's website charges $40 for the hat which is a good deal! but then they want $20 for shipping.\nMAN: Well, you can get free shipping if you join our customer club.\nWOMAN: Yeah, I saw that. But it costs $50 a year to join, so it's really not worth it for me. I don't think I would use it that often.\nMAN: Yeah, I see your point. What I would do is join the customer club, then buy your hat online and get the free shipping. There's a 30-day free trial period, so after three weeks, you could cancel your membership. You won't be charged—unless you wait too long.\nWOMAN: I like that idea.\nMAN: Yeah, why pay for a full-year membership if you only need it once?\nWOMAN: Right. You know, I can order it right here from my phone.\n\nSection 3:\nMAN: Success?\nWOMAN: Yes! I just placed my order. And I texted my daughter about the free shipping.\nMAN: Oh, great! Is she familiar with our store's website?\nWOMAN: Oh yeah! She texted me back saying that she used to have a membership, but it's expired. She found a tennis racquet on the site that she wants me to order for her.\nMAN: Well, why not? You get free shipping for now.\nWOMAN: Yeah. but my daughter lives far away. Will the store ship my order to her for free?\nMAN: Sure. Use your address for billing, and enter her address for shipping. It will still be free.\nWOMAN: Great! My daughter will be thrilled!",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        { "id": 1, "text": "Question 1", "options": ["a tent", "a hat", "a fishing rod", "a life jacket"], "answer": 1 },
+        { "id": 2, "text": "Question 2", "options": ["It is practical.", "It is a new product.", "It is uncommon.", "It is easy to use."], "answer": 0 },
+        { "id": 3, "text": "Question 3", "options": ["She dislikes online ordering.", "She lost her membership card.", "She misunderstood a store policy.", "She wants to avoid extra fees."], "answer": 3 },
+        { "id": 4, "text": "Question 4", "options": ["$20", "$40", "$50", "$60"], "answer": 1 },
+        { "id": 5, "text": "Question 5", "options": ["He disagrees with the store policy.", "He knows she is a regular customer.", "He understands the woman's situation.", "He gets a commission on her purchase."], "answer": 2 },
+        { "id": 6, "text": "Question 6", "options": ["She has ordered the hat she wants.", "The man found the hat in the store.", "She is going to renew her daughter's membership.", "The man is offering an extra discount on her purchase."], "answer": 0 },
+        { "id": 7, "text": "Question 7", "options": ["defensive", "suspicious", "hesitant", "discouraged"], "answer": 2 },
+        { "id": 8, "text": "Question 8", "options": ["She does not like shopping online.", "She has just cancelled her store membership.", "She does not like playing sports.", "She has bought items from this store before."], "answer": 3 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "part": 1,
+  "title": "Listening to Problem Solving",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation in 3 sections. You will hear each section only once. After each section, you will hear 2 or 3 questions. You will hear the questions only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "imageAlt": "A man and a woman in a health club",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation between a man and a woman in a health club. The woman provides customer service; the man is a customer.",
+  "sub_parts": [
+    {
+      "id": "1.1",
+      "title": "Section 1",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part1_1_passage.m4a",
+      "imageUrl": "/static/images/test_1/listening/p1_passage.png",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part1_q1.m4a",
+          "text": "Question 1",
+          "options": [
+            "to get a membership",
+            "to receive a discount",
+            "to check his account",
+            "to take a cardio class"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part1_q2.m4a",
+          "text": "Question 2",
+          "options": [
+            "10%",
+            "15%",
+            "20%",
+            "50%"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "1.2",
+      "title": "Section 2",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part1_2_passage.m4a",
+      "imageUrl": "/static/images/test_1/listening/p1_passage.png",
+      "questions": [
+        {
+          "id": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part1_q3.m4a",
+          "text": "Question 3",
+          "options": [
+            "to wait until it stops raining outside",
+            "to look for something in his locker",
+            "to return something that wasn't his",
+            "to get back a missing personal item"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 4,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part1_q4.m4a",
+          "text": "Question 4",
+          "options": [
+            "1", "2", "3", "4"
+          ],
+          "imageUrl": "/static/images/test_1/listening/p1_q4.png",
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part1_q5.m4a",
+          "text": "Question 5",
+          "options": [
+            "The man was walking home from the gym.",
+            "The man should have received a discount.",
+            "The gym's clients rarely carry umbrellas.",
+            "The gym's clients don't use the lockers."
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "1.3",
+      "title": "Section 3",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part1_3_passage.m4a",
+      "imageUrl": "/static/images/test_1/listening/p1_passage.png",
+      "questions": [
+        {
+          "id": 6,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part1_q6.m4a",
+          "text": "Question 6",
+          "options": [
+            "He interrupted her clean-up routine.",
+            "He made her re-open the health club.",
+            "He thinks he is bothering the woman.",
+            "He is making the woman work late."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 7,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part1_q7.m4a",
+          "text": "Question 7",
+          "options": [
+            "It belonged to someone else.",
+            "He wanted to make a deal.",
+            "It was the wrong type of fabric.",
+            "He found a small rip at the top."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 8,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part1_q8.m4a",
+          "text": "Question 8",
+          "options": [
+            "The woman will apologize to the man.",
+            "The man will need help getting out.",
+            "The man will buy a better umbrella.",
+            "The woman will begin her chores."
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ],
+  "transcript": "Section 1:\nMAN: Excuse me, before I leave, could you take a look at my account and see how many cardio classes I have left?\nWOMAN: Sure. Do you have your membership card?\nMAN: Here it is. I joined this health club a couple of months ago, but haven't been keeping track of how often I come.\nWOMAN: No worries, I can look it up. Let's see. You have 5 classes left. Did you know we have a special promotion this month? If you buy a 20-class package, you get a 10% discount.\nMAN: Hmm. I already get a 15% student discount. Can I add it on to that?\nWOMAN: Oh, no, sorry, the current promotion can't be combined with any other discounts.\nMAN: Oh, well. Thanks, and have a great day!\n\nSection 2:\nMAN: Hi again. Hey, I must be having bad luck. I was on my way home and once it started raining, I discovered that I'd forgotten my umbrella. Do you have a lost and found bin? I think I might have left my umbrella in the locker room.\nWOMAN: Sure, we have a lost and found. What does your umbrella look like?\nMAN: It's black, the kind where the stem collapses and it becomes really small. The handle is wooden. It's the Bay brand. It might have the brand logo on the handle, I don't remember.\nWOMAN: Let me check. Wow, umbrellas seem to be a commonly forgotten item! But I think I found yours!\nMAN: Oh! That's great! Thank you!\nWOMAN: You're welcome! See you next time!\n\nSection 3:\nMAN: Hey, it's me again. Sorry, I see you're closing in a few minutes!\nWOMAN: No worries. It always takes a while for the last class to leave, and it takes an hour to clean-up after that. What can I do for you?\nMAN: Sorry, but I think I took the wrong umbrella!\nWOMAN: What? Really?\nMAN: Yeah! Are you sure there weren't two black Bay umbrellas in the lost and found? Mine has a rip in the fabric, near the top. But the one you gave me doesn't have a rip. Here, see? I don't feel right taking it.\nWOMAN: Wow, what are the chances of that happening? Okay, let me go check the lost and found again. I didn't really look that carefully because I thought for sure that one was yours.\nMAN: Yeah, if you could check that would be fantastic.\nWOMAN: One second... Wow, you're right! I can't believe there were two umbrellas exactly the same. Let's open this one. Yep, it's got a rip at the top!\nMAN: That's the one! Here, I'll trade you.\nWOMAN: It's a deal. See you next time! Just press the buzzer to unlock the door on your way out.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        { "id": 1, "text": "Question 1", "options": ["to get a membership", "to receive a discount", "to check his account", "to take a cardio class"], "answer": 2 },
+        { "id": 2, "text": "Question 2", "options": ["10%", "15%", "20%", "50%"], "answer": 0 },
+        { "id": 3, "text": "Question 3", "options": ["to wait until it stops raining outside", "to look for something in his locker", "to return something that wasn't his", "to get back a missing personal item"], "answer": 3 },
+        { "id": 4, "text": "Question 4", "options": ["1", "2", "3", "4"], "imageUrl": "/static/images/test_1/listening/p1_q4.png", "answer": 1 },
+        { "id": 5, "text": "Question 5", "options": ["The man was walking home from the gym.", "The man should have received a discount.", "The gym's clients rarely carry umbrellas.", "The gym's clients don't use the lockers."], "answer": 0 },
+        { "id": 6, "text": "Question 6", "options": ["He interrupted her clean-up routine.", "He made her re-open the health club.", "He thinks he is bothering the woman.", "He is making the woman work late."], "answer": 2 },
+        { "id": 7, "text": "Question 7", "options": ["It belonged to someone else.", "He wanted to make a deal.", "It was the wrong type of fabric.", "He found a small rip at the top."], "answer": 0 },
+        { "id": 8, "text": "Question 8", "options": ["The woman will apologize to the man.", "The man will need help getting out.", "The man will buy a better umbrella.", "The woman will begin her chores."], "answer": 3 }
+      ]
+    }
+  ]
+}

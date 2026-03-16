@@ -2,13 +2,23 @@
 
 ## 📊 Current Status
 
-### ✅ Test 1: Complete
+### ✅ Test 1: Complete (Reading + Listening)
+
+**Reading:**
 - ✅ Part 1: Reading Correspondence (11 questions, 16.5 min)
 - ✅ Part 2: Reading to Apply a Diagram (8 questions, 12 min)
 - ✅ Part 3: Reading for Information (9 questions, 13.5 min)
 - ✅ Part 4: Reading for Viewpoints (10 questions, 15 min)
 
-**Status:** Fully functional with real content from OCR
+**Listening:** 🆕
+- ✅ Part 1: Listening to Problem Solving (8 questions, 3 sub-parts, sequential flow, 1 question at a time, 30s timer, image-based Q4 support)
+- ✅ Part 2: Daily Life Conversation (5 questions, sequential flow, 1 question at a time, 30s timer)
+- ✅ Part 3: Listening for Information (6 questions, sequential flow, 1 question at a time, 30s timer)
+- ✅ Part 4: Listening to a News Item (5 questions, inline dropdown selects, skip-to-questions button)
+- ✅ Part 5: Listening to a Discussion (8 questions, video, inline dropdown selects, skip-to-questions button)
+- ✅ Part 6: Listening for Viewpoints (6 questions, inline dropdown selects, skip-to-questions button)
+
+**Status:** Fully functional — Reading (OCR content) + Listening (sample content)
 
 ---
 
@@ -104,6 +114,7 @@
 
 ## 📈 Progress Summary
 
+### Reading
 | Test | Parts Complete | Status | Progress |
 |------|----------------|--------|----------|
 | Test 1 | 4/4 | ✅ Complete | ████████████ 100% |
@@ -117,7 +128,21 @@
 | Test 9 | 4/4 | ✅ Complete | ████████████ 100% |
 | Test 10 | 4/4 | ✅ Complete | ████████████ 100% |
 
-**Overall:** 40/40 parts complete (100%)
+**Reading Total:** 40/40 parts complete (100%)
+
+### Listening 🆕
+| Test | Parts Complete | Status | Progress |
+|------|----------------|--------|----------|
+| Test 1 | 6/6 | ✅ Complete | ████████████ 100% |
+| Test 2-10 | 0/6 | 🚧 Pending | ░░░░░░░░░░░░ 0% |
+
+**Listening Total:** 6/60 parts complete (10%)
+
+### Overall
+- **Reading:** 40/40 parts (380 questions) ✅
+- **Listening:** 6/60 parts (33 questions) 🆕
+- **Writing:** Not started
+- **Speaking:** Not started
 
 ---
 
@@ -125,12 +150,19 @@
 
 ```
 data/
-├── test_1/          ✅ Complete (100%)
-│   └── reading/
-│       ├── part1.json  ✅ Complete
-│       ├── part2.json  ✅ Complete
-│       ├── part3.json  ✅ Complete
-│       └── part4.json  ✅ Complete
+├── test_1/          ✅ Complete (Reading + Listening)
+│   ├── reading/
+│   │   ├── part1.json  ✅ Complete
+│   │   ├── part2.json  ✅ Complete
+│   │   ├── part3.json  ✅ Complete
+│   │   └── part4.json  ✅ Complete
+│   └── listening/      🆕
+│       ├── part1.json  ✅ Problem Solving (5 questions, audio)
+│       ├── part2.json  ✅ Daily Life Conversation (5 questions, audio)
+│       ├── part3.json  ✅ Listening for Information (5 questions, audio)
+│       ├── part4.json  ✅ News Item (6 questions, audio)
+│       ├── part5.json  ✅ Discussion (6 questions, video)
+│       └── part6.json  ✅ Viewpoints (6 questions, audio)
 │
 ├── test_2/          ✅ Complete (100%)
 │   └── reading/
@@ -225,12 +257,14 @@ python scripts/count_questions.py 2
 
 ---
 
-## 🎊 All Tests Complete!
+## 🎊 Status Summary
 
 We now have:
-- ✅ 10 complete Reading tests
-- ✅ 40 test parts
-- ✅ ~380 total questions
+- ✅ 10 complete Reading tests (40 parts, ~380 questions)
+- ✅ 1 complete Listening test (6 parts, 33 questions) 🆕
+- ✅ Sequential state machine (passage → 1 question at a time → next passage) 🆕
+- ✅ Play-once audio, per-question timer, Practice + Test Mode for Listening 🆕
+- ✅ Question-specific images, "Skip to Questions" on all parts, Cloudinary audio 🆕
 - ✅ Professional practice platform
 - ✅ Ready for production use
 
@@ -264,5 +298,5 @@ We now have:
 
 ---
 
-Last updated: January 25, 2026
+Last updated: March 16, 2026
 

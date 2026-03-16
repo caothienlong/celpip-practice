@@ -229,6 +229,21 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         
+        /* Transcript toggle */
+        .transcript-toggle {
+            padding: 5px 0;
+            user-select: none;
+        }
+        
+        .transcript-toggle:hover {
+            opacity: 0.8;
+        }
+        
+        .transcript-toggle h3 {
+            border-bottom: none !important;
+            padding-bottom: 0 !important;
+        }
+        
         /* Responsive design */
         @media (max-width: 1024px) {
             .content-grid {
@@ -368,6 +383,42 @@
         </div>
         {% endif %}
         
+        {% elif section.is_listening_type %}
+        <!-- Listening section -->
+        {% if section.transcript %}
+        <div class="full-width-panel">
+            <div class="transcript-toggle" onclick="toggleTranscript()" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: #003366; margin-bottom: 0;">📝 Full Transcript</h3>
+                <span id="transcript-arrow" style="font-size: 1.2em; color: #0066cc; transition: transform 0.3s ease;">&#9660;</span>
+            </div>
+            <div id="transcript-content" style="display: none; margin-top: 15px;">
+                <div class="passage">{{ section.transcript }}</div>
+            </div>
+        </div>
+        {% endif %}
+        
+        <div class="full-width-panel">
+            <h3 style="color: #003366; margin-bottom: 15px;">🎧 Questions & Answers</h3>
+            {% for question in section.all_questions %}
+            <div class="answer-question">
+                <div class="question-header">Question {{ question.id }}</div>
+                <div class="question-text">{{ question.text }}</div>
+                {% if question.image_url %}
+                <div style="margin: 10px 0; text-align: center;">
+                    <img src="{{ question.image_url }}" alt="Question {{ question.id }} reference image" style="max-width: 100%; border: 2px solid #0066cc; border-radius: 5px;">
+                </div>
+                {% endif %}
+                <div class="answer-options">
+                    {% for option_idx, option_text in question.options %}
+                    <div class="answer-option {% if option_idx == question.correct_answer %}correct{% endif %}">
+                        {{ option_text }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
         {% else %}
         <!-- Part 1: Correspondence section -->
         <div class="section-divider">
@@ -429,6 +480,20 @@
             {% endif %}
         </div>
     </div>
+    
+    <script>
+    function toggleTranscript() {
+        var content = document.getElementById('transcript-content');
+        var arrow = document.getElementById('transcript-arrow');
+        if (content.style.display === 'none') {
+            content.style.display = 'block';
+            arrow.style.transform = 'rotate(180deg)';
+        } else {
+            content.style.display = 'none';
+            arrow.style.transform = 'rotate(0deg)';
+        }
+    }
+    </script>
 </body>
 </html>
 

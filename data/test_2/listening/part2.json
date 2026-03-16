@@ -1,0 +1,81 @@
+{
+  "part": 2,
+  "title": "Listening to a Daily Life Conversation",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 5 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688463/p2.m4a",
+  "imageUrl": "/static/images/test_2/listening/p2_passage.png",
+  "imageAlt": "A man and a woman at a bus stop",
+  "layout": "per_question_audio",
+  "context": "You will hear a presentation between a man and a woman about volunteering.",
+  "transcript": "MAN: Hi Shirin. Has the #8 bus gone by yet?\nWOMAN: Hi Farhod. Not yet. It's always late. Did you finish everything you needed to do at the office?\nMAN: Yeah, I did at last. It took me most of the afternoon, though, so I missed the staff meeting. What did they talk about?\nWOMAN: It was interesting for a change. There was a presentation on the importance of volunteering in the community. The speaker gave us a list of websites to check, and she mentioned a few organizations that are looking for volunteers. You know, I bet a lot of places are looking for a volunteer bookkeeper. You would be in demand!\nMAN: Maybe, but I think if I spend my time volunteering, I'd prefer to do something where I help people. You know what I mean? Something meaningful and rewarding. Bookkeeping doesn't use my people skills!\nMy dream was to be a paramedic, but I don't think there are volunteer opportunities on an ambulance.\nWOMAN: The speaker said the hospital is looking for volunteer greeters, especially in the kids' cancer center. I guess they welcome patients and caregivers, give them directions, and help keep the children busy. You'd be great doing that!\nMAN: Hmmm, I don't know. That could be stressful. I don't have any training for helping sick people. Our kids are almost never sick! Did the speaker mention anything about volunteering at the library? I can see me doing that. I'm kind of a quiet, reserved guy anyway.\nWOMAN: You underestimate yourself! You're always very friendly, cheerful, and helpful at work, and you're always willing to take that extra step to help someone. I think volunteering at the hospital would be perfect for you, as it would require people skills. You'd certainly get that good feeling of helping people!\nMAN: Wow, that's wonderful praise! Maybe you'd write a reference letter for me, then?\nWOMAN: Sure! First thing tomorrow morning while you fill out the online volunteer application for the hospital. Oh, here comes the #8. Right on time for a change.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688463/p2-q1.m4a",
+          "text": "Question 1",
+          "options": [
+            "neighbours",
+            "colleagues",
+            "volunteers",
+            "strangers"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688463/p2-q2.m4a",
+          "text": "Question 2",
+          "options": [
+            "at the bus stop",
+            "in an ambulance",
+            "at the library",
+            "at the hospital"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688463/p2-q3.m4a",
+          "text": "Question 3",
+          "options": [
+            "at the library",
+            "in a first aid class",
+            "in bookkeeping",
+            "with cancer patients"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688463/p2-q4.m4a",
+          "text": "Question 4",
+          "options": [
+            "He has a special business skill.",
+            "He likes helping children.",
+            "He works well with people.",
+            "He is a trained paramedic."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 5,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688463/p2-q5.m4a",
+          "text": "Question 5",
+          "options": [
+            "She will recommend him as a volunteer.",
+            "She knows places in need of bookkeepers.",
+            "She is an expert on volunteering.",
+            "She already volunteers at the hospital."
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}

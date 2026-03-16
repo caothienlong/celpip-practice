@@ -1,0 +1,93 @@
+{
+  "part": 3,
+  "title": "Listening for Information",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 6 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part3_passage.m4a",
+  "imageUrl": "/static/images/test_1/listening/p3_passage.png",
+  "imageAlt": "A man at an art supply store",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation. A man is interested in painting and is at an art supply store.",
+  "transcript": "WOMAN: Hi there! What brings you into Art Land today?\nMAN: Hi! I'm looking to take up painting as a hobby and my grandson just gave me a gift certificate to this store. The problem is, I really have no idea where to start. I'm wondering if you could give me some advice.\nWOMAN: Of course! That's what I'm here for. Well, let me start by asking you a few questions. Were you looking to enroll in our classes?\nMAN: I have a lot of free time, so I figured I would try it on my own.\nWOMAN: Certainly. Do you have ideas about what subjects you want to paint?\nMAN: I think landscapes. We were looking at some old photographs on my birthday, and I thought it would be nice to recreate the rolling hills of the beautiful farm I grew up on in Manitoba. I've been living in Toronto for 5 decades now, and though I love city life and the downtown skyline, the memories of sunsets on the farm are still with me.\nWOMAN: Wonderful! Well, the three basic types of paints are watercolour, acrylic, and oil. They are all suitable for landscapes. I would say watercolour is the hardest for a beginner to start with, even though it is the most affordable of them all.\nMAN: I don't think watercolour will be the one for me then. What's the main difference between acrylics and oils?\nWOMAN: The amount of time it takes for the paint to dry. Acrylic paints dry very quickly, within a matter of hours, whereas oil paints can take up to several days, even weeks to dry. A lot of our beginner students like acrylics because if they make a mistake, they don't have to wait long to paint over it. However, that can also be frustrating, because it's hard to mix the colours you want when they dry so fast.\nMAN: I see. Well, I don't think I'll mind fast-drying paints. I'll go for acrylics, then. What other kind of supplies will I need?\nWOMAN: Do you think you'll be painting indoors or outdoors?\nMAN: Definitely outdoors. I'd like to paint landscapes while immersed fully in nature myself. I'm a big wilderness explorer.\nWOMAN: Sounds lovely! And if you ever feel you need some extra help, we have painting workshops at a local farm not too far from the city, every last Saturday of the month. The workshop goes from 9:00 a.m. to 5:00 p.m., and participants enjoy a nice farm-style lunch meal.\nMAN: Thank you. I'll go at my own pace, but I'll definitely consider it. It might be a nice way to combine nature and art, and meet people who share my interests.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part3_q1.m4a",
+          "text": "Question 1",
+          "options": [
+            "to inquire about in-store painting lessons",
+            "to claim a gift from his grandson",
+            "to purchase painting items he ran out of",
+            "to learn a new painting technique"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part3_q2.m4a",
+          "text": "Question 2",
+          "options": [
+            "recreating family portraits inspired by old pictures",
+            "capturing real-life scenes from Toronto's downtown",
+            "reproducing the look of Toronto's downtown sunset",
+            "painting rural landscapes from his childhood"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part3_q3.m4a",
+          "text": "Question 3",
+          "options": [
+            "Because it is too difficult for first-time painters.",
+            "It is not suitable for the kind of painting he plans to do.",
+            "It can take up to several days or even weeks to dry.",
+            "He won't be able to capture details with this painting technique."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part3_q4.m4a",
+          "text": "Question 4",
+          "options": [
+            "It does not take a long time to mix.",
+            "It has a much quicker drying time.",
+            "It is can be easily removed with water.",
+            "It can be used indoors safely."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part3_q5.m4a",
+          "text": "Question 5",
+          "options": [
+            "because the man needs help with his technique",
+            "because the man could help beginner painters",
+            "because the man enjoys painting outdoors",
+            "because the man could get assistance"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 6,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part3_q6.m4a",
+          "text": "Question 6",
+          "options": [
+            "become part of a painting group",
+            "take painting classes every Saturday",
+            "try to learn painting by himself",
+            "return to his hometown for a visit"
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}

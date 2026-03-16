@@ -1,0 +1,109 @@
+{
+  "part": 5,
+  "title": "Listening to a Discussion",
+  "type": "listening",
+  "listening_type": "video",
+  "instructions": "You will watch a 2-minute video. Then 8 questions will appear. Choose the best way to answer each question.",
+  "mediaType": "video",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part5_passage.mp4",
+  "imageUrl": "/static/images/test_1/listening/p5_passage.png",
+  "imageAlt": "Three colleagues discussing at a meeting table",
+  "layout": "full_questions",
+  "context": "You will watch a discussion between three people who work together for the same company. They are members of the organizing committee and they're meeting to discuss an important company event.",
+  "transcript": "MAN 1: Well, thanks for being on time, folks. Our agenda today is pretty short: We're just trying to decide on the venue for our company's 20th anniversary celebration. Any ideas?\nWOMAN: I've got a couple of places in mind. One's smaller and one's larger. It depends how many people we're talking about. How many are coming?\nMAN 1: Well, we're up to a hundred maximum. Everyone's allowed to invite their spouse or partner. Here's the program as we know it: Starting at 7:00 p.m. wine, speeches, and maybe award presentations, followed at 8:00 p.m. by a buffet dinner. Starting at 9:30, there'll be entertainment... ideally, a live band, if we can afford one.\nMAN 2: Up to a hundred people. That's quite a crowd. Obviously, we need space for everyone, but we don't want to go over budget.\nWOMAN: Well, I have got a few penny-pinching tricks up my sleeve. We could find a venue on a weekday... Monday through Thursday is cheaper. We can also find a place that's out of town. Maybe even out in the suburbs. And, if worse comes to worst, we could always hire a DJ instead of a live band.\nMAN 2: Also, we don't need to go overboard on the menu. We could just order reasonably priced food that everyone will enjoy.\nMAN 1: And we can always tweak the menu a bit, assuming the caterer will let us.\nWOMAN: Yeah, I know a place called Griffin's that might be perfect. It's in Wimberton.\nMAN 2: Where's Wimberton?\nWOMAN: About 30 minutes east by car on Highway 18. Anyway, Griffin's is family owned, has great ambience, and fairly reasonable prices. They do group bookings as well. I know the manager. I might be able to talk him into giving us a discount.\nMAN 1: Yeah, my concern would be the location. My brother retired and moved to Wimberton, and it's impossible to get there by public transit. You know, we don't want to say farewell to people as they're getting behind the wheel after a few drinks. You know, we'd want to get them all to take taxis home, and then we'd have to reimburse them for the ride.\nMAN 2: We don't want to incur that expense!\nWOMAN, MAN 1: Ditto here. Jinx!\nMAN 2: Hey, how about The Red Door? It's just two blocks north of here. It's right on the subway line. I know their dining area seats over a hundred people. I'm pretty sure the owner can accommodate us price-wise and he just hired the top chef in the city.\nMAN 1: Sounds well worth checking out! Brian, could you contact the manager and get an estimate? Oh, better yet, get two: one for a Thursday and one for a Saturday. So, we'll meet again next week and we'll take it from there.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Why is the party being organized?",
+          "options": [
+            "to acknowledge an important date",
+            "to celebrate the company's success",
+            "to mark the boss's 20th anniversary",
+            "to say farewell to retiring employees"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "text": "What is the main limitation for the organizers?",
+          "options": [
+            "booking dates",
+            "menu options",
+            "financial means",
+            "seating capacity"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 3,
+          "text": "What does the man say about Griffin's Restaurant?",
+          "options": [
+            "He accepts its disadvantages.",
+            "He criticizes it as impractical.",
+            "He dismisses it for no reason.",
+            "He feels it is worth considering."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "text": "What would the speakers probably consider most important?",
+          "options": [
+            "avoiding complaints about the organizers",
+            "ensuring top staff members receive awards",
+            "avoiding indirect responsibility for accidents",
+            "ensuring that the events unfold on schedule"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 5,
+          "text": "Why did the woman and the man wearing glasses laugh?",
+          "options": [
+            "They said something that sounded wrong.",
+            "They were making fun of the man's opinion.",
+            "They were pretending to agree with the man.",
+            "They said the same thing at the same time."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 6,
+          "text": "Which option did the committee consider but reject?",
+          "options": [
+            "an out-of-town restaurant location",
+            "an alternate entertainment provider",
+            "a party that welcomed staff only",
+            "a smaller range of menu items"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 7,
+          "text": "What information is needed about The Red Door?",
+          "options": [
+            "Is it cheaper to book on weekdays?",
+            "Is it located on the subway line?",
+            "Do they have space for a hundred?",
+            "Do they have the city's top chef?"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 8,
+          "text": "Which statement is most likely true?",
+          "options": [
+            "The organizers will reject The Red Door.",
+            "The event will be on a Saturday night.",
+            "The food quality will please the guests.",
+            "The staff will have to walk to the event."
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}

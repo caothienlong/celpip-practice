@@ -168,6 +168,47 @@
             background: #5a6268;
         }
         
+        /* Transcript toggle */
+        .transcript-toggle {
+            padding: 10px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f0f7ff;
+            border: 1px solid #ccc;
+            border-top: none;
+            user-select: none;
+        }
+        
+        .transcript-toggle:hover {
+            background: #e0efff;
+        }
+        
+        .transcript-toggle h4 {
+            color: #003366;
+            margin: 0;
+            font-size: 0.95em;
+        }
+        
+        .transcript-arrow {
+            font-size: 1.1em;
+            color: #0066cc;
+            transition: transform 0.3s ease;
+        }
+        
+        .transcript-body {
+            display: none;
+            padding: 15px 20px;
+            background: #fafafa;
+            border: 1px solid #ccc;
+            border-top: none;
+            line-height: 1.8;
+            white-space: pre-line;
+            font-size: 0.95em;
+            color: #222;
+        }
+        
         /* Summary stats */
         .summary-stats {
             display: grid;
@@ -269,6 +310,14 @@
                 </tbody>
             </table>
         </div>
+        
+        {% if part_data.transcript %}
+        <div class="transcript-toggle" onclick="toggleTranscript('transcript-{{ part_data.part_num }}', this)">
+            <h4>📝 Show Full Transcript</h4>
+            <span class="transcript-arrow">&#9660;</span>
+        </div>
+        <div class="transcript-body" id="transcript-{{ part_data.part_num }}">{{ part_data.transcript }}</div>
+        {% endif %}
         {% endfor %}
         
         <!-- Navigation buttons -->
@@ -281,6 +330,23 @@
             {% endif %}
         </div>
     </div>
+    
+    <script>
+    function toggleTranscript(id, toggleEl) {
+        var content = document.getElementById(id);
+        var arrow = toggleEl.querySelector('.transcript-arrow');
+        var heading = toggleEl.querySelector('h4');
+        if (content.style.display === 'none' || content.style.display === '') {
+            content.style.display = 'block';
+            arrow.style.transform = 'rotate(180deg)';
+            heading.textContent = '📝 Hide Full Transcript';
+        } else {
+            content.style.display = 'none';
+            arrow.style.transform = 'rotate(0deg)';
+            heading.textContent = '📝 Show Full Transcript';
+        }
+    }
+    </script>
 </body>
 </html>
 

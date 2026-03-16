@@ -1,0 +1,76 @@
+{
+  "part": 4,
+  "title": "Listening to a News Item",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a news item once. It is about 1.5 minutes long. Then 5 questions will appear. Choose the best way to complete each statement from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688463/p4.m4a",
+  "imageUrl": "/static/images/test_2/listening/p4_passage.png",
+  "imageAlt": "A news report about continuing education",
+  "layout": "full_questions",
+  "context": "You will hear a news item about an education issue.",
+  "transcript": "This fall, Cooper College will offer significantly more continuing education opportunities. According to Program Director Amy Buffer, the increase is due to the almost doubling of the city's population over the last five years. Not only are there far more qualified people to offer continuing education programs, she says, but there is an increased desire for them. The College will also introduce a new delivery format. Traditionally, programs were either full or half courses, lasting eight or four months, or they were week-long seminars. The College has plans, however, for more than sixty single-day sessions dedicated to diverse, but specific subject matters. Most professionals, Buffer says, neither need nor can afford an entire week of study. She mentions that while employers used to pay for such courses, the prevalence of contract employment has unfortunately meant the end of such employer-provided benefits. The sessions will be held not at the main campus or even one of its two satellite campuses. Instead, Buffer says, locations will be determined by the sessions themselves. For example, the digital photography session will be held at a local studio, and the business start-up session will be held at the local Chamber of Commerce.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "The news item is mainly about a",
+          "options": [
+            "predictable problem.",
+            "major change.",
+            "new controversy.",
+            "failed endeavor."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "text": "According to the Program Director, the increase in programs is due to",
+          "options": [
+            "both supply and demand.",
+            "a government mandate.",
+            "the closure of a nearby college.",
+            "competition from local businesses."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "text": "The new courses will mostly be",
+          "options": [
+            "focused on one subject.",
+            "longer in duration.",
+            "aimed at working people.",
+            "paid for by employers."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 4,
+          "text": "Buffer suggests that contract work has",
+          "options": [
+            "increased recently in their area.",
+            "impacted benefits for their staff.",
+            "influenced their hiring process.",
+            "improved their student enrollment."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "text": "The new sessions will be held at",
+          "options": [
+            "the main campus.",
+            "one of the satellite campuses.",
+            "various locations.",
+            "the Chamber of Commerce."
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}

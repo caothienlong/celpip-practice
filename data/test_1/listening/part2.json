@@ -1,0 +1,81 @@
+{
+  "part": 2,
+  "title": "Listening to a Daily Life Conversation",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 5 questions. Listen to each question. You will hear the questions only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part2_passage.m4a",
+  "imageUrl": "/static/images/test_1/listening/p2_passage.png",
+  "imageAlt": "Two servers at a restaurant",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation. The conversation is between two servers at a restaurant. The woman is having a problem at work.",
+  "transcript": "MAN: Hey, I haven't seen you before! You must be new here. My name's Jonathan. How do you like it here so far?\nWOMAN: I'm Anna, nice to meet you. Yes, I just started this afternoon. It's... it's okay. Have you worked at this restaurant long?\nMAN: Two years now, but I only work 4 days a week. I really enjoy it. But you... you don't sound like you're having much fun.\nWOMAN: This is my first-time waitressing and I'm afraid I'm not very good. I just spilled wine on a customer a couple of minutes ago! The guy was really upset, and I didn't know what to do, so I just ran off! What do I do now?\nMAN: Aww, that's okay, everyone makes mistakes, even experienced servers! Don't be so hard on yourself. Don't worry! Just go back and apologize and bring him another glass of wine, and tell him dessert will be free.\nWOMAN: What about his shirt? It's got a huge red wine stain on the arm. I heard him tell his date that he can't go to the opera with a ruined shirt.\nMAN: Hmm. I'll tell you what, I'll go talk to him with you. We'll tell him the restaurant will reimburse him for his shirt. But first, we should tell Laura, the manager, what happened.\nWOMAN: Oh no. I'll get fired! She's going to think I'm the worst waitress ever.\nMAN: Laura's very understanding. Trust me, you won't get fired! She will make you practice carrying wine glasses, though. Actually, if this is your first-time waitressing, I'm surprised she let you carry wine glasses at all! Usually, they train you for at least a week first.\nWOMAN: Another waitress just passed me a tray with wine glasses on it and asked me to take it to table five. She said she was too busy.\nMAN: Oh, I see. She must not have known it was your first day! Anyways, let's go solve this situation. You'll feel much better. It'll be fine, you'll see!",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part2_q1.m4a",
+          "text": "Question 1",
+          "options": [
+            "two years",
+            "about a month",
+            "a day",
+            "four days"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part2_q2.m4a",
+          "text": "Question 2",
+          "options": [
+            "She apologized.",
+            "She asked another server for help.",
+            "She got embarrassed and ran off.",
+            "She offered the man a free dessert."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part2_q3.m4a",
+          "text": "Question 3",
+          "options": [
+            "because there was a problem with his order",
+            "because the food wasn't to his liking",
+            "because the server forgot to put in his order",
+            "because he may not be able to attend the opera"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 4,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part2_q4.m4a",
+          "text": "Question 4",
+          "options": [
+            "by paying to replace the customer's ruined shirt",
+            "by offering a complimentary dessert",
+            "by offering a free meal",
+            "by offering complimentary opera tickets"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part2_q5.m4a",
+          "text": "Question 5",
+          "options": [
+            "fire the waitress from her job",
+            "require the waitress to practice",
+            "move the waitress to hosting",
+            "take money from the waitress' pay"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}
