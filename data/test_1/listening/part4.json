@@ -1,0 +1,76 @@
+{
+  "part": 4,
+  "title": "Listening to a News Item",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a news item once. It is about 1.5 minutes long. Then 5 questions will appear. Choose the best way to complete each statement from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part4_passage.m4a",
+  "imageUrl": "/static/images/test_1/listening/p4_passage.png",
+  "imageAlt": "A news report about a family trip",
+  "layout": "full_questions",
+  "context": "You will hear a news item about an unexpected event during a family trip.",
+  "transcript": "A family vacation at Banff National Park in Alberta took an unusual turn last weekend when a family of four heading back to their campsite after a weekend narrowly avoided crashing into a deer, only to hit a large pheasant instead. Banff is a nature reserve, home to thousands of wild animals including bears, deer, and countless game birds such as pheasant. Michael Jansen, who was driving at the time, said they were heading back to their campsite around dusk when they came around a bend of the highway and saw a deer trotting across the road. Jansen swerved successfully around the animal, but only a few seconds later a pheasant flew across the road in the opposite direction and hit the windshield. He pulled over to the side of the road as the deer ran into the forest unharmed. Unfortunately for the pheasant, the impact of the windshield killed it immediately. However, Jansen's daughter, Emily, who took a wilderness survival course last year, decided to make the best of the situation. She took the bird back to the campsite and roasted it with garlic and onions. \"It's completely legal to eat roadkill in British Columbia,\" she explained. \"Why waste perfectly good food? It's sad that we hit it, but at least it didn't go to waste.\"",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Michael Jansen was driving back to the campsite when",
+          "options": [
+            "he nearly hit a person crossing the road.",
+            "he hit a deer that crossed the road.",
+            "he saw an accident on the highway.",
+            "a large bird flew into his windshield."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "text": "The area where the accident took place is",
+          "options": [
+            "at a busy intersection.",
+            "near a city zoo.",
+            "in a protected area.",
+            "near their home."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 3,
+          "text": "The accident caused",
+          "options": [
+            "the engine to break down.",
+            "the children to get hurt.",
+            "the deer to die.",
+            "the bird to die."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 4,
+          "text": "That night Jansen's daughter, Emily,",
+          "options": [
+            "had a picnic on the side of the road.",
+            "cooked the animal they had hit.",
+            "refused to eat dinner.",
+            "used her survival skills to get help."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 5,
+          "text": "Emily's actions that night were prompted by",
+          "options": [
+            "a survival course she had taken.",
+            "distress over the accident.",
+            "being stranded in the woods.",
+            "the family running out of food."
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}

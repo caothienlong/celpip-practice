@@ -25,14 +25,27 @@
 - Comprehensive scoring
 - Test history tracking
 
+### 🎧 Listening Module 🆕
+- Sequential state machine: Passage → Q1 → Q2 → ... → Next Passage → ...
+- Practice Mode: replay audio freely, "Skip to Questions" button on all parts
+- Test Mode: "Skip to Questions" button on all parts, forward-only navigation
+- Parts 1-3: One question at a time with 30-second per-question timer
+- Parts 1-3: Split-pane layout — left panel (image + question audio), right panel (answer options)
+- Part 1: Sub-parts (1.1, 1.2, 1.3) with separate passage audio, sequential flow
+- Parts 4-6: Inline dropdown select boxes (Reading Part 3/4 style, selected → completed sentence)
+- Question-specific images: questions with `imageUrl` display a reference image in the left panel
+- Video support (Part 5: Discussion)
+- Audio hosted on Cloudinary (`.m4a` for audio, `.mp4` for video)
+- 6 parts, 38 questions per test
+
 ### 🎨 Professional UI
 - CELPIP-style interface
 - Two-column layout (passage + questions)
 - Smart inline dropdowns
 - Visual timer with warnings
 - Responsive design
-- Google OAuth login 🆕
-- Facebook OAuth login 🆕
+- Google OAuth login
+- Facebook OAuth login
 - Guest mode (no login required)
 
 ### 📊 Progress Tracking
@@ -96,20 +109,23 @@ celpip/
 │
 ├── data/                    # Test content (JSON)
 │   ├── test_1/             # Test 1 data
-│   │   └── reading/
-│   │       ├── part1.json
-│   │       ├── part2.json
-│   │       ├── part3.json
-│   │       └── part4.json
+│   │   ├── reading/
+│   │   │   ├── part1.json ... part4.json
+│   │   └── listening/      # 🆕 Listening module
+│   │       ├── part1.json ... part6.json
 │   └── test_2/             # More tests...
 │
 ├── static/                  # Static assets
-│   └── images/             # Test images
+│   ├── images/             # Test images
+│   ├── audio/              # 🆕 Listening audio files
+│   └── video/              # 🆕 Listening video files
 │
 ├── templates/              # HTML templates
 │   ├── test_list.html     # Home page
-│   ├── test_section.html  # Practice Mode
-│   └── test_mode_section.html  # Test Mode
+│   ├── test_section.html  # Reading Practice Mode
+│   ├── test_mode_section.html  # Reading Test Mode
+│   ├── listening_section.html  # 🆕 Listening Practice Mode
+│   └── listening_test_mode_section.html  # 🆕 Listening Test Mode
 │
 ├── utils/                  # Python utilities
 │   ├── data_loader.py     # Load test data
@@ -135,13 +151,16 @@ celpip/
 ## 🎯 Current Status
 
 ### ✅ Completed
-- Reading section (Test 1-2 complete, Tests 3-5 templates)
+- Reading section (Tests 1-10 complete)
+- **Listening section (Test 1 complete — 6 parts, 33 questions)** 🆕
 - Practice Mode with full navigation
 - Test Mode with realistic simulation
 - CELPIP-style UI with two-column layout
+- Listening state machine (Playback → Questions) 🆕
+- Audio/video player with progress visualization 🆕
 - Auto-save functionality
 - Answer validation (all dropdowns required)
-- Comprehensive answer key
+- Comprehensive answer key (Reading + Listening)
 - User authentication (OAuth)
 - Google login integration
 - Facebook login integration
@@ -154,9 +173,9 @@ celpip/
 - Deployment ready (Render.com with `render.yaml` Blueprint)
 
 ### 🚧 In Progress
-- Tests 2-20 content
+- Listening content for Tests 2-10
+- Tests 2-20 content (Writing, Speaking)
 - Writing section
-- Listening section
 - Speaking section
 
 ### 📋 Planned
@@ -209,7 +228,7 @@ Access from any device: `http://YOUR_IP:5000`
 
 ## 📊 Test Structure
 
-### Reading Section (Current)
+### Reading Section
 | Part | Type | Questions | Time |
 |------|------|-----------|------|
 | 1 | Correspondence | 11 | 16.5 min |
@@ -218,9 +237,19 @@ Access from any device: `http://YOUR_IP:5000`
 | 4 | Reading for Viewpoints | 10 | 15 min |
 | **Total** | | **38** | **~57 min** |
 
+### Listening Section 🆕
+| Part | Type | Questions | Media | Layout | Question UI |
+|------|------|-----------|-------|--------|-------------|
+| 1 | Problem Solving | 5 (3 sub-parts) | Audio | Split pane, per-question audio | Radio buttons |
+| 2 | Daily Life Conversation | 5 | Audio | Split pane, per-question audio | Radio buttons |
+| 3 | Listening for Information | 5 | Audio | Split pane, per-question audio | Radio buttons |
+| 4 | Listening to a News Item | 6 | Audio | Full-width | Inline dropdowns |
+| 5 | Listening to a Discussion | 6 | Video | Full-width | Inline dropdowns |
+| 6 | Listening for Viewpoints | 6 | Audio | Full-width | Inline dropdowns |
+| **Total** | | **33** | | | |
+
 ### Future Sections
 - Writing (2 tasks, ~53 min)
-- Listening (38 questions, ~47 min)
 - Speaking (8 tasks, ~15-20 min)
 
 ---
@@ -314,22 +343,57 @@ See [docs/COMPLETE_GUIDE.md](docs/COMPLETE_GUIDE.md#contributing) for guidelines
 
 ## 📝 Adding Test Content
 
-1. Create test folder:
+### Reading
 ```bash
 mkdir -p data/test_X/reading
 ```
 
-2. Add JSON files:
+### Listening
+```bash
+mkdir -p data/test_X/listening
+mkdir -p static/audio/test_X/listening    # MP3 files
+mkdir -p static/video/test_X/listening    # MP4 files (Part 5)
+mkdir -p static/images/test_X/listening   # Scene images
+```
+
+JSON format for listening (Parts 1-3 — per-question audio):
 ```json
 {
-  "title": "Reading Part 1",
-  "type": "correspondence",
-  "instructions": "Read and answer...",
-  "sections": [...]
+  "part": 1,
+  "title": "Listening to Problem Solving",
+  "type": "listening",
+  "layout": "per_question_audio",
+  "mediaType": "audio",
+  "mediaUrl": "/static/audio/test_X/listening/part1.mp3",
+  "imageUrl": "/static/images/test_X/listening/part1_scene.png",
+  "sub_parts": [
+    {
+      "id": "1.1", "title": "Sub-part Title",
+      "passageAudioUrl": "/static/audio/test_X/listening/part1_1_passage.mp3",
+      "questions": [
+        { "id": 1, "audioUrl": "/static/audio/.../part1_q1.mp3", "text": "...", "options": [...], "answer": 0 }
+      ]
+    }
+  ],
+  "sections": [{ "section_type": "questions", "questions": [...] }]
 }
 ```
 
-3. No code changes needed!
+JSON format for listening (Parts 4-6 — dropdowns):
+```json
+{
+  "part": 4,
+  "title": "Listening to a News Item",
+  "type": "listening",
+  "layout": "full_questions",
+  "mediaType": "audio",
+  "mediaUrl": "/static/audio/test_X/listening/part4.mp3",
+  "imageUrl": "/static/images/test_X/listening/part4_scene.png",
+  "sections": [{ "section_type": "questions", "questions": [...] }]
+}
+```
+
+No code changes needed!
 
 See [docs/ADDING_TESTS.md](docs/ADDING_TESTS.md) for details
 
@@ -369,8 +433,9 @@ See [docs/CONFIG_GUIDE.md](docs/CONFIG_GUIDE.md) for all options
 
 ### Phase 2: Content 🚧
 - [ ] Tests 2-20
+- [x] Listening section (Test 1 complete)
+- [ ] Listening content for Tests 2-10
 - [ ] Writing section
-- [ ] Listening section
 - [ ] Speaking section
 
 ### Phase 3: Features 📋
@@ -432,9 +497,11 @@ See [docs/COMPLETE_GUIDE.md#troubleshooting](docs/COMPLETE_GUIDE.md#troubleshoot
 
 ## 📊 Stats
 
-- **Lines of Code**: ~6,500+
-- **Test Questions**: 76 (Tests 1-2 complete)
-- **Documentation**: 11 comprehensive guides
+- **Lines of Code**: ~8,500+
+- **Reading Questions**: ~380 (Tests 1-10 complete)
+- **Listening Questions**: 33 (Test 1 complete)
+- **Skills Implemented**: Reading, Listening
+- **Documentation**: 11+ comprehensive guides
 - **Supported Platforms**: Web (production ready)
 - **OAuth Providers**: Google, Facebook
 - **Deployment Platforms**: Render, PythonAnywhere, Railway, Heroku
@@ -443,9 +510,10 @@ See [docs/COMPLETE_GUIDE.md#troubleshooting](docs/COMPLETE_GUIDE.md#troubleshoot
 
 ## 🔖 Version
 
-**Current Version**: 4.0  
+**Current Version**: 5.0  
 **Last Updated**: March 16, 2026  
 **Status**: Production Ready 🚀  
+**Skills**: Reading ✅ | Listening ✅ | Writing 🚧 | Speaking 🚧  
 **OAuth**: ✅ Enabled (Google, Facebook)  
 **Database**: ✅ PostgreSQL with file-based fallback
 

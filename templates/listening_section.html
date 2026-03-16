@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test {{ test_num }} - Listening - {{ section.title }}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, Helvetica, sans-serif; background: #f0f0f0; color: #333; }
+
+        .celpip-header {
+            background: #003366; color: white; padding: 15px 30px;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .celpip-header h1 { font-size: 1.3em; font-weight: normal; }
+        .header-right { display: flex; gap: 20px; align-items: center; }
+        .timer-box {
+            background: #00509e; padding: 8px 20px; border-radius: 5px;
+            font-size: 1.1em; font-weight: bold; min-width: 100px; text-align: center;
+        }
+        .timer-box.warning { background: #c8102e; animation: pulse 1s infinite; }
+        .answer-key-header-btn {
+            background: #28a745; color: white; padding: 8px 16px; border-radius: 5px;
+            text-decoration: none; font-weight: 600; font-size: 0.9em; transition: background 0.2s;
+        }
+        .answer-key-header-btn:hover { background: #218838; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
+        .question-counter { background: rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 5px; }
+
+        .main-container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        .instructions-bar {
+            background: #e6f2ff; border-left: 4px solid #0066cc;
+            padding: 15px 20px; margin-bottom: 20px; border-radius: 4px;
+        }
+        .instructions-bar strong { color: #003366; }
+
+        /* ===== PASSAGE STATE (full-screen centered) ===== */
+        .passage-state {
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; min-height: calc(100vh - 280px);
+        }
+        .media-container {
+            background: white; border: 2px solid #0066cc; border-radius: 10px;
+            padding: 30px; max-width: 700px; width: 100%; text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .media-container h3 { color: #003366; font-size: 1.2em; margin-bottom: 20px; }
+        .media-image-wrapper {
+            border: 2px solid #0066cc; border-radius: 5px; overflow: hidden;
+            margin-bottom: 20px; background: #f9f9f9;
+        }
+        .media-image-wrapper img { width: 100%; height: auto; display: block; min-height: 250px; object-fit: cover; }
+        .media-image-wrapper video { width: 100%; height: auto; display: block; min-height: 250px; background: #000; }
+        .media-placeholder {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            min-height: 250px; background: linear-gradient(135deg, #e6f2ff, #f0f0f0); color: #003366;
+        }
+        .media-placeholder .icon { font-size: 4em; margin-bottom: 10px; }
+        .audio-progress-container { background: #f0f0f0; border-radius: 8px; padding: 20px; margin-top: 15px; }
+        .audio-progress-bar { width: 100%; height: 8px; background: #ddd; border-radius: 4px; overflow: hidden; margin-bottom: 10px; }
+        .audio-progress-fill { height: 100%; background: #0066cc; border-radius: 4px; width: 0%; transition: width 0.3s linear; }
+        .audio-status { font-size: 0.95em; color: #003366; font-weight: 600; }
+        .audio-time { font-size: 0.85em; color: #666; margin-top: 5px; }
+        .listening-animation { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 10px; }
+        .listening-animation .bar { width: 4px; background: #0066cc; border-radius: 2px; animation: barPulse 1.2s ease-in-out infinite; }
+        .listening-animation .bar:nth-child(1) { height: 12px; animation-delay: 0s; }
+        .listening-animation .bar:nth-child(2) { height: 20px; animation-delay: 0.1s; }
+        .listening-animation .bar:nth-child(3) { height: 28px; animation-delay: 0.2s; }
+        .listening-animation .bar:nth-child(4) { height: 20px; animation-delay: 0.3s; }
+        .listening-animation .bar:nth-child(5) { height: 12px; animation-delay: 0.4s; }
+        @keyframes barPulse { 0%, 100% { transform: scaleY(0.5); } 50% { transform: scaleY(1); } }
+
+        /* ===== QUESTION STATE (split pane — 1 question at a time) ===== */
+        .question-state { display: none; }
+        .content-grid { display: grid; grid-template-columns: 2fr 3fr; gap: 20px; margin-bottom: 20px; }
+        .content-grid.full-width { grid-template-columns: 1fr; }
+        .content-panel {
+            background: white; border: 1px solid #ccc; border-radius: 5px; padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            max-height: calc(100vh - 280px); overflow-y: auto; overflow-x: hidden;
+        }
+        .content-panel::-webkit-scrollbar { width: 8px; }
+        .content-panel::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        .content-panel::-webkit-scrollbar-thumb { background: #0066cc; border-radius: 4px; }
+        .content-panel::-webkit-scrollbar-thumb:hover { background: #003366; }
+        .content-panel h3 {
+            color: #003366; font-size: 1.1em; margin-bottom: 15px;
+            padding-bottom: 10px; border-bottom: 2px solid #0066cc;
+        }
+        .review-media { text-align: center; }
+        .review-media img { max-width: 100%; border-radius: 5px; border: 2px solid #0066cc; }
+        .replay-notice {
+            margin-top: 15px; padding: 12px; background: #e6f2ff; border: 1px solid #0066cc;
+            border-radius: 5px; font-size: 0.9em; color: #003366; text-align: center; font-weight: 600;
+        }
+
+        /* Left-panel audio player for question audio */
+        .left-audio-player {
+            margin-top: 20px; background: #e6f2ff; border: 1px solid #0066cc;
+            border-radius: 8px; padding: 15px; text-align: center;
+        }
+        .left-audio-player .la-label { font-weight: 600; color: #003366; margin-bottom: 10px; font-size: 0.95em; }
+        .left-audio-player .la-controls { display: flex; align-items: center; gap: 10px; justify-content: center; }
+        .left-audio-player .play-q-btn {
+            padding: 8px 18px; background: #0066cc; color: white; border: none;
+            border-radius: 5px; cursor: pointer; font-weight: 600; font-size: 0.9em;
+            transition: background 0.2s; white-space: nowrap;
+        }
+        .left-audio-player .play-q-btn:hover { background: #003366; }
+        .left-audio-player .play-q-btn.playing { background: #c8102e; }
+        .q-audio-progress { flex: 1; height: 8px; background: #ccc; border-radius: 4px; overflow: hidden; max-width: 250px; }
+        .q-audio-progress-fill { height: 100%; background: #0066cc; width: 0%; transition: width 0.2s linear; }
+
+        .options { display: grid; gap: 8px; }
+        .option {
+            display: flex; align-items: center; padding: 10px 12px;
+            background: white; border: 2px solid #ddd; border-radius: 4px;
+            cursor: pointer; transition: all 0.2s ease;
+        }
+        .option:hover { border-color: #0066cc; background: #f0f8ff; }
+        .option input[type="radio"] { margin-right: 10px; width: 18px; height: 18px; cursor: pointer; }
+        .option.selected { border-color: #0066cc; background: #e6f2ff; }
+        .option label { cursor: pointer; flex: 1; }
+
+        /* Dropdown style for Parts 4-6 */
+        .question-inline {
+            padding: 12px 15px; margin-bottom: 10px; line-height: 2;
+            background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 4px;
+        }
+        .question-number { font-weight: 700; color: #003366; }
+        .question-label { color: #333; }
+        .inline-dropdown {
+            display: inline; padding: 6px 30px 6px 10px;
+            border: 2px solid #0066cc; border-radius: 3px;
+            background: white; color: #333; font-size: 0.95em; cursor: pointer;
+            margin: 0 4px; width: 150px; font-family: inherit;
+            transition: all 0.2s ease; text-align: left; appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230066cc' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 8px center;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: middle;
+        }
+        .inline-dropdown option { white-space: normal; padding: 8px; }
+        .inline-dropdown:hover { border-color: #003366; background: #f0f8ff; }
+        .inline-dropdown:focus { outline: none; border-color: #003366; box-shadow: 0 0 0 2px rgba(0,102,204,0.2); }
+        .inline-dropdown.answered { background: #e6f2ff; border-color: #0066cc; }
+        .inline-dropdown.selected { display: none; }
+        .selected-text {
+            display: inline; font-weight: 600; color: #003366;
+            background: #e6f2ff; padding: 4px 8px; border-radius: 3px; line-height: 1.8; cursor: pointer;
+        }
+
+        .nav-buttons { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
+        .nav-btn {
+            display: inline-block; padding: 12px 30px; background: #0066cc; color: white;
+            text-decoration: none; border-radius: 5px; font-weight: 600;
+            transition: background 0.2s ease; border: none; cursor: pointer; font-size: 1em;
+        }
+        .nav-btn:hover { background: #003366; }
+        .nav-btn.secondary { background: #6c757d; }
+        .nav-btn.secondary:hover { background: #5a6268; }
+
+        .fade-in { animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 1024px) { .content-grid { grid-template-columns: 1fr; } }
+
+        .vocab-sidebar {
+            position: fixed; right: 0; top: 50%; transform: translateY(-50%);
+            background: white; border-radius: 15px 0 0 15px;
+            box-shadow: -4px 0 12px rgba(0,0,0,0.15); z-index: 1000; width: 60px; height: 180px;
+        }
+        .vocab-sidebar-item {
+            display: flex; align-items: center; padding: 15px; cursor: pointer;
+            transition: all 0.3s ease; white-space: nowrap; text-decoration: none;
+            color: inherit; border-bottom: 1px solid #f0f0f0; width: 60px; height: 60px;
+            overflow: visible; position: absolute; right: 0; background: white;
+        }
+        .vocab-sidebar-item:first-child { border-radius: 15px 0 0 0; }
+        .vocab-sidebar-item:last-child { border-bottom: none; border-radius: 0 0 0 15px; }
+        .vocab-sidebar-item:hover { background: #f8f9fa; width: 240px; box-shadow: -4px 0 12px rgba(0,0,0,0.2); z-index: 1001; }
+        .vocab-icon { font-size: 24px; min-width: 24px; display: flex; align-items: center; justify-content: center; }
+        .vocab-text { margin-left: 12px; font-weight: 600; font-size: 0.9em; max-width: 0; opacity: 0; overflow: hidden; transition: all 0.3s ease; }
+        .vocab-sidebar-item:hover .vocab-text { max-width: 200px; opacity: 1; display: inline-block; }
+        .vocab-sidebar-item.back-btn { color: #0066cc; top: -20px; }
+        .vocab-sidebar-item.view-all { color: #0066cc; top: 60px; }
+        .vocab-sidebar-item.add-note { color: #0066cc; top: 120px; }
+        .vocab-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 2000; pointer-events: none; }
+        .vocab-modal.active { display: block; pointer-events: auto; }
+        .vocab-modal-content {
+            position: fixed; right: 80px; top: 50%; transform: translateY(-50%);
+            background: white; padding: 30px; border-radius: 15px; width: 500px;
+            max-width: calc(50vw - 100px); max-height: calc(100vh - 80px); overflow-y: auto;
+            box-shadow: -4px 0 40px rgba(0,0,0,0.3); animation: slideInFromRight 0.3s ease;
+            z-index: 2001; pointer-events: auto;
+        }
+        @keyframes slideInFromRight { from { transform: translateY(-50%) translateX(50px); opacity: 0; } to { transform: translateY(-50%) translateX(0); opacity: 1; } }
+        .vocab-modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .vocab-modal-header h3 { color: #333; font-size: 1.4em; }
+        .vocab-close-btn { background: none; border: none; font-size: 1.5em; cursor: pointer; color: #999; transition: color 0.2s; }
+        .vocab-close-btn:hover { color: #333; }
+        .vocab-form-group { margin-bottom: 20px; }
+        .vocab-form-group label { display: block; margin-bottom: 8px; color: #333; font-weight: 600; font-size: 0.9em; }
+        .vocab-form-group input, .vocab-form-group textarea { width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 5px; font-size: 0.95em; font-family: inherit; transition: border-color 0.2s; }
+        .vocab-form-group input:focus, .vocab-form-group textarea:focus { outline: none; border-color: #ffc107; }
+        .vocab-form-group textarea { resize: vertical; min-height: 80px; }
+        .vocab-form-actions { display: flex; gap: 10px; justify-content: flex-end; }
+        .vocab-save-btn, .vocab-cancel-btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; font-size: 0.9em; transition: all 0.2s; }
+        .vocab-save-btn { background: #ffc107; color: #333; }
+        .vocab-save-btn:hover { background: #e0a800; }
+        .vocab-cancel-btn { background: #6c757d; color: white; }
+        .vocab-cancel-btn:hover { background: #5a6268; }
+    </style>
+</head>
+<body>
+    <div class="celpip-header">
+        <h1 id="headerTitle">Test {{ test_num }} – Listening – {{ section.title }}</h1>
+        <div class="header-right">
+            <a href="/test/{{ test_num }}/listening/answer-key" class="answer-key-header-btn">📝 Answer Key</a>
+            <div class="question-counter" id="questionCounter">{{ section.num_questions }} Questions</div>
+            <div class="timer-box" id="timer">
+                {{ "%.1f"|format(section.timeout_minutes) }} min
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="instructions-bar">
+            <strong>Instructions:</strong> {{ section.instructions }}
+        </div>
+
+        {% if section.layout == 'per_question_audio' %}
+        {# =============== PARTS 1-3: SEQUENTIAL STATE MACHINE =============== #}
+        {# All rendering is driven by JS using the steps array. #}
+        {# We render a single passage view and a single question view, swapped by JS. #}
+
+        <!-- PASSAGE VIEW (reused for each passage step) -->
+        <div id="passageView" class="passage-state">
+            <div class="media-container">
+                <h3 id="passageTitle">🎧 Listen to the Passage</h3>
+                <div class="media-image-wrapper">
+                    <img id="passageImage" src="{{ section.image_url }}" alt="{{ section.image_alt }}"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="media-placeholder" style="display: none;">
+                        <div class="icon">🎧</div>
+                        <div>{{ section.title }}</div>
+                    </div>
+                </div>
+                <audio id="passageAudio" preload="metadata"></audio>
+                <div class="audio-progress-container">
+                    <div class="audio-progress-bar">
+                        <div class="audio-progress-fill" id="passageProgressFill"></div>
+                    </div>
+                    <div class="audio-status" id="passageAudioStatus">Click "Play" to begin listening</div>
+                    <div class="audio-time" id="passageAudioTime">0:00 / 0:00</div>
+                    <div class="listening-animation" id="passageListeningAnim" style="display: none;">
+                        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                    </div>
+                </div>
+                <button class="nav-btn" id="passagePlayBtn" onclick="playPassageAudio()" style="margin-top: 20px;">▶ Play Recording</button>
+                <button class="nav-btn secondary" id="passageSkipBtn" onclick="skipPassageToQuestions()" style="margin-top: 10px; font-size: 0.9em;">Skip to Questions →</button>
+            </div>
+        </div>
+
+        <!-- QUESTION VIEW (reused for each question step, split pane) -->
+        <div id="questionView" class="question-state">
+            <div class="content-grid fade-in">
+                <div class="content-panel">
+                    <h3>🎧 Audio Visual</h3>
+                    <div class="review-media">
+                        <img id="questionImage" src="{{ section.image_url }}" alt="{{ section.image_alt }}" style="max-width: 100%;"
+                             onerror="this.style.display='none'; document.getElementById('questionImagePlaceholder').style.display='flex';">
+                        <div id="questionImagePlaceholder" class="media-placeholder" style="display:none; min-height:200px; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(135deg,#e6f2ff,#f0f0f0); color:#003366; border-radius:5px;">
+                            <div style="font-size:3em;">🎧</div>
+                            <div>Listening</div>
+                        </div>
+                    </div>
+                    <div class="left-audio-player" id="leftAudioPlayer">
+                        <div class="la-label" id="leftAudioLabel">🎧 Question Audio</div>
+                        <div class="la-controls">
+                            <button class="play-q-btn" id="leftPlayBtn" onclick="playCurrentQuestionAudio()">▶ Play</button>
+                            <div class="q-audio-progress">
+                                <div class="q-audio-progress-fill" id="leftProgressFill"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="replay-notice">✅ You can replay audio in Practice Mode</div>
+                </div>
+
+                <div class="content-panel">
+                    <h3 id="questionPanelTitle">❓ Question</h3>
+                    <div id="questionOptionsContainer"></div>
+                </div>
+            </div>
+
+            <div class="nav-buttons" style="margin-top: 30px;">
+                <button onclick="goToNextStep()" class="nav-btn" id="nextStepBtn">Next →</button>
+            </div>
+        </div>
+
+        {% elif section.layout == 'full_questions' %}
+        {# =============== PARTS 4-6: DROPDOWN STYLE =============== #}
+
+        <div class="passage-state" id="passageView">
+            <div class="media-container">
+                <h3>
+                    {% if section.media_type == 'video' %}🎬 Watch the Discussion
+                    {% else %}🎧 Listen to the Recording{% endif %}
+                </h3>
+                <div class="media-image-wrapper">
+                    {% if section.media_type == 'video' %}
+                    <video id="mediaPlayer" preload="metadata" poster="{{ section.image_url }}">
+                        <source src="{{ section.media_url }}" type="video/mp4">
+                    </video>
+                    {% else %}
+                    <img src="{{ section.image_url }}" alt="{{ section.image_alt }}"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="media-placeholder" style="display: none;">
+                        <div class="icon">🎧</div>
+                        <div>{{ section.title }}</div>
+                    </div>
+                    {% endif %}
+                </div>
+                {% if section.media_type != 'video' %}
+                <audio id="mediaPlayer" preload="metadata">
+                    <source src="{{ section.media_url }}">
+                </audio>
+                {% endif %}
+                <div class="audio-progress-container">
+                    <div class="audio-progress-bar">
+                        <div class="audio-progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="audio-status" id="audioStatus">Click "Play" to begin listening</div>
+                    <div class="audio-time" id="audioTime">0:00 / 0:00</div>
+                    <div class="listening-animation" id="listeningAnim" style="display: none;">
+                        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                    </div>
+                </div>
+                <button class="nav-btn" id="playBtn" onclick="startPassagePlayback()" style="margin-top: 20px;">▶ Play Recording</button>
+                <button class="nav-btn secondary" id="skipBtn" onclick="skipToDropdownQuestions()" style="margin-top: 10px; font-size: 0.9em;">Skip to Questions →</button>
+            </div>
+        </div>
+
+        <div class="question-state" id="questionView">
+            <div class="content-grid full-width fade-in">
+                <div class="content-panel">
+                    <h3>❓ Questions</h3>
+                    {{ section.questions_dropdown_html|safe }}
+                </div>
+            </div>
+            <div class="nav-buttons" style="margin-top: 30px;">
+                {% if part_num > 1 %}
+                <a href="/test/{{ test_num }}/listening/part{{ part_num - 1 }}" class="nav-btn secondary">← Back</a>
+                {% endif %}
+                {% if part_num < 6 %}
+                <button onclick="navigateToNextPart()" class="nav-btn" id="nextBtn">Next →</button>
+                {% else %}
+                <button onclick="navigateToNextPart()" class="nav-btn">Finish</button>
+                {% endif %}
+            </div>
+        </div>
+
+        {% else %}
+        {# =============== FALLBACK =============== #}
+        <div class="passage-state" id="passageView">
+            <div class="media-container">
+                <h3>🎧 Listen to the Recording</h3>
+                <div class="media-image-wrapper">
+                    <img src="{{ section.image_url }}" alt="{{ section.image_alt }}"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="media-placeholder" style="display: none;"><div class="icon">🎧</div><div>{{ section.title }}</div></div>
+                </div>
+                <audio id="mediaPlayer" preload="metadata"><source src="{{ section.media_url }}"></audio>
+                <div class="audio-progress-container">
+                    <div class="audio-progress-bar"><div class="audio-progress-fill" id="progressFill"></div></div>
+                    <div class="audio-status" id="audioStatus">Click "Play" to begin listening</div>
+                    <div class="audio-time" id="audioTime">0:00 / 0:00</div>
+                    <div class="listening-animation" id="listeningAnim" style="display: none;">
+                        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                    </div>
+                </div>
+                <button class="nav-btn" id="playBtn" onclick="startPassagePlayback()" style="margin-top: 20px;">▶ Play Recording</button>
+                <button class="nav-btn secondary" id="skipBtn" onclick="skipToFallbackQuestions()" style="margin-top: 10px; font-size: 0.9em;">Skip to Questions →</button>
+            </div>
+        </div>
+        <div class="question-state" id="questionView">
+            <div class="content-grid full-width fade-in">
+                <div class="content-panel">
+                    <h3>❓ Questions</h3>
+                    {% for q in section.questions %}
+                    <div class="question" style="margin-bottom: 25px; padding: 15px; background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 4px;">
+                        <div style="font-weight: 600; margin-bottom: 12px; color: #003366;">{{ q.id }}. {{ q.text }}</div>
+                        <div class="options">
+                            {% for opt in q.options %}
+                            <div class="option" data-question="{{ q.id }}" onclick="selectOptionSimple(this, {{ q.id }}, {{ loop.index0 }})">
+                                <input type="radio" name="q{{ q.id }}" id="q{{ q.id }}_{{ loop.index0 }}" value="{{ loop.index0 }}">
+                                <label for="q{{ q.id }}_{{ loop.index0 }}">{{ opt }}</label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="nav-buttons" style="margin-top: 30px;">
+                {% if part_num < 6 %}
+                <button onclick="navigateToNextPart()" class="nav-btn">Next →</button>
+                {% else %}
+                <button onclick="navigateToNextPart()" class="nav-btn">Finish</button>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        const savedAnswers = {{ saved_answers|tojson|safe }};
+        const layout = '{{ section.layout }}';
+        const QUESTION_TIME_SECONDS = 30;
+        let timerInterval;
+
+        window.addEventListener('beforeunload', function(e) { e.preventDefault(); e.returnValue = ''; });
+
+        {% if section.layout == 'per_question_audio' %}
+        /* ===== SEQUENTIAL STATE MACHINE FOR PARTS 1-3 ===== */
+        const steps = {{ section.steps|tojson|safe }};
+        let currentStep = 0;
+        let currentQAudio = null;
+        let questionTimerSeconds = QUESTION_TIME_SECONDS;
+
+        const passageView = document.getElementById('passageView');
+        const questionView = document.getElementById('questionView');
+        const passageAudio = document.getElementById('passageAudio');
+        const timerBox = document.getElementById('timer');
+        const headerTitle = document.getElementById('headerTitle');
+        const questionCounter = document.getElementById('questionCounter');
+
+        function renderCurrentStep() {
+            const step = steps[currentStep];
+            if (!step) { navigateToNextPart(); return; }
+
+            if (step.type === 'passage') {
+                showPassageStep(step);
+            } else {
+                showQuestionStep(step);
+            }
+        }
+
+        let passageIsPlaying = false;
+
+        function showPassageStep(step) {
+            passageView.style.display = 'flex';
+            questionView.style.display = 'none';
+            clearInterval(timerInterval);
+            passageIsPlaying = false;
+
+            const title = step.sub_part_id
+                ? '🎧 Listen to Passage ' + step.sub_part_id + ': ' + step.title
+                : '🎧 Listen to the Passage';
+            document.getElementById('passageTitle').textContent = title;
+
+            if (step.image_url) {
+                document.getElementById('passageImage').src = step.image_url;
+                document.getElementById('passageImage').style.display = 'block';
+            }
+
+            passageAudio.src = step.audio_url;
+            passageAudio.load();
+            document.getElementById('passageProgressFill').style.width = '0%';
+            document.getElementById('passageAudioStatus').textContent = 'Click "Play" to begin listening';
+            document.getElementById('passageAudioTime').textContent = '0:00 / 0:00';
+            document.getElementById('passageListeningAnim').style.display = 'none';
+            document.getElementById('passagePlayBtn').style.display = 'inline-block';
+            document.getElementById('passagePlayBtn').textContent = '▶ Play Recording';
+            document.getElementById('passageSkipBtn').style.display = 'inline-block';
+
+            timerBox.textContent = '--:--';
+            timerBox.classList.remove('warning');
+            headerTitle.textContent = 'Test {{ test_num }} – Listening – {{ section.title }}' +
+                (step.sub_part_id ? ' (' + step.sub_part_id + ')' : '');
+
+            const totalQ = steps.filter(s => s.type === 'question').length;
+            questionCounter.textContent = totalQ + ' Questions';
+        }
+
+        function playPassageAudio() {
+            if (passageIsPlaying) return;
+
+            passageAudio.currentTime = 0;
+            passageIsPlaying = true;
+            const btn = document.getElementById('passagePlayBtn');
+            passageAudio.play().then(() => {
+                btn.style.display = 'none';
+                document.getElementById('passageSkipBtn').style.display = 'none';
+                document.getElementById('passageAudioStatus').textContent = 'Listening...';
+                document.getElementById('passageListeningAnim').style.display = 'flex';
+            }).catch(() => {
+                passageIsPlaying = false;
+                showPassageReady();
+            });
+        }
+
+        function showPassageReady() {
+            document.getElementById('passageAudioStatus').textContent = 'Audio not available. Click "Continue" to proceed.';
+            document.getElementById('passagePlayBtn').style.display = 'none';
+            document.getElementById('passageSkipBtn').style.display = 'inline-block';
+            document.getElementById('passageSkipBtn').textContent = 'Continue to Questions →';
+        }
+
+        function skipPassageToQuestions() {
+            passageAudio.pause();
+            passageIsPlaying = false;
+            advanceStep();
+        }
+
+        passageAudio.addEventListener('timeupdate', function() {
+            if (!passageAudio.duration) return;
+            const pct = (passageAudio.currentTime / passageAudio.duration) * 100;
+            document.getElementById('passageProgressFill').style.width = pct + '%';
+            document.getElementById('passageAudioTime').textContent =
+                formatTime(passageAudio.currentTime) + ' / ' + formatTime(passageAudio.duration);
+        });
+
+        passageAudio.addEventListener('ended', function() {
+            document.getElementById('passageListeningAnim').style.display = 'none';
+            document.getElementById('passageAudioStatus').textContent = 'Passage complete.';
+            document.getElementById('passageProgressFill').style.width = '100%';
+            passageIsPlaying = false;
+            document.getElementById('passagePlayBtn').textContent = '▶ Replay Passage';
+            document.getElementById('passagePlayBtn').style.display = 'inline-block';
+            document.getElementById('passageSkipBtn').style.display = 'inline-block';
+            document.getElementById('passageSkipBtn').textContent = 'Continue to Questions →';
+        });
+
+        passageAudio.addEventListener('error', function() {
+            passageIsPlaying = false;
+            showPassageReady();
+        });
+
+        function showQuestionStep(step) {
+            passageView.style.display = 'none';
+            questionView.style.display = 'block';
+
+            const qIdx = steps.filter((s, i) => s.type === 'question' && i <= currentStep).length;
+            const totalQ = steps.filter(s => s.type === 'question').length;
+            questionCounter.textContent = 'Question ' + qIdx + ' / ' + totalQ;
+            document.getElementById('questionPanelTitle').textContent = '❓ Question ' + step.id;
+
+            const qImg = document.getElementById('questionImage');
+            const qPlaceholder = document.getElementById('questionImagePlaceholder');
+            if (step.image_url) {
+                qImg.src = step.image_url;
+                qImg.style.display = '';
+                qPlaceholder.style.display = 'none';
+            } else {
+                const passageUrl = '{{ section.image_url }}';
+                if (passageUrl) {
+                    qImg.src = passageUrl;
+                    qImg.style.display = '';
+                    qPlaceholder.style.display = 'none';
+                } else {
+                    qImg.style.display = 'none';
+                    qPlaceholder.style.display = 'flex';
+                }
+            }
+
+            const leftBtn = document.getElementById('leftPlayBtn');
+            document.getElementById('leftAudioLabel').textContent = '🎧 Question ' + step.id + ' Audio';
+            document.getElementById('leftProgressFill').style.width = '0%';
+            leftBtn.textContent = '▶ Play';
+            leftBtn.classList.remove('played', 'playing');
+
+            const container = document.getElementById('questionOptionsContainer');
+            let html = '<div class="options">';
+            step.options.forEach((opt, idx) => {
+                const sel = savedAnswers[step.id.toString()] === idx ? ' selected' : '';
+                const chk = savedAnswers[step.id.toString()] === idx ? ' checked' : '';
+                html += '<div class="option' + sel + '" data-question="' + step.id + '" onclick="selectStepOption(this, ' + step.id + ', ' + idx + ')">';
+                html += '<input type="radio" name="q' + step.id + '" value="' + idx + '"' + chk + '>';
+                html += '<label>' + opt + '</label></div>';
+            });
+            html += '</div>';
+            container.innerHTML = html;
+
+            startQuestionTimer();
+        }
+
+        function playCurrentQuestionAudio() {
+            const step = steps[currentStep];
+            if (!step || step.type !== 'question') return;
+
+            const btn = document.getElementById('leftPlayBtn');
+
+            if (currentQAudio && !currentQAudio.paused) {
+                currentQAudio.pause();
+                currentQAudio = null;
+                btn.classList.remove('playing');
+                btn.textContent = '▶ Replay';
+                return;
+            }
+
+            if (currentQAudio) { currentQAudio.pause(); currentQAudio = null; }
+
+            const audio = new Audio(step.audio_url);
+            currentQAudio = audio;
+            btn.classList.add('playing');
+            btn.textContent = '⏸ Playing';
+
+            audio.addEventListener('timeupdate', function() {
+                const fill = document.getElementById('leftProgressFill');
+                if (fill && audio.duration) fill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+            });
+            audio.addEventListener('ended', function() {
+                btn.classList.remove('playing');
+                btn.textContent = '▶ Replay';
+                document.getElementById('leftProgressFill').style.width = '100%';
+                currentQAudio = null;
+            });
+            audio.addEventListener('error', function() {
+                btn.classList.remove('playing'); btn.textContent = '⚠ Error'; currentQAudio = null;
+            });
+            audio.play().catch(() => { btn.classList.remove('playing'); btn.textContent = '▶ Play'; currentQAudio = null; });
+        }
+
+        function selectStepOption(element, questionId, optionIndex) {
+            document.querySelectorAll('.option[data-question="' + questionId + '"]').forEach(o => o.classList.remove('selected'));
+            element.classList.add('selected');
+            element.querySelector('input[type="radio"]').checked = true;
+            savedAnswers[questionId.toString()] = optionIndex;
+
+            fetch('/save_answer', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    test_num: {{ test_num }}, skill: 'listening',
+                    part_num: {{ part_num }}, question_id: questionId.toString(), answer: optionIndex
+                })
+            });
+        }
+
+        function startQuestionTimer() {
+            clearInterval(timerInterval);
+            questionTimerSeconds = QUESTION_TIME_SECONDS;
+            updateTimerDisplay();
+            timerInterval = setInterval(function() {
+                questionTimerSeconds--;
+                updateTimerDisplay();
+                if (questionTimerSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    advanceStep();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const m = Math.floor(questionTimerSeconds / 60);
+            const s = questionTimerSeconds % 60;
+            timerBox.textContent = m + ':' + s.toString().padStart(2, '0');
+            if (questionTimerSeconds <= 10) timerBox.classList.add('warning');
+            else timerBox.classList.remove('warning');
+        }
+
+        function goToNextStep() {
+            if (currentQAudio) { currentQAudio.pause(); currentQAudio = null; }
+            advanceStep();
+        }
+
+        function advanceStep() {
+            currentStep++;
+            if (currentStep >= steps.length) {
+                navigateToNextPart();
+            } else {
+                renderCurrentStep();
+            }
+        }
+
+        renderCurrentStep();
+
+        {% elif section.layout == 'full_questions' %}
+        /* ===== PARTS 4-6 PASSAGE + DROPDOWN ===== */
+        let mediaPlayer = document.getElementById('mediaPlayer');
+        let passagePlayed46 = false;
+
+        function startPassagePlayback() {
+            if (passagePlayed46) return;
+            passagePlayed46 = true;
+            const btn = document.getElementById('playBtn');
+            document.getElementById('skipBtn').style.display = 'none';
+            if (mediaPlayer) {
+                mediaPlayer.play().then(() => {
+                    btn.style.display = 'none';
+                    document.getElementById('audioStatus').textContent = 'Listening...';
+                    document.getElementById('listeningAnim').style.display = 'flex';
+                }).catch(() => { showDropdownQuestions(); });
+            } else { showDropdownQuestions(); }
+        }
+
+        function skipToDropdownQuestions() {
+            if (mediaPlayer) { mediaPlayer.pause(); }
+            passagePlayed46 = true;
+            showDropdownQuestions();
+        }
+
+        if (mediaPlayer) {
+            mediaPlayer.addEventListener('timeupdate', function() {
+                const pct = (mediaPlayer.currentTime / mediaPlayer.duration) * 100;
+                document.getElementById('progressFill').style.width = pct + '%';
+                document.getElementById('audioTime').textContent =
+                    formatTime(mediaPlayer.currentTime) + ' / ' + formatTime(mediaPlayer.duration);
+            });
+            mediaPlayer.addEventListener('ended', function() {
+                document.getElementById('listeningAnim').style.display = 'none';
+                document.getElementById('audioStatus').textContent = 'Recording complete.';
+                document.getElementById('progressFill').style.width = '100%';
+                setTimeout(showDropdownQuestions, 800);
+            });
+            mediaPlayer.addEventListener('error', function() { showDropdownQuestions(); });
+        }
+
+        function showDropdownQuestions() {
+            document.getElementById('passageView').style.display = 'none';
+            document.getElementById('questionView').style.display = 'block';
+            restoreDropdownAnswers();
+            startPartTimer();
+        }
+
+        function restoreDropdownAnswers() {
+            document.querySelectorAll('.inline-dropdown').forEach(dd => {
+                const qId = dd.dataset.question || dd.name.substring(1);
+                const val = savedAnswers[qId];
+                if (val !== undefined && val !== null) {
+                    dd.value = val;
+                    dd.classList.add('answered');
+                    const txt = dd.options[dd.selectedIndex].text;
+                    const span = document.createElement('span');
+                    span.className = 'selected-text'; span.textContent = txt;
+                    span.dataset.dropdownId = dd.id || dd.name;
+                    span.dataset.selectedValue = val;
+                    span.title = 'Click to change answer';
+                    span.addEventListener('click', function() {
+                        const d = this.nextElementSibling || this.previousElementSibling;
+                        if (d && d.classList.contains('inline-dropdown')) { d.classList.remove('selected'); this.remove(); }
+                    });
+                    dd.classList.add('selected');
+                    dd.parentNode.insertBefore(span, dd);
+                }
+            });
+        }
+
+        document.querySelectorAll('.inline-dropdown').forEach(dd => {
+            dd.addEventListener('change', function() {
+                const qId = this.dataset.question || this.name.substring(1);
+                const val = this.value;
+                if (val !== '') {
+                    this.classList.add('answered');
+                    fetch('/save_answer', {
+                        method: 'POST', headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ test_num: {{ test_num }}, skill: 'listening', part_num: {{ part_num }}, question_id: qId, answer: parseInt(val) })
+                    });
+                    const txt = this.options[this.selectedIndex].text;
+                    const span = document.createElement('span');
+                    span.className = 'selected-text'; span.textContent = txt;
+                    span.dataset.dropdownId = this.id || this.name; span.dataset.selectedValue = val;
+                    span.title = 'Click to change answer';
+                    span.addEventListener('click', function() {
+                        const d = this.nextElementSibling || this.previousElementSibling;
+                        if (d && d.classList.contains('inline-dropdown')) { d.classList.remove('selected'); this.remove(); }
+                    });
+                    this.classList.add('selected');
+                    this.parentNode.insertBefore(span, this);
+                }
+            });
+        });
+
+        function startPartTimer() {
+            let timeLeft = {{ section.timeout_minutes }} * 60;
+            const timerEl = document.getElementById('timer');
+            clearInterval(timerInterval);
+            timerInterval = setInterval(function() {
+                const m = Math.floor(timeLeft / 60);
+                const s = timeLeft % 60;
+                timerEl.textContent = m + ':' + s.toString().padStart(2, '0');
+                if (timeLeft <= 60) timerEl.classList.add('warning');
+                if (timeLeft <= 0) { clearInterval(timerInterval); navigateToNextPart(); }
+                timeLeft--;
+            }, 1000);
+        }
+
+        {% else %}
+        /* ===== FALLBACK ===== */
+        let mediaPlayer = document.getElementById('mediaPlayer');
+        let passagePlayedFB = false;
+
+        function startPassagePlayback() {
+            if (passagePlayedFB) return;
+            passagePlayedFB = true;
+            document.getElementById('skipBtn').style.display = 'none';
+            if (mediaPlayer) {
+                mediaPlayer.play().then(() => {
+                    document.getElementById('playBtn').style.display = 'none';
+                    document.getElementById('audioStatus').textContent = 'Listening...';
+                    document.getElementById('listeningAnim').style.display = 'flex';
+                }).catch(() => { showFallbackQuestions(); });
+            } else { showFallbackQuestions(); }
+        }
+        if (mediaPlayer) {
+            mediaPlayer.addEventListener('ended', function() {
+                document.getElementById('listeningAnim').style.display = 'none';
+                setTimeout(showFallbackQuestions, 800);
+            });
+            mediaPlayer.addEventListener('error', function() { showFallbackQuestions(); });
+        }
+        function showFallbackQuestions() {
+            document.getElementById('passageView').style.display = 'none';
+            document.getElementById('questionView').style.display = 'block';
+        }
+        function skipToFallbackQuestions() {
+            if (mediaPlayer) { mediaPlayer.pause(); }
+            passagePlayedFB = true;
+            showFallbackQuestions();
+        }
+        function selectOptionSimple(el, qId, idx) {
+            document.querySelectorAll('.option[data-question="' + qId + '"]').forEach(o => o.classList.remove('selected'));
+            el.classList.add('selected'); el.querySelector('input[type="radio"]').checked = true;
+            fetch('/save_answer', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ test_num: {{ test_num }}, skill: 'listening', part_num: {{ part_num }}, question_id: qId.toString(), answer: idx })
+            });
+        }
+        {% endif %}
+
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            return Math.floor(seconds / 60) + ':' + Math.floor(seconds % 60).toString().padStart(2, '0');
+        }
+
+        function navigateToNextPart() {
+            clearInterval(timerInterval);
+            {% if part_num < 6 %}
+            window.location.href = '/test/{{ test_num }}/listening/part{{ part_num + 1 }}';
+            {% else %}
+            window.location.href = '/test/{{ test_num }}/listening/answer-key';
+            {% endif %}
+        }
+    </script>
+
+    {% if current_user and current_user.is_authenticated %}
+    <div class="vocab-sidebar">
+        <a href="/test/{{ test_num }}" class="vocab-sidebar-item back-btn" title="Back to Test Overview">
+            <span class="vocab-icon">⬅️</span>
+            <span class="vocab-text">Back to Test {{ test_num }}</span>
+        </a>
+        <a href="/test/{{ test_num }}/vocabulary" class="vocab-sidebar-item view-all" title="View All Vocabulary">
+            <span class="vocab-icon">📚</span>
+            <span class="vocab-text">View All Vocabulary</span>
+        </a>
+        <div class="vocab-sidebar-item add-note" onclick="openVocabModal()" title="Add Vocabulary Note">
+            <span class="vocab-icon">✏️</span>
+            <span class="vocab-text">Add Vocabulary Note</span>
+        </div>
+    </div>
+
+    <div class="vocab-modal" id="vocabModal">
+        <div class="vocab-modal-content">
+            <div class="vocab-modal-header">
+                <h3>📚 Add Vocabulary Note</h3>
+                <button class="vocab-close-btn" onclick="closeVocabModal()">&times;</button>
+            </div>
+            <form id="vocabForm">
+                <div class="vocab-form-group">
+                    <label for="vocabWord">Word or Phrase *</label>
+                    <input type="text" id="vocabWord" placeholder="e.g., gregarious" required>
+                </div>
+                <div class="vocab-form-group">
+                    <label for="vocabDefinition">Your Definition/Note *</label>
+                    <textarea id="vocabDefinition" placeholder="Write your understanding or translation here..." required></textarea>
+                </div>
+                <div class="vocab-form-group">
+                    <label for="vocabContext">Context from Passage (Optional)</label>
+                    <textarea id="vocabContext" placeholder="Copy the sentence where you heard this word..."></textarea>
+                </div>
+                <div class="vocab-form-actions">
+                    <button type="button" class="vocab-cancel-btn" onclick="closeVocabModal()">Cancel</button>
+                    <button type="submit" class="vocab-save-btn">💾 Save Note</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function openVocabModal() { document.getElementById('vocabModal').classList.add('active'); }
+        function closeVocabModal() { document.getElementById('vocabModal').classList.remove('active'); document.getElementById('vocabForm').reset(); }
+        document.getElementById('vocabModal').addEventListener('click', function(e) { if (e.target === this) closeVocabModal(); });
+        document.getElementById('vocabForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const word = document.getElementById('vocabWord').value.trim();
+            const definition = document.getElementById('vocabDefinition').value.trim();
+            const context = document.getElementById('vocabContext').value.trim();
+            if (!word || !definition) { alert('Please fill in word and definition'); return; }
+            fetch('/save_vocabulary_note', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ test_num: {{ test_num }}, skill: 'listening', part_num: {{ part_num }}, word: word, definition: definition, context: context })
+            })
+            .then(r => r.json())
+            .then(data => {
+                if (data.success) {
+                    const msg = document.createElement('div');
+                    msg.style.cssText = 'position:fixed;top:20px;right:20px;background:#28a745;color:white;padding:15px 20px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:3000;';
+                    msg.innerHTML = '✅ Vocabulary note saved!';
+                    document.body.appendChild(msg);
+                    setTimeout(() => msg.remove(), 3000);
+                    closeVocabModal();
+                } else { alert('Error: ' + (data.error || 'Failed to save note')); }
+            })
+            .catch(() => alert('Failed to save vocabulary note'));
+        });
+    </script>
+    {% endif %}
+</body>
+</html>

@@ -339,8 +339,10 @@ def test_mode_part(test_num, skill, part_num):
         total_parts = len(available_parts)
         progress = (part_num / total_parts) * 100 if total_parts > 0 else 0
         
+        template = 'listening_test_mode_section.html' if skill == 'listening' else 'test_mode_section.html'
+        
         return render_template(
-            'test_mode_section.html',
+            template,
             section=processed_data,
             test_num=test_num,
             skill=skill,
@@ -377,8 +379,10 @@ def test_part(test_num, skill, part_num):
         test_key = f'test_{test_num}'
         saved_answers = session.get('answers', {}).get(test_key, {}).get(skill, {}).get(str(part_num), {})
         
+        template = 'listening_section.html' if skill == 'listening' else 'test_section.html'
+        
         return render_template(
-            'test_section.html',
+            template,
             section=processed_data,
             test_num=test_num,
             skill=skill,
@@ -499,11 +503,14 @@ def comprehensive_answer_key(test_num, skill):
                 else:
                     incorrect_answers += 1
             
-            parts_data.append({
+            part_entry = {
                 'part_num': part_num,
                 'title': test_data.get('title', f'Part {part_num}'),
                 'questions': questions_list
-            })
+            }
+            if test_data.get('transcript'):
+                part_entry['transcript'] = test_data['transcript']
+            parts_data.append(part_entry)
         
         # Calculate summary
         percentage = round((correct_answers / total_questions) * 100, 1) if total_questions > 0 else 0
@@ -644,6 +651,75 @@ def prepare_test_data(test_data, skill, part_num, require_answers=False):
             )
             processed['response_title'] = response_section.get('title', 'Response')
             processed['section_divider_text'] = response_section.get('instruction_text', '')
+    
+    elif test_data['type'] == 'listening':
+        processed['is_listening_type'] = True
+        processed['media_type'] = test_data.get('mediaType', 'audio')
+        processed['media_url'] = test_data.get('mediaUrl', '')
+        processed['image_url'] = test_data.get('imageUrl', '')
+        processed['image_alt'] = test_data.get('imageAlt', 'Listening illustration')
+        processed['layout'] = test_data.get('layout', 'split')
+
+        if processed['layout'] == 'per_question_audio':
+            for q in processed['questions']:
+                q['audio_url'] = q.get('audioUrl', '')
+
+            steps = []
+            sub_parts = test_data.get('sub_parts', [])
+            if sub_parts:
+                for sp in sub_parts:
+                    steps.append({
+                        'type': 'passage',
+                        'sub_part_id': sp['id'],
+                        'title': sp['title'],
+                        'audio_url': sp.get('passageAudioUrl', ''),
+                        'image_url': sp.get('imageUrl', processed['image_url']),
+                    })
+                    for q in sp.get('questions', []):
+                        q_step = {
+                            'type': 'question',
+                            'id': q['id'],
+                            'audio_url': q.get('audioUrl', ''),
+                            'text': q.get('text', ''),
+                            'options': q.get('options', []),
+                        }
+                        if q.get('imageUrl'):
+                            q_step['image_url'] = q['imageUrl']
+                        steps.append(q_step)
+            else:
+                steps.append({
+                    'type': 'passage',
+                    'title': processed['title'],
+                    'audio_url': processed['media_url'],
+                    'image_url': processed['image_url'],
+                })
+                for q in processed['questions']:
+                    q_step = {
+                        'type': 'question',
+                        'id': q['id'],
+                        'audio_url': q.get('audio_url', q.get('audioUrl', '')),
+                        'text': q.get('text', ''),
+                        'options': q.get('options', []),
+                    }
+                    if q.get('imageUrl'):
+                        q_step['image_url'] = q['imageUrl']
+                    steps.append(q_step)
+            processed['steps'] = steps
+
+        if processed['layout'] == 'full_questions':
+            dropdown_html = ''
+            for q in processed['questions']:
+                q_id = q['id']
+                dropdown_html += f'<div class="question-inline">'
+                dropdown_html += f'<span class="question-number">{q_id}.</span> '
+                dropdown_html += f'<span class="question-label">{q["text"]}</span> '
+                dropdown_html += f'<select class="inline-dropdown" name="q{q_id}" data-question="{q_id}">'
+                dropdown_html += '<option value="">-- Select --</option>'
+                for idx, option in enumerate(q.get('options', [])):
+                    dropdown_html += f'<option value="{idx}">{option}</option>'
+                dropdown_html += '</select>'
+                dropdown_html += '</div>'
+            processed['questions_dropdown_html'] = dropdown_html
     
     return processed
 
@@ -791,6 +867,23 @@ def prepare_answer_key_data(test_data, skill, part_num):
                     'correct_answer': correct_answers.get(q['id'])
                 }
                 processed['response_passage_questions'].append(q_data)
+    
+    elif test_data['type'] == 'listening':
+        processed['is_listening_type'] = True
+        processed['transcript'] = test_data.get('transcript', '')
+        questions_section = data_loader.get_section_by_type(test_data, 'questions')
+        
+        if questions_section:
+            for q in questions_section['questions']:
+                q_data = {
+                    'id': q['id'],
+                    'text': q.get('text', q.get('question', f"Question {q['id']}")),
+                    'options': [(idx, opt) for idx, opt in enumerate(q['options'])],
+                    'correct_answer': correct_answers.get(q['id'])
+                }
+                if q.get('imageUrl'):
+                    q_data['image_url'] = q['imageUrl']
+                processed['all_questions'].append(q_data)
     
     return processed
 

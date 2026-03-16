@@ -1,0 +1,87 @@
+{
+  "part": 6,
+  "title": "Listening for Viewpoints",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a report once. It is about 3 minutes long. Then 6 questions will appear. Choose the best way to answer each question from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688398/p6.m4a",
+  "imageUrl": "/static/images/test_2/listening/p6_passage.png",
+  "imageAlt": "A presentation about free trade in Canada",
+  "layout": "full_questions",
+  "context": "You will hear a presentation about free trade.",
+  "transcript": "Have you heard this crazy thing about free trade in Canada? It is actually easier for a winery in California to send a case of wine into Alberta than for a BC winery to do the same—all because of the existing trade agreement between the provinces, which has been in effect since 1995.\n\nDespite the fact that 40% of Canada's exports are actually to other provinces, the regulatory environment on trade is completely restrictive. And it's not just wine and beer that have been affected. Everything from refrigerators to artisanal cheese has had barriers to their trade, from outright restrictions to enormous amounts of red tape.\n\nIn the previous trade agreement, the provinces had to list all of the trade items that were to be allowed to pass freely over the borders, and it was inevitable that some items were left off the list. Wine and beer, for example, have been left off the list since 1928, when a law was enacted that allowed provincial governments to control alcohol sales across their borders. Slow-moving change makes it understandable why these details have never come off the books.\n\nOn July 1, 2017, Canada's 150th birthday, the Canadian Free Trade Agreement, or CFTA, was brought into effect. It uses a \"negative list\" approach. Essentially, jurisdictions will lift all barriers to trade, but must now list specific exceptions.\n\nTerry Witten, a prominent trade lawyer, says, \"The solution is a modern and ambitious agreement, and one that will primarily reduce regulatory barriers. It promises to reduce or eliminate red tape for businesses, and this will allow for freer movement of workers in the trades and working across boundaries. Also, businesses can bid on work in different provinces.\"\n\nTo others, the CFTA sounds better in theory. Instead of having to depend on a list of approved trade items, everything is fair for export, unless there's a mention of it in the exceptions list. But in all the hype about how great this agreement is, no one mentions the fact that there are 160 pages of exceptions!\n\nBecause of this, some think that instead of just dropping regulations from almost 100 years ago, they've created more procedures and processes. In response to critics, the government has now created a CFTA working group to devise a solution. Sandy Ford, an activist and business owner, is skeptical. \"This is really just creating one more step instead of simply lifting all restrictions,\" she says. Really, in the end, all we can hope for is that a more liberal process will be forthcoming, because now it is only marginally better than it was before!",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "The purpose of this talk is to",
+          "options": [
+            "propose changes to a trade agreement.",
+            "discuss the trade of wine and beer in Canada.",
+            "describe changes to interprovincial trade.",
+            "explain trade between the USA and Canada."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 2,
+          "text": "The speaker states that 40% of Canadian trade",
+          "options": [
+            "is to the United States.",
+            "is highly regulated.",
+            "is between large companies.",
+            "is between provinces."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 3,
+          "text": "Current restrictions on wine and beer sales exist because",
+          "options": [
+            "Canadians think the sale of alcohol should be regulated.",
+            "historical laws are hard to change.",
+            "wine and beer sales are increasing.",
+            "provincial politicians are unable to change the law."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "text": "Terry Witten would probably agree that",
+          "options": [
+            "the new agreement will restrict workers.",
+            "the old regulations had less red tape.",
+            "non-local businesses should be penalized.",
+            "the new agreement is an improvement."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 5,
+          "text": "The new agreement has a long list of",
+          "options": [
+            "product exceptions.",
+            "product recommendations.",
+            "approved trade items.",
+            "required trade items."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 6,
+          "text": "According to Sandy Ford, the new agreement",
+          "options": [
+            "includes fewer policies and procedures.",
+            "promotes a more liberal change.",
+            "is an entirely positive one for provinces.",
+            "has added unnecessary measures."
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ]
+}

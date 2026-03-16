@@ -1,0 +1,87 @@
+{
+  "part": 6,
+  "title": "Listening for Viewpoints",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a report once. It is about 3 minutes long. Then 6 questions will appear. Choose the best way to answer each question from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773681613/part6_passage.m4a",
+  "imageUrl": "/static/images/test_1/listening/p6_passage.png",
+  "imageAlt": "A report about school uniforms in Canada",
+  "layout": "full_questions",
+  "context": "You will hear a report about the use of uniforms in schools in Canada.",
+  "transcript": "Asha Miller is a grade 11 student at Giles Secondary, a private school. She is pushing for her school to change their school uniform policy. Asha has recently started a petition protesting the school's mandatory attire. Her cause has attracted a large number of supporters within the student body, and also from some parents and school staff. At the same time, many among the student body, faculty, and parents are in favour of continuing the school tradition.\n\nThe debate about whether or not students should wear a uniform to school or not is quite common in Canadian private schools. Although a few public schools also require students to wear a school uniform, most public schools don't require this.\n\nOne of the most common arguments for uniforms is that students will not be as distracted from their studies by fashion choices or peer pressure. Consequently, students focus on better grades and they are also easier to discipline. Uniforms are also thought to play a role in creating a sense of belonging and school culture that is important for cooperation and unity.\n\nCritics, such as child psychologist Dr. Jason Ferguson, say there is no concrete evidence that links school uniforms to improved educational results. In fact, academic performance scores in schools that adopt uniforms and those that do not often average the same. Moreover, dissenters point out that students required to wear uniforms typically manage to fight the rules, and \"individualize\" their uniforms by wearing unique shoes or accessories. But perhaps the most damaging argument against uniforms is that they can discriminate against certain religions or cultures.\n\nThe school's administration advocates that there is a middle ground. Uniforms can work with students' diverse cultural needs, if the school authorities consult parents about what is acceptable. Exceptions could be made, such as, for example, allowing Muslim girls to wear long loose trousers instead of skirts that might not provide adequate coverage.\n\nAsha Miller thinks such accommodations don't quite suffice, and she advances a different alternative. She is suggesting that uniforms be abolished in favour of a dress code that specifies the kinds of clothes that can be worn, including the length of dresses, amount of exposed skin, cleanliness, and so on. She argues this solution would address the concerns of all parties. Students wouldn't feel constrained in how they express their identity and cultural beliefs; meanwhile, appropriate school attire and discipline would be maintained. She adds that adolescence is a particularly critical phase in a person's life in which they are trying to figure out who they are and where they fit, and clothing choice is a way to truly express one's interests and personality.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Asha Miller's campaign has received",
+          "options": [
+            "unanimous support from students and teachers.",
+            "opposition from all of the school's faculty.",
+            "resistance from traditionalists in the school.",
+            "growing media support following the school debate."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 2,
+          "text": "School uniform policy",
+          "options": [
+            "has been newly implemented in the public school system.",
+            "affects mostly students attending private schools.",
+            "is being considered as a country-wide policy in Canada.",
+            "was eliminated by a student initiative at Giles Secondary."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 3,
+          "text": "Uniforms are generally adopted because they",
+          "options": [
+            "eliminate issues of religious affiliations.",
+            "promote equal rights for all students.",
+            "help students focus on academics, not fashion.",
+            "reduce awareness of individual identity."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 4,
+          "text": "According to the report, opponents of uniforms state that their use",
+          "options": [
+            "is not always culturally sensitive.",
+            "impacts academic achievement negatively.",
+            "does not interfere with obedience in class.",
+            "may generate fights amongst students."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "text": "The school administration shows",
+          "options": [
+            "some flexibility to the enforcement of uniform rules.",
+            "unwillingness to bring the matter for discussion.",
+            "disapproval for teachers who support the petition.",
+            "intention to ban the use of uniform rules in the future."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 6,
+          "text": "An alternative to the prevailing uniform policy, Asha suggests that the school should",
+          "options": [
+            "allow Muslim girls to wear pants.",
+            "allow students to personalize their uniforms with accessories.",
+            "allow students to vote on whether uniforms should be banned.",
+            "provide students with a clear dress code to be applied to regular clothes."
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ]
+}

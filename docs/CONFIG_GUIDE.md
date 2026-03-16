@@ -26,21 +26,30 @@ Edit `time_per_question` to change time allocation for each skill:
 "reading": 2.0
 ```
 
-### Custom Timeouts
+### Time Adjustments
 
-Override time for specific test parts:
+Add extra (or reduced) time to specific parts across **all tests**. The final timeout is calculated as:
+
+```
+final_timeout = (num_questions × time_per_question) + time_adjustment
+```
 
 ```json
 {
-  "custom_timeouts": {
-    "1_reading_1": 20.0,    // Test 1, Reading, Part 1: 20 minutes
-    "1_reading_3": 15.0,    // Test 1, Reading, Part 3: 15 minutes
-    "2_writing_1": 35.0     // Test 2, Writing, Part 1: 35 minutes
+  "time_adjustments": {
+    "reading_part1": 1.0,    // All Reading Part 1: add 1 extra minute
+    "reading_part3": 2.5,    // All Reading Part 3: add 2.5 extra minutes
+    "writing_part1": -5.0,   // All Writing Part 1: reduce by 5 minutes
+    "listening_part2": 0.5   // All Listening Part 2: add 30 seconds
   }
 }
 ```
 
-**Format:** `"test_skill_part": minutes`
+**Format:** `"skill_partN": adjustment_in_minutes`
+
+- Positive values add time, negative values reduce time
+- Applies to all tests (Test 1, Test 2, ...) for that skill/part
+- Set to `0` for no adjustment (uses calculated default)
 
 ## 🎨 UI Settings
 
@@ -129,18 +138,23 @@ Changes take effect immediately!
 "reading": 2.0  // 11 questions = 22 minutes
 ```
 
-### Scenario 2: Different Time for Specific Test
+### Scenario 2: Extra Time for a Difficult Part
 
-**Problem:** Test 1 Part 3 is harder, needs more time
+**Problem:** Reading Part 3 is harder, needs more time across all tests
 
 **Solution:**
 ```json
 {
-  "custom_timeouts": {
-    "1_reading_3": 18.0  // Extra time for this specific part
+  "time_adjustments": {
+    "reading_part3": 3.0  // Add 3 extra minutes to all Reading Part 3
   }
 }
 ```
+
+If Reading Part 3 has 8 questions and `time_per_question.reading` is 1.5:
+- Base timeout = 8 × 1.5 = 12.0 minutes
+- Adjustment = +3.0 minutes
+- **Final timeout = 15.0 minutes**
 
 ### Scenario 3: Change Warning Alert Time
 
@@ -186,7 +200,7 @@ If `config.json` is missing, these defaults are used:
     "listening": 1.5
   },
   "default_time_per_question": 1.5,
-  "custom_timeouts": {}
+  "time_adjustments": {}
 }
 ```
 

@@ -75,7 +75,10 @@ celpip/
 │
 ├── templates/                 # HTML templates (Web platform)
 │   ├── index.html
-│   └── test_section.html
+│   ├── test_section.html              # Reading Practice Mode
+│   ├── test_mode_section.html         # Reading Test Mode
+│   ├── listening_section.html         # Listening Practice Mode (state machine)
+│   └── listening_test_mode_section.html # Listening Test Mode (state machine)
 │
 └── utils/                          # Business logic (reusable)
     ├── __init__.py
@@ -203,8 +206,14 @@ Not imported directly anywhere else in the application.
 
 **Key Routes**:
 - `GET /` — Home page, list all available tests
-- `GET /test/<set>/<skill>/part<part>` — Display test
-- `POST /submit_answers` — Process and score answers
+- `GET /test/<set>/<skill>/part<part>` — Display test (auto-selects template by skill)
+- `GET /test/<set>/exam/<skill>/part<part>` — Test Mode (auto-selects template by skill)
+- `POST /submit_answers` — Process and score answers (Practice)
+- `POST /submit_test_mode` — Process and score answers (Test Mode)
+
+**Template Selection**: Routes automatically select the appropriate template based on skill:
+- `skill == 'listening'` → `listening_section.html` / `listening_test_mode_section.html`
+- All other skills → `test_section.html` / `test_mode_section.html`
 
 **Platform-Specific**: Only for Web app
 
@@ -212,25 +221,64 @@ Not imported directly anywhere else in the application.
 
 **Purpose**: Platform-agnostic test content
 
-**Structure**:
+**Reading Structure**:
 ```json
 {
   "part": 1,
   "title": "Part Title",
-  "type": "test_type",
+  "type": "correspondence|diagram|information|viewpoints",
   "instructions": "Instructions...",
-  "timeout_minutes": 16.5,
   "sections": [
     {
       "section_type": "passage|questions|diagram_email|response_passage",
       "content": "Content with __DROPDOWN_X__ placeholders",
       "questions": [
-        {
-          "id": 1,
-          "text": "Question text",
-          "options": ["A", "B", "C", "D"],
-          "answer": 0
-        }
+        { "id": 1, "text": "Question text", "options": ["A", "B", "C", "D"], "answer": 0 }
+      ]
+    }
+  ]
+}
+```
+
+**Listening Structure (Parts 1-3, per-question audio)**:
+```json
+{
+  "part": 1,
+  "title": "Part Title",
+  "type": "listening",
+  "mediaType": "audio",
+  "mediaUrl": "/static/audio/test_X/listening/partN.mp3",
+  "imageUrl": "/static/images/test_X/listening/partN_scene.png",
+  "layout": "per_question_audio",
+  "sub_parts": [
+    {
+      "id": "1.1", "title": "Sub-part Title",
+      "passageAudioUrl": "/static/audio/test_X/listening/part1_1_passage.mp3",
+      "imageUrl": "/static/images/test_X/listening/part1_scene.png",
+      "questions": [
+        { "id": 1, "audioUrl": "/static/audio/test_X/listening/part1_q1.mp3", "text": "...", "options": ["A","B","C","D"], "answer": 0 }
+      ]
+    }
+  ],
+  "sections": [{ "section_type": "questions", "questions": [...] }]
+}
+```
+
+**Listening Structure (Parts 4-6, dropdown selects)**:
+```json
+{
+  "part": 4,
+  "title": "Part Title",
+  "type": "listening",
+  "mediaType": "audio|video",
+  "mediaUrl": "/static/audio/test_X/listening/partN.mp3",
+  "imageUrl": "/static/images/test_X/listening/partN_scene.png",
+  "layout": "full_questions",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        { "id": 1, "text": "Question text", "options": ["A", "B", "C", "D"], "answer": 0 }
       ]
     }
   ]
@@ -239,7 +287,11 @@ Not imported directly anywhere else in the application.
 
 **Platform Notes**:
 - Same format for all platforms
-- `__DROPDOWN_X__` placeholders replaced by platform-specific UI
+- Reading: `__DROPDOWN_X__` placeholders replaced by platform-specific UI
+- Listening Parts 1-3: `audioUrl` per question, optional `sub_parts` array
+- Listening Parts 4-6: Questions rendered as inline dropdowns
+- Listening: `mediaUrl` can point to local files or cloud URLs (e.g., Cloudinary)
+- Listening: Questions can have optional `imageUrl` for image-based answer options (displayed in left panel during question state)
 
 ## Test Types
 
@@ -249,18 +301,55 @@ Not imported directly anywhere else in the application.
 |------|------|-----------|------|--------|
 | 1 | Correspondence | 11 | 16.5 min | Side-by-side |
 | 2 | Diagram | 8 | 12 min | Side-by-side |
-| 3 | Information | 9 | 13.5 min | TBD |
-| 4 | Viewpoints | 10 | 15 min | TBD |
+| 3 | Information | 9 | 13.5 min | Side-by-side |
+| 4 | Viewpoints | 10 | 15 min | Side-by-side |
 
-### Writing Skill (2 parts)
+### Listening Skill (6 parts) ✅ Implemented
+
+| Part | Type | Questions | Media | Layout | Question UI |
+|------|------|-----------|-------|--------|-------------|
+| 1 | Problem Solving | 5 (3 sub-parts) | Audio | Sequential: 1 question at a time, 30s timer | Radio buttons |
+| 2 | Daily Life Conversation | 5 | Audio | Sequential: 1 question at a time, 30s timer | Radio buttons |
+| 3 | Listening for Information | 5 | Audio | Sequential: 1 question at a time, 30s timer | Radio buttons |
+| 4 | News Item | 6 | Audio | Full-width, all questions at once | Inline dropdowns |
+| 5 | Discussion | 6 | Video | Full-width, all questions at once | Inline dropdowns |
+| 6 | Viewpoints | 6 | Audio | Full-width, all questions at once | Inline dropdowns |
+
+**Listening Architecture — State Machine:**
+
+Parts 1-3: Sequential flow driven by a JS `steps` array. Audio plays once only.
+```
+┌─────────────┐     ended     ┌─────────────┐     ended     ┌─────────────┐
+│ PASSAGE 1.1 │ ───────────► │  QUESTION 1  │ ──── next ──► │  QUESTION 2  │
+│  (auto-play │               │  - Split pane│               │  (30s timer) │
+│   once)     │               │  - Audio L   │               │              │
+└─────────────┘               │  - Options R │               └──────┬───────┘
+                              │  - 30s timer │                      │
+                              └──────────────┘                      ▼
+                                                          ┌─────────────┐
+                                                          │ PASSAGE 1.2 │ → Q3 → Q4 → ...
+                                                          └─────────────┘
+```
+
+Parts 4-6: Passage → All Questions (dropdowns).
+```
+┌──────────────────┐     audio.onEnded     ┌────────────────────────────┐
+│  PASSAGE STATE   │ ───────────────────►  │  QUESTIONS (dropdowns)     │
+│  - Play button   │                       │  - Full-width              │
+│  - Progress bar  │     skip button       │  - Inline selects          │
+│  - Visualizer    │ ───────────────────►  │  - Selected → text span    │
+│  - Skip button   │                       │                            │
+└──────────────────┘                       └────────────────────────────┘
+```
+
+**Question-level images**: Questions can have an optional `imageUrl` field. When present, the left panel displays the question-specific image instead of the passage image (e.g., Part 1 Q4 where answer options reference numbered areas in an image).
+
+### Writing Skill (2 parts) — Planned
 - Part 1: Email writing
 - Part 2: Survey response
 
-### Speaking Skill (8 parts)
+### Speaking Skill (8 parts) — Planned
 - Various speaking tasks with recording
-
-### Listening Skill (6 parts)
-- Audio comprehension with multiple choice
 
 ## Future Platform Implementations
 

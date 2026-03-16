@@ -1,0 +1,109 @@
+{
+  "part": 5,
+  "title": "Listening to a Discussion",
+  "type": "listening",
+  "listening_type": "video",
+  "instructions": "You will watch a 2-minute video. Then 8 questions will appear. Choose the best way to answer each question.",
+  "mediaType": "video",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688463/p5.mp4",
+  "imageUrl": "/static/images/test_2/listening/p5_passage.png",
+  "imageAlt": "Three colleagues having a conversation in the lunch room",
+  "layout": "full_questions",
+  "context": "You will watch a discussion among three people. They are colleagues at work. They are having a conversation in the lunch room.",
+  "transcript": "Mark: Hey, have you two heard that they're thinking of changing our vacation policy?\nGlenda: Changing it how? I hope they're not thinking of reducing the number of days we get!\nTrish: They'd better not be thinking that! I've worked here a long time in order to earn my three weeks' vacation every year. I'll sue if they suddenly say I can only have two weeks!\nMark: No, I don't think they're changing the total number of days that we're entitled to. I believe they're considering changing how many we can take at one time.\nTrish: You mean I can't take all my weeks at the same time? But one week isn't long enough to go anywhere! Two weeks is barely long enough!\nMark: No, what they're saying—or, at least, what I believe they're saying—is you can't just take a day here and a day there. You know how Phil takes all of his vacation days on Fridays? So, he has three-day weekends all summer long?\nGlenda: This new rule applies to any single days? But I often take my vacation days for when my kids are sick.\nMark: Well, I think what they're saying is you have to take your vacation in minimum 5-day chunks—whole weeks. I sort of see what they're saying. It's a lot harder to cover one day than it is to hire a temp for a week or two.\nGlenda: You're right—a temp for a day doesn't help much. Still, I think we should be able to take our vacation days however we want.\nTrish: I totally agree. Too bad we don't have a union. Do either of you want to come down to Human Resources with me to make a complaint?\nMark: No, don't do that! I mean, at least confirm the change in policy first. At this point, it's all just hearsay, rumours . . .\nGlenda: I'll come with you. I need those individual days for when my kids are sick!\nTrish: I'm not sure your point is relevant. We're all entitled to days off. What you do on those days shouldn't be considered any more important than anyone else's choices.\nGlenda: I agree, in theory. But—you don't have kids, do you? . . .",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "What is the conversation mainly about?",
+          "options": [
+            "the way people spend their vacations",
+            "a modification in the vacation rules",
+            "a decrease in the number of vacation days",
+            "the man's violation of the vacation policy"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "text": "Under what condition does Trish threaten to sue the company?",
+          "options": [
+            "if it decreases her vacation time",
+            "if it denies her scheduled vacation",
+            "if it refuses to pay for her vacation time",
+            "if it insists she vacation 1 week at a time"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "text": "What is likely true of Trish?",
+          "options": [
+            "She does not travel very far for her vacations.",
+            "She is hesitant to complain about the company.",
+            "She takes all of her vacation time at once.",
+            "She has not worked for the company very long."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 4,
+          "text": "What does Glenda usually use her time off for?",
+          "options": [
+            "family holidays",
+            "extended weekends",
+            "personal errands",
+            "parental duties"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 5,
+          "text": "How does Mark feel?",
+          "options": [
+            "uncertain about the information he shared",
+            "happy with the Human Resources department",
+            "angry about the rumours he has heard",
+            "supportive of filing a formal complaint"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 6,
+          "text": "How does Mark respond to the possible change?",
+          "options": [
+            "He wants to improve it.",
+            "He thinks about quitting.",
+            "He refuses to consider it.",
+            "He tries to understand."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 7,
+          "text": "What do the two women decide to do?",
+          "options": [
+            "write a letter of complaint",
+            "investigate the matter",
+            "escalate their grievance",
+            "contact their union officer"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 8,
+          "text": "What is Trish's attitude toward parents needing days off?",
+          "options": [
+            "receptive",
+            "unsympathetic",
+            "disgusted",
+            "accommodating"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}

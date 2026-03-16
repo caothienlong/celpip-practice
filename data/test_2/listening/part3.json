@@ -1,0 +1,93 @@
+{
+  "part": 3,
+  "title": "Listening for Information",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 6 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688463/p3.m4a",
+  "imageUrl": "/static/images/test_2/listening/p3_passage.png",
+  "imageAlt": "Two office employees at a workstation",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation between two office employees, a man and a woman.",
+  "transcript": "MAN: Hello, Ms. Green? I'm Robert. I've been told to report to you.\nWOMAN: Oh hello, Robert. Yes, please, this way. This will be your workstation. Someone from Info Tech will be up later this morning to get you set up with your computer password and make sure that you can access all our basic programs.\nMAN: Do you use Windows? Microsoft Office? I'm quite familiar with that operating system and those programs.\nWOMAN: Yes, we do. There are also two other specialized programs you'll be using, but Info Tech will show you how to access the self-study tutorials. In a couple days, I'll check with you to see if you have any problems.\nMAN: Thanks. I shouldn't have any issues, though. I've done this type of work before.\nWOMAN: That's good to hear! Our supplies closet is at the end of the hall. Marie should have equipped your desk with everything you need, but if there is something missing, please go help yourself. Do remember to sign the sheet for everything you take.\nMAN: Okay. If there's something I need that isn't in the closet, should I ask Marie?\nWOMAN: Yes. If it's not something she can provide, come see me. We may need to make a special request, though I can't imagine you'll need anything other than our usual supplies.\nMAN: Got it. I doubt I'll be needing anything else either.\nWOMAN: You're scheduled to see someone in Human Resources later this afternoon. She'll walk you through all the paperwork to get you set up, direct deposit for payroll, as well as our various benefits. Most people find the information overwhelming, so feel free to take it home with you. You'll want to think about the various options with respect to medical and pension.\nMAN: I didn't have any benefits at my last job, so I think I may indeed be overwhelmed. Thank you for your advice.\nWOMAN: Lastly, we stagger our lunch hours so our department is always staffed. Are you okay with 12:30?\nMAN: Yes, that'll be fine. The lunch break is 45 minutes?\nWOMAN: Yes. There's a cafeteria on site, but for your breaks, if you want a snack, there's a snack cart that comes around. You'll know when it's here—people rush out of their seats to get the good stuff! My personal favourite are their soft pretzels!",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688463/p3-q1.m4a",
+          "text": "Question 1",
+          "options": [
+            "a security officer",
+            "an orientation guide",
+            "a personal assistant",
+            "a fellow newcomer"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688463/p3-q2.m4a",
+          "text": "Question 2",
+          "options": [
+            "The man was hired as a temporary employee.",
+            "This is the man's first day on the job.",
+            "This is a new field of work for the man.",
+            "The man will work in the Info Tech department."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688463/p3-q3.m4a",
+          "text": "Question 3",
+          "options": [
+            "later that day",
+            "in a couple days",
+            "early next week",
+            "tomorrow morning"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688463/p3-q4.m4a",
+          "text": "Question 4",
+          "options": [
+            "Marie will show him where to find them.",
+            "Employees must pass a test before using them.",
+            "He is expected to teach himself how to use them.",
+            "They sound like difficult programs to learn."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 5,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688463/p3-q5.m4a",
+          "text": "Question 5",
+          "options": [
+            "carefully consider his decisions",
+            "opt out of the company's plan",
+            "skip the meeting about benefits",
+            "reschedule his benefits meeting"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 6,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/v1773688463/p3-q6.m4a",
+          "text": "Question 6",
+          "options": [
+            "She has eaten pretzels from the cart.",
+            "She goes to the cafeteria for lunch.",
+            "She does not have snacks for break.",
+            "She has arranged the cart's schedule."
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}
