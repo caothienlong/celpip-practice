@@ -1,0 +1,107 @@
+{
+  "part": 5,
+  "title": "Listening to a Discussion",
+  "type": "listening",
+  "listening_type": "video",
+  "instructions": "You will watch a 2-minute video. Then 8 questions will appear. Choose the best way to answer each question.",
+  "mediaType": "video",
+  "mediaUrl": "",
+  "layout": "full_questions",
+  "context": "You will watch a discussion among three people, one woman and two men. They are discussing a situation that is happening in the hospital gift shop.",
+  "transcript": "Janet: Thanks for getting together today. We need to talk about the situation at the hospital gift shop. We need to understand exactly what's going on so we can report at the Hospital Auxiliary meeting next week.\nJason: What situation? I haven't heard anything.\nAlec: Haven't you noticed that some of the stock has been disappearing more quickly than usual? If you check the sales records, sales haven't been going up, if anything they've been going down lately.\nJason: How can that be? Doesn't everybody know that we're a volunteer organization and that all the money we raise there goes to buying medical supplies?\nAlec: Well, you'd think so! I mean certainly, the staff appreciate the work that we do. I'm positive it's no one from staff involved.\nJason: So are you saying that somebody has stolen the stock? One of the volunteers? Or a customer? And that someone is stealing money from the cash register? That would have to be one of the gift shop volunteers, right?\nAlec: It's just too dreadful to think about. But we have to decide what we're going to do about the situation.\nJanet: I think first we should compare the computer inventory with what we actually have in the store. That way, we can identify what's missing and how much money has actually been lost.\nAlec: That's a good idea. You know, maybe it's someone from staff who's just taken something home on approval and forgot to pay for it. I mean, maybe that's all that's happening.\nJason: Well, there should be a record so that we can tell at a glance what hasn't been paid for yet and by whom.\nJanet: There is—there's a notebook. Maybe people have forgotten about it. You know what, we should just get rid of on-approval privilege. It's always been a nuisance.\nJason: Maybe we should install a security camera. That way, if the problem continues, we can know exactly what's happening, and we can involve the police. I could price some different cameras and then bring up the idea at the next meeting.\nAlec: I can call all the volunteers who work in the gift shop and let them know to be more to watchful. That way, they'll know that we are aware there's a theft problem going on. If it is a volunteer involved, maybe that will resolve the issue.\nJanet: First, let's get the inventory done and see how serious the situation actually is. Maybe the shelves just look empty and it's not as bad as we think it is. I can do it tomorrow morning.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "What are the roles of these three people?",
+          "options": [
+            "managers of a volunteer organization",
+            "distributors of medical supplies",
+            "trainers of hospital volunteers",
+            "cashiers at the hospital gift shop"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "text": "What is the primary purpose of their meeting?",
+          "options": [
+            "to investigate a problem",
+            "to take stock of inventory",
+            "to follow up on a meeting",
+            "to discuss volunteer workers"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "text": "Why does Jason, the man on the left, ask so many questions?",
+          "options": [
+            "He thinks Janet knows what happened.",
+            "He is unaware of the state of affairs.",
+            "He disagrees that there is a problem.",
+            "He wants to attract their attention."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "text": "What is the purpose of the gift shop?",
+          "options": [
+            "to collect funds for hospital supplies",
+            "to provide volunteering opportunities",
+            "to raise money for volunteer projects",
+            "to finance the hospital's expansion"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "text": "Why does Alec, the man in the middle, rule out hospital staff as suspects?",
+          "options": [
+            "The staff are aware of the security camera.",
+            "The staff reported the missing inventory.",
+            "The staff support the gift shop.",
+            "The staff undergo security checks."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 6,
+          "text": "How does the meeting end?",
+          "options": [
+            "They remain conflicted about what to do.",
+            "They have each taken on a specific task.",
+            "They decide to postpone the investigation.",
+            "They have prepared a report for the hospital."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 7,
+          "text": "Why isn't the on-approval system working?",
+          "options": [
+            "People fail to keep track of items taken.",
+            "Volunteers are unaware of the notebook.",
+            "The same items are always being taken.",
+            "Too much time is wasted checking inventory."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 8,
+          "text": "What is one possible explanation given for the situation?",
+          "options": [
+            "Customers know the shop lacks proper security.",
+            "The shop's inventory lists are inaccurate.",
+            "Shop workers have reduced stock prices.",
+            "Shop workers have neglected to pay for items."
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "part": 6,
+  "title": "Listening for Viewpoints",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a report once. It is about 3 minutes long. Then 6 questions will appear. Choose the best way to answer each question from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "layout": "full_questions",
+  "context": "You will hear a presentation about options for acquiring a car.",
+  "transcript": "Welcome, everyone, to today's community centre workshop on purchasing a vehicle. Buying a car can certainly seem like a daunting task, but it's not actually as complicated as it seems. The fact of the matter is, what you need really depends on why you need it. This morning we will explore three options to help you make your decision: buying a used car, buying a new car, and leasing a new car.\nBusiness owner Jane Repton prefers to buy a used car because it's the cheapest option. Not only is the vehicle itself cheap, but insurance for the vehicle will also be low-cost since you'd probably just get the minimum—the insurance required by law. Presumably you wouldn't get replacement insurance: if the car is damaged beyond repair in an accident, you just get rid of it and buy another one. That being said, buying a used car can be risky because there's no warranty: you'll have to pay for any repairs yourself. And even Repton admits that used cars can be unreliable. She admits that she takes the bus to work more often than she'd like.\nCar salesperson Ron McNab says that if you depend heavily on your vehicle, you should go with a new car. If you lease, there's a limit of 20,000 kilometers annually; more than that and it'll cost you. So McNab prefers to buy. Another advantage of buying new is that you know the vehicle's history from day one, and you'll be the one managing its long-term condition. McNab always chooses a new car. Yes, they're more expensive than used cars, but it's possible to get a car loan with no interest—'zero-percent financing,' they call it. Plus, with a new car, you can get up-to-date safety features and the best fuel economy.\nOn the other hand, lawyer Tom Purdy prefers to lease cars. He pays the monthly fee, and when the lease is up, he turns the car in and leases a new one. The reason he prefers to lease is because the company leasing the car looks after everything, including maintenance and repairs. All the driver has to do is get gas and pay the monthly premium. According to Purdy, it's hassle-free driving. However, Repton and McNab agree that they would never lease, claiming that it takes a lawyer to understand all the legal jargon in the contract.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "One advantage of choosing a used car is",
+          "options": [
+            "inexpensive insurance.",
+            "consumer protection laws.",
+            "access to the car's history.",
+            "a variety of vehicle options."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "text": "For business owner Jane Repton, buying a used car involves",
+          "options": [
+            "a compromise.",
+            "a legal ordeal.",
+            "a lot of time.",
+            "a lot of luck."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "text": "It can be inferred that McNab",
+          "options": [
+            "doesn't care how much a car costs him.",
+            "likes all the optional features of new cars.",
+            "drives more than 20,000 kilometers per year.",
+            "values short-term performance of a car."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 4,
+          "text": "Car salesperson Ron McNab prefers buying a new car because",
+          "options": [
+            "new cars require less paperwork.",
+            "new cars can be much better on gas.",
+            "he doesn't mind paying monthly fees.",
+            "he thinks they're the cheapest option."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "text": "Lawyer Tom Purdy is most interested in",
+          "options": [
+            "status and style.",
+            "convenience.",
+            "a clear contract.",
+            "safety."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 6,
+          "text": "The speaker's primary purpose is to",
+          "options": [
+            "facilitate an academic debate.",
+            "solicit audience participation.",
+            "introduce entertaining guests.",
+            "provide helpful information."
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ]
+}

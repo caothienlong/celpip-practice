@@ -1,0 +1,108 @@
+{
+  "part": 5,
+  "title": "Listening to a Discussion",
+  "type": "listening",
+  "listening_type": "video",
+  "instructions": "You will watch a 2-minute video. Then 8 questions will appear. Choose the best way to answer each question.",
+  "mediaType": "video",
+  "mediaUrl": "",
+  "imageAlt": "Three members of a singles' club discussing a trip",
+  "layout": "full_questions",
+  "context": "You will watch a discussion between three people who belong to a singles' social club. They are planning a group trip to Montreal.",
+  "transcript": "WOMAN: So, as of today we have six members signed up for our Montreal trip. I'm still waiting to hear back from four others. Everyone wants to keep round-trip travel costs to $100 a person.\nMAN 1: The cheapest weekend train fare you can get this time of year is $300 a person, round trip. And that's the seniors' rate for ages 55 and up! Only some of us fall into that age group.\nMAN 2: Well, $300 is a lot more than I intended to pay. Is that a group rate?\nMAN 1: No, that's the individual rate for up to six seniors . . . We only have six people signed up so far. If ten or more people sign up, we qualify for the group rate.\nWOMAN: Now, the problem with the train is that it leaves from Central Station. And with all the downtown traffic congestion, it can be hard for people to get to, especially if they're not one of the few urban dwellers among us . . . or unless they live near public transit. Is it possible that we can catch the train somewhere near our homes?\nMAN 1: I'll have to get back to you on that. I do know that in order to qualify for the group discount, we'd all have to board and disembark at the same station!\nWOMAN: Hmm. That's not so great. Would we be able to rent a van? That way, we can pick up and drop off people right at their doorsteps.\nMAN 2: Well, for seven to fifteen people, we could rent a passenger van. You wouldn't have to pay me to drive it. But I would have to get back to you with a quote about the rental cost. But if we had, say, sixteen to twenty-four people, we could charter a small tour bus and hire a driver.\nMAN 1: But wouldn't a bus take longer than the train? We've only got a three-day weekend!\nMAN 2: Well, a nonstop train gets you there in five hours; we know this for sure. The bus would only take longer if we decided to take breaks along the way. But sightseeing breaks are a bonus. We all agreed on that. I mean, that's one reason we chose not to go by air in the first place.\nMAN 1: One of the downside of chartering a bus is it would cost thousands of dollars, and we'd have to pay the driver. We'd have to fill every seat to make it cost effective.\nWOMAN: Okay, so . . . highway or railway? In terms of price, it sounds to me like six of one, half a dozen of the other. It really depends on how many people we can get. Once we know that, we can firm up pricing.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "In what order are the travel options discussed?",
+          "options": [
+            "bus, train, van",
+            "bus, van, train",
+            "train, bus, van",
+            "train, van, bus"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 2,
+          "text": "What is true of group discounts on train tickets?",
+          "options": [
+            "Everyone must get on and off at the same stop.",
+            "Group discounts are not offered on weekends.",
+            "Six passengers must all buy tickets together.",
+            "Seniors' and group rates cannot be combined."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "text": "What is the advantage of rail travel?",
+          "options": [
+            "the convenient departure station",
+            "the two-way individual ticket price",
+            "the predictably short trip duration",
+            "the station where everyone gets off"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 4,
+          "text": "Where do most of the club members probably live?",
+          "options": [
+            "in the downtown area",
+            "near a subway line",
+            "in suburban areas",
+            "near a bus station"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 5,
+          "text": "Can club members get on the train near their homes?",
+          "options": [
+            "No, they must all board at the central station.",
+            "Maybe, and one of the men will find out.",
+            "Probably, but only if they get on together.",
+            "Yes, but it means no group discount."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 6,
+          "text": "What does the man in the middle want to maximize?",
+          "options": [
+            "the amount of sightseeing on the way",
+            "the length of time spent in Montreal",
+            "the number of club members aged 55+",
+            "the seating capacity of the charter bus"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 7,
+          "text": "Overall, what is the group's main priority?",
+          "options": [
+            "ability to stop along the way",
+            "convenient departure point",
+            "per passenger travel costs",
+            "total round trip transit time"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 8,
+          "text": "If nine members sign up, how will they probably travel?",
+          "options": [
+            "charter tour bus",
+            "passenger van",
+            "railway train",
+            "small aircraft"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}

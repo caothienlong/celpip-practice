@@ -1,0 +1,150 @@
+{
+  "part": 1,
+  "title": "Listening to Problem Solving",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation in 3 sections. You will hear each section only once. After each section, you will hear 2 or 3 questions. You will hear the questions only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "imageAlt": "A man and a woman in a pharmacy discussing eye drops",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation between a man and a woman in a pharmacy. The man is asking about eye drops. The pharmacist shows him different types of non-prescription drops.",
+  "sub_parts": [
+    {
+      "id": "1.1",
+      "title": "Section 1",
+      "passageAudioUrl": "",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "",
+          "text": "Why does the woman explain about over-the-counter products?",
+          "options": [
+            "She makes more money from them.",
+            "She prefers them to prescriptions.",
+            "The man is unfamiliar with them.",
+            "The man wants cheap eye drops."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 2,
+          "audioUrl": "",
+          "text": "What advice did the woman give the man?",
+          "options": [
+            "He should consider visiting his doctor.",
+            "He should try her brand of eye drops.",
+            "He should wait for a few more days.",
+            "He should get an eyeglass prescription."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "audioUrl": "",
+          "text": "Why does the man buy over-the-counter eye drops?",
+          "options": [
+            "It is difficult to find an eye doctor.",
+            "He wants something immediately.",
+            "His prescription is too expensive.",
+            "They're better than prescription drops."
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "1.2",
+      "title": "Section 2",
+      "passageAudioUrl": "",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 4,
+          "audioUrl": "",
+          "text": "Why does the man return to the pharmacy?",
+          "options": [
+            "He has a new prescription.",
+            "His eye drops are all gone.",
+            "He wants to get advice.",
+            "His eye dropper didn't work."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "audioUrl": "",
+          "text": "Why is the man upset about the price?",
+          "options": [
+            "It's more expensive than at other pharmacies.",
+            "He heard that the price was less.",
+            "His health plan doesn't cover eye drops.",
+            "It's more costly than his previous purchase."
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "1.3",
+      "title": "Section 3",
+      "passageAudioUrl": "",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 6,
+          "audioUrl": "",
+          "text": "Which picture best fits the woman's instructions?",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "imageUrl": "",
+          "answer": 0
+        },
+        {
+          "id": 7,
+          "audioUrl": "",
+          "text": "Why does the man think the instructions are difficult?",
+          "options": [
+            "He must apply the drops frequently.",
+            "He worries about touching his eyes.",
+            "The other drops had no instructions.",
+            "The woman needed to be clearer."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 8,
+          "audioUrl": "",
+          "text": "Why does the woman tell the man how to use the eye drops?",
+          "options": [
+            "She works at an eye doctor's office.",
+            "She knows people benefit from instruction.",
+            "He has been using it in a wrong way.",
+            "The prescription is difficult to read."
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ],
+  "transcript": "Section 1:\nWOMAN: Good morning. Can I help you?\nMAN: I'm having a problem with my eyes. They are red and really itchy and driving me crazy. I'm wondering if you can recommend something.\nWOMAN: I can see your eyes look really sore. Have you gone to your doctor?\nMAN: No, not yet. I thought I'd get some drops to make the problem go away as quick as possible.\nWOMAN: Well, we have over-the-counter eye drops that might help.\nMAN: What does over-the-counter mean?\nWOMAN: It means that the product doesn't require a prescription. Usually an over-the-counter product is much less expensive, but it can be just as good as the prescription.\nMAN: That's what I want. Which eye drops should I get?\nWOMAN: Well, this brand is usually effective. But, it depends on what's wrong with your eyes. If you have an infection, for example, you really should see your doctor.\nMAN: OK. I'll get these, but if they don't help in a few days, I'll see the doctor.\n\nSection 2:\nMAN: Hi. I was here a few days ago and got some eye drops.\nWOMAN: Yes, I remember. Did the drops help?\nMAN: Not as much as I hoped, so I took your advice and went to the doctor. He gave me this prescription.\nWOMAN: Do you have a health plan that covers your prescriptions?\nMAN: No, I don't. So how much will these drops cost?\nWOMAN: $30. These are really good eye drops. They should take care of your problem quite quickly.\nMAN: Yeah, but $30 is a lot. The other eye drops were only $10 and they made my eyes feel a little better. Why is this prescription so much more expensive?\nWOMAN: Well, I think it's just the way pharmaceutical companies set their prices. However, your doctor knows the best medicine to solve your problem, so you can trust that these are excellent eye drops. I'll have them ready for you in ten minutes.\n\nSection 3:\nWOMAN: Your eye drops are ready. Use the drops every day for the next seven days. Put two drops in each eye three times a day. Try to space the time out evenly over the course of the day.\nMAN: I can do that, no problem.\nWOMAN: The easiest way to get the drops into your eye is to pull out the bottom eyelid and squeeze in the two drops. Then close the eye and rub very gently to move the drops around. Then do the other eye.\nMAN: That sounds really hard, but I'll give it a try. I don't like anything getting near my eyes.\nWOMAN: You should see a lot of improvement in two or three days. These are really good drops.\nMAN: Great. Thanks for your help.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        { "id": 1, "text": "Why does the woman explain about over-the-counter products?", "options": ["She makes more money from them.", "She prefers them to prescriptions.", "The man is unfamiliar with them.", "The man wants cheap eye drops."], "answer": 2 },
+        { "id": 2, "text": "What advice did the woman give the man?", "options": ["He should consider visiting his doctor.", "He should try her brand of eye drops.", "He should wait for a few more days.", "He should get an eyeglass prescription."], "answer": 0 },
+        { "id": 3, "text": "Why does the man buy over-the-counter eye drops?", "options": ["It is difficult to find an eye doctor.", "He wants something immediately.", "His prescription is too expensive.", "They're better than prescription drops."], "answer": 1 },
+        { "id": 4, "text": "Why does the man return to the pharmacy?", "options": ["He has a new prescription.", "His eye drops are all gone.", "He wants to get advice.", "His eye dropper didn't work."], "answer": 0 },
+        { "id": 5, "text": "Why is the man upset about the price?", "options": ["It's more expensive than at other pharmacies.", "He heard that the price was less.", "His health plan doesn't cover eye drops.", "It's more costly than his previous purchase."], "answer": 3 },
+        { "id": 6, "text": "Which picture best fits the woman's instructions?", "options": ["1", "2", "3", "4"], "imageUrl": "", "answer": 0 },
+        { "id": 7, "text": "Why does the man think the instructions are difficult?", "options": ["He must apply the drops frequently.", "He worries about touching his eyes.", "The other drops had no instructions.", "The woman needed to be clearer."], "answer": 1 },
+        { "id": 8, "text": "Why does the woman tell the man how to use the eye drops?", "options": ["She works at an eye doctor's office.", "She knows people benefit from instruction.", "He has been using it in a wrong way.", "The prescription is difficult to read."], "answer": 1 }
+      ]
+    }
+  ]
+}

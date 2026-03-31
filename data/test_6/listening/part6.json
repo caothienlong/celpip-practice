@@ -1,0 +1,86 @@
+{
+  "part": 6,
+  "title": "Listening for Viewpoints",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a report once. It is about 3 minutes long. Then 6 questions will appear. Choose the best way to answer each question from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageAlt": "A presentation about working from home",
+  "layout": "full_questions",
+  "context": "You will hear a presentation about working from home.",
+  "transcript": "Harold is a sales executive at an export company. Every day he spends two hours on the road getting to and from work. At work, Harold spends his day talking and texting with his clients in China and India. Every week Harold uses a hundred dollars of gas and spends 10 hours stuck in traffic in order to talk to people who are in another country. Surely he could do his work from home.\nThe question is: Why are we still commuting? Why not allow people like Harold to commute online rather than through our often-clogged transportation systems? If we did allow people to work from home, other economic benefits would follow. We would spend less on gas and more on leisure, education, and other consumer goods. Community restaurants and coffee shops would thrive. More importantly, there would be benefits to the environment with a decrease in gas consumption, especially in urban centres.\nPerhaps we are still commuting because corporations still associate productivity with physical presence and hours spent in the office. Clearly, though, corporations could also benefit from employees working at home. With staff working from home, corporate offices could be smaller and hence cheaper to run. Productivity per employee might also increase. Employees would be more able to work at times that might otherwise have been spent commuting. They could also tailor their work schedule to fit their family lives, which would improve their mental health and wellbeing.\nIt seems that online commuting would have a positive impact on families, corporations, and our society as a whole. We might well wonder, then, why we still encounter traffic gridlock in almost every major city.\nExperts say there are four key difficulties with working from home. First, corporations fear offsite employees will be more easily distracted and work less. Second, many managers are concerned that they will not be able to manage staff when their staff are not present in the corporate workplace. A third issue is that the office is not simply a physical location. It is also a psychological space in which a team can develop a sharp, shared focus on the tasks at hand. People who work in the same space can think together and share ideas. Finally, the collective workspace helps staff to feel they belong to a community or culture. They will care more about their company's product or service.\nSo, will we always work in offices? Younger people increasingly ask to work from home. The younger generation has been raised in a socially networked world in which connections, culture, and creativity are no longer anchored in a geographical or physical space. Perhaps, as some in this generation are already saying, the office will become outdated.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Benefits of connecting to work online include",
+          "options": [
+            "limiting the number of downtown residences.",
+            "shortening the time spent in meetings.",
+            "boosting expenditure on recreation.",
+            "reducing the costs of childcare."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 2,
+          "text": "Corporate productivity",
+          "options": [
+            "may not be influenced by online commuting.",
+            "will be harmed by employees' lack of social skills.",
+            "may be improved by staff working from home.",
+            "is not associated with employees' commute times."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 3,
+          "text": "Corporations believe that attending a collective workplace",
+          "options": [
+            "is also important for part-time employees.",
+            "has no bearing on corporate profitability.",
+            "helps to maintain higher productivity.",
+            "increases the workload of the managerial staff."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 4,
+          "text": "Some managers worry that",
+          "options": [
+            "employees would bill for incomplete work.",
+            "their own commute would remain unchanged.",
+            "they could not manage complex tasks online.",
+            "they would struggle to supervise their staff."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 5,
+          "text": "One advantage of the corporate workplace is that it",
+          "options": [
+            "helps young people make connections.",
+            "does not involve online social media distractions.",
+            "engenders a shared culture and work ethos.",
+            "provides important opportunities for promotion."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 6,
+          "text": "Proponents of online workspaces claim that",
+          "options": [
+            "younger people cannot focus when working in offices.",
+            "social networking is not prevalent at work.",
+            "the young generation is moving away from city centers.",
+            "offices are likely to become obsolete in the future."
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ]
+}

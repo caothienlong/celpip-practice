@@ -1,0 +1,81 @@
+{
+  "part": 2,
+  "title": "Listening to a Daily Life Conversation",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 5 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageUrl": "",
+  "imageAlt": "A couple talking at home before a party",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation about donating items to a thrift store.",
+  "transcript": "MAN: Julie, is that you? We're going to be late to Susan and Anthony's housewarming party!\nWOMAN: Yes, it's me, who else would it be? I was just getting groceries on the way home. You sound upset. Is something wrong?\nMAN: I can't find my favorite grey shirt, the one with the stripes. Did you put it somewhere? It's not in the laundry or the closet.\nWOMAN: Uh oh… I think I donated that one to the thrift store last week. You said you didn't wear it anymore!\nMAN: No, that was the solid grey one with the stained collar that I don't wear anymore; the one with the stripes, I just bought recently, and it was on sale, too!\nWOMAN: I'm sorry! We should make an agreement to always check with each other before we give things away or sell them. Remember last fall when you sold my tennis rackets at the garage sale and didn't tell me?\nMAN: Well, you never play tennis. You haven't played tennis since Mary was born. That striped shirt, I've been wearing all the time!\nWOMAN: That's not true. I played tennis at least three times last summer, thank you very much! I played with your sister when she came to visit from London. Anyways, let's not fight.\nMAN: You're right, fighting gets us nowhere. Okay, it's a deal. We'll make an effort to ask each other from now on. I guess I'll just wear a different shirt today… I'll wear my old blue one.\nWOMAN: That blue one looks great on you, anyways. You look so handsome.\nMAN: Well, you have to say that, since you gave the other one away!\nWOMAN: No, it really does bring out the color of your eyes! Anyways, I need to have a shower and get ready. Were we supposed to be there at 7:00? That doesn't leave me much time. Do you mind unpacking the groceries while I shower?\nMAN: Yes, of course. Here, pass me the bags. You go get ready.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "",
+          "text": "Question 1",
+          "options": [
+            "classmates",
+            "husband and wife",
+            "brother and sister",
+            "friends"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "audioUrl": "",
+          "text": "Question 2",
+          "options": [
+            "afraid",
+            "annoyed",
+            "happy",
+            "interested"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 3,
+          "audioUrl": "",
+          "text": "Question 3",
+          "options": [
+            "visit friends",
+            "visit the thrift store",
+            "see a movie",
+            "eat at a restaurant"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "audioUrl": "",
+          "text": "Question 4",
+          "options": [
+            "buying a new shirt",
+            "giving away their belongings",
+            "visiting the woman's sister in London",
+            "what to wear for a party"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "audioUrl": "",
+          "text": "Question 5",
+          "options": [
+            "He looks good in it.",
+            "It was on sale.",
+            "It's fashionable.",
+            "It's her favourite colour."
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}

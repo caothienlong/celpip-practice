@@ -1,0 +1,92 @@
+{
+  "part": 3,
+  "title": "Listening for Information",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 6 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageAlt": "A workplace wellness and massage booking",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation about a massage service for office workers.",
+  "transcript": "WOMAN: Hi there! Welcome to Wellness Massage and Spa. How are you today?\nMAN: Very well, thank you. I'm organizing a corporate event for my company and my boss has requested something a little different this time. A coworker said she gets massages here, and she recalled that you offer on-site workplace massage therapy. Is that right?\nWOMAN: Absolutely! You've come to the right place. We specialize in providing mobile effective stress relief and therapeutic chair massages. Studies of ongoing office massage programs have shown that regular massage sessions result in better performance and decreased job stress and anxiety.\nMAN: Sounds like what every workplace needs! I've always thought that massage would be a good component of a company's success strategy. It's good to keep workers happy. Is it like a normal spa massage?\nWOMAN: No, it's quite different. Our practitioners come to your workplace with portable ergonomic massage chairs. You stay fully dressed, but of course you can remove your suit jacket and tie to be more comfortable. We never use oils. We do, however, bring music to set a soothing atmosphere for relieving tension.\nMAN: What's an ergonomic chair?\nWOMAN: It's designed so that the client's chest and head rest on support cushions, which reduces pressure on the hips and spinal column. One of the biggest complaints of office workers is tension in the neck and shoulders. Our practitioners work on these areas to relieve stress symptoms.\nMAN: Great. Now, I should inquire, is office chair massage covered by an extended health care plan, and are your practitioners fully insured?\nWOMAN: Yes, our practitioners are fully certified and insured. However, unless your health care plan includes individual discretionary funds, which usually cover things such as fitness memberships, it won't be covered by your plan. We are certified massage practitioners, but not massage therapists. We focus on relaxation and stress reduction, rather than treatment of specific injuries.\nMAN: I see. Well, that's not a problem. I'd like to book your company. Anything else I need to know?\nWOMAN: Wonderful! Fees and prices are listed in our booklet right here. There's quite a range of options, depending on how many practitioners you would like to hire. Let me show you.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "",
+          "text": "Question 1",
+          "options": [
+            "details about workplace massages",
+            "gift certificates for massages",
+            "her opinion on massage for relaxation",
+            "details about better workplace chairs"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "audioUrl": "",
+          "text": "Question 2",
+          "options": [
+            "He went to her business.",
+            "He telephoned her.",
+            "He invited her to his office.",
+            "His co-worker introduced them."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "audioUrl": "",
+          "text": "Question 3",
+          "options": [
+            "for a special office event",
+            "as a regular on-site health option",
+            "to improve company success",
+            "as treatment for workplace injuries"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "audioUrl": "",
+          "text": "Question 4",
+          "options": [
+            "remain dressed and sit in a special chair",
+            "remove most clothes and be oiled",
+            "recline in a special chair and listen to music",
+            "remove jacket, tie, and shirt or top"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "audioUrl": "",
+          "text": "Question 5",
+          "options": [
+            "He wants to save the company money.",
+            "He's worried about the total cost.",
+            "Massage is usually a medical service.",
+            "The company staff likely have health plans."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 6,
+          "audioUrl": "",
+          "text": "Question 6",
+          "options": [
+            "happy workers",
+            "stress-free workers",
+            "fewer sick days for workers",
+            "healthier lifestyle for workers"
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}

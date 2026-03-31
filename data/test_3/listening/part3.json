@@ -1,0 +1,93 @@
+{
+  "part": 3,
+  "title": "Listening for Information",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 6 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageUrl": "",
+  "imageAlt": "A prospective tenant speaking with a building manager in an office",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation about renting an apartment.",
+  "transcript": "WOMAN: Oh, hello. I saw a sign on the front door about apartments available in this building.\nMAN: Uh huh.\nWOMAN: It said to speak to the building manager in the administration office. The front door was open, so I thought I'd just come in and ask.\nMAN: Well, you're talking to the right person. Which one are you interested in?\nWOMAN: I'm not sure which would be better. The sign said Apartments 1 and 2 are both 850 square feet, but one's a one bedroom and the other's a two bedroom, so I'm a bit confused.\nMAN: Apartment 2 has two separate bedrooms, each with its own door—a sort of closed floor plan if you will. Apartment 1 has what we call an open floor plan. The living room and one big bedroom are adjoined like they're one big room.\nWOMAN: That type of layout sounds like a bachelor apartment to me.\nMAN: Yeah, except that the bedroom area is really big, and there's sort of an archway between the living room area and the bedroom area. It's easy to separate them with a curtain or room divider.\nWOMAN: I see. Well, the apartment is just for me, and I like open spaces I can use in a flexible way. However, having a second bedroom might also be useful. And the move-in date would be July 1st with a one-year lease?\nMAN: Yup. Everything's newly renovated. New carpets, new paint, and all the appliances—fridge, stove, washer/dryer—are brand new. But it's a walkup—there's no elevator. Apartment 1 is on the ground floor and Apartment 2 is on the top floor.\nWOMAN: I think I'd prefer to be on the ground floor, as long as there aren't any tap dance rehearsals going on right above me. Who's the upstairs tenant?\nMAN: The lady in the apartment above you is retired—really quiet and is hardly ever home. I can show you Apartment 1 around 3:00 p.m. if you'd like. Can you wait an hour?\nWOMAN: Sure. I'll go for coffee and come back. See you at 3:00.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "",
+          "text": "Question 1",
+          "options": [
+            "in an apartment",
+            "in an office",
+            "in a lobby",
+            "in a coffee shop"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "audioUrl": "",
+          "text": "Question 2",
+          "options": [
+            "a tenant of an apartment building",
+            "a local real estate agent",
+            "an apartment building manager",
+            "a renovation contractor"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 3,
+          "audioUrl": "",
+          "text": "Question 3",
+          "options": [
+            "renovate it",
+            "sell it",
+            "lease it",
+            "buy it"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 4,
+          "audioUrl": "",
+          "text": "Question 4",
+          "options": [
+            "One is much larger than the other.",
+            "The space is arranged differently.",
+            "One is more expensive than the other.",
+            "The lease is shorter for one apartment."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "audioUrl": "",
+          "text": "Question 5",
+          "options": [
+            "She's often away.",
+            "She's a student.",
+            "She works nearby.",
+            "She has a dog."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 6,
+          "audioUrl": "",
+          "text": "Question 6",
+          "options": [
+            "layout",
+            "elevation",
+            "move-in date",
+            "square footage"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "part": 2,
+  "title": "Listening to a Daily Life Conversation",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 5 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageAlt": "Two colleagues talking at work",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation about a very busy weekend.",
+  "transcript": "MAN: Good morning, Sue. How was your weekend?\nWOMAN: Ugh, it's all a blur. It started on Friday night with my younger son's baseball award ceremony. It was nice to see him get his trophy, but I have to confess it was tough sitting through 3 hours of trophy presentations.\nMAN: I'll bet. Did you get to relax a bit after that?\nWOMAN: Saturday morning, I was up at 6:00 a.m. to take my other son and his friends to hockey practice. It was my weekend for carpool duty. Hockey's not really my thing, you know, but we have to show our support for the kids.\nMAN: Well, at least the arena's indoors. My wife and I used to freeze to death on the soccer field watching our kids' matches in the rain or snow. How was the rest of your weekend?\nWOMAN: We spent what was left of Saturday getting ready for my daughter's birthday party—baking the cake, preparing the games, stuffing the pinata, filling up loot bags, blowing up a zillion balloons, decorating the living room... So Sunday was utter chaos. It took 3 hours to have the party... and 6 hours to clean up the mess!\nMAN: When my kids were little, I always felt lucky they were born in summer. Their birthday parties were always outdoors—the park, the carnival, the beach, the go-cart track, the campground... That way, the kids never wrecked my house.\nWOMAN: Lucky you! My kids' birthdays are in January and February. Maybe next year instead of letting them wreck my house, I should send them outside to play in the snow.\nMAN: Or the ice arena... Maybe you should learn to play hockey with them. Anyway, here you are back at the sweat shop to do some \"real\" work, eh?\nWOMAN: Trust me, coming here feels like play compared to what I do at home.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "",
+          "text": "Question 1",
+          "options": [
+            "Their children play sports together.",
+            "They work at the same location.",
+            "They are married to each other.",
+            "They share carpool duties."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "audioUrl": "",
+          "text": "Question 2",
+          "options": [
+            "rewarding",
+            "relaxing",
+            "boring",
+            "tiring"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 3,
+          "audioUrl": "",
+          "text": "Question 3",
+          "options": [
+            "Outdoor activities have advantages.",
+            "Soccer is unpleasant in bad weather.",
+            "Children's hockey is boring to watch.",
+            "Kids should keep their rooms tidy."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "audioUrl": "",
+          "text": "Question 4",
+          "options": [
+            "It should be considered real work.",
+            "Hard work can be enjoyable.",
+            "She has too much work to do.",
+            "Work is easier than family life."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 5,
+          "audioUrl": "",
+          "text": "Question 5",
+          "options": [
+            "regrets",
+            "warnings",
+            "complaints",
+            "preferences"
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}

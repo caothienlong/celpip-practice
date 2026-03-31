@@ -48,6 +48,8 @@ import glob as globmod
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
 
+import requests
+
 try:
     import gdown
 except ImportError:
@@ -138,11 +140,59 @@ def extract_gdrive_folder_id(url):
     return None
 
 
+def check_gdrive_accessible(resource_id, resource_type="file"):
+    """
+    Check if a Google Drive file or folder is publicly accessible.
+    Returns (accessible: bool, message: str).
+    """
+    if resource_type == "folder":
+        check_url = f"https://drive.google.com/drive/folders/{resource_id}"
+    else:
+        check_url = f"https://drive.google.com/file/d/{resource_id}/view"
+
+    try:
+        resp = requests.get(check_url, allow_redirects=True, timeout=10)
+
+        if resp.status_code == 404:
+            return False, f"Not found (404). Check the {resource_type} ID: {resource_id}"
+
+        if "ServiceLogin" in resp.url or "/accounts/" in resp.url:
+            return False, (
+                f"Requires Google login — {resource_type} is not shared publicly.\n"
+                f"  Fix: Open Google Drive → right-click the {resource_type} → "
+                f"Share → 'Anyone with the link'"
+            )
+
+        if resp.status_code == 403:
+            return False, (
+                f"Access denied (403). The {resource_type} is not shared publicly.\n"
+                f"  Fix: Open Google Drive → right-click the {resource_type} → "
+                f"Share → 'Anyone with the link'"
+            )
+
+        if resp.status_code == 200:
+            if "File not found" in resp.text or "Sorry, the file you have requested does not exist" in resp.text:
+                return False, f"Google Drive says this {resource_type} does not exist. Check the ID: {resource_id}"
+            return True, "Accessible"
+
+        return False, f"Unexpected response (HTTP {resp.status_code}) for {resource_type} ID: {resource_id}"
+
+    except requests.exceptions.Timeout:
+        return False, "Connection timed out. Check your internet connection."
+    except requests.exceptions.ConnectionError:
+        return False, "Could not connect to Google Drive. Check your internet connection."
+
+
 def download_from_gdrive(url_or_id, output_dir):
     """Download a file from Google Drive. Returns the local file path."""
     file_id = extract_gdrive_file_id(url_or_id) if '/' in url_or_id else url_or_id
     if not file_id:
         print(f"  WARNING: Could not extract file ID from: {url_or_id}")
+        return None
+
+    accessible, message = check_gdrive_accessible(file_id, "file")
+    if not accessible:
+        print(f"  ERROR: {message}")
         return None
 
     gdrive_url = f"https://drive.google.com/uc?id={file_id}"
@@ -164,6 +214,11 @@ def download_folder_from_gdrive(folder_url, output_dir):
     folder_id = extract_gdrive_folder_id(folder_url)
     if not folder_id:
         print(f"ERROR: Could not extract folder ID from: {folder_url}")
+        return []
+
+    accessible, message = check_gdrive_accessible(folder_id, "folder")
+    if not accessible:
+        print(f"ERROR: {message}")
         return []
 
     gdrive_folder_url = f"https://drive.google.com/drive/folders/{folder_id}"

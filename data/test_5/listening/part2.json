@@ -1,0 +1,80 @@
+{
+  "part": 2,
+  "title": "Listening to a Daily Life Conversation",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 5 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageAlt": "Two people at a bus stop",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation that takes place at a bus stop.",
+  "transcript": "WOMAN: Hi! I'm waiting for the number #87 bus that goes by Main Street. Do you know if this is the right stop?\nMAN: Yes, it is the right stop, but apparently we both just missed the bus! I'm just checking the transit schedule on my phone and it came by five minutes ago, even though it says it should be here right now. I guess it came early. The next one comes in half an hour.\nWOMAN: Oh, darn. I'm going to be late to my business meeting. I would have driven to work today, but my car got a flat tire last night. I think I drove over a nail or something.\nMAN: That's too bad. Is your car the red Honda parked on the side of Wordsworth Avenue?\nWOMAN: Yes, it is!\nMAN: We're neighbours then! I noticed a red Honda with a flat tire outside my house this morning.\nWOMAN: I live up the street on the next block, but the tire rim was scraping on the ground and I didn't want to damage it. Is it okay if I park it in front of your house until I get it fixed?\nMAN: Leave it as long as you like! Did you move here recently? I don't think I've seen you before.\nWOMAN: One month exactly today! I used to live downtown, but I prefer it out here, where there's more nature.\nMAN: I like living out here as well. The only real drawback is that commuting to the city takes a lot longer.\nWOMAN: It would be okay, if only transit was reliable! I'm really late. Maybe I should just take a cab. Are you going to Main Street as well? Did you want to split a cab there?\nMAN: That would be great, actually. I'm meeting a friend for lunch and I don't want to keep him waiting.\nWOMAN: That works out perfectly then. I'll just call a cab now!",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "",
+          "text": "Question 1",
+          "options": [
+            "a few minutes",
+            "several weeks",
+            "a month",
+            "a long time"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "audioUrl": "",
+          "text": "Question 2",
+          "options": [
+            "She will be late for a meeting.",
+            "She will miss her lunch date.",
+            "The man is asking too many questions.",
+            "Her boss will be upset."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "audioUrl": "",
+          "text": "Question 3",
+          "options": [
+            "in the same apartment complex",
+            "in the same townhouse complex",
+            "on the same street",
+            "on the same residential block"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 4,
+          "audioUrl": "",
+          "text": "Question 4",
+          "options": [
+            "She regularly takes the bus.",
+            "It's too cold to walk.",
+            "Her car is being serviced.",
+            "Her car isn't working today."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 5,
+          "audioUrl": "",
+          "text": "Question 5",
+          "options": [
+            "They share a taxi.",
+            "The bus arrives.",
+            "Her car is fixed.",
+            "A friend picks them up."
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}

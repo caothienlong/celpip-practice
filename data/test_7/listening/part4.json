@@ -1,0 +1,74 @@
+{
+  "part": 4,
+  "title": "Listening to a News Item",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a news item once. It is about 1.5 minutes long. Then 5 questions will appear. Choose the best way to complete each statement from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "layout": "full_questions",
+  "context": "You will hear a news item about urban wildlife.",
+  "transcript": "A resident of Lethbridge, Alberta, has lost the use of his backyard due to a family of unexpected guests. Henry Chang says a pair of raccoons gave birth to a litter of baby raccoons in his storage shed, a wooden structure where he keeps his tools. Chang said that he hadn't renovated the shed yet because it's old and has a hole in the side. He guessed the raccoons thought it was a good place to raise a family. Chang soon discovered he could not enter his backyard at all, as parent raccoons are fiercely protective and aggressive when raising their young. On the bright side, however, Chang joked that he doesn't have to tell his children to stop watching T.V. because they're too busy watching the raccoon family from the living room.\nEven so, Chang plans to fix the shed after the raccoons leave so that the same problem doesn't happen again next year. Local wildlife expert James Wade reminds residents that urban raccoons are very common, but certain steps can be taken to keep them out of our houses and backyards. Wade said the best approach was to block holes in places where raccoons may nest.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "The raccoons used the shed to",
+          "options": [
+            "keep warm.",
+            "sleep at night.",
+            "hide from Mr. Chang.",
+            "have their babies."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 2,
+          "text": "A negative result was that Mr. Chang",
+          "options": [
+            "worried about his children.",
+            "began watching too much TV.",
+            "couldn't use his backyard.",
+            "had to fix the hole."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 3,
+          "text": "A positive result was that Mr. Chang's",
+          "options": [
+            "children could play with the raccoons.",
+            "children liked watching the raccoons.",
+            "shed was large enough for the raccoons.",
+            "shed was put to good use."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "text": "In the future, Mr. Chang will",
+          "options": [
+            "repair the shed.",
+            "build a new shed.",
+            "leave holes for raccoons.",
+            "allow raccoons in the yard."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "text": "According to the wildlife expert, raccoons",
+          "options": [
+            "are common in cities.",
+            "are afraid of humans.",
+            "are very dangerous.",
+            "make good pets."
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}

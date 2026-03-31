@@ -1,0 +1,149 @@
+{
+  "part": 1,
+  "title": "Listening to Problem Solving",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation in 3 sections. You will hear each section only once. After each section, you will hear 2 or 3 questions. You will hear the questions only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "imageAlt": "A man and a woman in a rented house discussing heating and a wood stove",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation between a man and a woman. It takes place in the house that the man is renting from the woman.",
+  "sub_parts": [
+    {
+      "id": "1.1",
+      "title": "Section 1",
+      "passageAudioUrl": "",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "",
+          "text": "What is the man's main complaint?",
+          "options": [
+            "The house is too cold.",
+            "The firewood is too wet.",
+            "The heaters won't turn on.",
+            "The ceiling fan won't spin."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "audioUrl": "",
+          "text": "Which word best describes the woman?",
+          "options": [
+            "confused",
+            "helpful",
+            "angry",
+            "funny"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 3,
+          "audioUrl": "",
+          "text": "What is the weather normally like?",
+          "options": [
+            "rainy",
+            "sunny",
+            "colder",
+            "warmer"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "id": "1.2",
+      "title": "Section 2",
+      "passageAudioUrl": "",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 4,
+          "audioUrl": "",
+          "text": "What should the man do with the heater later?",
+          "options": [
+            "return it to the woman",
+            "store it in the house",
+            "give it to someone else",
+            "leave it in the living room"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "audioUrl": "",
+          "text": "What is likely true of the man?",
+          "options": [
+            "He thinks the extra heater won't work.",
+            "He believes the heater is easy to use.",
+            "He expected a larger heater.",
+            "He won't use the extra heater."
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "1.3",
+      "title": "Section 3",
+      "passageAudioUrl": "",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 6,
+          "audioUrl": "",
+          "text": "What is the purpose of the woman's visit?",
+          "options": [
+            "to deliver a stack of firewood",
+            "to help rid the house of smoke",
+            "to explain how to use the stove",
+            "to help the man stack firewood"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 7,
+          "audioUrl": "",
+          "text": "What did the man do wrong when he opened the chimney?",
+          "options": [
+            "He moved the handle too far.",
+            "He moved the handle too many times.",
+            "He moved the wrong handle.",
+            "He moved the handle in the wrong direction."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 8,
+          "audioUrl": "",
+          "text": "Why does the woman say she'll come back later?",
+          "options": [
+            "The man has asked her to return.",
+            "She wants to make sure all is well.",
+            "The man will pay her for the firewood then.",
+            "She will bring the man something else."
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ],
+  "transcript": "Section 1:\nWOMAN: Hello, Mr. Adler, you asked me to come over?\nMAN: Yes, thanks, please come in.\nWOMAN: What seems to be the problem?\nMAN: Well, I know it's sunny outside, but inside it's so cold! I have both heaters turned on, but I'm still freezing. The house is small and I thought it would be easy to heat, but I see now that the ceilings are high. I turned the ceiling fan on, to push the hot air down, but it's pulling the hot air up. I can't figure out how to make it change direction.\nWOMAN: You can't. The fan is only for the summer. But this cold weather is very unusual. Normally, it's warmer than this.\nMAN: Do you know how long it will last?\nWOMAN: They say only for a few days. Unfortunately, they're calling for rain after that. But I can have some firewood delivered, if you like.\nMAN: Um . . . Could you show me how to use the woodstove first?\nWOMAN: Of course!\nMAN: Okay . . . then, yes, I'd like some firewood delivered.\nWOMAN: All right, but it probably won't get here until tomorrow. In the meantime, I'll bring over another heater for you.\n\nSection 2:\nWOMAN: Hello?\nMAN: Oh, come in.\nWOMAN: Here's the extra heater. Where would you like it?\nMAN: Right here in the living room is perfect. In the corner so I don't trip over it.\nWOMAN: Okay, this is the button to turn it on. And this—\nMAN: —is the button to turn it off, yes, yes. And I see that I can set the temperature. And then it will shut off by itself, right?\nWOMAN: Yes. Afterwards, when you don't need it anymore, just put it away in the closet or something. It'll be good to have an extra heater here.\nMAN: Okay—and thanks for bringing it over so quickly.\n\nSection 3:\nWOMAN: The wood has been delivered, I see.\nMAN: Yes, thank you. I asked them to stack it near the door.\nWOMAN: Good. Okay, now before you light the fire, slide the damper—this handle—to the right to open the chimney. Otherwise, the house will fill with smoke.\nMAN: Like this?\nWOMAN: No, to the right.\nMAN: Ah. And then I put some wood into the stove?\nWOMAN: No, first, crumple up some newspaper . . . next you put in some small pieces of wood . . . and then you light it. Once there is a nice, small fire, you can put in bigger pieces of wood, one at a time, carefully. Make sure you always close the door though.\nMAN: And when the fire is completely out, I turn the handle to close the chimney? To the left?\nWOMAN: Yes, but just in case, I'll come back later.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        { "id": 1, "text": "What is the man's main complaint?", "options": ["The house is too cold.", "The firewood is too wet.", "The heaters won't turn on.", "The ceiling fan won't spin."], "answer": 0 },
+        { "id": 2, "text": "Which word best describes the woman?", "options": ["confused", "helpful", "angry", "funny"], "answer": 1 },
+        { "id": 3, "text": "What is the weather normally like?", "options": ["rainy", "sunny", "colder", "warmer"], "answer": 3 },
+        { "id": 4, "text": "What should the man do with the heater later?", "options": ["return it to the woman", "store it in the house", "give it to someone else", "leave it in the living room"], "answer": 1 },
+        { "id": 5, "text": "What is likely true of the man?", "options": ["He thinks the extra heater won't work.", "He believes the heater is easy to use.", "He expected a larger heater.", "He won't use the extra heater."], "answer": 1 },
+        { "id": 6, "text": "What is the purpose of the woman's visit?", "options": ["to deliver a stack of firewood", "to help rid the house of smoke", "to explain how to use the stove", "to help the man stack firewood"], "answer": 2 },
+        { "id": 7, "text": "What did the man do wrong when he opened the chimney?", "options": ["He moved the handle too far.", "He moved the handle too many times.", "He moved the wrong handle.", "He moved the handle in the wrong direction."], "answer": 3 },
+        { "id": 8, "text": "Why does the woman say she'll come back later?", "options": ["The man has asked her to return.", "She wants to make sure all is well.", "The man will pay her for the firewood then.", "She will bring the man something else."], "answer": 1 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "part": 3,
+  "title": "Listening for Information",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 6 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation where a man gets information about landscaping.",
+  "transcript": "WOMAN: Hi. Welcome to King's Landscaping. What can I do for you?\nMAN: Hi there! I'm having a problem with a tree in my backyard. I thought maybe I should ask an expert.\nWOMAN: You've come to the right place! Our landscapers have over 20 years of experience. What seems to be the problem?\nMAN: I have a very large maple tree, and I think it's rotting. It has fungus growth all over the trunk and it has recently started to bend a little, like it's falling over. It blocks a lot of light to my living room windows anyways, so I thought maybe now is the time to remove it.\nWOMAN: Large fungus growth sounds like heart rot disease. That's common in maple trees. It will decay maples from the inside out, often causing a hollow inside. I would recommend getting one of our tree removal experts to come look at it and give you a price estimate.\nMAN: That's what I think, too. I have a neighbour who offered to remove it for free, but the tree is very close to a power line, so I don't want any accidents. Also, there might be some difficulty with removing the tree. I live on a steep hillside overlooking a lake, and my backyard is quite small.\nWOMAN: I agree with you. Removing trees around power lines can be dangerous and should only be handled by professionals. The space of the property shouldn't be a problem, though. We have several ways that we can remove a tree if there is limited space. We can saw it into many pieces, or if your property is close to the water, we can bring in a boat to haul the tree.\nMAN: Oh, great. Now, what about the remaining stump of the tree? The tree is pretty big—I would say the stump is at least 3 feet in diameter.\nWOMAN: We grind it down to the ground, and then you can just let lawn grow over it. Are you or any of your neighbours gardeners? We usually leave the wood chips from the stump to place around flowerbeds.\nMAN: I'm not, but some of my neighbours are and I'm sure they would love that. Wonderful! Let's book a time this week for someone to come out and take a look.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "",
+          "text": "Why did the man call the woman?",
+          "options": [
+            "He has an unhealthy tree in his yard.",
+            "He saw a tree fall down.",
+            "He wants some tree branches removed.",
+            "He wants several trees cut down."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "audioUrl": "",
+          "text": "Why won't the man allow his neighbour to help?",
+          "options": [
+            "The tree is in a difficult place.",
+            "The tree is too tall and wide.",
+            "The neighbour has an injury.",
+            "He dislikes his neighbour."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "audioUrl": "",
+          "text": "Which of the woman's suggestions is the man most pleased with?",
+          "options": [
+            "that her company is used to small backyards",
+            "that the power lines can be moved easily",
+            "that the tree stump will be cut to grass level",
+            "that the tree removal won't be too expensive"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "audioUrl": "",
+          "text": "Why does the woman ask if the man and his neighbours are gardeners?",
+          "options": [
+            "because wood chips from the tree are good for gardens",
+            "because her company might get some garden work",
+            "because the tree might destroy the surrounding gardens",
+            "because they can plant flowers where the tree was"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "audioUrl": "",
+          "text": "Why is the man happy that the tree will be cut down?",
+          "options": [
+            "It makes his living room dark.",
+            "It shades his whole house.",
+            "It makes his backyard feel too small.",
+            "It drops too many leaves on his grass."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 6,
+          "audioUrl": "",
+          "text": "What decision do they make at the end of the conversation?",
+          "options": [
+            "An expert will visit the man's garden.",
+            "An expert will cut down the tree this week.",
+            "The man will book an appointment this week.",
+            "The woman will discuss the tree with her experts."
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}

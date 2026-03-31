@@ -1,0 +1,75 @@
+{
+  "part": 4,
+  "title": "Listening to a News Item",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a news item once. It is about 1.5 minutes long. Then 5 questions will appear. Choose the best way to complete each statement from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageAlt": "A news report about hikers rescued in the mountains",
+  "layout": "full_questions",
+  "context": "You will hear a news item about two people who got lost.",
+  "transcript": "Two hikers lost on Mount Gibson for the past three days were finally found and rescued today. Ron and Sally Jackson left their home in Calgary, Alberta last Saturday and drove north to Mount Gibson. The couple had planned to spend the afternoon hiking the mountain trails and carried a small backpack containing only sandwiches and water. An hour into their hike, they decided to leave the designated trail and soon became lost in the dense forest. Fortunately, a local resident noticed that their car had been parked at the base of the mountain for a few days. He notified the police, and a Search and Rescue helicopter was sent to look for the pair.\nWhen asked how they had managed to survive, Sally Jackson, who was uninjured but very dehydrated, answered, \"We ate berries and drank water from the creek.\" Search and Rescue official Frank Smith said, \"People should always carry extra food, water, and clothing when hiking, and they should also inform someone as to where they plan to hike and approximately when they expect to return.\"\nGrateful for his rescue, Ron Jackson said, \"We wouldn't be alive today without the help of the man who reported our car to the police and the experienced Rescue Crew that found us. And next time, we'll stick to the marked trails!\"",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Ron and Sally went for",
+          "options": [
+            "a drive in the mountains.",
+            "a long hike in the mountains.",
+            "a picnic in the mountains.",
+            "a helicopter ride in the mountains."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "text": "The Jacksons",
+          "options": [
+            "intended to be away only for the afternoon.",
+            "were not noticed by local residents.",
+            "did not bring any food and water with them.",
+            "intended to camp at the top of the mountain."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "text": "The Jacksons got lost",
+          "options": [
+            "when it started to get dark.",
+            "when they left the trail in the forest.",
+            "because their car broke down.",
+            "because they got dehydrated and confused."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "text": "A rescue operation began after",
+          "options": [
+            "the Jacksons called the police by cell phone.",
+            "a friend realized they had not returned.",
+            "someone noticed their parked car had not moved.",
+            "a local resident saw the Jackson's camp fire."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 5,
+          "text": "The Jacksons survived by",
+          "options": [
+            "relying on the supplies they had brought.",
+            "finding things to eat in the forest.",
+            "building a shelter next to the creek.",
+            "using smoke as a call for help."
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}

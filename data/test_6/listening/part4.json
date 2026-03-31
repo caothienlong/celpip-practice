@@ -1,0 +1,76 @@
+{
+  "part": 4,
+  "title": "Listening to a News Item",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a news item once. It is about 1.5 minutes long. Then 5 questions will appear. Choose the best way to complete each statement from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageUrl": "",
+  "imageAlt": "A news item about protesters complaining about a sign",
+  "layout": "full_questions",
+  "context": "You will hear a news item about protesters complaining about a sign.",
+  "transcript": "A group of protesters gathered at the local racetrack yesterday, asking people to sign a petition they intended to take to city hall. The petition requested that a newly erected billboard advertising the racetrack be removed. Protesters claim that the sign, with its blinking lights and animation of a racing horse, is highly distracting. Jillian Smith, spokesperson for the group, pointed out that the human eye is naturally attracted to bright lights and movement. She said that, when you're driving on the highway, that's a very bad thing.\n\nSmith went on to say that using a cellphone while driving is now illegal because of the distraction factor. Therefore, she said, roadside billboard advertising should also be illegal, especially when it is designed to take our attention off the road.\n\nThe owner of the racetrack initially refused to comment, but, when pressed, he insisted there was nothing wrong with his sign. He pointed out that there's no law against it, so he sees no obligation to take it down.\n\nPolice could neither confirm nor disconfirm that roadside billboards are a contributing factor in highway accidents.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "The protesters were",
+          "options": [
+            "collecting signatures.",
+            "disturbing spectators.",
+            "waiting at city hall.",
+            "watching racehorses."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "text": "The protesters believed the sign",
+          "options": [
+            "was a safety concern.",
+            "displayed scary images.",
+            "had inaccurate content.",
+            "was too large for the road."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "text": "Spokesperson Jillian Smith mentioned a cellphone to",
+          "options": [
+            "quote a legal case.",
+            "make a comparison.",
+            "request information.",
+            "suggest a solution."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "text": "The racetrack owner is",
+          "options": [
+            "unconvinced.",
+            "misinformed.",
+            "confused.",
+            "uninterested."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "text": "The police were consulted about",
+          "options": [
+            "the protesters' rights.",
+            "the sign's effectiveness.",
+            "problems caused by signs.",
+            "accident rates in the area."
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}

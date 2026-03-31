@@ -1,0 +1,86 @@
+{
+  "part": 6,
+  "title": "Listening for Viewpoints",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a report once. It is about 3 minutes long. Then 6 questions will appear. Choose the best way to answer each question from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageAlt": "A report about urban chicken bylaws",
+  "layout": "full_questions",
+  "context": "You will hear a report about urban chicken bylaws.",
+  "transcript": "Sarah Chang, manager of the Vancouver Animal Shelter, says it's time for the feathers to fly at City Hall over the issue of backyard chicken farming. Chang is petitioning the city to revoke a two-year-old bylaw allowing city residents to raise poultry. The law was initially brought before city council by ecologically-minded Vancouverites ultimately seeking to help the environment by producing a homegrown alternative to factory-farmed eggs. While most residents supported the initiative, critics were concerned about the potential for excessive noise, predatory wildlife, poor sanitation, and even bird flu. But Chang's primary concern was the birds themselves. She feared backyard poultry farming would cause an influx of abandoned chickens on animal shelter doorsteps—a prediction which she confirms has come to pass.\n\nBut Bruce Webster, an activist and poultry expert who spent 5 years battling city council to allow urban chickens, has no intention of seeing the bylaw overturned and his own pair of hens exiled from the city. While Webster admits the city has seen some predatory coyotes and abandoned hens, he stresses larger food issues. Ensuring access to food is a major concern throughout the world, and even Canada is not invulnerable to hunger and food supply problems. Webster points to the growing need for food banks in urban centres. One solution, says Webster, is local food production, and backyard chicken coops are a part of it.\n\nAlso, a supporter of local food production, Chang argues that it shouldn't come at the cost of animal welfare. Many well-intentioned city dwellers start raising chickens, only to discover they're far more work than expected. Most chickens lay eggs for just two of their ten-year lifespans, which, for many urbanites, amounts to too much work for too little payoff. The result, says Chang, is that hundreds of chickens end their lives in crowded, underfunded animal shelters. Many are euthanized. Chang also questions whether urban chicken farming actually aids those in genuine need of access to affordable food. After all, raising fowl generally requires a backyard. Vancouverites lucky enough to have one tend to be upper middle-class homeowners who could afford to buy—and don't really need to raise—organic free-range poultry products.\n\nSo, should the urban chicken bylaw be revoked? City councillor Rita Jones thinks the bylaw just needs more teeth. In addition to the existing limit of 4 hens and the ban on noisy roosters, Jones wants routine government inspections, fines for abandonment, and a requirement that wannabes first receive training. Educating prospective chicken owners about what's involved, says Jones, would weed out negligent ones before their livestock meet the same demise as the city's unwanted pets.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Urban chicken supporters initially wanted",
+          "options": [
+            "to offer an eco-friendly means of egg farming.",
+            "to raise awareness of animal rights issues.",
+            "to help the earth by growing their own food.",
+            "to contribute to the city food bank for the poor."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "text": "For Chang, the problem with the \"grow your own food\" movement is that",
+          "options": [
+            "the hungry and poor need food for a lifetime, not just two years.",
+            "backyard food production ultimately harms humans and wildlife.",
+            "growing your own food doesn't mean raising your own chickens.",
+            "those too poor to purchase food are also too poor to produce it."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 3,
+          "text": "Webster advocates urban farming because he believes",
+          "options": [
+            "people can learn valuable farming practices.",
+            "it is a person's right to be able to produce food.",
+            "animals are treated better than on factory farms.",
+            "it can boost a community's supply of food."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 4,
+          "text": "All three people agree that urban chickens",
+          "options": [
+            "do not live long enough.",
+            "are often abandoned.",
+            "spread bird diseases.",
+            "attract wild predators."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "text": "If the bylaw is revoked, there will be a decrease in",
+          "options": [
+            "city chicken euthanization.",
+            "local coyote sightings.",
+            "animal cruelty incidents.",
+            "food bank dependence."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 6,
+          "text": "Jones would like to see the bylaw",
+          "options": [
+            "removed entirely.",
+            "left as it is.",
+            "tightened up.",
+            "passed immediately."
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}

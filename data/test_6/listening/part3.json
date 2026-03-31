@@ -1,0 +1,92 @@
+{
+  "part": 3,
+  "title": "Listening for Information",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 6 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageAlt": "Booking a wedding photographer",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation where a man is trying to arrange his upcoming wedding.",
+  "transcript": "MAN: Hello! I'm getting married this July and I'm looking for a wedding photographer. My friend John referred you to me. He got married last September and said you were excellent. I saw your photos and they were beautiful. He also showed me your online portfolio, and I have to say I was really impressed with your sense of design.\nWOMAN: Oh thanks, that's nice to hear. Yes, I remember John's wedding. I love garden ceremonies. Well, I'd be very interested in photographing your wedding. Could you first tell me the date and location, so I can check my calendar and see if I'm available?\nMAN: Sure! It's July 2nd, and it will be at my parents' property in Halifax. It won't be as fancy as John's wedding, but they have a beautiful backyard overlooking the ocean. My fiancée Sarah and I wanted something outdoors.\nWOMAN: Hmmmmm . . . it looks like I am unavailable on that day. I'm flying away to shoot another wedding. Now, when you checked my online portfolio, you must have seen my colleague, Cindy Shin's work. Would you be interested in having her shoot your wedding?\nMAN: Oh, that's such a pity. I guess I should have called earlier. Yes, I've seen her work, and I liked it as well. Her work bears a lot of similarities to yours.\nWOMAN: It certainly does, and that's because she was my mentor. I'm looking at her schedule and she happens to be available that day.\nMAN: That is really lucky! Would prices be comparable?\nWOMAN: We charge the same rates, and we offer three different packages. The basic package starts at $3000. It includes an engagement portrait session and complete wedding day coverage, which covers everything from getting ready, to cutting of the cake, dancing, and guest portraits. In addition, we charge travel costs, food, and lodging when the ceremony is out of town.\nMAN: Basic is fine with me. That's already slightly over my budget, so I'd rather not be tempted by the other packages! Do I choose which photos I want printed? Is printing included?\nWOMAN: Of course. You'll receive a link to an online photo gallery of the best 200 photos within 3 weeks. You can pick out the 50 you like.\nMAN: That sounds great. I'll talk it over with my fiancée and get back to you in a few days. Thank you very much!",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "",
+          "text": "Question 1",
+          "options": [
+            "He met her at a wedding party last year.",
+            "He saw her pictures at a wedding fair.",
+            "His friend was a former client.",
+            "He found her on a photography website."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 2,
+          "audioUrl": "",
+          "text": "Question 2",
+          "options": [
+            "a luxurious garden ceremony",
+            "a family ceremony in his backyard",
+            "an outdoor ceremony in a park",
+            "a simple ceremony at his parents' place"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 3,
+          "audioUrl": "",
+          "text": "Question 3",
+          "options": [
+            "because the wedding is in a different city",
+            "because she is already booked for that day",
+            "because of the man's modest budget",
+            "because she prefers indoor ceremonies"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "audioUrl": "",
+          "text": "Question 4",
+          "options": [
+            "because no other photographer is available",
+            "because Cindy Shin offers a discounted rate",
+            "because other photographers are less affordable",
+            "because he appreciates Cindy Shin's work"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 5,
+          "audioUrl": "",
+          "text": "Question 5",
+          "options": [
+            "the basic package price without guest portraits",
+            "the basic package price and extra for portrait photos",
+            "the basic package price and nothing else",
+            "the basic package price plus printing of the photographs"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 6,
+          "audioUrl": "",
+          "text": "Question 6",
+          "options": [
+            "as a combination of digital and print copies",
+            "as a specially printed photo album",
+            "as a collection of 200 prints",
+            "as an online display of the best photos"
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ]
+}

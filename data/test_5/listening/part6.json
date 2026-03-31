@@ -1,0 +1,87 @@
+{
+  "part": 6,
+  "title": "Listening for Viewpoints",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a report once. It is about 3 minutes long. Then 6 questions will appear. Choose the best way to answer each question from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageUrl": "",
+  "imageAlt": "A presentation about city planning",
+  "layout": "full_questions",
+  "context": "You will hear a presentation about city planning.",
+  "transcript": "Back in the 1980's, Roger Wang lived in Surrey, British Columbia and commuted to work in Vancouver. The journey took him forty minutes. Over the last thirty years, city planners have been designing and investing in road improvements and transit systems.\n\nNow, thirty years later, Roger's son lives in Surrey and commutes to Vancouver just as his father did. The journey by car takes close to an hour. Despite the changes, traffic congestion has not improved.\n\nCity planners across Canada have been unsuccessfully fighting commuter congestion for decades. Despite wider freeways, computerized management systems and more transportation corridors, most cities are worse off than they were three decades ago. Experience has shown that building more roads simply leads to more traffic. Moreover, most Canadian cities cover a huge area and demand a lot of roads. The cost of developing such an infrastructure in the low-density suburbs of our cities is immense. What can we do to defeat traffic congestion once and for all? The short answer is that we need to get people out of their cars. City planning policies need to consider alternatives to roads. As long as most commuters travel alone in a car, traffic congestion will remain a problem.\n\nChange will not be easy. Opposition to changes in city planning policies are overwhelming. In Vancouver, closing down a single lane of a bridge for a bicycle lane met with furious opposition from motorists. Proposals for a gasoline tax to raise funds for public transportation also met with protest from motorists. Curiously, the one form of commuter infrastructure investment that meets with general approval is more road bridges and wider roads\u2014precisely the policies that have consistently failed over the last few decades.\n\nIn short, we have a society that seems determined to persist with failed policies. There are four reasons why this might be the case. First, for most commuters, private vehicles are usually faster than public transportation. Second, there is the problem of getting to the workplace from the train station which may involve an additional ten-minute walk. Third, fatigue also discourages utilization of our public networks. Few people wish to start and end their day with an hour of standing in cramped conditions. Fourth, grocery shopping or other errands after work might be difficult.\n\nIt seems that people will continue to rely on private vehicles until this mode of transportation proves less pleasant than the alternatives. City planners, however, continue to invest hundreds of millions of dollars in a road infrastructure that makes the motorists' method of commuting marginally more tolerable than the alternatives.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Roger's son",
+          "options": [
+            "works in the same city as Roger did.",
+            "takes the same bus as Roger did.",
+            "lives in a more distant suburb than Roger did.",
+            "has a more comfortable commute than Roger did."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "text": "City planners in Canada have",
+          "options": [
+            "managed to reduce traffic congestion in the suburbs.",
+            "neglected the building of roads for the suburbs.",
+            "struggled with insufficient funding for bridges and roads.",
+            "failed to reduce commute times for most drivers."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 3,
+          "text": "The speaker argues that an alternative planning policy should be to",
+          "options": [
+            "build wider roads and increase the number of bridges.",
+            "persuade people to use the transit system.",
+            "encourage people to work from home.",
+            "build more major access roads to the suburbs."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "text": "In Vancouver, many people opposed",
+          "options": [
+            "more bridges near the city.",
+            "a bicycle lane on a bridge.",
+            "wider roads in the suburbs.",
+            "more train stations in the suburbs."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "text": "One problem with public transit is that",
+          "options": [
+            "the cost of public transport is not competitive.",
+            "trains are often quite dirty and unhygienic.",
+            "there are not enough buses to meet demand.",
+            "shopping centres are more easily accessible by car."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 6,
+          "text": "The speaker believes that",
+          "options": [
+            "current city planning policies are bound to fail.",
+            "roads being built will reduce congestion.",
+            "public transit systems are too slow.",
+            "budget for road expansions should increase."
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}
