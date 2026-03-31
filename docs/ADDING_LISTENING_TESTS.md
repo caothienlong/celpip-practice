@@ -426,6 +426,39 @@ https://res.cloudinary.com/dga4ax7q2/video/upload/v.../filename.m4a
 /static/video/test_X/listening/part5.mp4
 ```
 
+### Migrating from Google Drive to Cloudinary
+
+If your audio/video files are hosted on Google Drive, use the migration script
+to bulk-upload them to Cloudinary:
+
+```bash
+# Install dependencies (one-time)
+pip install gdown cloudinary
+
+# Set Cloudinary credentials in .env (see .env.example)
+
+# Upload a single file
+python scripts/gdrive_to_cloudinary.py \
+  --url "https://drive.google.com/file/d/FILE_ID/view"
+
+# Upload an entire shared Google Drive folder
+python scripts/gdrive_to_cloudinary.py \
+  --folder "https://drive.google.com/drive/folders/FOLDER_ID" \
+  --cloudinary-folder "celpip/test_3/listening"
+
+# Upload AND auto-update the JSON test files with new URLs
+python scripts/gdrive_to_cloudinary.py \
+  --folder "https://drive.google.com/drive/folders/FOLDER_ID" \
+  --cloudinary-folder "celpip/test_3/listening" \
+  --update-json data/test_3/listening
+
+# Dry run (download only, see what would happen)
+python scripts/gdrive_to_cloudinary.py \
+  --folder "FOLDER_URL" --dry-run
+```
+
+See `scripts/gdrive_to_cloudinary.py --help` for all options.
+
 ### Audio File Naming Convention
 
 | File | Purpose |
