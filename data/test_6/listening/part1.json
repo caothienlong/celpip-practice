@@ -1,0 +1,237 @@
+{
+  "part": 1,
+  "title": "Listening to Problem Solving",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation in 3 sections. You will hear each section only once. After each section, you will hear 2 or 3 questions. You will hear the questions only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "imageAlt": "A customer and a salesperson in an eyeglass store",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation that takes place in an eyeglass store. The woman has questions about buying glasses. The man, a salesperson, tries to help her.",
+  "sub_parts": [
+    {
+      "id": "1.1",
+      "title": "Section 1",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-1-pas.m4a",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-q1.m4a",
+          "text": "Question 1",
+          "options": [
+            "Her husband needs new reading glasses.",
+            "Her husband thinks she needs glasses.",
+            "She has a prescription for new glasses.",
+            "She wants a second pair of glasses."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-q2.m4a",
+          "text": "Question 2",
+          "options": [
+            "to see if her prescription has changed",
+            "to figure out if she needs glasses",
+            "to find out why her left eye hurts",
+            "to get her yearly check-up"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "1.2",
+      "title": "Section 2",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-2-pas.m4a",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-q3.m4a",
+          "text": "Question 3",
+          "options": [
+            "She normally gets regular check-ups.",
+            "She needed a strong prescription.",
+            "Her problem was an easy one to fix.",
+            "Her glasses were in such bad shape."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-q4.m4a",
+          "text": "Question 4",
+          "options": [
+            "colour",
+            "cost",
+            "size",
+            "style"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-q5.m4a",
+          "text": "Question 5",
+          "options": [
+            "They are perfect.",
+            "They are long lasting.",
+            "They are too big.",
+            "They are too colourful."
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "1.3",
+      "title": "Section 3",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-3-pas.m4a",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 6,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-q6.m4a",
+          "text": "Question 6",
+          "options": [
+            "to pick up her new glasses",
+            "to order a different style of frames",
+            "to return the cleaning solution",
+            "to get her eyes tested again"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 7,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-q7.m4a",
+          "text": "Question 7",
+          "options": [
+            "He wants her to purchase his expensive cleaner.",
+            "He wants her glasses to remain in good shape.",
+            "He thinks people don't clean their glasses enough.",
+            "He thinks she won't wear her glasses if they are dirty."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 8,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-q8.m4a",
+          "text": "Question 8",
+          "options": [
+            "buy another pair of glasses",
+            "show her husband the bill",
+            "go to another eyeglass store",
+            "use the cleaning solution"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ],
+  "transcript": "Section 1:\nMAN: Good morning. Can I help you?\nWOMAN: Hi. My husband is convinced I need a pair of glasses for reading. I've never had glasses, so I'm not sure what to do.\nMAN: Well, you've come to the right place. Have you had your eyes checked recently?\nWOMAN: No, not recently. I get regular check-ups from my doctor, but I don't remember him checking my eyes.\nMAN: OK, so the first step is to see an eye doctor and get your eyes tested. If your vision needs correcting, the doctor will give you a prescription.\nWOMAN: Do you do this testing here?\nMAN: Actually, there's an eye clinic right next door. It's on the left. You can go there and make an appointment. If they give you a prescription, bring it here and we can help you.\nWOMAN: Thanks. I'll do that right now.\n\nSection 2:\nWOMAN: Hi. I was here last week. I did as you suggested and got my eyes tested. I have my prescription.\nMAN: Oh yes. Can I see your prescription? . . . Well, Mrs. Mackie, this shows you certainly do need glasses!\nWOMAN: Yes, so the doctor said. He was surprised I'd managed to wait so long.\nMAN: OK, so first you need to decide which frames you like.\nWOMAN: I don't want anything too pricey. Just regular inexpensive glasses to help me see better will be fine.\nMAN: Here's what we have in the lower price range. These are plastic frames, and they usually last a long time. I think these would look nice on you. Why don't you try these on and see what you think?\nWOMAN: Oh my, they make me look like a different person! The blue frame looks great with my blue eyes. What do you think?\nMAN: I agree, and they are a good price. I'll take some measurements so we can prepare the glasses for you. It'll take a couple of weeks for them to be ready.\n\nSection 3:\nWOMAN: I'm here to pick up my new glasses.\nMAN: Mrs. Mackie, please have a seat and I'll get them for you . . . Here we are. Try them on.\nWOMAN: Oh my goodness, these are awesome! I can see! And the text on my cellphone is so much clearer! I won't text the wrong person now! This is wonderful.\nMAN: Here's a special cloth and cleaning solution. If you always use this, the lenses won't get scratched. Just wet the glasses, spray on some solution, then dry them with the cloth. I'd do that every morning.\nWOMAN: This is wonderful! My husband will be delighted that I can see now, and that this whole experience didn't cost as much as he feared. Thanks so much!",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Question 1",
+          "options": [
+            "Her husband needs new reading glasses.",
+            "Her husband thinks she needs glasses.",
+            "She has a prescription for new glasses.",
+            "She wants a second pair of glasses."
+          ],
+          "answer": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-q1.m4a"
+        },
+        {
+          "id": 2,
+          "text": "Question 2",
+          "options": [
+            "to see if her prescription has changed",
+            "to figure out if she needs glasses",
+            "to find out why her left eye hurts",
+            "to get her yearly check-up"
+          ],
+          "answer": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-q2.m4a"
+        },
+        {
+          "id": 3,
+          "text": "Question 3",
+          "options": [
+            "She normally gets regular check-ups.",
+            "She needed a strong prescription.",
+            "Her problem was an easy one to fix.",
+            "Her glasses were in such bad shape."
+          ],
+          "answer": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-q3.m4a"
+        },
+        {
+          "id": 4,
+          "text": "Question 4",
+          "options": [
+            "colour",
+            "cost",
+            "size",
+            "style"
+          ],
+          "answer": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-q4.m4a"
+        },
+        {
+          "id": 5,
+          "text": "Question 5",
+          "options": [
+            "They are perfect.",
+            "They are long lasting.",
+            "They are too big.",
+            "They are too colourful."
+          ],
+          "answer": 0,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-q5.m4a"
+        },
+        {
+          "id": 6,
+          "text": "Question 6",
+          "options": [
+            "to pick up her new glasses",
+            "to order a different style of frames",
+            "to return the cleaning solution",
+            "to get her eyes tested again"
+          ],
+          "answer": 0,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-q6.m4a"
+        },
+        {
+          "id": 7,
+          "text": "Question 7",
+          "options": [
+            "He wants her to purchase his expensive cleaner.",
+            "He wants her glasses to remain in good shape.",
+            "He thinks people don't clean their glasses enough.",
+            "He thinks she won't wear her glasses if they are dirty."
+          ],
+          "answer": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-q7.m4a"
+        },
+        {
+          "id": 8,
+          "text": "Question 8",
+          "options": [
+            "buy another pair of glasses",
+            "show her husband the bill",
+            "go to another eyeglass store",
+            "use the cleaning solution"
+          ],
+          "answer": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p1-q8.m4a"
+        }
+      ]
+    }
+  ]
+}

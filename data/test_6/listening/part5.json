@@ -1,0 +1,108 @@
+{
+  "part": 5,
+  "title": "Listening to a Discussion",
+  "type": "listening",
+  "listening_type": "video",
+  "instructions": "You will watch a 2-minute video. Then 8 questions will appear. Choose the best way to answer each question.",
+  "mediaType": "video",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p5-pas.mp4",
+  "imageAlt": "Writing tutors and supervisor in discussion",
+  "layout": "full_questions",
+  "context": "You will watch a discussion between three people who work at a college. The two women work as writing skills tutors, and the man is their supervisor.",
+  "transcript": "Max: OK, I've been getting emails that you two are refusing to help students with their writing assignments. It's my understanding—and I thought that you two understood this as well—that that is exactly what your job is. You are the Writing Skills Tutors.\nRobin: Yes, but it's the end of the year, and students are coming to us for help with the end-of-the-year assignments worth half their grade! We both think it's cheating and—\nMax: Cheating? How so?\nClaire: Well, by the time we're through with their essay, we've turned a D essay into a B essay. We've done that. With our comments, our suggestions, our corrections, our questions . . .\nRobin: Getting that level of help with a major year-end essay? It isn't fair to the students that have done the work on their own.\nMax: Isn't there some way you can, I don't know, lead the students to make the improvements themselves? Show them what to do without doing it for them?\nRobin: Normally, yes. But it's March, and the students that are coming to our door now—for the first time—they're not interested in doing the work themselves. They come in, throw their rough notes on the desk, and expect us to do the rest of the work.\nClaire: We make suggestions and demonstrate how to use them, but the students just pretend to listen—they didn't come here to learn; they came here for free editing.\nMax: So how do you help? I mean, what did we hire you for?\nRobin: Well, the way I see it is that we're here to help the students with their homework—the day-to-day assignments. And those students that have gotten help with the practice work are then prepared to do the graded assignments on their own. The others—I assume they don't even do their homework. Like Claire said, they're just here to get their corrections done for free.\nMax: What if you helped them with the final assignments only with the teacher's authorization? That way the instructor would know which essays have had the benefit of your help and which ones the students have done on their own. And they can take that into account when they're doing the grading.\nClaire: I don't know . . . I guess we could try. As long as the teachers know that what they're grading is partly our work, I guess that would be fair. But—I'm telling you—as soon as word gets out that we're willing to help with final essays, you're going to have to hire another half dozen Writing Skills Tutors.\nRobin: At least.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "What has the man recently received?",
+          "options": [
+            "complaints",
+            "evaluations",
+            "permission",
+            "requests"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "text": "What describes the emails that the man received?",
+          "options": [
+            "They were poorly written.",
+            "They are quite misleading.",
+            "They were from instructors.",
+            "They were sent by mistake."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 3,
+          "text": "What is the supervisor's main concern?",
+          "options": [
+            "The essay grades seem too high.",
+            "The instructors are asking questions.",
+            "The students are not learning enough.",
+            "The tutors are not doing their jobs."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 4,
+          "text": "According to the women, what is cheating?",
+          "options": [
+            "coming for tutoring late in the year",
+            "failing to tell teachers they got help",
+            "having routine homework edited",
+            "receiving help with final essays"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 5,
+          "text": "How would the women probably describe cheaters?",
+          "options": [
+            "They are disadvantaged.",
+            "They are opportunists.",
+            "They are too privileged.",
+            "They are like robbers."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 6,
+          "text": "How does the woman in the middle respond to the man's last suggestion?",
+          "options": [
+            "She is confused.",
+            "She is doubtful.",
+            "She is insincere.",
+            "She is resistant."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 7,
+          "text": "What will the speakers do to resolve the problem?",
+          "options": [
+            "have the women grade the essays",
+            "hire more writing skills tutors",
+            "provide less help with assignments",
+            "require permission from instructors"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 8,
+          "text": "What does this workplace seem to value?",
+          "options": [
+            "collaborating on making policy decisions",
+            "designing staff development systems",
+            "minimizing hiring and payroll costs",
+            "sustaining consistent client service"
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ]
+}

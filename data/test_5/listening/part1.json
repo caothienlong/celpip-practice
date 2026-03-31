@@ -1,0 +1,237 @@
+{
+  "part": 1,
+  "title": "Listening to Problem Solving",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation in 3 sections. You will hear each section only once. After each section, you will hear 2 or 3 questions. You will hear the questions only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "imageAlt": "A student and a Student Advisor in a university office",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation between two people in a university office. The woman is about to start university, and the man is a Student Advisor.",
+  "sub_parts": [
+    {
+      "id": "1.1",
+      "title": "Section 1",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-1-pas.m4a",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-q1.m4a",
+          "text": "Question 1",
+          "options": [
+            "She wants to take two courses that conflict.",
+            "She doesn't understand a foreign language.",
+            "She wants to transfer out of Honours Psychology.",
+            "She doesn't want to take first year Latin."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-q2.m4a",
+          "text": "Question 2",
+          "options": [
+            "She thinks it would be too difficult.",
+            "She has had enough French.",
+            "She doesn't think it should be required.",
+            "She wants to take it in her second year."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-q3.m4a",
+          "text": "Question 3",
+          "options": [
+            "The General and Honours courses are the same.",
+            "They are more difficult than the second year courses.",
+            "Not very many students want to register for them.",
+            "They are required only for Psychology students."
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "1.2",
+      "title": "Section 2",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-2-pas.m4a",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 4,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-q4.m4a",
+          "text": "Question 4",
+          "options": [
+            "A plus",
+            "A",
+            "A minus",
+            "lower than A minus"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-q5.m4a",
+          "text": "Question 5",
+          "options": [
+            "not being part of any social group",
+            "not getting grades as high as her friend",
+            "not becoming an Honours student until third year",
+            "not having friends in the General program"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 6,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-q6.m4a",
+          "text": "Question 6",
+          "options": [
+            "denial",
+            "agreement",
+            "shock",
+            "shame"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "1.3",
+      "title": "Section 3",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-3-pas.m4a",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 7,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-q7.m4a",
+          "text": "Question 7",
+          "options": [
+            "Latin",
+            "French",
+            "English",
+            "Chinese"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 8,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-q8.m4a",
+          "text": "Question 8",
+          "options": [
+            "happy",
+            "confused",
+            "surprising",
+            "sad"
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ],
+  "transcript": "Section 1:\nMAN: Hello, how can I help you?\nWOMAN: I'm registered for the Honours Psychology program, and for the foreign language requirement, I'd like to take Latin, but it's offered at the same time as the first year Honours Psychology course.\nMAN: You could take French instead.\nWOMAN: But I took French in high school. Every single year.\nMAN: Well, you could take the first year General Psychology course, and then just switch to the Honours courses in your second year. That way you could take Latin.\nWOMAN: The first year Honours Psychology course isn't a prerequisite? For me?\nMAN: Not really. We have so many students wanting first year Psychology, we just created two sections. And it makes sense to put all the Honours students in the one section and the General students in the other. You're already accepted into the Honours program, so there's no problem just registering for the Honours courses in your second year.\nWOMAN: Okay, thank you.\n\nSection 2:\nMAN: Hello again!\nWOMAN: I was talking to a friend about what you advised, and she actually did that. But she said that once she was in second year, she never got anything higher than an A minus. Her professors thought she was just a General student trying to step up to the Honours level. Even though, like me, she was an A plus student all through high school.\nMAN: I'm sorry to hear that. Many students' grades go down once they're in university. Perhaps your friends' high school teachers graded easy. I really don't think our professors would be so prejudiced. I'm sure they grade assignments fairly.\nWOMAN: I hope you're right. Even so, I'd like to be considered an Honours student from the beginning. She also said that by second year, everyone's formed their groups. So she felt like an outsider in the Honours program for the rest of her degree.\nMAN: I see. Well, there might be another solution. If you took a language course at the other university, you might get credit for it here. I'd have to look into that. In the meantime, why don't you see if they offer a Latin course, and bring back the course outline, in case the decision here is made on a case by case basis.\nWOMAN: Okay, I'll do that.\n\nSection 3:\nMAN: Hello, I have good news—we give transfer credit for all language courses at the other university. Even English.\nWOMAN: Oh, that is good news. They don't have Latin, but they do offer Chinese, which I'd like to take. And it doesn't conflict with any other of my first year courses.\nMAN: Not even the Honours Psych?\nWOMAN: No!\nMAN: Then you're all set!\nWOMAN: Yes!",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Question 1",
+          "options": [
+            "She wants to take two courses that conflict.",
+            "She doesn't understand a foreign language.",
+            "She wants to transfer out of Honours Psychology.",
+            "She doesn't want to take first year Latin."
+          ],
+          "answer": 0,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-q1.m4a"
+        },
+        {
+          "id": 2,
+          "text": "Question 2",
+          "options": [
+            "She thinks it would be too difficult.",
+            "She has had enough French.",
+            "She doesn't think it should be required.",
+            "She wants to take it in her second year."
+          ],
+          "answer": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-q2.m4a"
+        },
+        {
+          "id": 3,
+          "text": "Question 3",
+          "options": [
+            "The General and Honours courses are the same.",
+            "They are more difficult than the second year courses.",
+            "Not very many students want to register for them.",
+            "They are required only for Psychology students."
+          ],
+          "answer": 0,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-q3.m4a"
+        },
+        {
+          "id": 4,
+          "text": "Question 4",
+          "options": [
+            "A plus",
+            "A",
+            "A minus",
+            "lower than A minus"
+          ],
+          "answer": 0,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-q4.m4a"
+        },
+        {
+          "id": 5,
+          "text": "Question 5",
+          "options": [
+            "not being part of any social group",
+            "not getting grades as high as her friend",
+            "not becoming an Honours student until third year",
+            "not having friends in the General program"
+          ],
+          "answer": 0,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-q5.m4a"
+        },
+        {
+          "id": 6,
+          "text": "Question 6",
+          "options": [
+            "denial",
+            "agreement",
+            "shock",
+            "shame"
+          ],
+          "answer": 0,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-q6.m4a"
+        },
+        {
+          "id": 7,
+          "text": "Question 7",
+          "options": [
+            "Latin",
+            "French",
+            "English",
+            "Chinese"
+          ],
+          "answer": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-q7.m4a"
+        },
+        {
+          "id": 8,
+          "text": "Question 8",
+          "options": [
+            "happy",
+            "confused",
+            "surprising",
+            "sad"
+          ],
+          "answer": 0,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p1-q8.m4a"
+        }
+      ]
+    }
+  ]
+}

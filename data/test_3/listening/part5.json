@@ -1,0 +1,109 @@
+{
+  "part": 5,
+  "title": "Listening to a Discussion",
+  "type": "listening",
+  "listening_type": "video",
+  "instructions": "You will watch a 2-minute video. Then 8 questions will appear. Choose the best way to answer each question.",
+  "mediaType": "video",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p5-pas.mp4",
+  "imageUrl": "",
+  "imageAlt": "Three colleagues discussing a tree and parking in a workplace lot",
+  "layout": "full_questions",
+  "context": "You will watch a discussion between three people at work. They are talking about a tree in the parking lot and one woman's car.",
+  "transcript": "MAN 1: So, Jeanette, looks like you bought yourself a nice present. It's a pretty shiny new set of wheels in your parking spot. Is that a custom paint job?\nWOMAN: Yeah! I love my new car, but I hate what's happening to it in the parking lot! You know that tree that hangs over my parking space? It's dropping this weird sticky stuff all over the hood of my car.\nMAN 1: That's an ash tree. I could tell by the shape of the leaves. There's these little bugs called aphids. They suck the nectar from the leaves, and produce this sticky stuff. It's called honeydew.\nWOMAN: Ugh, those things are so gross. It dries and hardens in the sun, and it's almost impossible to get off my car. It's wrecking the paint job! I'm going to ask the maintenance crew if they can just get rid of that tree.\nMAN 1: Yeah, they would need a permit first though, or else the City can fine up to ten thousand dollars. It's actually illegal to remove a tree unless it poses a hazard. It could fall on a house or a power line. The City says, usually just treat it with insecticides.\nMAN 2: If I were you, I wouldn't want to park where they're spraying chemicals. If it's toxic for the aphids, it's probably toxic for you too, not to mention ladybugs, birds, fish. . . .\nWOMAN: Argh, maybe we could just find a way to kill the tree. Then at least they can chop it down.\nMAN 2: Whoa, that's extreme. All they need to do is wash the aphids off the leaves. You know, they just need a hose that shoots a powerful stream of water. The aphids will fall off onto the ground and die. There's no food for them on the lawn.\nMAN 1: Yeah, but that tree looks a little tall for a garden hose. It's got to be at least 50 feet. And I don't think the maintenance department usually deals with that kind of stuff. They'd probably want to call in a tree care company. They can decide what to do.\nWOMAN: Well, I've thought about parking on the street. But I'd have to come in at like 6:00 a.m.\nMAN 2: Look, just send an email to Charlie in the maintenance department. He's very accommodating. Maybe he can arrange for an eco-friendly contractor to deal with the aphids. In the meantime, I'm sure he can find you a different parking space.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Why does the younger man mention his co-worker's car?",
+          "options": [
+            "to acknowledge her car has new wheels",
+            "to compliment her on her new purchase",
+            "to imply she has spent too much money",
+            "to tease her about how shiny her car is"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "text": "What is the woman's main complaint?",
+          "options": [
+            "She is bothered by toxic chemicals.",
+            "She isn't able to get her car clean.",
+            "She hasn't got a parking space.",
+            "She has to pay a fine to the city."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 3,
+          "text": "What does the younger man's explanation about the aphids and honeydew indicate?",
+          "options": [
+            "He thinks the woman should avoid parking under the tree.",
+            "He knows some facts about aphids.",
+            "He wants the maintenance crew to remove the tree immediately.",
+            "He is teasing the woman about her new car."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "text": "What is there a law against?",
+          "options": [
+            "cutting down healthy trees",
+            "parking overnight on the street",
+            "spraying chemicals on plants",
+            "wasting tap water on city lawns"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "text": "What is most likely true of the ash tree?",
+          "options": [
+            "People don't relax underneath it.",
+            "It needs more water to survive.",
+            "The city won't bother to save it.",
+            "It may fall onto a nearby roof."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 6,
+          "text": "Why does the man wearing glasses talk about water?",
+          "options": [
+            "to accept the other woman's idea",
+            "to expand on the previous point",
+            "to suggest an alternate solution",
+            "to warn about a possible danger"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 7,
+          "text": "What can we tell from the conversation?",
+          "options": [
+            "The company has a city tree removal permit.",
+            "The man has insects in his ash tree at home.",
+            "The company wants to help the environment.",
+            "The man appreciates attractive automobiles."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 8,
+          "text": "What is the best subject line for the woman's email?",
+          "options": [
+            "cutting down a diseased ash tree",
+            "seeking advice on car paint job",
+            "requesting alternate parking spot",
+            "spraying trees near my vehicle"
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}

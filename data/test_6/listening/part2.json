@@ -1,0 +1,80 @@
+{
+  "part": 2,
+  "title": "Listening to a Daily Life Conversation",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 5 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p2-pas.m4a",
+  "imageAlt": "Two colleagues discussing an employee award",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation between a man and a woman. They are trying to make some choices for a work event.",
+  "transcript": "WOMAN: Andrew, do you have a minute? We need to discuss who should get the Top Employee Award.\nMAN: Sure, Irene. I guess you and I are this year's selection committee.\nWOMAN: I don't know anything about this award. What is it for?\nMAN: Well, the selection guidelines are very broad, and there's really no definition for \"top.\" It used to be called Office Choice Award, but that was a popularity contest. Some people even paid friends to vote for them, if you can believe it.\nWOMAN: Wow, the award is that important? There are around 70 employees here, but only one person can get the award, right? Unless they make 70 mini-awards, or just give up on the award entirely.\nMAN: These ideas were discussed, too. But the award is given during the summer office picnic, and it's part of the fun. The Top Employee Award has been given for three years now. We can only choose 5 recipients, you know.\nWOMAN: Really? This is getting interesting. So who got it last year?\nMAN: I think Ginette got it because she decorated her office space so well, and because she made the best cheesecake for the picnic. George also won it because of the spectacular entertainment he lined up for our Open House last Christmas.\nWOMAN: Oh, so the criteria are that relaxed? It sounds like we could just draw names out of a hat and then justify our choices afterwards!\nMAN: Well, to tell you the truth, that is how Ginette and George and the others were chosen last year! We put everyone's names into a box and drew 5. Then we came up with reasons for why they are top employees. Oh, and we don't choose the same people each year, and you and I are not eligible. It's very democratic.\nWOMAN: I'll say! And everyone's OK with this system?\nMAN: Oh yeah. The award is a highlight of the picnic. Let's get started. This won't take long.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p2-q1.m4a",
+          "text": "Question 1",
+          "options": [
+            "to choose award winners",
+            "to plan the award ceremony",
+            "to review award applications",
+            "to change the award process"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p2-q2.m4a",
+          "text": "Question 2",
+          "options": [
+            "It provides entertainment.",
+            "It has no purpose.",
+            "It should be given to everyone.",
+            "It is an important achievement."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p2-q3.m4a",
+          "text": "Question 3",
+          "options": [
+            "by choosing the most deserving",
+            "by reviewing all applications",
+            "by counting staff votes",
+            "by drawing names from a box"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 4,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p2-q4.m4a",
+          "text": "Question 4",
+          "options": [
+            "at the summer picnic",
+            "at the Christmas party",
+            "at a staff meeting",
+            "at an awards ceremony"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p2-q5.m4a",
+          "text": "Question 5",
+          "options": [
+            "She is a manager.",
+            "She is an award candidate.",
+            "She is a new employee.",
+            "She will organize the picnic."
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}

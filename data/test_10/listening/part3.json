@@ -5,7 +5,7 @@
   "listening_type": "audio",
   "instructions": "You will hear a conversation followed by 6 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
   "mediaType": "audio",
-  "mediaUrl": "",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_10/listening/p3-pas.m4a",
   "imageUrl": "",
   "imageAlt": "A renter speaking with someone at a legal clinic",
   "layout": "per_question_audio",
@@ -17,7 +17,7 @@
       "questions": [
         {
           "id": 1,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_10/listening/p3-q1.m4a",
           "text": "Question 1",
           "options": [
             "to get legal advice for renters",
@@ -29,7 +29,7 @@
         },
         {
           "id": 2,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_10/listening/p3-q2.m4a",
           "text": "Question 2",
           "options": [
             "It was included in the rental contract.",
@@ -41,7 +41,7 @@
         },
         {
           "id": 3,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_10/listening/p3-q3.m4a",
           "text": "Question 3",
           "options": [
             "ask for a receipt",
@@ -53,7 +53,7 @@
         },
         {
           "id": 4,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_10/listening/p3-q4.m4a",
           "text": "Question 4",
           "options": [
             "cancel her damage deposit cheque",
@@ -65,7 +65,7 @@
         },
         {
           "id": 5,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_10/listening/p3-q5.m4a",
           "text": "Question 5",
           "options": [
             "6% of the claim",
@@ -77,7 +77,7 @@
         },
         {
           "id": 6,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_10/listening/p3-q6.m4a",
           "text": "Question 6",
           "options": [
             "by email",

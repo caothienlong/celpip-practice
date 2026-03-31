@@ -1,0 +1,79 @@
+{
+  "part": 2,
+  "title": "Listening to a Daily Life Conversation",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 5 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_7/listening/p2-pas.m4a",
+  "layout": "per_question_audio",
+  "context": "You will hear a phone conversation between a man and a woman.",
+  "transcript": "MAN: Hi, can I help you?\nWOMAN: Hi, this is Charlene at CableTron calling. We have an installation date for you.\nMAN: CableTron! Great, finally! I've survived three weeks in my apartment without the internet, and I'm starting to lose my mind. Let me just log into my calendar here . . . hmm . . . Sorry, the internet is a little slow in this coffee shop.\nWOMAN: It'll be a lot faster in your home with CableTron. When you placed your service order, you said you were available in the mornings. Our installation technician will come to your house between 7:30 am and 12:00 noon on Thursday, April 10.\nMAN: Oh no . . . that's the day I'm supposed to bring my car to the auto shop for a mechanical check. I'm new to this province, and my car needs a safety inspection before I can register it in Ontario. Both have to be done by the 15th.\nWOMAN: If you can't take our April 10th appointment, the next available one will be April 18th. I'm sorry, but we're unbelievably busy this time of year. Can you change your car appointment, by any chance?\nMAN: Good question. Well, what do you think . . . Which do I need more urgently right now: the internet or my car?\nWOMAN: I'm afraid you're asking the wrong person! I'm a computer geek who doesn't drive and rides her bike everywhere, so I know which one I'd pick. But I'm biased.\nMAN: I'm guessing the mechanics have a bit more flexibility in their schedule than CableTron, so I'll go for the internet installation. I'll call the garage when I get off the phone. I'm pretty sure they can accommodate.\nWOMAN: I hope so. But if you need to reschedule your CableTron installation, please call us 48 hours in advance. And by the way, welcome to the province of Ontario.\nMAN: Thank you! I'll see your technician on the 10th.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_7/listening/p2-q1.m4a",
+          "text": "Who is the woman?",
+          "options": [
+            "a Government of Ontario employee",
+            "an internet company representative",
+            "the man's personal assistant",
+            "a secretary at an auto garage"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_7/listening/p2-q2.m4a",
+          "text": "Why does the man have difficulty logging in?",
+          "options": [
+            "His internet is broken.",
+            "He's using public Wi-Fi.",
+            "He forgot his password.",
+            "His computer is slow."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_7/listening/p2-q3.m4a",
+          "text": "What did the woman intend to do with this phone call?",
+          "options": [
+            "tell the man his appointment date",
+            "ask the man when he's available",
+            "ask the man which date he prefers",
+            "ask the man to re-schedule an appointment"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_7/listening/p2-q4.m4a",
+          "text": "Why does the phone conversation frustrate the man?",
+          "options": [
+            "His calendar is in error.",
+            "His appointments conflict.",
+            "His home internet is slow.",
+            "His car has broken down."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_7/listening/p2-q5.m4a",
+          "text": "What does the man do in the end?",
+          "options": [
+            "ignores the woman's recommendation",
+            "reschedules his CableTron appointment",
+            "goes along with the woman's plan",
+            "refuses the woman's request"
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "part": 3,
+  "title": "Listening for Information",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 6 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p3-pas.m4a",
+  "imageAlt": "Planning a wedding event",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation where a woman arranges an event.",
+  "transcript": "WOMAN: Hi there, I saw that the Green Butler company won the award for best catering on bestweddings.com, so I thought I'd drop by. My family and I are planning my sister's wedding for July 9th.\nMAN: We can certainly cater your event! We provide a comprehensive range of wedding services from location rentals to floral arrangements, and custom menu choices.\nWOMAN: Well, I'm actually a florist myself, so we won't need flowers, thanks! And my sister has already picked Clearwater Park as her location, so that's covered too. But everything else we will need.\nMAN: Excellent. How many people will be coming to your event?\nWOMAN: We've invited seventy, and so far fifty have confirmed. Could I let you know the exact number by the end of next week?\nMAN: Oh, no rush! As long as we know a week in advance to the actual day of the event, that'll be fine . . . Now, what sort of meal service would you prefer? We offer full multi-course dinners, buffet-style food, or appetizers on platters.\nWOMAN: I think buffet-style would be best. It will be outdoors in the park, and we don't want to have to set up too many tables or chairs.\nMAN: Great! We have four basic options for buffet menus. One is vegetarian, one is seafood, one is meat, and one is continental, which is basically a mix of the other three. Of course, we can modify them if needed.\nWOMAN: Sophia and her fiancé are both vegetarian, but the rest of our families are not, so I think the continental menu would work best.\nMAN: Sounds good! Would you like to book this today? We take a 25% deposit at the time of booking, and the rest of the payment no less than ten days before the event. If you should need to cancel, the pre-payments and deposits are forfeited.\nWOMAN: That all sounds great. Send us a quote with full pricing details laid out, and we'll get back to you in a few days.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p3-q1.m4a",
+          "text": "Question 1",
+          "options": [
+            "Her sister recommended the company.",
+            "She saw their advertisements online.",
+            "They have received awards.",
+            "They help find a good location."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p3-q2.m4a",
+          "text": "Question 2",
+          "options": [
+            "Her sister is a professional flower arranger.",
+            "They aren't planning to have flowers.",
+            "The flowers arrangements are expensive.",
+            "The woman works in a flower store."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p3-q3.m4a",
+          "text": "Question 3",
+          "options": [
+            "because it will be lower cost",
+            "because the event will be outside",
+            "so people can choose their food",
+            "so people can choose their table"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p3-q4.m4a",
+          "text": "Question 4",
+          "options": [
+            "She wants to please everyone.",
+            "Her sister wants vegetarian food.",
+            "Some guests are allergic to seafood.",
+            "Some of her family dislike vegetarian food."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p3-q5.m4a",
+          "text": "Question 5",
+          "options": [
+            "She asks for more information.",
+            "She books the company right there.",
+            "She decides to continue looking.",
+            "She will check with her husband."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 6,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p3-q6.m4a",
+          "text": "Question 6",
+          "options": [
+            "birthday party",
+            "retirement party",
+            "wedding anniversary",
+            "wedding reception"
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ]
+}

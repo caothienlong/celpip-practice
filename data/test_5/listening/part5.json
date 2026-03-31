@@ -1,0 +1,108 @@
+{
+  "part": 5,
+  "title": "Listening to a Discussion",
+  "type": "listening",
+  "listening_type": "video",
+  "instructions": "You will watch a 2-minute video. Then 8 questions will appear. Choose the best way to answer each question.",
+  "mediaType": "video",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_5/listening/p5-pas.mp4",
+  "imageAlt": "Three colleagues discussing workplace training",
+  "layout": "full_questions",
+  "context": "You will watch a discussion among three colleagues at work. The man works in the company's Legal department, and the women work in the company's Human Resources department.",
+  "transcript": "Beatrice: Thank you for meeting with us, Ted. We know how busy you are.\nTed: Yeah, too busy for this! Is this meeting even necessary? Every year we present the \"Hostile Workplace\" lecture. I talk about the legal issues; you guys talk about the personnel issues. What's to discuss? We could've picked a time, you could've booked the room . . . we wouldn't have to have this meeting.\nRosa: Hey, I'm short on time, too. But I want to make some changes to this year's event, so let's talk. First of all, no more standing on the stage while people just sit and listen.\nBeatrice: We thought that the staff could be more actively involved . . . maybe do some roleplaying games.\nTed: There's over a hundred staff, and they all have to attend! Doing some kind of . . . participatory drama games . . . it's gonna be kind of chaotic, isn't it?\nBeatrice: Well, I'm no expert, but roleplaying is a widely-used learning activity. People can learn a lot from it. And isn't that our goal? To help our employees learn? Teach them what to do and not to do on the job? This affects you directly, you know.\nTed: Well, when you put it that way, I do want to reduce the number of grievances and prevent lawsuits.\nRosa: And we could do it in small groups. And in a cozier place than the cafeteria. Obviously, this room would be too small. But maybe we could book a conference room.\nTed: Look. I've got a lot on my plate. I can put aside maybe one day a week to do this . . . I don't want to do Marketing one day, Accounting the next day . . . If we could just book, say, every Monday at 10 o'clock, and do a different department each week?\nRosa: Actually, I was thinking we could get units to mix and mingle. Have you ever noticed that at the annual winter party, people just tend to stick to their own departments? I think it would be good for the company if people weren't so . . . attached to their tribes. We should warm up to other people . . . become more aware of what they do.\nTed: You know, that might go a ways towards creating a less hostile work environment. If people learned some respect for those in other departments . . . If everyone didn't think they were the only ones with important work to do . . . If everyone weren't so . . .",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Which word best finishes the man's last sentence? \"If everyone weren't so . . .\"",
+          "options": [
+            "busy",
+            "pessimistic",
+            "self-centered",
+            "unfriendly"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 2,
+          "text": "Why do the women remain silent at the end of the video?",
+          "options": [
+            "They're amused that the man is describing himself.",
+            "The man has given them headaches.",
+            "They still disagree with what the man said.",
+            "They don't understand what the man said."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "text": "What are the co-workers meeting to discuss?",
+          "options": [
+            "whether to hold an event this year",
+            "the format for an annual event",
+            "whether to hire experts for an event",
+            "the changes to next year's event"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "text": "What is the topic of the annual lecture?",
+          "options": [
+            "acceptable workplace behaviour",
+            "improving your people skills",
+            "managing your time on the job",
+            "the role of the legal department"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "text": "What is the man's attitude toward the event?",
+          "options": [
+            "He would rather not make a presentation.",
+            "He wishes the women weren't involved.",
+            "He would rather resolve staff grievances.",
+            "He wants to invest time in other priorities."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 6,
+          "text": "What do the women think about the lecture format?",
+          "options": [
+            "It's too confusing.",
+            "It's too lengthy.",
+            "It's too passive.",
+            "It's too technical."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 7,
+          "text": "What room does the woman in the T-shirt want to reserve?",
+          "options": [
+            "the one they're in now",
+            "a room with a stage",
+            "the staff cafeteria",
+            "a big meeting room"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 8,
+          "text": "Why does the woman in the T-shirt mention the winter party?",
+          "options": [
+            "to warn of the risks of tribal thinking",
+            "to suggest it should be in summer",
+            "to illustrate a need for improvement",
+            "to give an example of inclusiveness"
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}

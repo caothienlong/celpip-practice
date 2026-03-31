@@ -1,0 +1,75 @@
+{
+  "part": 4,
+  "title": "Listening to a News Item",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a news item once. It is about 1.5 minutes long. Then 5 questions will appear. Choose the best way to complete each statement from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p4-pas.m4a",
+  "imageAlt": "A news report about a lost engagement ring",
+  "layout": "full_questions",
+  "context": "You will hear a news item about a lost ring.",
+  "transcript": "Sarah Hunter is smiling again, now that her engagement ring is back on her finger where it belongs. Last Saturday, Sarah was attending an art class when she decided to remove her engagement ring and put it in her jacket pocket. After her class, she took a box of old clothing, including the jacket, to be sold in the local second-hand store. Later that day, Sarah suddenly realized her mistake. She immediately called the thrift store only to discover that her jacket had just been sold. \"I honestly never expected to see my engagement ring again,\" said Sarah. Surprisingly, the young girl who purchased the jacket soon discovered the ring and promptly brought it back to the thrift store. Sarah was astonished and thrilled at the return of the ring, which is valued at five thousand dollars. Sarah immediately contacted the young girl, a music student at Fairmont College, and thanked her for being so honest. The young girl quietly explained, \"I knew that I'd feel devastated if something like this had happened to me, so I had to return it.\" Fortunately for the young girl, Sarah's fiancé performs in a popular rock group and has given her front row tickets to his sold-out concert scheduled for next month.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Sarah placed her ring",
+          "options": [
+            "on the store counter.",
+            "in her clothing.",
+            "in her art kit.",
+            "in her friend's college bag."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "text": "Sarah lost her ring when she was",
+          "options": [
+            "getting dressed.",
+            "taking clothes to a store.",
+            "moving some boxes.",
+            "taking an art class."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 3,
+          "text": "When Sarah realized her mistake, she",
+          "options": [
+            "was hopeful the ring would be found.",
+            "thought the store clerk stole it.",
+            "was pessimistic about getting it back.",
+            "thought her friend had kept it."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 4,
+          "text": "Sarah got her ring back because",
+          "options": [
+            "the store clerk found it and returned it.",
+            "a girl found it and returned it to the store.",
+            "a girl found it in her college bag.",
+            "she offered a five thousand dollar reward."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "text": "Sarah arranged for",
+          "options": [
+            "her ring to be kept in a safer place.",
+            "the girl to take art classes.",
+            "the ring to be taken out of the box.",
+            "the girl to go to a popular rock concert."
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ]
+}

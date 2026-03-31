@@ -1,0 +1,74 @@
+{
+  "part": 4,
+  "title": "Listening to a News Item",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a news item once. It is about 1.5 minutes long. Then 5 questions will appear. Choose the best way to complete each statement from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_8/listening/p4-pas.m4a",
+  "layout": "full_questions",
+  "context": "You will hear a news item about a surprising book.",
+  "transcript": "Recently, at a neighborhood yard sale, book enthusiast Dale Mackenzie discovered a literary treasure. At the yard sale, Mackenzie bought several books for just $5.00. When he returned home, he noticed that one of the books, an old copy of Emma by the famous English novelist Jane Austen, was a rare first edition of the novel. Curious about the value of the book, Mackenzie looked up an antique book dealer on the internet. \"I thought the book might be worth about fifty dollars,\" said Mackenzie. But, much to his surprise, he found out that a first edition of Emma, like the one he bought at the yard sale, was valued at approximately ten thousand dollars. Mackenzie plans to sell the novel through an internet auction site. He wants to donate half of the profits to the public library—which is in need of a new reading room. \"I love books,\" said Mackenzie, \"and would really like to improve our public library so that other booklovers can have a quiet place to go and read.\" With the remaining money, Mackenzie plans to take a vacation to Germany to visit one of the world's largest annual book fairs.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Mackenzie found a book that",
+          "options": [
+            "was a rare German edition of a novel.",
+            "was autographed by the author.",
+            "he donated to the library.",
+            "was very well known but rare."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 2,
+          "text": "Mackenzie found the book",
+          "options": [
+            "during a trip abroad.",
+            "at a yard sale.",
+            "on an internet site.",
+            "at an antique book shop."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 3,
+          "text": "Mackenzie was surprised",
+          "options": [
+            "by the value of the book.",
+            "by what he found in the book.",
+            "that the book was available online.",
+            "that the library did not have this book."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "text": "Mackenzie decided to",
+          "options": [
+            "give the book to the library.",
+            "keep the book himself.",
+            "sell the book online.",
+            "buy the book from the antique dealer."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 5,
+          "text": "Mackenzie also plans to",
+          "options": [
+            "build a new library for his town.",
+            "visit a book sale in Germany.",
+            "read the book one more time.",
+            "build a reading room in his house."
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}

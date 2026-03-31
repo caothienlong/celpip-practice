@@ -1,0 +1,87 @@
+{
+  "part": 6,
+  "title": "Listening for Viewpoints",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a report once. It is about 3 minutes long. Then 6 questions will appear. Choose the best way to answer each question from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p6-pas.m4a",
+  "imageUrl": "",
+  "imageAlt": "A lecture about electronic textbooks at a university",
+  "layout": "full_questions",
+  "context": "You will hear a report about the use of electronic textbooks within post-secondary institutions.",
+  "transcript": "Welcome, and thank you for attending this week's lunchtime lecture. I am Professor Menendez, and our discussion today will be exploring the use of electronic textbooks within post-secondary institutions. To start, I will present the views of three professors at Riverbridge University.\nLaw professor Maria Bloomfield is one of several professors who has decided to completely eliminate print textbooks from her courses, arguing that their exorbitant cost adds an unnecessary financial burden on students who are already under heavy financial strain. While Bloomfield recognizes that certain costs, such as those associated with copyright, are unavoidable, she asserts that there are ways to cut corners. She proposes that professors create their own electronic textbooks; a move which, by avoiding the intermediary of a publishing company, could significantly reduce costs. Currently she is collaborating with several colleagues in order to create an e-textbook for an introductory course in law; something which she contends will save students thousands of dollars.\nHowever, Ellen Bowler, a sociology professor at Riverbridge, has stated that she has no intention of tossing her print textbooks anytime soon. She argues that, although Bloomfield's motives are honourable, requesting professors to produce their own textbooks is unrealistic. Between teaching, research, and administrative obligations, the workload of any university professor is already extremely demanding. To request that professors develop a course textbook, in addition to their regular duties, is simply not feasible. The development of a textbook, albeit digital, involves extensive research, writing and reviewing - tasks which are time consuming and should result in compensation. However, Bowler does not expect that professors would see any increase in salary if they developed their own textbooks.\nWhile Bloomfield acknowledges that her proposal would lead to extra work, she asserts that the effort is worth it. In this digital age, the manner in which knowledge is communicated is rapidly changing, and universities, she argues, must keep up. Publishing a print textbook takes a significant amount of time from start to finish, often resulting in the inclusion of out-of-date information. However, with the speed in which information can be updated in an electronic text, professors are better able to provide students with current and accurate information.\nAlthough history professor Marty Brown sees the potential of e-textbooks, he disagrees with professors teaching from texts that they have written themselves, arguing that, by doing such, there is a risk of students not being exposed to the multitude of perspectives in their field. Furthermore, he insists that many students actually prefer printed textbooks to electronic ones. Accordingly, he suggests that professors assign course readings that are available in both print and electronic form, leaving the choice to the students.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "The professor in favour of e-textbooks wants to",
+          "options": [
+            "relieve some of the financial pressure that students face.",
+            "cut corners in order to streamline administrative procedures.",
+            "request compensation for any extra work performed.",
+            "expose students to a variety of viewpoints."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "text": "The professor who is writing an e-textbook",
+          "options": [
+            "is also writing senior level law course textbooks.",
+            "is working with several other professors.",
+            "has written print textbooks in the past.",
+            "will receive financial compensation for her work."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 3,
+          "text": "One professor believes that if professors wrote e-textbooks, then",
+          "options": [
+            "students would appreciate the traditional textbooks more.",
+            "there would be concern about the additional work.",
+            "the compensation demanded by professors would be costly.",
+            "keeping the texts up-to-date would be time consuming."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "text": "The professor who prefers print textbooks believes that",
+          "options": [
+            "the role of a professor is quite challenging.",
+            "publishing companies charge too much for textbooks.",
+            "discounts should be provided to students in need.",
+            "a professor's job involves writing textbooks."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "text": "According to the lecture, publishing companies",
+          "options": [
+            "are publishing more textbooks in electronic form.",
+            "provide discounts for bulk purchases of textbooks.",
+            "ensure up-to-date information by publishing new editions.",
+            "require a long period of time to publish a print text."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 6,
+          "text": "According to the history professor, students",
+          "options": [
+            "may choose either print or electronic textbooks.",
+            "can download electronic textbook updates in class.",
+            "should apply for bursaries to cover textbook costs.",
+            "can choose not to purchase their textbooks."
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}

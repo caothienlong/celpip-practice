@@ -1,0 +1,237 @@
+{
+  "part": 1,
+  "title": "Listening to Problem Solving",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation in 3 sections. You will hear each section only once. After each section, you will hear 2 or 3 questions. You will hear the questions only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "imageAlt": "A salesperson and a shopper in a clothing store",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation between a man and a woman in a clothing store. The man is a salesperson, and the woman is a shopper.",
+  "sub_parts": [
+    {
+      "id": "1.1",
+      "title": "Section 1",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-1-pas.m4a",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-q1.m4a",
+          "text": "Question 1",
+          "options": [
+            "the lighter coloured shirt",
+            "the darker formal shirt",
+            "both shirts",
+            "neither shirt; she left without buying"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-q2.m4a",
+          "text": "Question 2",
+          "options": [
+            "The lighter colour looks less professional.",
+            "The darker coloured one fits you better.",
+            "You really should get both, not just one.",
+            "Pick either one, both are good choices."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-q3.m4a",
+          "text": "Question 3",
+          "options": [
+            "the lighter one",
+            "the darker one",
+            "the one that costs more",
+            "the one that fits better"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "1.2",
+      "title": "Section 2",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-2-pas.m4a",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 4,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-q4.m4a",
+          "text": "Question 4",
+          "options": [
+            "to ask for a refund",
+            "to get store credit",
+            "to buy an extra shirt",
+            "to exchange a shirt"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 5,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-q5.m4a",
+          "text": "Question 5",
+          "options": [
+            "Refunds never, exchanges within a month.",
+            "This month all sales are considered final.",
+            "Refunds are given only within two weeks.",
+            "Exchange or store credit within two weeks."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 6,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-q6.m4a",
+          "text": "Question 6",
+          "options": [
+            "He allowed only an item exchange.",
+            "He offered store credit for a return.",
+            "He recommended a partial refund.",
+            "He suggested a higher value item."
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "1.3",
+      "title": "Section 3",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-3-pas.m4a",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 7,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-q7.m4a",
+          "text": "Question 7",
+          "options": [
+            "a new scarf",
+            "a new belt",
+            "some socks",
+            "some earrings"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 8,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-q8.m4a",
+          "text": "Question 8",
+          "options": [
+            "She got two new items of clothing.",
+            "She traded a shirt for a costlier one.",
+            "She really needed a pair of socks.",
+            "She received a bit of money back."
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ],
+  "transcript": "Section 1:\nWOMAN: Can I ask your opinion? Both these shirts fit me . . . but which one suits me better?\nMAN: I think they'd both look great on you.\nWOMAN: Mmmm. But I'm going to buy only one of them. I can't decide. On this one, the neckline really suits my height, and the light colour goes well with my hair. But this other one's darker and more formal, which I like, too.\nMAN: Hmm. Where will you be wearing the shirt?\nWOMAN: The office. I've been promoted and I'll need some clothes for meetings with clients.\nMAN: Then maybe . . . dress to fit the situation and go with the more formal one?\nWOMAN: Yes . . . but I want to make an impression. I need something that looks really good on me.\nMAN: Hmm. Tough decision. They're both good picks.\nWOMAN: I think I'll take the lighter one. I like it better. I like the price better, too.\nMAN: I'll ring it up for you.\n\nSection 2:\nWOMAN: Excuse me, I bought this shirt here recently, but I'm bringing it back. Here's the receipt.\nMAN: Thanks . . . [pause] I'm sorry, this receipt is from last month. You bought the shirt almost two weeks ago. I'm afraid we give refunds only within one week of the date of purchase. But we could still give you store credit.\nWOMAN: No, actually, all I want is to swap this shirt for one I like better.\nMAN: Oh! You want to exchange it. In that case, by all means. You can exchange the shirt for an item of equal or lesser value.\nWOMAN: Well that works out well. I know exactly which one I'm after. I think it was a bit more expensive, though.\nMAN: Which shirt was it? Was it over here?\nWOMAN: That dark one over there. Size 32, please.\n\nSection 3:\nMAN: Here you go. Oh, look, this shirt's on sale. Now it costs less than the one you're bringing back!\nWOMAN: Really?! That's a good deal.\nMAN: But remember, it's an exchange, so I can't give you any money back. You may as well pick up something else, too. How about a belt?\nWOMAN: Uh, let me think . . . I really don't need anything else.\nMAN: Earrings, perhaps? Or a scarf?\nWOMAN: I think I'll just get these socks here. You can never have too many socks.\nMAN: All right then. With the socks, the difference is $3.45. How would you like to pay?\nWOMAN: By cash: toonies and quarters.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Question 1",
+          "options": [
+            "the lighter coloured shirt",
+            "the darker formal shirt",
+            "both shirts",
+            "neither shirt; she left without buying"
+          ],
+          "answer": 0,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-q1.m4a"
+        },
+        {
+          "id": 2,
+          "text": "Question 2",
+          "options": [
+            "The lighter colour looks less professional.",
+            "The darker coloured one fits you better.",
+            "You really should get both, not just one.",
+            "Pick either one, both are good choices."
+          ],
+          "answer": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-q2.m4a"
+        },
+        {
+          "id": 3,
+          "text": "Question 3",
+          "options": [
+            "the lighter one",
+            "the darker one",
+            "the one that costs more",
+            "the one that fits better"
+          ],
+          "answer": 0,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-q3.m4a"
+        },
+        {
+          "id": 4,
+          "text": "Question 4",
+          "options": [
+            "to ask for a refund",
+            "to get store credit",
+            "to buy an extra shirt",
+            "to exchange a shirt"
+          ],
+          "answer": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-q4.m4a"
+        },
+        {
+          "id": 5,
+          "text": "Question 5",
+          "options": [
+            "Refunds never, exchanges within a month.",
+            "This month all sales are considered final.",
+            "Refunds are given only within two weeks.",
+            "Exchange or store credit within two weeks."
+          ],
+          "answer": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-q5.m4a"
+        },
+        {
+          "id": 6,
+          "text": "Question 6",
+          "options": [
+            "He allowed only an item exchange.",
+            "He offered store credit for a return.",
+            "He recommended a partial refund.",
+            "He suggested a higher value item."
+          ],
+          "answer": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-q6.m4a"
+        },
+        {
+          "id": 7,
+          "text": "Question 7",
+          "options": [
+            "a new scarf",
+            "a new belt",
+            "some socks",
+            "some earrings"
+          ],
+          "answer": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-q7.m4a"
+        },
+        {
+          "id": 8,
+          "text": "Question 8",
+          "options": [
+            "She got two new items of clothing.",
+            "She traded a shirt for a costlier one.",
+            "She really needed a pair of socks.",
+            "She received a bit of money back."
+          ],
+          "answer": 0,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p1-q8.m4a"
+        }
+      ]
+    }
+  ]
+}

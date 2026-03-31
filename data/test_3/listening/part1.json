@@ -1,0 +1,237 @@
+{
+  "part": 1,
+  "title": "Listening to Problem Solving",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation in 3 sections. You will hear each section only once. After each section, you will hear 2 or 3 questions. You will hear the questions only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "imageAlt": "A veterinarian and a pet owner with a cat at a veterinary clinic",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation between a woman and a man at a veterinary clinic. The woman is a veterinarian, and the man is a pet owner.",
+  "sub_parts": [
+    {
+      "id": "1.1",
+      "title": "Section 1",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-1-pas.m4a",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-q1.m4a",
+          "text": "Question 1",
+          "options": [
+            "Tiger has been going outside.",
+            "Tiger's not playful anymore.",
+            "Tiger has a lot of insect bites.",
+            "Tiger's claws are too sharp."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-q2.m4a",
+          "text": "Question 2",
+          "options": [
+            "Avoid picking Tiger up.",
+            "Clean Tiger's fur.",
+            "Give Tiger medication.",
+            "Keep Tiger indoors."
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "1.2",
+      "title": "Section 2",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-2-pas.m4a",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-q3.m4a",
+          "text": "Question 3",
+          "options": [
+            "The vet prescribed the wrong drug.",
+            "The drug made the problem worse.",
+            "The cat got only two skin treatments.",
+            "The man lost the cat's medication."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 4,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-q4.m4a",
+          "text": "Question 4",
+          "options": [
+            "He tends to be disorganized.",
+            "He has other pets at home.",
+            "He keeps his house clean.",
+            "He stays out late at night."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-q5.m4a",
+          "text": "Question 5",
+          "options": [
+            "He didn't follow the instructions.",
+            "He forgot to pay for his last visit.",
+            "Tiger scratched the vet.",
+            "Tiger got outside at night."
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "1.3",
+      "title": "Section 3",
+      "passageAudioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-3-pas.m4a",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 6,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-q6.m4a",
+          "text": "Question 6",
+          "options": [
+            "Her skin problem needs follow-up.",
+            "She needs her claws trimmed.",
+            "Her eating habits have changed.",
+            "She seems to be getting heavier."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 7,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-q7.m4a",
+          "text": "Question 7",
+          "options": [
+            "confused",
+            "surprise",
+            "relief",
+            "worry"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 8,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-q8.m4a",
+          "text": "Question 8",
+          "options": [
+            "Find people who want to adopt cats.",
+            "Keep giving Tiger the flea medication.",
+            "Locate a vet who can do the surgery.",
+            "Stop letting Tiger eat too much food."
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ],
+  "transcript": "Section 1:\nMAN: Hi, Dr. Anderson. This is my cat, Tiger. Tiger, meet Dr. Anderson.\nWOMAN: Hello, Tiger. Aren't you a lovely cat.\nMAN: I'm really worried about her. She's usually so playful, but this past week all she's been doing is scratching herself. Her claws are sharp, and she's hurting herself. Look, here.\nWOMAN: I see what you mean. Is Tiger an indoor or an outdoor cat?\nMAN: Mostly outdoors. I let her stay outside at night.\nWOMAN: These marks look like flea bites. If Tiger's going outdoors, it's almost certain that she's picked up fleas. I'll give you some medication to kill them. Apply it to her skin—right here—once a month for three months.\nMAN: Okay. Will the fleas get into my house?\nWOMAN: Well, fleas only live on animals. After Tiger receives the medication, they can't live on her anymore, so they'll die. But you should vacuum and clean every day to get rid of any flea eggs. If need be, I can always give you a product to apply to your rugs and furniture.\n\nSection 2:\nMAN: We're back! So, I used the medication, but Tiger's still been scratching a lot since her last appointment. At first, she started getting better, but now she's getting worse.\nWOMAN: Hmm. [Pause] Ooh . . . yes, I see what you mean. That must hurt. Did you give her the medication once a month, for three months?\nMAN: Yes . . . [Pause] Well . . . okay, maybe I missed the last dose. It just slipped my mind. And I guess I only got around to vacuuming once.\nWOMAN: You really have to give her three doses of the medication over three months . . . and you need to vacuum every day. Here are another three doses. You can pay the receptionist.\nMAN: Okay, thanks. I promise I'll be more on top of things this time. Sorry about that.\nWOMAN: Okay. And think about keeping her inside at night.\n\nSection 3:\nWOMAN: How's Tiger today? Still scratching? [Pause] I see you trimmed her claws.\nMAN: No more fleas! But it's weird . . . she's gaining a lot of weight, even though she's eating more or less the same amount as usual.\nWOMAN: Hmm. She hasn't been spayed yet, has she?\nMAN: Right, no surgery yet. She's too young to get pregnant.\nWOMAN: Where'd you hear that? Actually, cats can get pregnant even at six months of age. [Pause] From the way her abdomen feels, I'd say Tiger's going to be a mother soon.\nMAN: You're kidding! That's the last thing I expected.\nWOMAN: If she's going to keep going outdoors, you really need to get her spayed. It's a simple operation; I can do it after she gives birth. In the meantime, you have some things to do.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Question 1",
+          "options": [
+            "Tiger has been going outside.",
+            "Tiger's not playful anymore.",
+            "Tiger has a lot of insect bites.",
+            "Tiger's claws are too sharp."
+          ],
+          "answer": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-q1.m4a"
+        },
+        {
+          "id": 2,
+          "text": "Question 2",
+          "options": [
+            "Avoid picking Tiger up.",
+            "Clean Tiger's fur.",
+            "Give Tiger medication.",
+            "Keep Tiger indoors."
+          ],
+          "answer": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-q2.m4a"
+        },
+        {
+          "id": 3,
+          "text": "Question 3",
+          "options": [
+            "The vet prescribed the wrong drug.",
+            "The drug made the problem worse.",
+            "The cat got only two skin treatments.",
+            "The man lost the cat's medication."
+          ],
+          "answer": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-q3.m4a"
+        },
+        {
+          "id": 4,
+          "text": "Question 4",
+          "options": [
+            "He tends to be disorganized.",
+            "He has other pets at home.",
+            "He keeps his house clean.",
+            "He stays out late at night."
+          ],
+          "answer": 0,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-q4.m4a"
+        },
+        {
+          "id": 5,
+          "text": "Question 5",
+          "options": [
+            "He didn't follow the instructions.",
+            "He forgot to pay for his last visit.",
+            "Tiger scratched the vet.",
+            "Tiger got outside at night."
+          ],
+          "answer": 0,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-q5.m4a"
+        },
+        {
+          "id": 6,
+          "text": "Question 6",
+          "options": [
+            "Her skin problem needs follow-up.",
+            "She needs her claws trimmed.",
+            "Her eating habits have changed.",
+            "She seems to be getting heavier."
+          ],
+          "answer": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-q6.m4a"
+        },
+        {
+          "id": 7,
+          "text": "Question 7",
+          "options": [
+            "confused",
+            "surprise",
+            "relief",
+            "worry"
+          ],
+          "answer": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-q7.m4a"
+        },
+        {
+          "id": 8,
+          "text": "Question 8",
+          "options": [
+            "Find people who want to adopt cats.",
+            "Keep giving Tiger the flea medication.",
+            "Locate a vet who can do the surgery.",
+            "Stop letting Tiger eat too much food."
+          ],
+          "answer": 0,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p1-q8.m4a"
+        }
+      ]
+    }
+  ]
+}

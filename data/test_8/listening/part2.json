@@ -1,0 +1,79 @@
+{
+  "part": 2,
+  "title": "Listening to a Daily Life Conversation",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 5 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_8/listening/p2-pas.m4a",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation between a man and a woman at a department store.",
+  "transcript": "WOMAN: Wow, that was quite the lineup for Customer Service. I'd like to return this purchase and get my money back.\nMAN: Sorry you had to wait so long. We're short-staffed today, and the manager is off sick. Is there anything wrong with the printer?\nWOMAN: No, it's a great machine, and a really good deal too—an all-in-one printer, scanner, copier, and fax for about $90. What's not to like? The thing is, I won't really use it because my son just bought me one exactly like it.\nMAN: So it's not needed any more. Okay, our return policy is that we refund the purchase price of returned electronic devices if they're brought back in new condition within 30 days. Do you have your receipt with you?\nWOMAN: Right here—sorry, it got a bit crumpled in my wallet. I bought the printer on August 9th, just ten days ago. So it's covered under your return policy, right?\nMAN: Let's take a look inside and see. All the original packaging is here . . . the serial number on the printer matches the one on the box . . . you've brought the instruction manual, USB cable, telephone line cord. Where are the ink cartridges?\nWOMAN: They're inside the printer. I installed them already. They work just great, and there's still lots of ink in them.\nMAN: No worries. We'll take this printer back for you. If you give me your Visa card, I can reimburse you.\nWOMAN: I see on the receipt that I was also persuaded to buy a one-year warranty for $10. And there was also some sort of $9 charge called an \"Eco-Fee.\" What's that?\nMAN: It's a fee the government collects at all stores, province-wide, to help pay for recycling and safe disposal of electronic items. We'll refund your Eco-Fee as well as the warranty. The $14 in sales tax will also be credited back to your account.\nWOMAN: Wow, $90 for the printer . . . plus $33 in warranties, eco-fees, and taxes. That's a lot of hidden fees. Now that I think about it, that purchase wasn't such a bargain after all.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_8/listening/p2-q1.m4a",
+          "text": "Who is the woman talking to?",
+          "options": [
+            "a retail sales clerk",
+            "a store manager",
+            "a repair technician",
+            "a customer service clerk"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 2,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_8/listening/p2-q2.m4a",
+          "text": "What happened in this conversation?",
+          "options": [
+            "A favour was returned.",
+            "A request was granted.",
+            "An offer was considered.",
+            "A complaint was registered."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 3,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_8/listening/p2-q3.m4a",
+          "text": "Why does the man open the box?",
+          "options": [
+            "to take out the sales receipt",
+            "to see what the problem is",
+            "to replace the ink cartridges",
+            "to ensure nothing's missing"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 4,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_8/listening/p2-q4.m4a",
+          "text": "What does the woman get?",
+          "options": [
+            "a merchandise exchange",
+            "a full reimbursement",
+            "an added discount",
+            "a partial credit"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_8/listening/p2-q5.m4a",
+          "text": "What should the woman have done differently?",
+          "options": [
+            "checked the bill for mistakes",
+            "taken additional costs into account",
+            "requested more of a discount",
+            "asked for a warranty"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "part": 4,
+  "title": "Listening to a News Item",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a news item once. It is about 1.5 minutes long. Then 5 questions will appear. Choose the best way to complete each statement from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p4-pas.m4a",
+  "imageUrl": "",
+  "imageAlt": "A news report about a stolen wallet in Vancouver",
+  "layout": "full_questions",
+  "context": "You will hear a news item about a stolen wallet.",
+  "transcript": "A tourist in downtown Vancouver got the last laugh yesterday when pickpockets stole his wallet. Gregory Willis was about to rent bikes to tour Stanley Park with his wife when he noticed his wallet was missing. He recalled he'd been in a jostling crowd earlier that day watching a street magician performance when someone had bumped into him, but he'd taken little notice of the incident. Undaunted, Mr. Willis headed to the nearest police station and said he knew exactly where his wallet was. He'd attached a GPS chip, a small tracking device that uses the global positioning system to pinpoint location, on the inside of the wallet. Willis explained he had initially bought the chip to track their dog on their 20-acre ranch in Washington state, but had decided to take it on vacation as a precautionary measure against loss or theft. The GPS chip certainly did come in handy as the Willises, in the company of two policemen, were able to locate the wallet 30 blocks away where a group of teenagers were loitering at a park. The young thief was more than surprised when the officers showed up to arrest him.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Willis",
+          "options": [
+            "went for a walk near his home.",
+            "watched a magic show.",
+            "couldn't find his dog.",
+            "got lost in an unfamiliar city."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "text": "He remembered that earlier he",
+          "options": [
+            "was in a crowd.",
+            "spent all his money.",
+            "was on a busy street.",
+            "was biking in the park."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "text": "He used the tracking device to",
+          "options": [
+            "ensure that he didn't get lost.",
+            "find out where his wallet was.",
+            "train his dog to return home.",
+            "find the nearest police station."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "text": "The police quickly",
+          "options": [
+            "found the wallet.",
+            "recorded the details.",
+            "contacted other stations.",
+            "used dogs to find the wallet."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "text": "Willis was delighted that the",
+          "options": [
+            "precaution worked so well.",
+            "police were so efficient.",
+            "magician helped them.",
+            "police located the thief."
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}

@@ -6,6 +6,7 @@ Supports:
   - Individual Google Drive shared links
   - A Google Drive folder (shared publicly or via link)
   - A local CSV/text file listing Google Drive URLs
+  - Already-downloaded local files (for restricted Google Drive shares)
 
 Usage:
   # Single file
@@ -19,6 +20,12 @@ Usage:
 
   # From a text file (one URL per line)
   python scripts/gdrive_to_cloudinary.py --file urls.txt
+
+  # From local files (for restricted GDrive shares — download manually first)
+  python scripts/gdrive_to_cloudinary.py --local ~/Downloads/listening_audio
+
+  # Update JSON files only (after files are already uploaded to Cloudinary)
+  python scripts/gdrive_to_cloudinary.py --update-json-only data/test_3/listening celpip/test_3/listening
 
   # Upload + update JSON test data (replace placeholder URLs)
   python scripts/gdrive_to_cloudinary.py --folder "FOLDER_URL" --update-json data/test_3/listening
@@ -49,23 +56,29 @@ from pathlib import Path
 from urllib.parse import urlparse, parse_qs
 
 try:
-    import gdown
-except ImportError:
-    print("ERROR: 'gdown' is required. Install with: pip install gdown")
-    sys.exit(1)
-
-try:
-    import cloudinary
-    import cloudinary.uploader
-except ImportError:
-    print("ERROR: 'cloudinary' is required. Install with: pip install cloudinary")
-    sys.exit(1)
-
-try:
     from dotenv import load_dotenv
     load_dotenv()
 except ImportError:
     pass
+
+
+def _require_gdown():
+    try:
+        import gdown
+        return gdown
+    except ImportError:
+        print("ERROR: 'gdown' is required. Install with: pip install gdown")
+        sys.exit(1)
+
+
+def _require_cloudinary():
+    try:
+        import cloudinary
+        import cloudinary.uploader
+        return cloudinary
+    except ImportError:
+        print("ERROR: 'cloudinary' is required. Install with: pip install cloudinary")
+        sys.exit(1)
 
 # Expected naming pattern: p{part}-{pas|q{n}|{section}-pas}.{ext}
 # Examples: p1-1-pas.m4a, p1-q1.m4a, p2-pas.m4a, p5-pas.mp4
@@ -103,7 +116,8 @@ def configure_cloudinary():
         print("  CLOUDINARY_API_SECRET")
         sys.exit(1)
 
-    cloudinary.config(
+    cl = _require_cloudinary()
+    cl.config(
         cloud_name=cloud_name,
         api_key=api_key,
         api_secret=api_secret,
@@ -138,6 +152,51 @@ def extract_gdrive_folder_id(url):
     return None
 
 
+def check_gdrive_accessible(resource_id, resource_type="file"):
+    """
+    Check if a Google Drive file or folder is publicly accessible.
+    Returns (accessible: bool, message: str).
+    """
+    import requests
+
+    if resource_type == "folder":
+        check_url = f"https://drive.google.com/drive/folders/{resource_id}"
+    else:
+        check_url = f"https://drive.google.com/file/d/{resource_id}/view"
+
+    try:
+        resp = requests.get(check_url, allow_redirects=True, timeout=10)
+
+        if resp.status_code == 404:
+            return False, f"Not found (404). Check the {resource_type} ID: {resource_id}"
+
+        if "ServiceLogin" in resp.url or "/accounts/" in resp.url:
+            return False, (
+                f"Requires Google login — {resource_type} is not shared publicly.\n"
+                f"  Fix: Open Google Drive → right-click the {resource_type} → "
+                f"Share → 'Anyone with the link'"
+            )
+
+        if resp.status_code == 403:
+            return False, (
+                f"Access denied (403). The {resource_type} is not shared publicly.\n"
+                f"  Fix: Open Google Drive → right-click the {resource_type} → "
+                f"Share → 'Anyone with the link'"
+            )
+
+        if resp.status_code == 200:
+            if "File not found" in resp.text or "Sorry, the file you have requested does not exist" in resp.text:
+                return False, f"Google Drive says this {resource_type} does not exist. Check the ID: {resource_id}"
+            return True, "Accessible"
+
+        return False, f"Unexpected response (HTTP {resp.status_code}) for {resource_type} ID: {resource_id}"
+
+    except requests.exceptions.Timeout:
+        return False, "Connection timed out. Check your internet connection."
+    except requests.exceptions.ConnectionError:
+        return False, "Could not connect to Google Drive. Check your internet connection."
+
+
 def download_from_gdrive(url_or_id, output_dir):
     """Download a file from Google Drive. Returns the local file path."""
     file_id = extract_gdrive_file_id(url_or_id) if '/' in url_or_id else url_or_id
@@ -145,7 +204,13 @@ def download_from_gdrive(url_or_id, output_dir):
         print(f"  WARNING: Could not extract file ID from: {url_or_id}")
         return None
 
+    accessible, message = check_gdrive_accessible(file_id, "file")
+    if not accessible:
+        print(f"  ERROR: {message}")
+        return None
+
     gdrive_url = f"https://drive.google.com/uc?id={file_id}"
+    gdown = _require_gdown()
     try:
         output_path = gdown.download(gdrive_url, output=os.path.join(output_dir, ""), fuzzy=True)
         if output_path and os.path.exists(output_path):
@@ -166,9 +231,15 @@ def download_folder_from_gdrive(folder_url, output_dir):
         print(f"ERROR: Could not extract folder ID from: {folder_url}")
         return []
 
+    accessible, message = check_gdrive_accessible(folder_id, "folder")
+    if not accessible:
+        print(f"ERROR: {message}")
+        return []
+
     gdrive_folder_url = f"https://drive.google.com/drive/folders/{folder_id}"
     print(f"Downloading folder: {gdrive_folder_url}")
 
+    gdown = _require_gdown()
     try:
         downloaded = gdown.download_folder(
             url=gdrive_folder_url,
@@ -249,8 +320,9 @@ def upload_to_cloudinary(local_path, folder=None):
     if folder:
         upload_options["folder"] = folder
 
+    cl = _require_cloudinary()
     try:
-        result = cloudinary.uploader.upload(local_path, **upload_options)
+        result = cl.uploader.upload(local_path, **upload_options)
         print(f"  Uploaded: {result['secure_url']}")
         return result
     except Exception as e:
@@ -264,37 +336,126 @@ def upload_to_cloudinary(local_path, folder=None):
         return None
 
 
+def _collect_expected_stems(json_dir):
+    """
+    Scan JSON files to determine which audio stems are expected.
+    Returns list of (stem, extension) tuples.
+    """
+    json_files = sorted(globmod.glob(os.path.join(json_dir, "part*.json")))
+    stems = []
+
+    for json_path in json_files:
+        with open(json_path, 'r') as f:
+            data = json.load(f)
+
+        part_num = data.get("part")
+        media_type = data.get("mediaType", "audio")
+        ext = ".mp4" if media_type == "video" else ".m4a"
+
+        if "mediaUrl" in data:
+            stems.append((f"p{part_num}-pas", ext))
+
+        for sp in data.get("sub_parts", []):
+            sp_id = sp.get("id", "")
+            section_num = str(sp_id).split(".")[-1] if "." in str(sp_id) else sp_id
+            stems.append((f"p{part_num}-{section_num}-pas", ".m4a"))
+
+            for q in sp.get("questions", []):
+                stems.append((f"p{part_num}-q{q['id']}", ".m4a"))
+
+        for section in data.get("sections", []):
+            for q in section.get("questions", []):
+                if "audioUrl" in q:
+                    stems.append((f"p{part_num}-q{q['id']}", ".m4a"))
+
+    return stems
+
+
 def update_json_files(json_dir, url_mapping):
     """
-    Update listening JSON files, replacing matching filenames in URLs.
+    Update listening JSON files with Cloudinary URLs.
+    Handles both empty placeholder URLs ("") and existing URLs.
 
     url_mapping: dict of {filename_stem: cloudinary_url}
+        e.g. {"p2-pas": "https://res.cloudinary.com/.../p2-pas.m4a",
+              "p2-q1": "https://res.cloudinary.com/.../p2-q1.m4a"}
     """
     json_files = sorted(globmod.glob(os.path.join(json_dir, "part*.json")))
     if not json_files:
         print(f"  No part*.json files found in {json_dir}")
         return
 
+    def find_url(stem):
+        """Find a URL in the mapping by stem."""
+        return url_mapping.get(stem)
+
+    def update_questions(questions, part_num):
+        """Update audioUrl in a list of questions."""
+        changed = False
+        for q in questions:
+            qid = q.get("id")
+            stem = f"p{part_num}-q{qid}"
+            url = find_url(stem)
+            if url and q.get("audioUrl", "MISSING") != url:
+                q["audioUrl"] = url
+                changed = True
+        return changed
+
     updated_count = 0
+    url_count = 0
+
     for json_path in json_files:
         with open(json_path, 'r') as f:
-            content = f.read()
+            data = json.load(f)
 
-        original = content
-        for stem, new_url in url_mapping.items():
-            pattern = re.compile(
-                r'https?://[^\s"]+/' + re.escape(stem) + r'\.\w+',
-                re.IGNORECASE
-            )
-            content = pattern.sub(new_url, content)
+        part_num = data.get("part")
+        changed = False
 
-        if content != original:
+        # Update mediaUrl (passage for parts 2-6)
+        if "mediaUrl" in data:
+            stem = f"p{part_num}-pas"
+            url = find_url(stem)
+            if url and data["mediaUrl"] != url:
+                data["mediaUrl"] = url
+                changed = True
+                url_count += 1
+
+        # Update sub_parts (Part 1 sections + per-question audio)
+        for sp in data.get("sub_parts", []):
+            sp_id = sp.get("id", "")
+            section_num = str(sp_id).split(".")[-1] if "." in str(sp_id) else sp_id
+
+            # Section passage audio
+            stem = f"p{part_num}-{section_num}-pas"
+            url = find_url(stem)
+            if url and sp.get("passageAudioUrl", "MISSING") != url:
+                sp["passageAudioUrl"] = url
+                changed = True
+                url_count += 1
+
+            # Per-question audio within sub_parts
+            if update_questions(sp.get("questions", []), part_num):
+                changed = True
+                url_count += sum(1 for q in sp.get("questions", [])
+                                 if find_url(f"p{part_num}-q{q.get('id')}"))
+
+        # Update sections (flat question list — Parts 2-3 per_question_audio)
+        for section in data.get("sections", []):
+            if update_questions(section.get("questions", []), part_num):
+                changed = True
+                url_count += sum(1 for q in section.get("questions", [])
+                                 if find_url(f"p{part_num}-q{q.get('id')}"))
+
+        if changed:
             with open(json_path, 'w') as f:
-                f.write(content)
+                json.dump(data, f, indent=2, ensure_ascii=False)
+                f.write("\n")
             print(f"  Updated: {json_path}")
             updated_count += 1
+        else:
+            print(f"  No changes: {json_path}")
 
-    print(f"  {updated_count} JSON file(s) updated out of {len(json_files)}")
+    print(f"  {updated_count} JSON file(s) updated, {url_count} URL(s) filled")
 
 
 def load_urls_from_file(filepath):
@@ -351,6 +512,8 @@ Examples:
   %(prog)s --folder "https://drive.google.com/drive/folders/XYZ789"
   %(prog)s --file urls.txt --cloudinary-folder celpip/test_3
   %(prog)s --folder "FOLDER_URL" --update-json data/test_3/listening
+  %(prog)s --local ~/Downloads/audio --cloudinary-folder celpip/test_3
+  %(prog)s --update-json-only data/test_3/listening celpip/test_3/listening
         """
     )
 
@@ -366,6 +529,15 @@ Examples:
     source_group.add_argument(
         '--file',
         help='Text file with one Google Drive URL per line'
+    )
+    source_group.add_argument(
+        '--local',
+        help='Path to a local directory of already-downloaded audio/video files (skips Google Drive)'
+    )
+    source_group.add_argument(
+        '--update-json-only', nargs=2, metavar=('JSON_DIR', 'CLOUDINARY_FOLDER'),
+        help='Update JSON files only (no upload). Uses Cloudinary folder to build URLs. '
+             'E.g., --update-json-only data/test_3/listening celpip/test_3/listening'
     )
 
     parser.add_argument(
@@ -391,37 +563,70 @@ Examples:
 
     args = parser.parse_args()
 
+    # Standalone JSON update mode — no upload needed
+    if args.update_json_only:
+        json_dir, cloudinary_folder = args.update_json_only
+        cloud_name = os.environ.get("CLOUDINARY_CLOUD_NAME", "dga4ax7q2")
+
+        # Scan JSON files to find which stems are needed
+        all_stems = _collect_expected_stems(json_dir)
+        url_mapping = {}
+        for stem, ext in all_stems:
+            url = f"https://res.cloudinary.com/{cloud_name}/video/upload/{cloudinary_folder}/{stem}{ext}"
+            url_mapping[stem] = url
+
+        print(f"Updating JSON files in: {json_dir}")
+        print(f"Using Cloudinary folder: {cloudinary_folder}")
+        print(f"Cloud name: {cloud_name}")
+        print(f"Generated {len(url_mapping)} URL(s)\n")
+        update_json_files(json_dir, url_mapping)
+        print("\nDone!")
+        return
+
     if not args.dry_run:
         configure_cloudinary()
 
-    if args.keep_downloads:
-        download_dir = os.path.join(os.getcwd(), "downloads")
-        os.makedirs(download_dir, exist_ok=True)
-    else:
-        download_dir = tempfile.mkdtemp(prefix="gdrive_migrate_")
-
-    print(f"Download directory: {download_dir}\n")
-
     local_files = []
+    download_dir = None
 
-    if args.url:
-        print(f"Downloading {len(args.url)} file(s) from Google Drive...")
-        for url in args.url:
-            path = download_from_gdrive(url, download_dir)
-            if path:
-                local_files.append(path)
+    if args.local:
+        local_dir = os.path.abspath(args.local)
+        if not os.path.isdir(local_dir):
+            print(f"ERROR: Local directory not found: {local_dir}")
+            sys.exit(1)
+        print(f"Using local files from: {local_dir}\n")
+        local_files = [
+            os.path.join(local_dir, f)
+            for f in os.listdir(local_dir)
+            if os.path.isfile(os.path.join(local_dir, f))
+        ]
+    else:
+        if args.keep_downloads:
+            download_dir = os.path.join(os.getcwd(), "downloads")
+            os.makedirs(download_dir, exist_ok=True)
+        else:
+            download_dir = tempfile.mkdtemp(prefix="gdrive_migrate_")
 
-    elif args.folder:
-        print("Downloading folder from Google Drive...")
-        local_files = download_folder_from_gdrive(args.folder, download_dir)
+        print(f"Download directory: {download_dir}\n")
 
-    elif args.file:
-        urls = load_urls_from_file(args.file)
-        print(f"Downloading {len(urls)} file(s) from URL list...")
-        for url in urls:
-            path = download_from_gdrive(url, download_dir)
-            if path:
-                local_files.append(path)
+        if args.url:
+            print(f"Downloading {len(args.url)} file(s) from Google Drive...")
+            for url in args.url:
+                path = download_from_gdrive(url, download_dir)
+                if path:
+                    local_files.append(path)
+
+        elif args.folder:
+            print("Downloading folder from Google Drive...")
+            local_files = download_folder_from_gdrive(args.folder, download_dir)
+
+        elif args.file:
+            urls = load_urls_from_file(args.file)
+            print(f"Downloading {len(urls)} file(s) from URL list...")
+            for url in urls:
+                path = download_from_gdrive(url, download_dir)
+                if path:
+                    local_files.append(path)
 
     if not local_files:
         print("\nNo files were downloaded. Nothing to upload.")
@@ -496,7 +701,7 @@ Examples:
         print(f"\nUpdating JSON files in: {args.update_json}")
         update_json_files(args.update_json, url_mapping)
 
-    if not args.keep_downloads and download_dir.startswith(tempfile.gettempdir()):
+    if download_dir and not args.keep_downloads and download_dir.startswith(tempfile.gettempdir()):
         import shutil
         shutil.rmtree(download_dir, ignore_errors=True)
         print(f"\nCleaned up temp downloads.")

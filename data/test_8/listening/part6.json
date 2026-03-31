@@ -1,0 +1,85 @@
+{
+  "part": 6,
+  "title": "Listening for Viewpoints",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a report once. It is about 3 minutes long. Then 6 questions will appear. Choose the best way to answer each question from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_8/listening/p6-pas.m4a",
+  "layout": "full_questions",
+  "context": "You will hear a presentation about a city compost initiative.",
+  "transcript": "Welcome to Chat Radio. On today's agenda is the topic of green bins: are they a success or a failure? Started two years ago, the green bin program is a waste management strategy implemented to reduce the amount of garbage sent to municipal landfills. As part of the program, individuals are asked to separate their compostable waste, such as food and yard waste, into green bins provided by the city. The bins are collected on a weekly basis and, rather than taken to a landfill, are brought to a facility that turns the waste into compost. Although generally well received, the program has had its share of criticism.\nFor example, for Judith Knightley, a busy mother of three, the green bins are a nightmare. Knightley complains that, not only is it time consuming to sort the copious amount of garbage produced by a large family, but the bins are also unsanitary, attracting both animals and bugs. Although the green bin is not obligatory, since the program began, regular garbage pick-up has been reduced to bi-monthly, leaving many, like Knightly, feeling forced into its use.\nIn contrast, Kirk Beauregard, an avid gardener, is thrilled with the city's initiative. Beauregard, who, for many years, has composted his own garbage in a backyard composter, is glad to see the city catching up. He insists that composting is an easy way to turn waste into a valuable product, a product used by many farmers and gardeners in place of chemical fertilizers. While Beauregard acknowledges that backyard composting might not be enjoyed by everyone, he sees the green bin program as a way to make the composting of one's own garbage accessible to everyone.\nCouncillor Trudy Volkov, on the other hand, argues, regardless of like or dislike, that the program was necessary. With the city's rapid population growth, finding an economical way to manage the incredible amount of garbage being produced was essential. According to Volkov, city council was faced with two choices: either build a new landfill, or decrease the amount of waste brought to the current landfill. For Volkov, the green bin is a win-win solution. Not only is the waste diverted from the landfill, but it is converted into a useful product whose sale can help defray some of the costs of running the program.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "The radio show is discussing green bins because",
+          "options": [
+            "the city's composting program is controversial.",
+            "household garbage reduction is impossible.",
+            "people are refusing to separate their garbage.",
+            "they have been popular for many years."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "text": "Knightley uses the green bin because",
+          "options": [
+            "compost is a great material for her garden soil.",
+            "she has garbage pickup every two weeks.",
+            "she believes the program is a good initiative.",
+            "her children enjoy learning about composting."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 3,
+          "text": "Beauregarde, the gardener, thinks",
+          "options": [
+            "backyard composters are better than green bins.",
+            "composting with green bins is easier for people.",
+            "learning to compost can be challenging for some.",
+            "backyard composting is more costly than green bins."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "text": "Volkov, the councillor, believes the green bin program is",
+          "options": [
+            "a costly waste of taxpayer's money.",
+            "an educational undertaking for residents.",
+            "an efficient fix to the city's problem.",
+            "an adequate way to tackle food waste."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 5,
+          "text": "Volkov and Beauregarde would agree that",
+          "options": [
+            "the green bin program creates something useful.",
+            "chemical fertilizers are harmful to the environment.",
+            "the city's waste problem was getting out of control.",
+            "there are many problems with the green bin program."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 6,
+          "text": "Without the green bin program, it's likely that",
+          "options": [
+            "regular garbage collection would still be bi-weekly.",
+            "the mother would purchase a backyard composter.",
+            "a second garbage dump would need to be built.",
+            "the gardener would have difficulty finding compost."
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}
