@@ -5,7 +5,7 @@
   "listening_type": "video",
   "instructions": "You will watch a 2-minute video. Then 8 questions will appear. Choose the best way to answer each question.",
   "mediaType": "video",
-  "mediaUrl": "",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_10/listening/p5-pas.mp4",
   "imageUrl": "",
   "imageAlt": "Three employees discussing favouritism at work in a coffee shop",
   "layout": "full_questions",

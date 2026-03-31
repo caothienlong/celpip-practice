@@ -5,7 +5,7 @@
   "listening_type": "audio",
   "instructions": "You will hear a report once. It is about 3 minutes long. Then 6 questions will appear. Choose the best way to answer each question from the drop-down menu.",
   "mediaType": "audio",
-  "mediaUrl": "",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p6-pas.m4a",
   "imageAlt": "A report about urban chicken bylaws",
   "layout": "full_questions",
   "context": "You will hear a report about urban chicken bylaws.",

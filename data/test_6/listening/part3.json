@@ -5,7 +5,7 @@
   "listening_type": "audio",
   "instructions": "You will hear a conversation followed by 6 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
   "mediaType": "audio",
-  "mediaUrl": "",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p3-pas.m4a",
   "imageAlt": "Booking a wedding photographer",
   "layout": "per_question_audio",
   "context": "You will hear a conversation where a man is trying to arrange his upcoming wedding.",
@@ -16,7 +16,7 @@
       "questions": [
         {
           "id": 1,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p3-q1.m4a",
           "text": "Question 1",
           "options": [
             "He met her at a wedding party last year.",
@@ -28,7 +28,7 @@
         },
         {
           "id": 2,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p3-q2.m4a",
           "text": "Question 2",
           "options": [
             "a luxurious garden ceremony",
@@ -40,7 +40,7 @@
         },
         {
           "id": 3,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p3-q3.m4a",
           "text": "Question 3",
           "options": [
             "because the wedding is in a different city",
@@ -52,7 +52,7 @@
         },
         {
           "id": 4,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p3-q4.m4a",
           "text": "Question 4",
           "options": [
             "because no other photographer is available",
@@ -64,7 +64,7 @@
         },
         {
           "id": 5,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p3-q5.m4a",
           "text": "Question 5",
           "options": [
             "the basic package price without guest portraits",
@@ -76,7 +76,7 @@
         },
         {
           "id": 6,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_6/listening/p3-q6.m4a",
           "text": "Question 6",
           "options": [
             "as a combination of digital and print copies",

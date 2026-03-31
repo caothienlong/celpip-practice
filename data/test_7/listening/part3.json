@@ -5,7 +5,7 @@
   "listening_type": "audio",
   "instructions": "You will hear a conversation followed by 6 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
   "mediaType": "audio",
-  "mediaUrl": "",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_7/listening/p3-pas.m4a",
   "layout": "per_question_audio",
   "context": "You will hear a conversation where a woman gets information about student clubs.",
   "transcript": "WOMAN: Hi! I'm looking to start a college club and I was told that the Student Society office was the right place to ask.\nMAN: I can definitely help you out with that. What kind of club are you interested in starting?\nWOMAN: Well, I found a brochure of clubs around campus and I noticed there wasn't a music club! I play guitar and I sing, and I thought maybe it would be fun to start a club so students could get together and make some music!\nMAN: That's awesome! Okay, let's get you started. You will need ten students who support your club and will sign a petition to launch your club. There's a special day next week . . . club day . . . where you can set up a table with posters or signs to gain students' interest in your club.\nWOMAN: That sounds fun! I'm sure I can get at least ten people interested. Is there funding for the club?\nMAN: Yes, if you get ten signatures and start your club, the Student Society budgets $40 to new clubs and that money can be used towards anything, such as event planning or food. If you're looking for additional funding, you could apply for a grant of up to $300.\nWOMAN: Wow! Maybe in the future we could even put on a concert at the college pub or something. And where do clubs usually meet? Do they book rooms?\nMAN: Clubs get the privilege of accessing a lot of college space, like any of the rooms or lecture halls. You could even hold club meetings outdoors! The only thing you'd have to be careful about is the noise level, as you're going to be a music club. I'd recommend the Couch Lounge next to the college pub. You can be loud, and there's even a piano there.\nWOMAN: Great! Is there a form I need to fill out?\nMAN: Ah yes. Are you going to be the president of the club? There can be up to three executives.\nWOMAN: Just me for now!\nMAN: Perfect. Fill out the form and get your ten signatures, then we can process your application.",
@@ -15,7 +15,7 @@
       "questions": [
         {
           "id": 1,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_7/listening/p3-q1.m4a",
           "text": "Why does the woman want to start a music club?",
           "options": [
             "so more people can hear live music",
@@ -27,7 +27,7 @@
         },
         {
           "id": 2,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_7/listening/p3-q2.m4a",
           "text": "What must the woman think about when planning their sessions?",
           "options": [
             "advertising so people know about them",
@@ -39,7 +39,7 @@
         },
         {
           "id": 3,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_7/listening/p3-q3.m4a",
           "text": "What does the woman need to start a club?",
           "options": [
             "a development plan",
@@ -51,7 +51,7 @@
         },
         {
           "id": 4,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_7/listening/p3-q4.m4a",
           "text": "What kind of event is the woman thinking of organizing?",
           "options": [
             "a concert",
@@ -63,7 +63,7 @@
         },
         {
           "id": 5,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_7/listening/p3-q5.m4a",
           "text": "Where do clubs usually meet?",
           "options": [
             "at the Student Centre",
@@ -75,7 +75,7 @@
         },
         {
           "id": 6,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_7/listening/p3-q6.m4a",
           "text": "Who will lead the club?",
           "options": [
             "the man",

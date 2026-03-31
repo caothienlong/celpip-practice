@@ -5,7 +5,7 @@
   "listening_type": "audio",
   "instructions": "You will hear a news item once. It is about 1.5 minutes long. Then 5 questions will appear. Choose the best way to complete each statement from the drop-down menu.",
   "mediaType": "audio",
-  "mediaUrl": "",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_4/listening/p4-pas.m4a",
   "imageAlt": "A news report about a lost engagement ring",
   "layout": "full_questions",
   "context": "You will hear a news item about a lost ring.",

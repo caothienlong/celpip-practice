@@ -5,7 +5,7 @@
   "listening_type": "audio",
   "instructions": "You will hear a conversation followed by 5 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
   "mediaType": "audio",
-  "mediaUrl": "",
+  "mediaUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p2-pas.m4a",
   "imageUrl": "",
   "imageAlt": "A couple talking at home before a party",
   "layout": "per_question_audio",
@@ -17,7 +17,7 @@
       "questions": [
         {
           "id": 1,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p2-q1.m4a",
           "text": "Question 1",
           "options": [
             "classmates",
@@ -29,7 +29,7 @@
         },
         {
           "id": 2,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p2-q2.m4a",
           "text": "Question 2",
           "options": [
             "afraid",
@@ -41,7 +41,7 @@
         },
         {
           "id": 3,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p2-q3.m4a",
           "text": "Question 3",
           "options": [
             "visit friends",
@@ -53,7 +53,7 @@
         },
         {
           "id": 4,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p2-q4.m4a",
           "text": "Question 4",
           "options": [
             "buying a new shirt",
@@ -65,7 +65,7 @@
         },
         {
           "id": 5,
-          "audioUrl": "",
+          "audioUrl": "https://res.cloudinary.com/dga4ax7q2/video/upload/celpip/test_3/listening/p2-q5.m4a",
           "text": "Question 5",
           "options": [
             "He looks good in it.",
