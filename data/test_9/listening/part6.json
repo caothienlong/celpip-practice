@@ -1,0 +1,87 @@
+{
+  "part": 6,
+  "title": "Listening for Viewpoints",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a report once. It is about 3 minutes long. Then 6 questions will appear. Choose the best way to answer each question from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageUrl": "",
+  "imageAlt": "A presentation about life in the suburbs",
+  "layout": "full_questions",
+  "context": "You will hear a presentation about life in the suburbs.",
+  "transcript": "Suburbs: They're a curious beast. They're neither urban nor rural, and their sole purpose is to provide a space for domestic life. With their homogenous architecture and thematic subdivisions, they're often perceived as ugly. Their visual monotony stems in part from the fact they were meticulously planned—in contrast to city centres, which evolved organically and haphazardly over time, in response to changing economic influences.\nBut ever since the internal combustion engine revolutionized commuting, the suburbs have attracted the inhabitants of the cramped and chaotic inner city and lured them out to the periphery.\nIn the 1970s, essayist Narendra Bansal described how this would-be paradise evolved to embody the worst of the post-modern world. Bansal said that suburbanites had opted out of the vibrant urban communities that held society together. She predicted that suburbanites' alienation and boredom would eventually give rise to an anxiety epidemic. This anxiety, she felt, would eventually make suburbanites return to closer-knit, psychologically healthier urban neighborhoods. So, in fact, the prefabricated houses and manicured lawns that gave the suburbs their initial appeal would eventually be their downfall. In 2008, suburban sprawl was curtailed by the financial crisis. It was then that Bansal went from disdain to doom-mongering. She famously declared that the death of the suburb was at hand.\nThis dismal view of suburbia was unwarranted, says demographer Leigh Stevanoic. She maintains that families and professionals are flocking to the suburbs—especially in the developing world, where rapid economic growth has been associated with declining urban density. Stevanoic suggests that as populations gain in wealth, they consume more goods and take up more space. This trend, she says, is proof that we are not witnessing suburbia's demise. Instead, she believes we are witnessing how a growing global middle class is affecting settlement patterns.\nSociologist and bestselling author Manuel Rubio observes that millions of people around the globe are lining up to swap urban frenzy for suburban tranquility. However, Rubio questions whether global suburbia can survive the war on global warming, since car culture is one of suburbia's most persistent features. Meanwhile, in the first world, Rubio sees the young, the bored, and the frustrated turning their collective backs on the white picket fence world they sprang from. To Rubio, this suggests that suburban life satisfies people who are willing to settle for less, but that it can't satisfy the appetites of those eager for material success. Perhaps Bansal's prophecy of mass anxiety is being realized in at least some of the population.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "The speaker regards the suburbs with",
+          "options": [
+            "detachment.",
+            "curiosity.",
+            "disdain.",
+            "sarcasm."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "text": "The presentation's main theme is that the suburbs",
+          "options": [
+            "are still considered suitable places to raise families.",
+            "bring widespread neuroses and hence are shrinking.",
+            "may or may not survive the end of the fossil fuel era.",
+            "remain popular despite their psychological drawbacks."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 3,
+          "text": "Bansal thought moving from the suburbs to the city was",
+          "options": [
+            "boring.",
+            "dangerous.",
+            "puzzling.",
+            "therapeutic."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 4,
+          "text": "We can tell that the essayist Narendra Bansal",
+          "options": [
+            "accurately foresaw the future.",
+            "enjoyed living in a big city.",
+            "tended toward pessimism.",
+            "was trained as a psychologist."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 5,
+          "text": "The demographer, Leigh Stevanoic, thinks suburbanization is",
+          "options": [
+            "a favourable economic indicator.",
+            "enabling people to earn more money.",
+            "a cultural trend that will soon die.",
+            "growing too quickly in some places."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 6,
+          "text": "Sociologist and author Manuel Rubio most likely",
+          "options": [
+            "considers himself easily satisfied.",
+            "drives an efficient automobile.",
+            "has a youthful urban lifestyle.",
+            "resents his life in the suburbs."
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}

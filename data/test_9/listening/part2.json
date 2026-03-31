@@ -1,0 +1,81 @@
+{
+  "part": 2,
+  "title": "Listening to a Daily Life Conversation",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 5 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageUrl": "",
+  "imageAlt": "Two parents talking in a park while children play",
+  "layout": "per_question_audio",
+  "context": "You are about to hear a conversation between two people, a man and a woman, who know each other. The conversation takes place in a park while they are watching their kids play.",
+  "transcript": "MAN: It’s a hot one today, isn’t it?\nWOMAN: Yes, it is very hot. Our apartment doesn’t have air conditioning, so I really look forward to being here in the park in the middle of the day!\nMAN: Same here, and for the same reason! It’s nice that these benches are in the shade and still close enough to the playground equipment. Minji doesn’t look very happy today—is your daughter ill?\nWOMAN: No, Minji’s fine. She wanted to go to the swimming pool, but I said ‘no.’ It’s just too long a bus ride on a hot day like today.\nMAN: I know what you mean. You know, I was thinking, before you came, that they should have some sprinklers or fountains here, for the kids to play in. There’s an open space right over there that’s not being used.\nWOMAN: They say we’ll be having more hot spells like this.\nMAN: It could be a lot of fun—there could be water shooting out of different spouts, some stationary and some spinning around. We could call it a sprinkler playground! It should be free, of course!\nWOMAN: Of course, and you know, letting kids run through sprinklers would probably be a lot more hygienic than letting them swim in a communal pool. I confess I worry about what Minji might catch when she goes swimming at the pool—ear infections, eye infections.\nMAN: You might be right. The water would continuously wash away. The kids could still wear their bathing suits, but also sneakers or special water shoes.\nWOMAN: I suspect a sprinkler playground would use less water than a swimming pool. Did you know that they’re talking about rationing the water again this summer, at least for watering lawns?\nMAN: Yes, I heard that. Perhaps I should send my suggestion to the City Parks and Recreation Department.\nWOMAN: I think you should! On a day like today, even I’d use it. Just as I am!",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "",
+          "text": "Question 1",
+          "options": [
+            "a swimming pool",
+            "a sprinkler playground",
+            "the location of the park benches",
+            "the increasing water shortages"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "audioUrl": "",
+          "text": "Question 2",
+          "options": [
+            "It does not have air conditioning.",
+            "It is a long way from the park.",
+            "It is close to a swimming pool.",
+            "It is very close to a bus stop."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "audioUrl": "",
+          "text": "Question 3",
+          "options": [
+            "She feels hot.",
+            "She looks sad.",
+            "She isn’t playing.",
+            "She isn’t there."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "audioUrl": "",
+          "text": "Question 4",
+          "options": [
+            "Minji is not a strong swimmer.",
+            "They cost too much to use.",
+            "She is concerned about germs.",
+            "They are always too crowded."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 5,
+          "audioUrl": "",
+          "text": "Question 5",
+          "options": [
+            "It would make a lot of money.",
+            "There is no space for it.",
+            "No one would use it.",
+            "It is an excellent idea."
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "part": 3,
+  "title": "Listening for Information",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 6 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageUrl": "",
+  "imageAlt": "A renter speaking with someone at a legal clinic",
+  "layout": "per_question_audio",
+  "context": "You are about to hear a conversation between a man and a woman.",
+  "transcript": "MAN: Welcome to the Renters’ Legal Clinic. What brings you here?\nWOMAN: Well, when I signed the lease to rent my apartment, my landlord made me pay extra, and I want that money back.\nMAN: What fees did the landlord charge you, apart from the first month’s rent?\nWOMAN: Well, the rent is $1,000 a month. In addition to that, he collected an equal amount for a “damage deposit,” which he said he’d repay at the end of the lease if the apartment was left in good condition. But what if he finds some excuse not to pay it back?\nMAN: Exactly. It’s illegal for landlords to collect damage deposits that are more than half a month’s rent in this province. The landlord should know that. It says so right in the lease agreement. Did you read that part of the contract before you signed it?\nWOMAN: No! He rushed through and turned that page really fast, so I didn’t even see where it said that! But can I just not pay the rent for the final month of the lease? The rent is $1,000 a month, so not paying for the last month would be the same as him refunding my deposit, right?\nMAN: Mmm, I wouldn’t recommend withholding rent money because then your landlord might come after you for nonpayment. What you should do is write a letter to your landlord requesting that half of the deposit be returned to you.\nWOMAN: Ah, so it’s better to be on the offensive?\nMAN: Right. I’ll dictate a letter for you to type and sign. The letter warns the landlord that the money was collected illegally and demands that if he doesn’t repay it to you in ten days, you’ll appeal to the Rental Board to recover the money. In that case, there’ll be a hearing in court, and the government will collect the money for you.\nWOMAN: Do I have to pay a lawyer?\nMAN: Not me—I volunteer my time. You pay the Rental Board. It costs $70 to file a claim—if that becomes necessary. But you’ll get that money back. The landlord will have to pay your deposit, plus the $70 and 6% interest.\nWOMAN: Sounds fair.\nMAN: Just be sure you send the letter by Registered Mail. That way you can track the delivery online and know whether or not he actually received it.\nWOMAN: Okay, let’s get started.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "",
+          "text": "Question 1",
+          "options": [
+            "to get legal advice for renters",
+            "to inquire about an apartment",
+            "to get in touch with her landlord",
+            "to review her lease agreement"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "audioUrl": "",
+          "text": "Question 2",
+          "options": [
+            "It was included in the rental contract.",
+            "It was sent to the wrong rental board.",
+            "She did not receive a receipt for it.",
+            "The landlord collected too much money."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 3,
+          "audioUrl": "",
+          "text": "Question 3",
+          "options": [
+            "ask for a receipt",
+            "cancel the last month",
+            "continue to pay it",
+            "pay by cheque"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 4,
+          "audioUrl": "",
+          "text": "Question 4",
+          "options": [
+            "cancel her damage deposit cheque",
+            "contact the provincial rental board",
+            "take her landlord to court",
+            "write a formal letter to her landlord"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 5,
+          "audioUrl": "",
+          "text": "Question 5",
+          "options": [
+            "6% of the claim",
+            "$70",
+            "$1000",
+            "nothing"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 6,
+          "audioUrl": "",
+          "text": "Question 6",
+          "options": [
+            "by email",
+            "by mail",
+            "by telephone",
+            "in person"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "part": 3,
+  "title": "Listening for Information",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 6 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageUrl": "",
+  "imageAlt": "A customer and a salesperson in a music store",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation where a woman needs information about musical instruments.",
+  "transcript": "MAN: Hi, welcome to Music And More. Can I help you?\nWOMAN: Hi! Yes, I'm looking for either a guitar or a drum set. It's for my son, for his birthday. He's always wanted either of those two instruments. Could you tell me a little bit about both?\nMAN: Has your son played either instrument before?\nWOMAN: Well, he had a toy drum set when he was five and loved it so much that he broke it. He's thirteen now. His friends all play guitar and sometimes he tries playing on their guitars, but he's never taken lessons. I'd prefer if he played the guitar. I think drums would be too noisy; our house has very poor sound insulation.\nMAN: Well, we have options that will make both you and your son happy. We sell regular drum sets, but if soundproofing is a concern we do sell electronic drums that you can plug headphones into, so then you won’t hear a thing.\nWOMAN: Wow! That certainly would be nice. What about guitars?\nMAN: You could get a classical acoustic guitar, or an electric guitar. For a beginner, I'd recommend a classical acoustic with nylon strings. Nylon strings are softer on the fingers and are much easier to learn on.\nWOMAN: All his friends have electric guitars, so he'd probably want an electric one too.\nMAN: The good thing about the electric guitar is that, like electronic drums, he can plug headphones in and you won't hear him practice. However, electric guitars have steel strings. They can be quite painful on the fingers for beginners, and he may get frustrated and give up quickly.\nWOMAN: I see. Well, there’s quite a few options. Which is the most affordable?\nMAN: An electronic drum set would set you back the most. They start at around $700. A beginner electric guitar would be a lot cheaper and a regular acoustic guitar would be the cheapest. We have some nice quality ones that are on sale right now.\nWOMAN: I think an electric guitar might be the way to go. I know it has steel strings, but I think he'd get used to it. Could you show me some?\nMAN: Certainly! We have a great variety of styles. Please follow me!",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "",
+          "text": "Question 1",
+          "options": [
+            "He hasn’t had lessons since he was five.",
+            "He’s learned to play two instruments.",
+            "He hasn’t had any formal music instruction.",
+            "His friends taught him how to play the drums."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 2,
+          "audioUrl": "",
+          "text": "Question 2",
+          "options": [
+            "He enjoys playing music.",
+            "He wants to join a band.",
+            "He needs an instrument for school.",
+            "He dreams of being a rock star."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "audioUrl": "",
+          "text": "Question 3",
+          "options": [
+            "provide the best information",
+            "sell the most expensive product",
+            "offer a chance to purchase both",
+            "sell a full set of drums"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "audioUrl": "",
+          "text": "Question 4",
+          "options": [
+            "a drum set that can be kept at the store",
+            "a drum shield that will reduce the noise",
+            "an electronic drum set that can be silent",
+            "a soundproofing service for the home"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 5,
+          "audioUrl": "",
+          "text": "Question 5",
+          "options": [
+            "because it can be played without additional equipment",
+            "because steel strings last longer",
+            "because the strings are less painful to use",
+            "because it has a nicer sound"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 6,
+          "audioUrl": "",
+          "text": "Question 6",
+          "options": [
+            "because he knows people with electric guitars",
+            "because he will be able to play loud music",
+            "because of the quality of the sound",
+            "because it is easier for beginners to learn"
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}

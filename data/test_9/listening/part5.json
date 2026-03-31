@@ -1,0 +1,109 @@
+{
+  "part": 5,
+  "title": "Listening to a Discussion",
+  "type": "listening",
+  "listening_type": "video",
+  "instructions": "You will watch a 2-minute video. Then 8 questions will appear. Choose the best way to answer each question.",
+  "mediaType": "video",
+  "mediaUrl": "",
+  "imageUrl": "",
+  "imageAlt": "Three co-workers discussing a work assignment in a meeting room",
+  "layout": "full_questions",
+  "context": "You will watch a conversation among three co-workers—two men and one woman. They get together in a meeting room to discuss a new work assignment for one of them.",
+  "transcript": "Larry: Tom! Brenda and I want to talk to you about presentations.\nTom: Presentations? What about them?\nBrenda: Well, we’re the sales force. We do all the sales pitches. We meet with potential clients on a regular basis and show them our products in hopes to acquire new accounts. And we think that you should come on board.\nTom: You want me to start doing sales pitches? Look, I don’t have the skills or the experience.\nLarry: Tom, why would you say that? You started with the company, what, about a year ago as a sales assistant? Since then, you’ve worked in three different departments and you’ve done very well in all three.\nBrenda: Absolutely. We’ve been talking with your past and current co-workers to get references, and they all speak very highly of you. You do beautiful charts, top-notch reports, and everybody really seems to like you! How did you manage that, by the way?\nTom: I don’t know, I just help them out when they ask me for things. I try to give them what they need.\nBrenda: See? That is the mark of a great salesperson! Identifying the individual’s needs and delivering to their expectations!\nLarry: Hold on, Brenda. Tom didn’t seem particularly excited when we offered him the opportunity to start pitching. Now I think it’s important that Tom tell us exactly what it is that’s bothering him.\nTom: Well, it’s a couple of things, really. I don’t feel like I’m competent. What if they ask me questions about our product that I can’t answer? Technical questions?\nLarry: I’m sure you know more than you think you know. Plus, you’re a great communicator. I don’t think there’s anything here that can’t be solved with a little bit of preparation.\nTom: I’m also not that keen on public speaking. I mean, I’m good one-on-one, but I remember even back at school, when I had to do presentations. You know, when you start to blush, and you’re breathing, and your mouth gets dry, and your palms start to get sweaty\nBrenda: Tom, I think that you should attend some important sales presentations with our more senior sales representatives. I think that’ll help you get some confidence and be more sure of yourself. It’ll really help you fight that stage fright.\nLarry: I agree. A little observation, a little preparation, a little practice—you’d be amazed at how far it can go. You wouldn’t believe how bad I was when I first started.\nBrenda: And now he’s winning awards! You mark my words, Tom, you’re gonna follow in his footsteps. Welcome aboard!",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Which department do Larry and Brenda work for?",
+          "options": [
+            "Customer Service",
+            "Sales and Marketing",
+            "Human Resources",
+            "Technology"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "text": "According to Brenda and Larry, what is one of Tom's strengths?",
+          "options": [
+            "He has been a sales assistant for 3 years.",
+            "He writes top quality reference letters.",
+            "He helps co-workers make beautiful charts.",
+            "He is popular with all of his colleagues."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 3,
+          "text": "What does the company provide?",
+          "options": [
+            "technical products",
+            "consulting services",
+            "communication training",
+            "marketing and sales advice"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "text": "How does Tom initially feel about his co-workers' suggestion?",
+          "options": [
+            "He is excited.",
+            "He is reluctant.",
+            "He is devastated.",
+            "He is unsurprised."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 5,
+          "text": "Why do Brenda and Larry collect references?",
+          "options": [
+            "to understand Tom's previous job",
+            "to update Tom's personnel files",
+            "to determine Tom’s suitability",
+            "to assess Tom’s popularity"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 6,
+          "text": "What worries Tom about presenting to potential clients?",
+          "options": [
+            "The clients won’t like him.",
+            "He lacks specialized knowledge.",
+            "His clients have specific needs.",
+            "He is new to working in sales."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 7,
+          "text": "What does the woman want Tom to do?",
+          "options": [
+            "prepare his own sales talk",
+            "listen to presentations by other staff",
+            "meet with her potential clients",
+            "give a presentation at his old school"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 8,
+          "text": "What do Tom’s two co-workers convey at the end?",
+          "options": [
+            "They are confident Tom will win this year's top sales award.",
+            "They are delighted that they have changed Tom's feelings.",
+            "They are optimistic that Tom's skills will increase rapidly.",
+            "They are pleased that Tom said he would accept their offer."
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}
