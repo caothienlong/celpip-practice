@@ -84,18 +84,13 @@ http://127.0.0.1:5000
 
 ## 📖 Documentation
 
-### 📘 [Complete Guide](docs/COMPLETE_GUIDE.md) ⭐ START HERE
-Everything you need in one comprehensive document
-
-### 🚀 [Deployment Guide](docs/DEPLOYMENT.md) ⭐ NEW
-Complete guide for deploying to Render.com with OAuth (Google/Facebook)
-
-### 📂 Quick Links
-- **Setup**: [docs/SETUP.md](docs/SETUP.md)
-- **Deployment**: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) 🆕
-- **Architecture**: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
-- **Adding Tests**: [docs/ADDING_TESTS.md](docs/ADDING_TESTS.md)
-- **All Docs**: [docs/README.md](docs/README.md)
+- **[Deployment Guide](docs/DEPLOYMENT.md)** — Render.com + OAuth setup
+- **[Architecture](docs/ARCHITECTURE.md)** — System design & storage layer
+- **[Adding Reading Tests](docs/ADDING_TESTS.md)** — Content creation for Reading
+- **[Adding Listening Tests](docs/ADDING_LISTENING_TESTS.md)** — Content creation for Listening
+- **[Configuration](docs/CONFIG_GUIDE.md)** — Timer & UI settings
+- **[User Data](docs/USER_DATA_STRUCTURE.md)** — PostgreSQL schema & file fallback
+- **[Vocabulary Notes](docs/VOCABULARY_NOTES.md)** — Vocabulary feature docs
 
 ---
 
@@ -116,9 +111,8 @@ celpip/
 │   └── test_2/             # More tests...
 │
 ├── static/                  # Static assets
-│   ├── images/             # Test images
-│   ├── audio/              # 🆕 Listening audio files
-│   └── video/              # 🆕 Listening video files
+│   └── images/             # Test & scene images
+│   # Audio/video hosted on Cloudinary (referenced by URL in JSON)
 │
 ├── templates/              # HTML templates
 │   ├── test_list.html     # Home page
@@ -190,25 +184,19 @@ celpip/
 
 ## 🌐 Deployment
 
-### Cloud Hosting (Recommended)
+### Production: Render.com
 
-**Render.com** - Full OAuth Support
-1. Push to GitHub
-2. Sign up at [render.com](https://render.com)
-3. Connect repository
-4. Set environment variables (OAuth keys)
-5. Deploy! ✨
+- **Web service**: Python + gunicorn via `render.yaml` Blueprint
+- **Database**: PostgreSQL (free-tier — expires after 90 days; paid plan recommended for persistence)
+- **Audio/Video**: Hosted on **Cloudinary** (`.m4a` audio, `.mp4` video) — referenced by URL in test JSON
+- **OAuth**: Google & Facebook login configured via environment variables
 
 **See**: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for complete step-by-step guide
 
-### Local Network
-```python
-# app.py
-app.run(host='0.0.0.0', port=5000)
+### Local Development
+```bash
+python app.py  # http://127.0.0.1:5000 — uses JSON file storage as fallback
 ```
-Access from any device: `http://YOUR_IP:5000`
-
-**See**: [docs/LOCAL_NETWORK_HOSTING.md](docs/LOCAL_NETWORK_HOSTING.md) for details
 
 ---
 
@@ -222,7 +210,8 @@ Access from any device: `http://YOUR_IP:5000`
 - **Test Data**: JSON files (platform-agnostic)
 - **User Storage**: PostgreSQL (production) / JSON files (local dev fallback)
 - **Storage Architecture**: Repository pattern — `UserRepository`, `TestRepository`, `VocabularyRepository`
-- **Deployment**: Render.com (or any Python host)
+- **Audio/Video Hosting**: Cloudinary (`.m4a` audio, `.mp4` video for Listening tests)
+- **Deployment**: Render.com (web + PostgreSQL via Blueprint)
 
 ---
 
@@ -337,7 +326,7 @@ Contributions welcome! Please:
 4. Test thoroughly
 5. Submit a pull request
 
-See [docs/COMPLETE_GUIDE.md](docs/COMPLETE_GUIDE.md#contributing) for guidelines
+See [docs/ADDING_TESTS.md](docs/ADDING_TESTS.md) for content contribution guidelines
 
 ---
 
@@ -351,51 +340,13 @@ mkdir -p data/test_X/reading
 ### Listening
 ```bash
 mkdir -p data/test_X/listening
-mkdir -p static/audio/test_X/listening    # MP3 files
-mkdir -p static/video/test_X/listening    # MP4 files (Part 5)
-mkdir -p static/images/test_X/listening   # Scene images
+mkdir -p static/images/test_X/listening   # Scene images only — audio/video hosted on Cloudinary
 ```
 
-JSON format for listening (Parts 1-3 — per-question audio):
-```json
-{
-  "part": 1,
-  "title": "Listening to Problem Solving",
-  "type": "listening",
-  "layout": "per_question_audio",
-  "mediaType": "audio",
-  "mediaUrl": "/static/audio/test_X/listening/part1.mp3",
-  "imageUrl": "/static/images/test_X/listening/part1_scene.png",
-  "sub_parts": [
-    {
-      "id": "1.1", "title": "Sub-part Title",
-      "passageAudioUrl": "/static/audio/test_X/listening/part1_1_passage.mp3",
-      "questions": [
-        { "id": 1, "audioUrl": "/static/audio/.../part1_q1.mp3", "text": "...", "options": [...], "answer": 0 }
-      ]
-    }
-  ],
-  "sections": [{ "section_type": "questions", "questions": [...] }]
-}
-```
+Audio and video files are hosted on **Cloudinary** and referenced by URL in the JSON data.
+No code changes needed — just add JSON files and the app auto-discovers them.
 
-JSON format for listening (Parts 4-6 — dropdowns):
-```json
-{
-  "part": 4,
-  "title": "Listening to a News Item",
-  "type": "listening",
-  "layout": "full_questions",
-  "mediaType": "audio",
-  "mediaUrl": "/static/audio/test_X/listening/part4.mp3",
-  "imageUrl": "/static/images/test_X/listening/part4_scene.png",
-  "sections": [{ "section_type": "questions", "questions": [...] }]
-}
-```
-
-No code changes needed!
-
-See [docs/ADDING_TESTS.md](docs/ADDING_TESTS.md) for details
+See [docs/ADDING_LISTENING_TESTS.md](docs/ADDING_LISTENING_TESTS.md) for details
 
 ---
 
@@ -469,7 +420,7 @@ pip install -r requirements.txt
 ### Images not loading
 Check: `static/images/test_X/skill/image.png`
 
-See [docs/COMPLETE_GUIDE.md#troubleshooting](docs/COMPLETE_GUIDE.md#troubleshooting) for more
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md#troubleshooting) for deployment-specific issues
 
 ---
 
@@ -497,14 +448,12 @@ See [docs/COMPLETE_GUIDE.md#troubleshooting](docs/COMPLETE_GUIDE.md#troubleshoot
 
 ## 📊 Stats
 
-- **Lines of Code**: ~8,500+
 - **Reading Questions**: ~380 (Tests 1-10 complete)
 - **Listening Questions**: 33 (Test 1 complete)
 - **Skills Implemented**: Reading, Listening
-- **Documentation**: 11+ comprehensive guides
 - **Supported Platforms**: Web (production ready)
 - **OAuth Providers**: Google, Facebook
-- **Deployment Platforms**: Render, PythonAnywhere, Railway, Heroku
+- **Deployment**: Render.com (web + PostgreSQL + Cloudinary for media)
 
 ---
 

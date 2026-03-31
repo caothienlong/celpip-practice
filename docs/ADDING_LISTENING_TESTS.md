@@ -471,8 +471,5 @@ Mark tests as you complete them:
 
 | Document | Description |
 |----------|-------------|
-| `pdftotext/README_OCR.md` | OCR conversion scripts for Reading tests |
 | `docs/ADDING_TESTS.md` | Adding Reading test content |
-| `docs/listening-module-prompt.md` | Listening module engineering spec & UI details |
 | `docs/ARCHITECTURE.md` | Overall project architecture |
-| `data/README.md` | Data format reference |

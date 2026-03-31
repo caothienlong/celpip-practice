@@ -232,10 +232,9 @@ data/
 
 ## 📚 Documentation
 
-- **ADDING_TESTS.md** - Detailed guide for filling in content
-- **data/README.md** - Data format specification
-- **CONFIG_GUIDE.md** - Configuration options
-- **scripts/create_test_template.py** - Template generator
+- **docs/ADDING_TESTS.md** - Guide for adding Reading content
+- **docs/ADDING_LISTENING_TESTS.md** - Guide for adding Listening content
+- **docs/CONFIG_GUIDE.md** - Configuration options
 
 ---
 
