@@ -44,8 +44,7 @@ celpip/
 ├── requirements.txt            # Python dependencies
 │
 ├── data/                       # Test data (platform-agnostic)
-│   ├── README.md              # Data format documentation
-│   └── set_{1..20}/           # Test sets 1-20
+│   └── test_{1..20}/          # Test sets 1-20
 │       ├── reading/           # Reading skill
 │       │   ├── part1.json
 │       │   ├── part2.json
@@ -65,13 +64,9 @@ celpip/
 │
 ├── static/                    # Static assets
 │   └── images/
-│       └── set_{1..20}/      # Organized by test set
-│           ├── reading/
-│           │   └── *.png
-│           ├── writing/
-│           ├── speaking/
-│           └── listening/
-│               └── *.mp3     # Audio files for listening
+│       └── test_{1..20}/     # Organized by test set
+│           ├── reading/      # Diagram images
+│           └── listening/    # Scene images (audio/video on Cloudinary)
 │
 ├── templates/                 # HTML templates (Web platform)
 │   ├── index.html
@@ -290,7 +285,7 @@ Not imported directly anywhere else in the application.
 - Reading: `__DROPDOWN_X__` placeholders replaced by platform-specific UI
 - Listening Parts 1-3: `audioUrl` per question, optional `sub_parts` array
 - Listening Parts 4-6: Questions rendered as inline dropdowns
-- Listening: `mediaUrl` can point to local files or cloud URLs (e.g., Cloudinary)
+- Listening: `mediaUrl` points to Cloudinary URLs (`.m4a` audio, `.mp4` video)
 - Listening: Questions can have optional `imageUrl` for image-based answer options (displayed in left panel during question state)
 
 ## Test Types
@@ -351,63 +346,6 @@ Parts 4-6: Passage → All Questions (dropdowns).
 ### Speaking Skill (8 parts) — Planned
 - Various speaking tasks with recording
 
-## Future Platform Implementations
-
-### iOS App
-```swift
-// Swift code would use the same JSON
-struct TestDataLoader {
-    func loadTestPart(set: Int, skill: String, part: Int) -> TestData {
-        // Read from bundle or download
-        // Parse JSON
-        // Return Swift struct
-    }
-}
-
-// Native iOS UI
-struct QuestionView: View {
-    let question: Question
-    @State var selectedAnswer: Int?
-    
-    var body: some View {
-        VStack {
-            Text(question.text)
-            Picker("Answer", selection: $selectedAnswer) {
-                ForEach(question.options.indices) { i in
-                    Text(question.options[i])
-                }
-            }
-        }
-    }
-}
-```
-
-### Android App
-```kotlin
-// Kotlin code would use the same JSON
-class TestDataLoader {
-    fun loadTestPart(set: Int, skill: String, part: Int): TestData {
-        // Read from assets or download
-        // Parse JSON with Gson/Moshi
-        // Return Kotlin data class
-    }
-}
-
-// Native Android UI
-@Composable
-fun QuestionView(question: Question) {
-    var selectedAnswer by remember { mutableStateOf<Int?>(null) }
-    
-    Column {
-        Text(question.text)
-        DropdownMenu(
-            options = question.options,
-            onSelect = { selectedAnswer = it }
-        )
-    }
-}
-```
-
 ## Benefits of This Architecture
 
 ### ✅ Maintainability
@@ -434,24 +372,14 @@ fun QuestionView(question: Question) {
 
 ### 1. New Test Set
 ```bash
-mkdir -p data/set_X/{reading,writing,speaking,listening}
-mkdir -p static/images/set_X/{reading,writing,speaking,listening}
+mkdir -p data/test_X/{reading,listening}
+mkdir -p static/images/test_X/{reading,listening}
 ```
 
 ### 2. New Test Part
 ```bash
-# Create JSON file
-cp data/set_1/reading/part1.json data/set_X/skill/partY.json
-# Edit content
-# Application automatically detects it
-```
-
-### 3. New Platform
-```
-1. Implement data loader in platform language
-2. Parse JSON files
-3. Build native UI components
-4. Reuse same test data
+cp data/test_1/reading/part1.json data/test_X/reading/partY.json
+# Edit content — application automatically detects it
 ```
 
 ## Performance Considerations

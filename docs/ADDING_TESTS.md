@@ -264,7 +264,7 @@ python -m json.tool file.json
 ## 📞 Need Help?
 
 - Check `data/test_1/reading/` for examples
-- See `data/README.md` for data format details
+- See `docs/ARCHITECTURE.md` for data format details
 - Run validation scripts to check JSON
 
 ## 🎉 When Complete

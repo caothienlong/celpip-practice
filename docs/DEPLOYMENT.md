@@ -334,9 +334,25 @@ If you see `DATABASE_URL not set - using file-based storage`, the env var is mis
 
 ### Free Tier Database Expiry
 
-> ⚠️ Render's **free PostgreSQL databases expire after 90 days**. Before expiry:
-> 1. Export your data or upgrade to a paid plan
-> 2. If you recreate the free DB, update the `DATABASE_URL` env var in the web service
+> ⚠️ **IMPORTANT**: Render's **free PostgreSQL databases expire after 90 days** and all data is deleted.
+>
+> **Current status**: The project uses the free-tier database. For persistent data, upgrade to a paid PostgreSQL plan ($7/month).
+>
+> If the free DB expires:
+> 1. Create a new free DB (or upgrade to paid)
+> 2. Update the `DATABASE_URL` env var in the web service
+> 3. The app will auto-create tables on first startup — but previous user data is lost
+
+---
+
+## Audio & Video Hosting (Cloudinary)
+
+Listening test audio (`.m4a`) and video (`.mp4`) files are hosted on **Cloudinary** and referenced by URL in the JSON test data files (`data/test_X/listening/partY.json`).
+
+- **No Cloudinary SDK or API keys needed** — the app simply embeds Cloudinary URLs in `<audio>` and `<video>` tags
+- Media URLs follow the pattern: `https://res.cloudinary.com/dga4ax7q2/video/upload/v.../filename.m4a`
+- To add new Listening tests, upload audio/video to Cloudinary and put the URLs in the JSON files
+- See `docs/ADDING_LISTENING_TESTS.md` for the full workflow
 
 ---
 
@@ -662,9 +678,9 @@ This script reads from `users/` and writes all profiles, test history, and vocab
 ## Support & Resources
 
 ### Documentation
-- **Complete Guide**: `docs/COMPLETE_GUIDE.md`
-- **OAuth Setup**: `docs/OAUTH_SETUP.md`
+- **Architecture**: `docs/ARCHITECTURE.md`
 - **User Data**: `docs/USER_DATA_STRUCTURE.md`
+- **Adding Tests**: `docs/ADDING_TESTS.md`
 
 ### External Resources
 - [Render Documentation](https://render.com/docs)

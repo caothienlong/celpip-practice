@@ -174,7 +174,6 @@ celpip/
 ### Git Repository
 - **Repository**: github.com:caothienlong/celpip-practice.git
 - **Branch**: main
-- **Setup**: See `docs/SETUP.md` for local installation
 - **Contributing**: See `docs/ADDING_TESTS.md` for adding test content
 
 ### Key Design Decisions
@@ -186,7 +185,6 @@ celpip/
 
 ---
 
-For detailed setup instructions, see `docs/SETUP.md`  
 For architecture details, see `docs/ARCHITECTURE.md`  
 For current progress, see `TEST_STATUS.md`
 
