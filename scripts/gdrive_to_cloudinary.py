@@ -67,6 +67,27 @@ try:
 except ImportError:
     pass
 
+# Expected naming pattern: p{part}-{pas|q{n}|{section}-pas}.{ext}
+# Examples: p1-1-pas.m4a, p1-q1.m4a, p2-pas.m4a, p5-pas.mp4
+VALID_NAME_PATTERN = re.compile(
+    r'^p[1-6]'               # p1 through p6
+    r'(?:-[1-3]-pas'          # section passage: p1-1-pas
+    r'|-q\d+'                 # question audio:  p2-q1
+    r'|-pas)'                 # passage audio:   p3-pas
+    r'\.(m4a|mp3|mp4|wav)$',  # extension
+    re.IGNORECASE
+)
+
+EXPECTED_FILES = {
+    "Part 1 section passages": ["p1-1-pas", "p1-2-pas", "p1-3-pas"],
+    "Part 1 questions":        [f"p1-q{i}" for i in range(1, 9)],
+    "Part 2 passage + questions": ["p2-pas"] + [f"p2-q{i}" for i in range(1, 6)],
+    "Part 3 passage + questions": ["p3-pas"] + [f"p3-q{i}" for i in range(1, 7)],
+    "Part 4 passage":          ["p4-pas"],
+    "Part 5 video":            ["p5-pas"],
+    "Part 6 passage":          ["p6-pas"],
+}
+
 
 def configure_cloudinary():
     """Configure Cloudinary from environment variables."""
@@ -166,6 +187,47 @@ def download_folder_from_gdrive(folder_url, output_dir):
     except Exception as e:
         print(f"  ERROR downloading folder: {e}")
         return []
+
+
+def validate_filenames(file_paths):
+    """
+    Validate that downloaded filenames follow the naming convention.
+    Returns (valid_files, warnings).
+    """
+    warnings = []
+    valid = []
+    stems_found = set()
+
+    for fp in file_paths:
+        filename = os.path.basename(fp)
+        stem = Path(fp).stem.lower()
+        stems_found.add(stem)
+
+        if not VALID_NAME_PATTERN.match(filename):
+            warnings.append(
+                f"  '{filename}' does not match expected pattern. "
+                f"Expected: p{{1-6}}-pas, p{{1-6}}-q{{N}}, or p1-{{1-3}}-pas"
+            )
+        valid.append(fp)
+
+    all_expected = []
+    for group_files in EXPECTED_FILES.values():
+        all_expected.extend(group_files)
+
+    missing = [name for name in all_expected if name not in stems_found]
+    extra = [s for s in stems_found if s not in all_expected]
+
+    if missing:
+        warnings.append(f"\n  Missing files for a complete test ({len(missing)}):")
+        for name in missing:
+            warnings.append(f"    - {name}.*")
+
+    if extra:
+        warnings.append(f"\n  Unexpected files ({len(extra)}):")
+        for name in extra:
+            warnings.append(f"    - {name}.*")
+
+    return valid, warnings
 
 
 def upload_to_cloudinary(local_path, folder=None):
@@ -322,6 +384,10 @@ Examples:
         '--keep-downloads', action='store_true',
         help='Keep downloaded files in a local "downloads/" directory instead of temp'
     )
+    parser.add_argument(
+        '--skip-validation', action='store_true',
+        help='Skip filename validation (by default, warns about non-standard names)'
+    )
 
     args = parser.parse_args()
 
@@ -375,6 +441,17 @@ Examples:
     if not media_files:
         print("\nNo audio/video files found to upload.")
         sys.exit(1)
+
+    if not args.skip_validation:
+        _, name_warnings = validate_filenames(media_files)
+        if name_warnings:
+            print("\nFilename validation warnings:")
+            print("-" * 50)
+            for w in name_warnings:
+                print(w)
+            print("-" * 50)
+            print("Expected pattern: p{1-6}-pas.m4a, p{1-6}-q{N}.m4a, p1-{1-3}-pas.m4a")
+            print("Use --skip-validation to ignore these warnings.\n")
 
     print(f"\n{'DRY RUN - ' if args.dry_run else ''}Uploading {len(media_files)} file(s) to Cloudinary...\n")
 
