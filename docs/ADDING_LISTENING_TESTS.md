@@ -178,12 +178,12 @@ Part 1 has 3 sub-parts (sections of conversation), each with its own passage aud
     {
       "id": "1.1",
       "title": "Section 1",
-      "passageAudioUrl": "https://your-cloud-url/part1_1_passage.m4a",
+      "passageAudioUrl": "https://your-cloud-url/p1-1-pas.m4a",
       "imageUrl": "/static/images/test_X/listening/p1_passage.png",
       "questions": [
         {
           "id": 1,
-          "audioUrl": "https://your-cloud-url/part1_q1.m4a",
+          "audioUrl": "https://your-cloud-url/p1-q1.m4a",
           "text": "Question 1",
           "options": ["Option A", "Option B", "Option C", "Option D"],
           "answer": 2
@@ -193,14 +193,14 @@ Part 1 has 3 sub-parts (sections of conversation), each with its own passage aud
     {
       "id": "1.2",
       "title": "Section 2",
-      "passageAudioUrl": "https://your-cloud-url/part1_2_passage.m4a",
+      "passageAudioUrl": "https://your-cloud-url/p1-2-pas.m4a",
       "imageUrl": "/static/images/test_X/listening/p1_passage.png",
       "questions": [...]
     },
     {
       "id": "1.3",
       "title": "Section 3",
-      "passageAudioUrl": "https://your-cloud-url/part1_3_passage.m4a",
+      "passageAudioUrl": "https://your-cloud-url/p1-3-pas.m4a",
       "imageUrl": "/static/images/test_X/listening/p1_passage.png",
       "questions": [...]
     }
@@ -229,7 +229,7 @@ Part 1 has 3 sub-parts (sections of conversation), each with its own passage aud
   "listening_type": "audio",
   "instructions": "You will hear a conversation followed by 5 questions...",
   "mediaType": "audio",
-  "mediaUrl": "https://your-cloud-url/part2_passage.m4a",
+  "mediaUrl": "https://your-cloud-url/p2-pas.m4a",
   "imageUrl": "/static/images/test_X/listening/p2_passage.png",
   "imageAlt": "Description of the scene",
   "layout": "per_question_audio",
@@ -240,7 +240,7 @@ Part 1 has 3 sub-parts (sections of conversation), each with its own passage aud
       "questions": [
         {
           "id": 1,
-          "audioUrl": "https://your-cloud-url/part2_q1.m4a",
+          "audioUrl": "https://your-cloud-url/p2-q1.m4a",
           "text": "Question 1",
           "options": ["Option A", "Option B", "Option C", "Option D"],
           "answer": 2
@@ -263,7 +263,7 @@ For these parts, the question `text` is a **sentence stem** that gets completed 
   "listening_type": "audio",
   "instructions": "You will hear a news item once...",
   "mediaType": "audio",
-  "mediaUrl": "https://your-cloud-url/part4_passage.m4a",
+  "mediaUrl": "https://your-cloud-url/p4-pas.m4a",
   "imageUrl": "/static/images/test_X/listening/p4_passage.png",
   "imageAlt": "Description of the scene",
   "layout": "full_questions",
@@ -298,7 +298,7 @@ Part 5 uses video instead of audio:
   "part": 5,
   "listening_type": "video",
   "mediaType": "video",
-  "mediaUrl": "https://your-cloud-url/part5_passage.mp4"
+  "mediaUrl": "https://your-cloud-url/p5-pas.mp4"
 }
 ```
 
@@ -421,21 +421,71 @@ https://res.cloudinary.com/dga4ax7q2/video/upload/v.../filename.m4a
 
 ### Locally-hosted
 ```
-/static/audio/test_X/listening/partY_passage.mp3
-/static/audio/test_X/listening/partY_qN.mp3
-/static/video/test_X/listening/part5.mp4
+/static/audio/test_X/listening/pY-pas.mp3
+/static/audio/test_X/listening/pY-qN.mp3
+/static/video/test_X/listening/p5-pas.mp4
 ```
+
+### Migrating from Google Drive to Cloudinary
+
+If your audio/video files are hosted on Google Drive, use the migration script
+to bulk-upload them to Cloudinary:
+
+```bash
+# Install dependencies (one-time)
+pip install gdown cloudinary
+
+# Set Cloudinary credentials in .env (see .env.example)
+
+# Upload a single file
+python scripts/gdrive_to_cloudinary.py \
+  --url "https://drive.google.com/file/d/FILE_ID/view"
+
+# Upload an entire shared Google Drive folder
+python scripts/gdrive_to_cloudinary.py \
+  --folder "https://drive.google.com/drive/folders/FOLDER_ID" \
+  --cloudinary-folder "celpip/test_3/listening"
+
+# Upload AND auto-update the JSON test files with new URLs
+python scripts/gdrive_to_cloudinary.py \
+  --folder "https://drive.google.com/drive/folders/FOLDER_ID" \
+  --cloudinary-folder "celpip/test_3/listening" \
+  --update-json data/test_3/listening
+
+# Dry run (download only, see what would happen)
+python scripts/gdrive_to_cloudinary.py \
+  --folder "FOLDER_URL" --dry-run
+```
+
+See `scripts/gdrive_to_cloudinary.py --help` for all options.
 
 ### Audio File Naming Convention
 
+Use **short names**, **hyphens** as separators, and these abbreviations:
+- `p` = part, `q` = question, `pas` = passage
+
+| Pattern | Example | Purpose |
+|---------|---------|---------|
+| `pY-pas.m4a` | `p2-pas.m4a` | Main passage audio (parts 2-4, 6) |
+| `pY-qN.m4a` | `p2-q1.m4a` | Per-question audio (parts 1-3) |
+| `p1-S-pas.m4a` | `p1-1-pas.m4a` | Part 1, Section S passage audio |
+| `p5-pas.mp4` | `p5-pas.mp4` | Part 5 video file |
+
+Full file list per test:
+
 | File | Purpose |
 |------|---------|
-| `partY_passage.m4a` | Main passage audio for parts 2-6 |
-| `part1_1_passage.m4a` | Part 1, Section 1 passage audio |
-| `part1_2_passage.m4a` | Part 1, Section 2 passage audio |
-| `part1_3_passage.m4a` | Part 1, Section 3 passage audio |
-| `partY_qN.m4a` | Per-question audio for parts 1-3 |
-| `part5_passage.mp4` | Part 5 video file |
+| `p1-1-pas.m4a` | Part 1, Section 1 passage |
+| `p1-2-pas.m4a` | Part 1, Section 2 passage |
+| `p1-3-pas.m4a` | Part 1, Section 3 passage |
+| `p1-q1.m4a` .. `p1-q8.m4a` | Part 1, Questions 1-8 |
+| `p2-pas.m4a` | Part 2 passage |
+| `p2-q1.m4a` .. `p2-q5.m4a` | Part 2, Questions 1-5 |
+| `p3-pas.m4a` | Part 3 passage |
+| `p3-q1.m4a` .. `p3-q6.m4a` | Part 3, Questions 1-6 |
+| `p4-pas.m4a` | Part 4 passage |
+| `p5-pas.mp4` | Part 5 video |
+| `p6-pas.m4a` | Part 6 passage |
 
 > **Important:** When updating JSON data, do NOT change existing `audioUrl`, `passageAudioUrl`, or `mediaUrl` values unless you are also replacing the media files.
 
