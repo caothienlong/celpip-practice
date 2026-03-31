@@ -1,0 +1,149 @@
+{
+  "part": 1,
+  "title": "Listening to Problem Solving",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation in 3 sections. You will hear each section only once. After each section, you will hear 2 or 3 questions. You will hear the questions only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "imageAlt": "A man and a woman on a tour bus",
+  "layout": "per_question_audio",
+  "context": "You will hear a conversation between a man and a woman on a tour bus. The man is part of the tour group, and the woman is the bus tour guide.",
+  "sub_parts": [
+    {
+      "id": "1.1",
+      "title": "Section 1",
+      "passageAudioUrl": "",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "",
+          "text": "Question 1",
+          "options": [
+            "to request a drink",
+            "to check the route",
+            "to ask for more time",
+            "to leave the bus tour"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 2,
+          "audioUrl": "",
+          "text": "Question 2",
+          "options": [
+            "a collection of eighteenth-century furniture",
+            "a display of contemporary sculpture",
+            "a guided tour of the wine region",
+            "a special exhibit on local history"
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "audioUrl": "",
+          "text": "Question 3",
+          "options": [
+            "All of the tour stops involve art.",
+            "The art museum is the main attraction.",
+            "The bus will stop at many places.",
+            "There are not many people on the tour."
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "1.2",
+      "title": "Section 2",
+      "passageAudioUrl": "",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 4,
+          "audioUrl": "",
+          "text": "Question 4",
+          "options": [
+            "He wants more time to walk around the area.",
+            "He doesn’t want to eat with the group.",
+            "He isn’t content with the restaurant choice.",
+            "He prefers to eat something healthier."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 5,
+          "audioUrl": "",
+          "text": "Question 5",
+          "options": [
+            "She is a big fan of vegetarian food.",
+            "The tour company owns the restaurant.",
+            "She feels responsible for the group.",
+            "There are too many children in the group."
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "1.3",
+      "title": "Section 3",
+      "passageAudioUrl": "",
+      "imageUrl": "",
+      "questions": [
+        {
+          "id": 6,
+          "audioUrl": "",
+          "text": "Question 6",
+          "options": [
+            "He doesn’t know where his umbrella is.",
+            "He wasn’t prepared for rainy weather.",
+            "He left the restaurant a while ago.",
+            "He is upset with the tour guide."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 7,
+          "audioUrl": "",
+          "text": "Question 7",
+          "options": [
+            "She offers him some solutions.",
+            "She asks the bus driver to go back.",
+            "She gives him her rain jacket.",
+            "She buys him a new umbrella."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 8,
+          "audioUrl": "",
+          "text": "Question 8",
+          "options": [
+            "excitement",
+            "anger",
+            "confusion",
+            "appreciation"
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ],
+  "transcript": "Section 1:\nMAN: Excuse me, are we stopping at the art museum next? For an hour?\nWOMAN: Yes, it has a wonderful collection of eighteenth-century furniture. I think you’ll find it very interesting.\nMAN: Yes, I think you’re right, which is why I wanted to ask if we could stay longer. I doubt an hour will be enough time.\nWOMAN: I’m afraid we’re on a tight schedule. If we stay longer, we won’t be able to get to the rest of our stops.\nMAN: But couldn’t I stay longer? I don’t mind missing the next stop. I really don’t like wine—not really into tasting and drinking. Perhaps you can come back and get me?\nWOMAN: Sorry, I’m afraid we can’t do that either. If I approve such a thing for you, everyone will want to be staying longer here and there.\n\nSection 2:\nWOMAN: Is everyone ready for lunch? We’ll be stopping at a popular vegetarian restaurant shortly.\nMAN: Couldn’t we stop somewhere else instead? I’m not sure I like vegetarian food. Maybe we could go to a place that sells burgers and fries?\nWOMAN: I’m afraid we’ve already booked a restaurant. With a group this size, it’s hard to find enough tables at the last minute. We also want quick service since we’re on a schedule.\nMAN: Yes, but we haven’t paid yet. There are probably other restaurants nearby. Couldn’t we all just go where we want and meet back at the bus at, say, one o’clock?\nWOMAN: I’d rather the group stay together, sir. If anyone gets lost or into some kind of trouble—\nMAN: I’m sure we can manage. We’re all adults here.\nWOMAN: I’m sorry, sir—I didn’t mean to imply you couldn’t manage on your own. But accidents can happen, and I’d like to be able to provide help in that case.\n\nSection 3:\nMAN: Excuse me, could we go back? I forgot my umbrella at the restaurant.\nWOMAN: Oh dear, it’s quite a way back. We wouldn’t be able to keep to our schedule.\nMAN: But it is looking like rain, and I’d really like to have my umbrella.\nWOMAN: The rest of our stops are indoors, and I’d be happy to lend you my umbrella, sir.\nMAN: But I’d really like to go back and get my own umbrella. It’s an expensive one.\nWOMAN: What I’ll do right now is call the restaurant and ask them to keep it safe until you can go back on your own. Would that be okay? Or perhaps they’ll send it to you, if you’d give them your address.\nMAN: That’s a great idea—thank you! I’d be able to pick it up after the tour. I suppose I can use my raincoat in the meantime.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        { "id": 1, "text": "Question 1", "options": ["to request a drink", "to check the route", "to ask for more time", "to leave the bus tour"], "answer": 2 },
+        { "id": 2, "text": "Question 2", "options": ["a collection of eighteenth-century furniture", "a display of contemporary sculpture", "a guided tour of the wine region", "a special exhibit on local history"], "answer": 0 },
+        { "id": 3, "text": "Question 3", "options": ["All of the tour stops involve art.", "The art museum is the main attraction.", "The bus will stop at many places.", "There are not many people on the tour."], "answer": 2 },
+        { "id": 4, "text": "Question 4", "options": ["He wants more time to walk around the area.", "He doesn’t want to eat with the group.", "He isn’t content with the restaurant choice.", "He prefers to eat something healthier."], "answer": 2 },
+        { "id": 5, "text": "Question 5", "options": ["She is a big fan of vegetarian food.", "The tour company owns the restaurant.", "She feels responsible for the group.", "There are too many children in the group."], "answer": 2 },
+        { "id": 6, "text": "Question 6", "options": ["He doesn’t know where his umbrella is.", "He wasn’t prepared for rainy weather.", "He left the restaurant a while ago.", "He is upset with the tour guide."], "answer": 2 },
+        { "id": 7, "text": "Question 7", "options": ["She offers him some solutions.", "She asks the bus driver to go back.", "She gives him her rain jacket.", "She buys him a new umbrella."], "answer": 0 },
+        { "id": 8, "text": "Question 8", "options": ["excitement", "anger", "confusion", "appreciation"], "answer": 3 }
+      ]
+    }
+  ]
+}

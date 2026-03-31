@@ -1,0 +1,109 @@
+{
+  "part": 5,
+  "title": "Listening to a Discussion",
+  "type": "listening",
+  "listening_type": "video",
+  "instructions": "You will watch a 2-minute video. Then 8 questions will appear. Choose the best way to answer each question.",
+  "mediaType": "video",
+  "mediaUrl": "",
+  "imageUrl": "",
+  "imageAlt": "Three employees discussing favouritism at work in a coffee shop",
+  "layout": "full_questions",
+  "context": "You will watch a conversation among three employees, two men and one woman, in a coffee shop. They are discussing something they've noticed in their workplace.",
+  "transcript": "Nick: Hey guys. Thanks for coming for coffee this morning.\nRon: No problem. It's been a while since we got together. We should do this more often!\nClaudia: Yeah. It’s really nice to get out of the office once in a while. We work too hard and ignore our breaks!\nNick: True enough. Actually, the reason I got us all together was there’s something I wanted to run by the two of you, something that's been bothering me. It has to do with how devoted we are to our jobs.\nClaudia: Hmmm, you've got me curious. Are you going to suggest that we get raises because of our dedication? Good luck with that!\nRon: Hey, some people got raises last year, just not everyone. Didn't you hear about that?\nNick: Yeah, this is actually all connected to what I wanted to talk to you guys about. I've been noticing a lot of favouritism lately.\nClaudia: I agree. Just last week the boss hand-picked two of her favourites to go to the programming conference in Montreal. The same two went last year! I mean, what about the rest of us? I’m more qualified; I even asked if I could pay my own conference fees, and just get paid for two days’ work. She still refused.\nRon: Well, we call it favouritism but, according to company policy, it’s perfectly legal. Managers can select anyone they want for any project, even if there’s extra pay or benefits, as long as the length is not more than six months. And managers can pick the same person every time.\nNick: But this policy fosters favouritism! I mean, the managers have no accountability for the decisions they make, and the decisions rarely reflect the quality of work. I had to do some revisions for one of the favourites just last week even though I was completely busy with my own work—I didn’t get any extra pay. Her work was terrible. Maybe we should start a workers’ union.\nClaudia: Well, I don’t think a union is the solution. I mean, it may reduce favouritism, but it can produce a whole other set of problems. I think our communication with management is pretty good overall.\nRon: Yeah. I took a risk and talked to the HR manager —he said everything is legal, and that managers would make the best choice.\nNick: So, I guess we just have to deal with favouritism then? I mean, we might as well just focus our passion and enthusiasm outside the workplace. We can collect our salary and put our heart and souls into something else.\nClaudia: Actually, that’s what I do. I tutor kids that have difficulty reading at my son’s school. It’s really rewarding. Maybe we could freelance, too, add a little money to that satisfaction.\nRon: So, I guess it’s decided then. To cope with all this favouritism, we are going to focus our energy outside the workplace. I mean, it’s a sad solution, but I guess it’s going to be the safest one.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Primarily, what did the co-workers meet to discuss?",
+          "options": [
+            "what to do about an unfair salary scale",
+            "what suggestions to bring to HR management",
+            "how to respond to an unpopular policy",
+            "how to balance work with outside interests"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 2,
+          "text": "According to the workers, how did the managers show favouritism?",
+          "options": [
+            "hiring whatever personality they liked the best",
+            "providing more paid vacation days to some employees",
+            "granting longer breaks for some employees",
+            "choosing which workers would get a raise in salary"
+          ],
+          "answer": 3
+        },
+        {
+          "id": 3,
+          "text": "What was HR’s opinion on the matter being discussed?",
+          "options": [
+            "Managers are skilled at choosing the best person.",
+            "The workers should consult the legal department.",
+            "Most employees are busy with their own work.",
+            "The quality of the result is good on most projects."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 4,
+          "text": "Why was the woman, Claudia, unable to attend the conference?",
+          "options": [
+            "The manager had funding for only two delegates.",
+            "The manager said she was not qualified.",
+            "She doesn’t have free time from work.",
+            "She isn’t one of the manager’s favourites."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 5,
+          "text": "What do these three employees want from their jobs?",
+          "options": [
+            "consultation on corporate policy revisions",
+            "promotion to positions paying higher wages",
+            "recognition for producing quality results",
+            "selection for free skills training programs"
+          ],
+          "answer": 2
+        },
+        {
+          "id": 6,
+          "text": "How does the discussion end?",
+          "options": [
+            "They decide to work harder at their jobs.",
+            "They plan to complain to HR together.",
+            "They realize they can’t change the policy.",
+            "They will inform others about favouritism."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 7,
+          "text": "Why does Claudia help out at her son’s school?",
+          "options": [
+            "Her son has learning difficulties.",
+            "She feels good about helping out.",
+            "She has lots of free time.",
+            "The school asked her to volunteer."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 8,
+          "text": "What will these employees probably do after this meeting?",
+          "options": [
+            "ask for a reasonable promotion and wage increase",
+            "distract themselves with activities elsewhere",
+            "research current laws regarding organized labour",
+            "seek more rewarding work with a better company"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}

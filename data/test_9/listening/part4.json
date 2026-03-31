@@ -1,0 +1,76 @@
+{
+  "part": 4,
+  "title": "Listening to a News Item",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a news item once. It is about 1.5 minutes long. Then 5 questions will appear. Choose the best way to complete each statement from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageUrl": "",
+  "imageAlt": "A news report about a community garden",
+  "layout": "full_questions",
+  "context": "You will hear a news story about a couple who started a community garden.",
+  "transcript": "Recently arrived residents Mike and Paula Hendricks are delighted that the community garden they started this spring in their townhouse complex in Arnprior, Ontario, has turned out to be a big hit. The couple have been avid gardeners for years. Mike said they were disappointed that there weren’t any nearby community gardens to join. They decided to start their own.\nThey soon found that almost everyone in the area was enthusiastic about the idea. A team of thirty residents converted a large unused patch of grass into gardening plots. They filled the beds with soil and compost. They also dug a pond to collect rainwater for watering plants.\nNow the garden is packed with vegetables, flowers, and people. One resident, Atsuko Tanaka, said that it’s a great place to hang out and socialize with the neighbours. Another man said he was delighted to find that growing his own vegetables cut down his grocery bill. The local wildlife seems to benefit as well. Gardener and biologist John Cheney, who is researching frog populations in the area, is thrilled that the pond is now home to a species of endangered frogs.\nPaula said there’s something for everyone in the community garden.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "The community garden is part of",
+          "options": [
+            "a public park area.",
+            "government land.",
+            "an unused grass area.",
+            "the Hendricks’ garden."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 2,
+          "text": "The Hendricks started the garden to",
+          "options": [
+            "meet their neighbours.",
+            "reduce their food bill.",
+            "enjoy their hobby.",
+            "help local wildlife."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 3,
+          "text": "The people building the garden were",
+          "options": [
+            "retired.",
+            "local residents.",
+            "local workers.",
+            "mostly students."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 4,
+          "text": "They added the pond to",
+          "options": [
+            "water the gardens.",
+            "help endangered frogs.",
+            "make the area prettier.",
+            "grow aquatic plants."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "text": "People were enthusiastic because they could",
+          "options": [
+            "sell flowers and vegetables.",
+            "give a home to wildlife.",
+            "enjoy being outdoors.",
+            "socialize and grow vegetables."
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ]
+}

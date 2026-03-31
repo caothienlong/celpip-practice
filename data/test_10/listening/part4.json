@@ -1,0 +1,76 @@
+{
+  "part": 4,
+  "title": "Listening to a News Item",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a news item once. It is about 1.5 minutes long. Then 5 questions will appear. Choose the best way to complete each statement from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageUrl": "",
+  "imageAlt": "A news report about a thrift store jewelry find",
+  "layout": "full_questions",
+  "context": "You will hear a news story about a ring purchase.",
+  "transcript": "Seventeen-year-old Shauna Bergman made over $1000 this weekend because of her love of thrift store shopping. Bergman was browsing second hand jewelry at her local thrift store on Friday when she found five silver rings with what looked like different shapes of pretty glass set on the top. Shauna bought the set for ten dollars, thinking she’d give them as gifts. When she returned home, however, her mother suggested the stones might not actually be glass but amber. Amber is fossilized resin from trees that are millions of years old. Shauna did some research on how to recognize genuine amber from fake amber. If real amber is rubbed vigorously on fabric, it becomes electrostatically charged and will visibly attract dust particles. Shauna discovered she’d bought six real amber rings. Because the amber had been melted and pressed, it looked like man-made glass. However, a local jeweler confirmed her conclusion, appraised them to be amber and offered her a handsome price. Shauna decided to use the proceeds to finance a trip to Peru.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Shauna",
+          "options": [
+            "enjoys shopping in bargain stores.",
+            "enjoys shopping in jewelry stores.",
+            "works in a jewelry store.",
+            "works in a bargain store."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "text": "She learned of the rings’ possible value from",
+          "options": [
+            "a jewel expert.",
+            "an online magazine.",
+            "her mother.",
+            "the bargain store."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 3,
+          "text": "Shauna tested for genuine amber by",
+          "options": [
+            "comparing the rings to real amber.",
+            "looking for fossil marks in the amber.",
+            "polishing the rings to reveal the amber.",
+            "rubbing the amber to attract dust."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 4,
+          "text": "Others did NOT know the rings’ value because",
+          "options": [
+            "the amber looked like plain glass.",
+            "the amber was an unusual colour.",
+            "the price for the rings was very low.",
+            "the thrift store did not have a jeweler."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 5,
+          "text": "Shauna decided to",
+          "options": [
+            "ask a jeweler to help her sell the rings.",
+            "give two of the rings to her mother.",
+            "keep the rings for the future.",
+            "sell the rings and travel abroad."
+          ],
+          "answer": 3
+        }
+      ]
+    }
+  ]
+}

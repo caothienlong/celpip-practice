@@ -1,0 +1,87 @@
+{
+  "part": 6,
+  "title": "Listening for Viewpoints",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a report once. It is about 3 minutes long. Then 6 questions will appear. Choose the best way to answer each question from the drop-down menu.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageUrl": "",
+  "imageAlt": "A presentation about the humanities in Canadian universities",
+  "layout": "full_questions",
+  "context": "You will hear a presentation about a current issue in Canadian universities.",
+  "transcript": "The humanities are a group of academic disciplines that focus on human culture, including subjects like literature, history, and philosophy. A recent Statistics Canada report indicates that 30% of university graduates with a humanities degree are overqualified for the jobs they hold. Many don't even have jobs. Does this mean that students shouldn’t study the humanities—and universities shouldn't bother offering humanities degrees?\nIf the purpose of universities is to provide career training, then at a glance the future looks grim for the humanities. After all, university is expensive. Many students—along with their tuition-fee-paying parents—expect to eventually receive a reasonable return on their investment. Such students should probably study accounting and engineering instead of literature and philosophy.\nBut this raises the question, \"What is the purpose of university?\"\nMany would argue that universities exist in order to provide a broad education, not job training. That education, they'd argue, should include the humanities. Traditionally, the humanities help produce a citizenry that can distinguish between fact and propaganda, a citizenry not susceptible to the manipulative rhetoric of potential demagogues. However, not everyone considers this outcome desirable—because such a populace is cognitively well-equipped to question the distribution of power and hence potentially disrupt the status quo.\nEven if it is the purpose of the university to make students job-ready, it appears that employers still want their workers to have good critical thinking skills. These skills are learned in the humanities. Most philosophy departments, for example, offer a course in critical thinking skills. They also teach ethics, a branch of philosophy that enables people to make reasoned decisions about right and wrong.\nAnd yet, how often do we see an entry-level job ad mentioning a philosophy course as a requirement? Still, when surveyed, today’s employers say they want new hires to have critical thinking skills. However, entry-level workers say that their employers want them to think critically only about certain things. Critical thinking about cost-cutting? Probably. Critical thinking about policies and procedures? Probably not. And as for ethics—workers report that their employers want compliance with the company’s code of ethics.\nEmployers seem to want it both ways: workers who are job ready and who think critically; workers who think critically about some things but not all things. It seems employers want to have their cake and eat it, too—which is, to many critical thinkers, a logical impossibility. Perhaps in the end it is the employers who need the humanities courses.",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "text": "The presentation is mainly about the",
+          "options": [
+            "cost of getting an education.",
+            "value of the humanities.",
+            "nature of career training.",
+            "popularity of a university education."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 2,
+          "text": "The presentation implies that accounting and engineering students",
+          "options": [
+            "are likely to find employment in their fields.",
+            "have harder courses than humanities students.",
+            "are surprisingly overqualified for their first jobs.",
+            "pay higher tuition fees than humanities students."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 3,
+          "text": "It is implied that humanities graduates",
+          "options": [
+            "are actually more job-ready than career-program grads.",
+            "help their employers to become more profitable.",
+            "are more reliable than career-program graduates.",
+            "help to uphold modern democratic societies."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 4,
+          "text": "The author seems to agree that employers are looking for",
+          "options": [
+            "a broader range of critical-thinking skills.",
+            "employees who respect hierarchy.",
+            "a new code of ethics for the workplace.",
+            "workers who passively accept policies."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 5,
+          "text": "According to the presentation, humanities courses",
+          "options": [
+            "are increasingly relevant in the modern workplace.",
+            "lead to having some of the skills employers want.",
+            "are required in many university career programs.",
+            "lead to jobs that pay only the minimum wage."
+          ],
+          "answer": 1
+        },
+        {
+          "id": 6,
+          "text": "The author would likely support",
+          "options": [
+            "attending trade school rather than university.",
+            "eliminating some university humanities courses.",
+            "including critical-thinking skills across all subjects.",
+            "giving student loans only to career-program students."
+          ],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}

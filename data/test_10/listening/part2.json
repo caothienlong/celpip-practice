@@ -1,0 +1,81 @@
+{
+  "part": 2,
+  "title": "Listening to a Daily Life Conversation",
+  "type": "listening",
+  "listening_type": "audio",
+  "instructions": "You will hear a conversation followed by 5 questions. Listen to each question. You will hear the question only once. Choose the best answer to each question.",
+  "mediaType": "audio",
+  "mediaUrl": "",
+  "imageUrl": "",
+  "imageAlt": "Two friends planning an outing to a farm",
+  "layout": "per_question_audio",
+  "context": "You are about to hear a conversation between two people, a man and a woman, who are friends.",
+  "transcript": "WOMAN: Hi Andy, how are you? I was wondering … do you have any plans for tomorrow?\nMAN: Not in the morning, no. But in the afternoon, I was going to visit my grandmother at the nursing home. We spend some time together every Saturday.\nWOMAN: Oh, I hope she’s not ill. You’re such a thoughtful grandson!\nMAN: I suppose, but I don’t do it to be kind or anything. I genuinely enjoy spending time with her. She’s an amazing person.\nWOMAN: Then I’d like to meet her some time! Well, since you don’t have plans for the morning, would you like to come with me to pick strawberries? There are two ‘pick your own’ farms nearby, but I go to the one on Carter Road because it has the best strawberries.\nMAN: What, exactly, is a ‘pick your own’ farm?\nWOMAN: It’s exactly what it says! You go to the farm and buy an empty basket, unless you have your own. Then they take you out into the field, show you which row is ready to be picked next, and you just make your way along the row, filling your basket. When you’ve got as much as you want, you go back, they weigh what you have, and you pay.\nMAN: What an excellent idea! I imagine the fruit is cheaper when you pick your own?\nWOMAN: Usually, but not always. The same goes for the health factor. I incorrectly assumed that none of the ‘pick your own’ farms used pesticides. Now I know, I only go to the farm on Carter Road.\nMAN: Ah. I’ll bet people who make their own strawberry jam get their strawberries at ‘pick your own’ farms, if only because they’d be fresh.\nWOMAN: That’s certainly true! Often, they take their kids and make a day of it. Some farms even have a play area for the kids.\nMAN: Okay, let’s do it! We can take some fresh strawberries to my grandmother in the afternoon! I’ll introduce you!",
+  "sections": [
+    {
+      "section_type": "questions",
+      "questions": [
+        {
+          "id": 1,
+          "audioUrl": "",
+          "text": "Question 1",
+          "options": [
+            "The woman extends an invitation to the man.",
+            "The man questions the woman about gardening.",
+            "The woman wants to meet the man's grandmother.",
+            "The man asks the woman about making jam."
+          ],
+          "answer": 0
+        },
+        {
+          "id": 2,
+          "audioUrl": "",
+          "text": "Question 2",
+          "options": [
+            "nursing homes",
+            "pick-your-own farms",
+            "directions to Carter Road",
+            "strawberry jam recipe"
+          ],
+          "answer": 1
+        },
+        {
+          "id": 3,
+          "audioUrl": "",
+          "text": "Question 3",
+          "options": [
+            "It is closer than the other one.",
+            "It has a playground.",
+            "The baskets are free.",
+            "The strawberries are better."
+          ],
+          "answer": 3
+        },
+        {
+          "id": 4,
+          "audioUrl": "",
+          "text": "Question 4",
+          "options": [
+            "They are always far from the city centre.",
+            "They usually have special areas for children.",
+            "Their fruit is not necessarily free of chemicals.",
+            "Their fruit is cheaper than grocery store fruit."
+          ],
+          "answer": 2
+        },
+        {
+          "id": 5,
+          "audioUrl": "",
+          "text": "Question 5",
+          "options": [
+            "meeting Andy’s grandmother",
+            "picking strawberries",
+            "playing with children",
+            "making strawberry jam"
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}
