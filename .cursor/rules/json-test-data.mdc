@@ -1,0 +1,76 @@
+---
+description: JSON test data structure and conventions for Reading and Listening content
+globs: "data/**/*.json"
+alwaysApply: false
+---
+
+# Test Data JSON Conventions
+
+## File Location
+
+`data/test_N/{skill}/partM.json` where N=1-20, skill=reading|listening|writing|speaking, M=part number.
+
+## Reading JSON Structure
+
+```json
+{
+  "part": 1,
+  "title": "Part Title",
+  "type": "correspondence|diagram|information|viewpoints",
+  "instructions": "Instructions text",
+  "sections": [
+    {
+      "section_type": "passage|questions|diagram_email|response_passage",
+      "content": "Text with __DROPDOWN_X__ placeholders",
+      "questions": [
+        { "id": 1, "text": "Question text", "options": ["A", "B", "C", "D"], "answer": 0 }
+      ]
+    }
+  ]
+}
+```
+
+- `answer` is a 0-based index into the `options` array
+- `__DROPDOWN_X__` placeholders (X = question id) are replaced with HTML selects at render time
+- Part 3 has 5 options (A-E), where E = "Not Given"
+
+## Listening JSON — Parts 1-3 (per_question_audio)
+
+```json
+{
+  "part": 1, "type": "listening", "layout": "per_question_audio",
+  "listening_type": "audio", "mediaType": "audio",
+  "sub_parts": [{ "id": "1.1", "passageAudioUrl": "", "questions": [...] }],
+  "sections": [{ "section_type": "questions", "questions": [...] }]
+}
+```
+
+- `sub_parts` organizes questions by conversation section (UI uses this)
+- `sections` is a flat list of ALL questions (answer key uses this)
+- Each question has `audioUrl` for per-question audio
+- Questions may have optional `imageUrl` for image-based answers
+
+## Listening JSON — Parts 4-6 (full_questions)
+
+```json
+{
+  "part": 4, "type": "listening", "layout": "full_questions",
+  "listening_type": "audio|video", "mediaType": "audio|video",
+  "mediaUrl": "cloudinary-url", "sections": [...]
+}
+```
+
+- Part 5 uses `"listening_type": "video"` and `"mediaType": "video"`
+- Question `text` is a sentence stem completed by the selected option
+
+## Audio/Video URLs
+
+- Cloudinary pattern: `https://res.cloudinary.com/dga4ax7q2/video/upload/v.../filename.m4a`
+- Use empty strings `""` as placeholders when media isn't available yet
+- File naming: `pY-pas.m4a` (passage), `pY-qN.m4a` (question), `p1-S-pas.m4a` (Part 1 section)
+
+## Validation
+
+```bash
+python -m json.tool data/test_X/skill/partY.json
+```

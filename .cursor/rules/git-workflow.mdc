@@ -1,0 +1,33 @@
+---
+description: Git workflow rules — never push to main, always use feature branches
+alwaysApply: true
+---
+
+# Git Workflow
+
+## Branch Rules
+
+- **NEVER** commit or push directly to `main` or `master`
+- **ALWAYS** create a feature branch: `git checkout -b {type}/{description}`
+- Branch prefixes: `feature/`, `fix/`, `docs/`, `refactor/`, `test/`, `chore/`, `hotfix/`
+
+## Commit Messages
+
+Format: `{type}: {short description}`
+
+Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+
+## Security
+
+Never commit: `.env`, API keys, OAuth secrets, database passwords, `users/` directory contents.
+
+## Workflow
+
+```
+git checkout main && git pull origin main
+git checkout -b feature/your-feature
+# make changes, test locally
+git add -A && git commit -m "feat: description"
+git push origin feature/your-feature
+# user creates PR and merges
+```

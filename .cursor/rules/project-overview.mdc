@@ -1,0 +1,40 @@
+---
+description: Core project context for the CELPIP Practice Platform — architecture, stack, and conventions
+alwaysApply: true
+---
+
+# CELPIP Practice Platform — Project Overview
+
+## What This Is
+
+A Flask-based CELPIP test practice platform with Reading and Listening modules. Monolithic `app.py` with Jinja2 templates, JSON test data, and pluggable PostgreSQL/file storage.
+
+## Architecture Quick Reference
+
+- **Routes**: All in `app.py` (single file)
+- **Test data**: `data/test_N/{skill}/partM.json` — auto-discovered, no code changes to add content
+- **Storage**: Repository pattern in `utils/storage/` — factory selects DB vs file backend from `DATABASE_URL`
+- **Facade**: `utils/results_tracker.py` — single public API for all user data operations
+- **Auth**: Flask-Login + Authlib OAuth in `app.py` and `utils/auth.py`
+- **Config**: `config.json` loaded by `config.py` — timeouts, UI settings, test metadata
+- **Templates**: 13 Jinja2 templates in `templates/`
+- **Media**: Listening audio/video on Cloudinary (referenced by URL in JSON)
+
+## Stack
+
+Python 3.9+ | Flask 3.0 | Jinja2 | PostgreSQL (psycopg2) | Authlib | Flask-Login | Gunicorn | Render.com
+
+## Key Conventions
+
+- Test content is data-driven JSON — never hardcode test questions in Python or templates
+- `__DROPDOWN_X__` placeholders in JSON content are replaced with HTML at render time by `data_loader.py`
+- Timeouts calculated dynamically: `questions × time_per_question + adjustment` from `config.json`
+- Listening uses client-side JS state machine (`steps` array built in `prepare_test_data()`)
+- Template selection is automatic: `skill == 'listening'` → listening templates, else reading templates
+- Guest mode works without login — all features function with session-only storage
+
+## Content Status
+
+- Reading: 10 tests complete (40 parts, ~380 questions)
+- Listening: Tests 1-10 JSON complete, only Test 1 has audio/video assets
+- Writing/Speaking: Not yet started

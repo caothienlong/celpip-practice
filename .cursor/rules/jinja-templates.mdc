@@ -1,0 +1,58 @@
+---
+description: Jinja2 template patterns and conventions for the CELPIP UI
+globs: "templates/**/*.html"
+alwaysApply: false
+---
+
+# Jinja2 Template Conventions
+
+## Template Map
+
+| Template | Purpose |
+|----------|---------|
+| `index.html` | Landing page |
+| `test_list.html` | Home page — list all tests |
+| `test_detail.html` | Single test overview with skill cards |
+| `test_section.html` | Reading Practice Mode |
+| `test_mode_section.html` | Reading Test Mode |
+| `listening_section.html` | Listening Practice Mode (JS state machine) |
+| `listening_test_mode_section.html` | Listening Test Mode (JS state machine) |
+| `answer_key.html` | Standard answer key |
+| `comprehensive_answer_key.html` | Full results with statistics |
+| `login.html` | OAuth login page |
+| `vocabulary_notes.html` | Vocabulary notes management |
+| `session_cleared.html` | Session cleared confirmation |
+| `test_content_partial.html` | Reusable test content fragment |
+
+## UI Theme
+
+- CELPIP-style professional interface
+- Reading: default theme
+- Listening Practice: blue theme (`#003366`)
+- Listening Test: red theme (`#c8102e`)
+- Two-column layout: passage (left) + questions (right)
+- Timer with visual warnings (yellow at 60s, red at critical)
+
+## Listening Templates — State Machine
+
+The listening templates contain significant JavaScript for the state machine:
+- `steps` array passed from Python via Jinja2 (built in `prepare_test_data()`)
+- States: passage playback → question display
+- Parts 1-3: Split-pane with per-question audio and 30s countdown
+- Parts 4-6: Full-width with inline dropdown selects
+- Practice Mode: replay, skip, back/forward navigation
+- Test Mode: play-once, auto-play, forward-only, no skip in audio state
+
+## Dropdown Pattern
+
+Reading and Listening Parts 4-6 use inline dropdowns:
+- `__DROPDOWN_X__` in JSON content → replaced by `<select>` HTML in `data_loader.py`
+- After selection, dropdown is replaced by a styled `<span>` showing the completed sentence
+- Clicking the span re-opens the dropdown
+
+## Vocabulary Notes Integration
+
+All test section templates include:
+- Floating `📚 Add Vocabulary Note` button (bottom-left, authenticated users only)
+- Modal popup for quick note entry
+- Recent notes preview (last 5 for current part)

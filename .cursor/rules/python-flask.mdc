@@ -1,0 +1,50 @@
+---
+description: Python and Flask conventions for the CELPIP application
+globs: "**/*.py"
+alwaysApply: false
+---
+
+# Python / Flask Conventions
+
+## Application Structure
+
+- `app.py` contains ALL routes — no Flask Blueprints are used yet
+- Route functions call `data_loader` for test data and `results_tracker` for user data
+- Template selection is driven by skill type in routes (listening vs reading)
+
+## Storage Access
+
+Always use `ResultsTracker` (the facade) for user data — never import `database.py` or storage implementations directly from routes:
+
+```python
+# Correct — use the facade
+tracker.save_test_result(user_email, test_num, skill, part_num, ...)
+tracker.get_user_profile(email)
+tracker.save_vocabulary_note(user_email, ...)
+
+# Wrong — don't bypass the facade
+from utils.database import save_user  # Never do this in app.py
+```
+
+## Adding New Storage Operations
+
+1. Add abstract method to the interface in `utils/storage/interfaces.py`
+2. Implement in both `file_storage.py` and `db_storage.py`
+3. Expose through `ResultsTracker` in `results_tracker.py`
+4. Call from `app.py` via the tracker
+
+## Auth Patterns
+
+- `@login_required` blocks unauthenticated users
+- `get_current_user_email()` returns email or None for guests
+- Guest mode must always work — never assume a user is logged in for core features
+
+## Data Loading
+
+- `TestDataLoader.load_test_part(set, skill, part)` loads JSON from `data/`
+- `process_dropdown_content()` replaces `__DROPDOWN_X__` with HTML selects
+- `prepare_test_data()` in `app.py` builds the template context including listening `steps`
+
+## Dependencies
+
+Pinned in `requirements.txt`. When adding new packages, add with version pin. No setup.py or pyproject.toml — just requirements.txt.

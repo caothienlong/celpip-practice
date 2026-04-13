@@ -1,0 +1,47 @@
+---
+description: Repository pattern and storage layer conventions for user data
+globs: "utils/storage/**/*.py"
+alwaysApply: false
+---
+
+# Storage Layer Conventions
+
+## Architecture
+
+```
+ResultsTracker (facade)
+  ├── UserRepository      → profiles, roles
+  ├── TestRepository      → test attempts, results, history
+  └── VocabularyRepository → vocabulary notes CRUD
+```
+
+Factory (`utils/storage/factory.py`) selects backend at startup:
+- `DATABASE_URL` set & reachable → `Db*Repository` implementations
+- No `DATABASE_URL` → `File*Repository` implementations
+
+## Adding a New Operation
+
+1. Define abstract method in the interface (`interfaces.py`)
+2. Implement in `file_storage.py` (JSON file operations under `users/{email}/`)
+3. Implement in `db_storage.py` (PostgreSQL via `utils/database.py`)
+4. Expose through `ResultsTracker` (`results_tracker.py`)
+5. Both implementations must have identical behavior from the caller's perspective
+
+## PostgreSQL Conventions
+
+- All queries in `utils/database.py` using raw SQL with psycopg2
+- Connection pooling via `psycopg2.pool.SimpleConnectionPool`
+- Tables auto-created on first startup (`create_tables()`)
+- Test history uses JSONB column for flexible attempt data
+- Always use parameterized queries (never string formatting for SQL)
+
+## File Storage Conventions
+
+- User data stored in `users/{sanitized_email}/` (gitignored)
+- Files: `profile.json`, `test_history.json`, `vocabulary_notes.json`
+- Email sanitized: `@` → `_`, domain extension removed, lowercase
+- File operations are atomic where possible (write temp then rename)
+
+## Key Rule
+
+The rest of the app (`app.py`, routes) ONLY interacts with `ResultsTracker`. Never import `database.py` or storage implementations directly from application code.
