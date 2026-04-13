@@ -244,6 +244,94 @@
             padding-bottom: 0 !important;
         }
         
+        /* Audio player styles */
+        .audio-passage-block {
+            margin-bottom: 16px;
+            border: 1px solid #d0dce8;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f8fbff;
+        }
+        
+        .audio-passage-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            background: #e6f0fa;
+            font-weight: 600;
+            color: #003366;
+            font-size: 0.95em;
+        }
+        
+        .audio-player-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+        }
+        
+        .audio-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: none;
+            background: #0066cc;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+        
+        .audio-btn:hover {
+            background: #004c99;
+        }
+        
+        .audio-btn.replay {
+            background: #5a6268;
+        }
+        
+        .audio-btn.replay:hover {
+            background: #495057;
+        }
+        
+        .audio-progress-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .audio-progress-bar {
+            flex: 1;
+            height: 6px;
+            background: #d0dce8;
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .audio-progress-fill {
+            height: 100%;
+            background: #0066cc;
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        
+        .audio-time {
+            font-size: 0.82em;
+            color: #666;
+            white-space: nowrap;
+            min-width: 80px;
+            text-align: center;
+        }
+        
         /* Responsive design */
         @media (max-width: 1024px) {
             .content-grid {
@@ -384,7 +472,31 @@
         {% endif %}
         
         {% elif section.is_listening_type %}
-        <!-- Listening section -->
+        <!-- Listening section: Audio + Transcript -->
+        {% if section.audio_passages %}
+        <div class="full-width-panel">
+            <h3 style="color: #003366; margin-bottom: 15px;">🔊 Passage Audio</h3>
+            {% for ap in section.audio_passages %}
+            {% if ap.audio_url %}
+            <div class="audio-passage-block" id="audio-block-{{ loop.index0 }}">
+                <div class="audio-passage-header">🎧 {{ ap.title }}</div>
+                <div class="audio-player-row">
+                    <button class="audio-btn" onclick="togglePlayPause({{ loop.index0 }})" id="play-btn-{{ loop.index0 }}" title="Play">&#9654;</button>
+                    <button class="audio-btn replay" onclick="replayAudio({{ loop.index0 }})" title="Replay from start">&#8634;</button>
+                    <div class="audio-progress-container">
+                        <div class="audio-progress-bar" id="progress-bar-{{ loop.index0 }}" onclick="seekAudio(event, {{ loop.index0 }})">
+                            <div class="audio-progress-fill" id="progress-fill-{{ loop.index0 }}"></div>
+                        </div>
+                        <span class="audio-time" id="audio-time-{{ loop.index0 }}">0:00 / 0:00</span>
+                    </div>
+                </div>
+                <audio id="audio-{{ loop.index0 }}" preload="metadata" src="{{ ap.audio_url }}"></audio>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        
         {% if section.transcript %}
         <div class="full-width-panel">
             <div class="transcript-toggle" onclick="toggleTranscript()" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
@@ -493,6 +605,86 @@
             arrow.style.transform = 'rotate(0deg)';
         }
     }
+
+    function formatTime(seconds) {
+        if (isNaN(seconds) || !isFinite(seconds)) return '0:00';
+        var m = Math.floor(seconds / 60);
+        var s = Math.floor(seconds % 60);
+        return m + ':' + (s < 10 ? '0' : '') + s;
+    }
+
+    function getAudio(idx) {
+        return document.getElementById('audio-' + idx);
+    }
+
+    function togglePlayPause(idx) {
+        var audio = getAudio(idx);
+        if (!audio) return;
+        if (audio.paused || audio.ended) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+    }
+
+    function replayAudio(idx) {
+        var audio = getAudio(idx);
+        if (!audio) return;
+        audio.currentTime = 0;
+        audio.play();
+    }
+
+    function seekAudio(event, idx) {
+        var audio = getAudio(idx);
+        var bar = document.getElementById('progress-bar-' + idx);
+        if (!audio || !bar) return;
+        var rect = bar.getBoundingClientRect();
+        var ratio = (event.clientX - rect.left) / rect.width;
+        ratio = Math.max(0, Math.min(1, ratio));
+        if (audio.duration && isFinite(audio.duration)) {
+            audio.currentTime = ratio * audio.duration;
+        }
+    }
+
+    function initAudioPlayer(idx) {
+        var audio = getAudio(idx);
+        if (!audio) return;
+        var playBtn = document.getElementById('play-btn-' + idx);
+        var fill = document.getElementById('progress-fill-' + idx);
+        var timeEl = document.getElementById('audio-time-' + idx);
+
+        audio.addEventListener('play', function() {
+            playBtn.innerHTML = '&#9646;&#9646;';
+            playBtn.title = 'Pause';
+        });
+        audio.addEventListener('pause', function() {
+            playBtn.innerHTML = '&#9654;';
+            playBtn.title = 'Play';
+        });
+        audio.addEventListener('ended', function() {
+            playBtn.innerHTML = '&#9654;';
+            playBtn.title = 'Play';
+            fill.style.width = '100%';
+        });
+        audio.addEventListener('timeupdate', function() {
+            if (audio.duration && isFinite(audio.duration)) {
+                var pct = (audio.currentTime / audio.duration) * 100;
+                fill.style.width = pct + '%';
+                timeEl.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+            }
+        });
+        audio.addEventListener('loadedmetadata', function() {
+            timeEl.textContent = '0:00 / ' + formatTime(audio.duration);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var i = 0;
+        while (document.getElementById('audio-' + i)) {
+            initAudioPlayer(i);
+            i++;
+        }
+    });
     </script>
 </body>
 </html>

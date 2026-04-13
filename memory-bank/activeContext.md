@@ -16,7 +16,10 @@ The platform is **production-ready** at version 5.0, deployed on Render.com.
 - Comprehensive answer keys for both skills
 - Production deployment on Render.com with Blueprint
 
-### Recent Changes (March 2026)
+### Recent Changes (April 2026)
+- **Listening Answer Keys: Audio playback** — Per-part and comprehensive answer keys now include audio players for passage audio. Users can play, pause, replay, and seek through each passage while reading the transcript and reviewing correct answers.
+
+### Previous Changes (March 2026)
 - Image-based questions support for Listening (e.g., Part 1 Q4)
 - "Skip to Questions" button added to all Listening parts (both modes)
 - Fixed Cloudinary audio URLs (corrected filename pattern)

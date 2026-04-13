@@ -12,6 +12,7 @@ CELPIP test takers need affordable, accessible practice that simulates the real 
 - Reset and retry individual parts
 - Auto-save progress so users can resume later
 - Detailed explanations with comprehensive answer keys
+- Listening answer keys with passage audio playback (play, pause, replay, seek)
 
 ### Test Mode
 - Realistic exam conditions with countdown timers
