@@ -23,6 +23,6 @@ services:
       # Add Google OAuth credentials in Render dashboard after deployment:
       # - GOOGLE_CLIENT_ID
       # - GOOGLE_CLIENT_SECRET
-      # - APP_URL (e.g., https://celpip-practice.onrender.com)
+      # - APP_URL (e.g., https://your-app.onrender.com)
       # - REDIRECT_URI_BASE (same as APP_URL)
     healthCheckPath: /

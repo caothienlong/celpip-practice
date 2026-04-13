@@ -526,7 +526,7 @@ The JSON files reference audio and video URLs. These can be:
 
 ### Cloud-hosted (Cloudinary)
 ```
-https://res.cloudinary.com/dga4ax7q2/video/upload/v.../filename.m4a
+https://res.cloudinary.com/YOUR_CLOUD_NAME/video/upload/v.../filename.m4a
 ```
 
 ### Locally-hosted
@@ -551,12 +551,12 @@ Audio and video files are hosted on [Cloudinary](https://cloudinary.com/) (free 
 
 1. **Create an account** at [cloudinary.com/users/register_free](https://cloudinary.com/users/register_free)
 2. **Get your API credentials** from [console.cloudinary.com/settings/api-keys](https://console.cloudinary.com/settings/api-keys):
-   - Cloud Name (already set: `dga4ax7q2`)
+   - Cloud Name (from your Cloudinary dashboard)
    - API Key
    - API Secret
 3. **Add them to your `.env`** file:
    ```
-   CLOUDINARY_CLOUD_NAME=dga4ax7q2
+   CLOUDINARY_CLOUD_NAME=your-cloud-name
    CLOUDINARY_API_KEY=your-api-key-here
    CLOUDINARY_API_SECRET=your-api-secret-here
    ```

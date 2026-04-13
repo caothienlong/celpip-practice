@@ -566,7 +566,11 @@ Examples:
     # Standalone JSON update mode — no upload needed
     if args.update_json_only:
         json_dir, cloudinary_folder = args.update_json_only
-        cloud_name = os.environ.get("CLOUDINARY_CLOUD_NAME", "dga4ax7q2")
+        cloud_name = os.environ.get("CLOUDINARY_CLOUD_NAME")
+        if not cloud_name:
+            print("Error: CLOUDINARY_CLOUD_NAME environment variable is not set.")
+            print("Set it in your .env file or export it: export CLOUDINARY_CLOUD_NAME=your-cloud-name")
+            sys.exit(1)
 
         # Scan JSON files to find which stems are needed
         all_stems = _collect_expected_stems(json_dir)
