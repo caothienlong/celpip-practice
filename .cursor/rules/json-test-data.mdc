@@ -65,7 +65,7 @@ alwaysApply: false
 
 ## Audio/Video URLs
 
-- Cloudinary pattern: `https://res.cloudinary.com/dga4ax7q2/video/upload/v.../filename.m4a`
+- Cloudinary pattern: `https://res.cloudinary.com/YOUR_CLOUD_NAME/video/upload/v.../filename.m4a`
 - Use empty strings `""` as placeholders when media isn't available yet
 - File naming: `pY-pas.m4a` (passage), `pY-qN.m4a` (question), `p1-S-pas.m4a` (Part 1 section)
 

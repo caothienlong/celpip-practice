@@ -38,6 +38,9 @@ Thumbs.db
 # data/
 # static/images/
 
+# Node modules
+node_modules/
+
 # PDF source files (large files)
 *.pdf
 

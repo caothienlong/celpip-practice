@@ -55,7 +55,7 @@ Tables are **auto-created** on first startup — no manual migrations needed.
 
 ```
 users/
-  caothienlong_gmail/           # Sanitized email (domain extension removed)
+  john_doe_gmail/               # Sanitized email (domain extension removed)
     ├── profile.json            # User profile & metadata
     ├── test_history.json       # Test attempts & scores
     └── vocabulary_notes.json   # Vocabulary notes
@@ -70,7 +70,7 @@ users/
 ### profile.json
 ```json
 {
-  "email": "caothienlong@gmail.com",
+  "email": "john.doe@gmail.com",
   "role": "Basic",
   "created_at": "2025-12-07T16:29:55.909360",
   "last_accessed": "2025-12-07T23:12:00.000000"
@@ -127,7 +127,7 @@ Email addresses are converted to safe folder names:
 
 | Email | Folder Name |
 |-------|-------------|
-| `caothienlong@gmail.com` | `caothienlong_gmail` |
+| `john.doe@gmail.com` | `john_doe_gmail` |
 | `user@yahoo.com` | `user_yahoo` |
 | `test.user@example.org` | `test_user_example` |
 
@@ -212,13 +212,13 @@ python migrate_user_data.py
 This converts:
 ```
 reports/
-  caothienlong_gmail.com.json
+  john_doe_gmail.com.json
 ```
 
 To:
 ```
 users/
-  caothienlong_gmail/
+  john_doe_gmail/
     ├── profile.json
     └── test_history.json
 ```

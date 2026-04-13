@@ -209,8 +209,8 @@ After the Blueprint deploys, go to **Dashboard → celpip-practice → Environme
 |-----|-------|
 | `GOOGLE_CLIENT_ID` | Your Google Client ID |
 | `GOOGLE_CLIENT_SECRET` | Your Google Client Secret |
-| `APP_URL` | `https://celpip-practice.onrender.com` |
-| `REDIRECT_URI_BASE` | `https://celpip-practice.onrender.com` (same as `APP_URL`) |
+| `APP_URL` | `https://your-app.onrender.com` |
+| `REDIRECT_URI_BASE` | `https://your-app.onrender.com` (same as `APP_URL`) |
 | `FACEBOOK_CLIENT_ID` | (Optional) Your Facebook App ID |
 | `FACEBOOK_CLIENT_SECRET` | (Optional) Your Facebook App Secret |
 
@@ -220,7 +220,7 @@ Click **"Save Changes"** — the service will restart with the new variables.
 
 #### 2.4 Your app is live! 🎉
 
-Visit: `https://celpip-practice.onrender.com`
+Visit: `https://your-app.onrender.com`
 
 **Instance Type:**
 - **Free** - Good for testing (spins down after 15 min of inactivity; ~30s cold start)
@@ -260,8 +260,8 @@ If you prefer to set everything up manually:
 | `DATABASE_URL` | Paste the **Internal Database URL** from step 3.1 |
 | `GOOGLE_CLIENT_ID` | Your Google Client ID |
 | `GOOGLE_CLIENT_SECRET` | Your Google Client Secret |
-| `APP_URL` | `https://celpip-practice.onrender.com` |
-| `REDIRECT_URI_BASE` | `https://celpip-practice.onrender.com` |
+| `APP_URL` | `https://your-app.onrender.com` |
+| `REDIRECT_URI_BASE` | `https://your-app.onrender.com` |
 | `FACEBOOK_CLIENT_ID` | (Optional) Your Facebook App ID |
 | `FACEBOOK_CLIENT_SECRET` | (Optional) Your Facebook App Secret |
 
@@ -350,7 +350,7 @@ If you see `DATABASE_URL not set - using file-based storage`, the env var is mis
 Listening test audio (`.m4a`) and video (`.mp4`) files are hosted on **Cloudinary** and referenced by URL in the JSON test data files (`data/test_X/listening/partY.json`).
 
 - **No Cloudinary SDK or API keys needed** — the app simply embeds Cloudinary URLs in `<audio>` and `<video>` tags
-- Media URLs follow the pattern: `https://res.cloudinary.com/dga4ax7q2/video/upload/v.../filename.m4a`
+- Media URLs follow the pattern: `https://res.cloudinary.com/YOUR_CLOUD_NAME/video/upload/v.../filename.m4a`
 - To add new Listening tests, upload audio/video to Cloudinary and put the URLs in the JSON files
 - See `docs/ADDING_LISTENING_TESTS.md` for the full workflow
 
