@@ -48,6 +48,7 @@
 - [x] Cloudinary audio/video hosting
 - [x] Test 1 Listening: Complete with audio/video assets
 - [x] Tests 2-10 Listening: JSON content complete (needs audio/video)
+- [x] Answer Keys: Passage audio playback with play/pause/replay/seek
 
 ### Phase 5: Deployment
 - [x] Render.com deployment with render.yaml Blueprint

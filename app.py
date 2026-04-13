@@ -510,6 +510,21 @@ def comprehensive_answer_key(test_num, skill):
             }
             if test_data.get('transcript'):
                 part_entry['transcript'] = test_data['transcript']
+            if skill == 'listening':
+                audio_passages = []
+                layout = test_data.get('layout', '')
+                if layout == 'per_question_audio' and test_data.get('sub_parts'):
+                    for sp in test_data['sub_parts']:
+                        audio_passages.append({
+                            'title': sp.get('title', sp.get('id', '')),
+                            'audio_url': sp.get('passageAudioUrl', '')
+                        })
+                elif test_data.get('mediaUrl'):
+                    audio_passages.append({
+                        'title': test_data.get('title', 'Passage'),
+                        'audio_url': test_data['mediaUrl']
+                    })
+                part_entry['audio_passages'] = audio_passages
             parts_data.append(part_entry)
         
         # Calculate summary
@@ -872,6 +887,20 @@ def prepare_answer_key_data(test_data, skill, part_num):
         processed['is_listening_type'] = True
         processed['transcript'] = test_data.get('transcript', '')
         questions_section = data_loader.get_section_by_type(test_data, 'questions')
+        
+        processed['audio_passages'] = []
+        layout = test_data.get('layout', '')
+        if layout == 'per_question_audio' and test_data.get('sub_parts'):
+            for sp in test_data['sub_parts']:
+                processed['audio_passages'].append({
+                    'title': sp.get('title', sp.get('id', '')),
+                    'audio_url': sp.get('passageAudioUrl', '')
+                })
+        elif test_data.get('mediaUrl'):
+            processed['audio_passages'].append({
+                'title': test_data.get('title', 'Passage'),
+                'audio_url': test_data['mediaUrl']
+            })
         
         if questions_section:
             for q in questions_section['questions']:

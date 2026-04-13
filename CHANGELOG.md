@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-04-13] - Listening Answer Keys: Passage Audio Playback
+
+### Added
+- **Audio players in per-part answer key** — Listening answer key pages now show custom audio players for each passage section. Parts 1-3 (per_question_audio) show separate players for each sub-part section; Parts 4-6 (full_questions) show a single player for the passage.
+- **Audio players in comprehensive answer key** — The skill-wide answer key also includes audio players per part, displayed between the answer table and the transcript toggle.
+- **Play/Pause/Replay/Seek** — Each audio player supports play, pause, replay from start, click-to-seek on the progress bar, and shows current time / total duration.
+
+### Changed
+- **`app.py`** — `prepare_answer_key_data()` now extracts `audio_passages` (from `sub_parts[].passageAudioUrl` or `mediaUrl`) and passes them to the per-part answer key template.
+- **`app.py`** — `comprehensive_answer_key()` now attaches `audio_passages` per part entry for listening skills.
+- **`answer_key.html`** — Added CSS and JavaScript for custom audio player UI in the listening section.
+- **`comprehensive_answer_key.html`** — Added CSS and JavaScript for custom audio player UI below each part's answer table.
+
+---
+
 ## [2026-03-16] - Listening: Image-Based Questions, Audio URL Fix, Skip Button for All Parts
 
 ### Added
