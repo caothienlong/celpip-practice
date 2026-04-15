@@ -24,7 +24,7 @@
             "he saw an accident on the highway.",
             "a large bird flew into his windshield."
           ],
-          "answer": 1
+          "answer": 3
         },
         {
           "id": 2,
@@ -46,7 +46,7 @@
             "the deer to die.",
             "the bird to die."
           ],
-          "answer": 2
+          "answer": 3
         },
         {
           "id": 4,
@@ -57,7 +57,7 @@
             "refused to eat dinner.",
             "used her survival skills to get help."
           ],
-          "answer": 2
+          "answer": 1
         },
         {
           "id": 5,
@@ -68,7 +68,7 @@
             "being stranded in the woods.",
             "the family running out of food."
           ],
-          "answer": 1
+          "answer": 0
         }
       ]
     }
