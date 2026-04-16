@@ -339,7 +339,12 @@ def test_mode_part(test_num, skill, part_num):
         total_parts = len(available_parts)
         progress = (part_num / total_parts) * 100 if total_parts > 0 else 0
         
-        template = 'listening_test_mode_section.html' if skill == 'listening' else 'test_mode_section.html'
+        if skill == 'speaking':
+            template = 'speaking_test_mode_section.html'
+        elif skill == 'listening':
+            template = 'listening_test_mode_section.html'
+        else:
+            template = 'test_mode_section.html'
         
         return render_template(
             template,
@@ -379,7 +384,12 @@ def test_part(test_num, skill, part_num):
         test_key = f'test_{test_num}'
         saved_answers = session.get('answers', {}).get(test_key, {}).get(skill, {}).get(str(part_num), {})
         
-        template = 'listening_section.html' if skill == 'listening' else 'test_section.html'
+        if skill == 'speaking':
+            template = 'speaking_section.html'
+        elif skill == 'listening':
+            template = 'listening_section.html'
+        else:
+            template = 'test_section.html'
         
         return render_template(
             template,
@@ -569,11 +579,16 @@ def prepare_test_data(test_data, skill, part_num, require_answers=False):
     # Calculate timeout (use JSON value if present, otherwise calculate)
     timeout = test_data.get('timeout_minutes')
     if timeout is None:
-        # Auto-calculate if not specified in JSON
-        timeout = get_timeout(test_data['part'], skill, part_num, num_questions)
+        if test_data['type'] == 'speaking':
+            prep = test_data.get('preparation_time', 30)
+            resp = test_data.get('response_time', 60)
+            timeout = (prep + resp) / 60
+        else:
+            timeout = get_timeout(test_data['part'], skill, part_num, num_questions)
     
+    title_prefix = "Task" if test_data['type'] == 'speaking' else "Part"
     processed = {
-        'title': f"Part {part_num}: {test_data['title']}",
+        'title': f"{title_prefix} {part_num}: {test_data['title']}",
         'instructions': test_data['instructions'],
         'timeout_minutes': timeout,
         'type': test_data['type'],
@@ -735,6 +750,15 @@ def prepare_test_data(test_data, skill, part_num, require_answers=False):
                 dropdown_html += '</select>'
                 dropdown_html += '</div>'
             processed['questions_dropdown_html'] = dropdown_html
+
+    elif test_data['type'] == 'speaking':
+        processed['is_speaking_type'] = True
+        processed['preparation_time'] = test_data.get('preparation_time', 30)
+        processed['response_time'] = test_data.get('response_time', 60)
+        processed['prompt'] = test_data.get('prompt', '')
+        processed['prompt_context'] = test_data.get('prompt_context', '')
+        processed['image_url'] = test_data.get('image_url', '')
+        processed['tips'] = test_data.get('tips', [])
     
     return processed
 

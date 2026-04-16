@@ -330,10 +330,39 @@
                     <div class="skill-title">Speaking</div>
                 </div>
                 <div class="part-list">
-                    <div class="part-link disabled">
-                        <div>Coming Soon</div>
-                        <div class="part-info">Content in progress</div>
-                    </div>
+                    {% if speaking_parts %}
+                        {% for part in speaking_parts %}
+                        <a href="/test/{{ test_num }}/speaking/part{{ part }}" class="part-link">
+                            <div>Task {{ part }}: 
+                                {% if part == 1 %}Giving Advice
+                                {% elif part == 2 %}Personal Experience
+                                {% elif part == 3 %}Describing a Scene
+                                {% elif part == 4 %}Making Predictions
+                                {% elif part == 5 %}Comparing and Persuading
+                                {% elif part == 6 %}Difficult Situation
+                                {% elif part == 7 %}Expressing Opinions
+                                {% elif part == 8 %}Unusual Situation
+                                {% endif %}
+                            </div>
+                            <div class="part-info">
+                                {% if part == 1 %}30s prep • 90s speak
+                                {% elif part == 2 %}30s prep • 60s speak
+                                {% elif part == 3 %}60s prep • 60s speak
+                                {% elif part == 4 %}60s prep • 60s speak
+                                {% elif part == 5 %}60s prep • 60s speak
+                                {% elif part == 6 %}60s prep • 60s speak
+                                {% elif part == 7 %}30s prep • 90s speak
+                                {% elif part == 8 %}30s prep • 60s speak
+                                {% endif %}
+                            </div>
+                        </a>
+                        {% endfor %}
+                    {% else %}
+                        <div class="part-link disabled">
+                            <div>Coming Soon</div>
+                            <div class="part-info">Content in progress</div>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

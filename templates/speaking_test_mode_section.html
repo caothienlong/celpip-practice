@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test {{ test_num }} - Speaking - {{ section.title }} (Test Mode)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, Helvetica, sans-serif; background: #f0f0f0; color: #333; }
+
+        .celpip-header {
+            background: #c8102e; color: white; padding: 15px 30px;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .celpip-header h1 { font-size: 1.3em; font-weight: normal; }
+        .header-right { display: flex; gap: 20px; align-items: center; }
+        .test-mode-badge {
+            background: rgba(255,255,255,0.2); padding: 8px 16px;
+            border-radius: 5px; font-weight: bold; font-size: 0.9em;
+        }
+        .phase-badge {
+            padding: 6px 14px; border-radius: 20px; font-size: 0.85em;
+            font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .phase-badge.instruction { background: rgba(255,255,255,0.15); }
+        .phase-badge.preparation { background: #ffc107; color: #333; }
+        .phase-badge.speaking { background: white; color: #c8102e; }
+        .phase-badge.complete { background: #28a745; }
+
+        .progress-info {
+            background: rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 5px;
+            font-size: 0.85em;
+        }
+
+        .recording-toggle {
+            display: flex; align-items: center; gap: 8px; font-size: 0.85em;
+        }
+        .recording-toggle label { cursor: pointer; user-select: none; }
+        .toggle-switch { position: relative; width: 44px; height: 24px; }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider {
+            position: absolute; cursor: pointer; inset: 0;
+            background: rgba(255,255,255,0.3); border-radius: 24px; transition: 0.3s;
+        }
+        .toggle-slider::before {
+            content: ""; position: absolute; height: 18px; width: 18px;
+            left: 3px; bottom: 3px; background: white;
+            border-radius: 50%; transition: 0.3s;
+        }
+        .toggle-switch input:checked + .toggle-slider { background: rgba(255,255,255,0.6); }
+        .toggle-switch input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+        .main-container { max-width: 900px; margin: 0 auto; padding: 30px 20px; }
+
+        .instructions-bar {
+            background: #fff3cd; border-left: 4px solid #c8102e;
+            padding: 15px 20px; margin-bottom: 25px; border-radius: 4px;
+        }
+        .instructions-bar strong { color: #c8102e; }
+
+        .card {
+            background: white; border: 1px solid #ddd; border-radius: 8px;
+            padding: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 25px;
+        }
+
+        .prompt-card {
+            background: #f8f9fa; border: 2px solid #c8102e; border-radius: 8px;
+            padding: 25px; margin-bottom: 25px;
+        }
+        .prompt-card h3 { color: #c8102e; margin-bottom: 12px; font-size: 1.1em; }
+        .prompt-text { font-size: 1.1em; line-height: 1.7; color: #222; }
+        .prompt-context {
+            margin-top: 15px; padding-top: 15px; border-top: 1px solid #dee2e6;
+            font-size: 0.95em; color: #555; line-height: 1.6;
+        }
+
+        .prompt-image { text-align: center; margin-bottom: 25px; }
+        .prompt-image img {
+            max-width: 100%; max-height: 400px; border-radius: 8px;
+            border: 2px solid #c8102e; box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+
+        .timer-display { text-align: center; margin: 30px 0; }
+        .timer-circle {
+            width: 200px; height: 200px; border-radius: 50%;
+            display: inline-flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            border: 6px solid #c8102e; position: relative;
+        }
+        .timer-circle.preparation { border-color: #ffc107; }
+        .timer-circle.speaking { border-color: #dc3545; }
+        .timer-circle.warning { border-color: #dc3545; animation: pulse 1s infinite; }
+        .timer-time { font-size: 3em; font-weight: bold; color: #c8102e; line-height: 1; }
+        .timer-label {
+            font-size: 0.9em; color: #666; margin-top: 5px;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.03); }
+        }
+
+        .timer-ring {
+            position: absolute; top: -6px; left: -6px;
+            width: 200px; height: 200px;
+        }
+        .timer-ring circle {
+            fill: none; stroke-width: 6; stroke-linecap: round;
+            transform: rotate(-90deg); transform-origin: center;
+        }
+        .timer-ring .bg { stroke: #e0e0e0; }
+        .timer-ring .progress { stroke: #c8102e; transition: stroke-dashoffset 1s linear; }
+        .timer-ring .progress.preparation { stroke: #ffc107; }
+        .timer-ring .progress.speaking { stroke: #dc3545; }
+
+        .speaking-indicator { display: none; text-align: center; margin: 20px 0; }
+        .speaking-indicator.active { display: block; }
+
+        .audio-bars {
+            display: flex; align-items: center; justify-content: center;
+            gap: 3px; height: 40px; margin: 15px 0;
+        }
+        .audio-bars .bar {
+            width: 4px; background: #dc3545; border-radius: 2px;
+            animation: barBounce 1.2s ease-in-out infinite;
+        }
+        .audio-bars .bar:nth-child(1) { height: 15px; animation-delay: 0s; }
+        .audio-bars .bar:nth-child(2) { height: 25px; animation-delay: 0.1s; }
+        .audio-bars .bar:nth-child(3) { height: 35px; animation-delay: 0.2s; }
+        .audio-bars .bar:nth-child(4) { height: 25px; animation-delay: 0.3s; }
+        .audio-bars .bar:nth-child(5) { height: 15px; animation-delay: 0.4s; }
+        .audio-bars .bar:nth-child(6) { height: 30px; animation-delay: 0.15s; }
+        .audio-bars .bar:nth-child(7) { height: 20px; animation-delay: 0.35s; }
+        @keyframes barBounce {
+            0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(1); }
+        }
+
+        .speaking-status { font-size: 1.1em; font-weight: 600; margin-top: 8px; }
+        .speaking-status.recording { color: #dc3545; }
+        .speaking-status.speak-now { color: #c8102e; }
+
+        .action-area { text-align: center; margin: 30px 0; }
+        .begin-btn {
+            display: inline-block; padding: 14px 40px; border: none;
+            border-radius: 8px; font-size: 1.1em; font-weight: 600;
+            cursor: pointer; transition: all 0.2s; background: #c8102e; color: white;
+        }
+        .begin-btn:hover { background: #a00d24; transform: translateY(-1px); }
+
+        .auto-advance-notice {
+            text-align: center; color: #666; font-size: 0.95em;
+            margin-top: 15px; font-style: italic;
+        }
+
+        .completion-card { text-align: center; padding: 40px; }
+        .completion-icon { font-size: 4em; margin-bottom: 15px; }
+        .completion-card h2 { color: #c8102e; margin-bottom: 10px; }
+        .completion-card p { color: #666; margin-bottom: 25px; }
+
+        .playback-area {
+            margin: 25px 0; padding: 20px; background: #f8f9fa;
+            border-radius: 8px; border: 1px solid #dee2e6;
+        }
+        .playback-area h4 { color: #c8102e; margin-bottom: 12px; }
+        .playback-area audio { width: 100%; }
+
+        .nav-buttons {
+            display: flex; justify-content: center; gap: 15px; margin: 20px 0;
+        }
+        .nav-btn {
+            display: inline-block; padding: 12px 30px; background: #c8102e;
+            color: white; text-decoration: none; border-radius: 5px;
+            font-weight: 600; transition: background 0.2s; border: none;
+            cursor: pointer; font-size: 1em;
+        }
+        .nav-btn:hover { background: #a00d24; }
+
+        .phase { display: none; }
+        .phase.active { display: block; }
+
+        @media (max-width: 600px) {
+            .celpip-header { flex-direction: column; gap: 10px; text-align: center; }
+            .timer-circle { width: 160px; height: 160px; }
+            .timer-ring { width: 160px; height: 160px; }
+            .timer-time { font-size: 2.5em; }
+        }
+
+        .vocab-sidebar {
+            position: fixed; right: 0; top: 50%; transform: translateY(-50%);
+            background: white; border-radius: 15px 0 0 15px;
+            box-shadow: -4px 0 12px rgba(0,0,0,0.15); z-index: 1000;
+            width: 60px; height: 60px;
+        }
+        .vocab-sidebar-item {
+            display: flex; align-items: center; padding: 15px; cursor: pointer;
+            transition: all 0.3s ease; white-space: nowrap; text-decoration: none;
+            color: inherit; width: 60px; height: 60px; overflow: visible;
+            position: absolute; right: 0; background: white;
+            border-radius: 15px 0 0 15px;
+        }
+        .vocab-sidebar-item:hover {
+            background: #f8f9fa; width: 240px;
+            box-shadow: -4px 0 12px rgba(0,0,0,0.2); z-index: 1001;
+        }
+        .vocab-icon { font-size: 24px; min-width: 24px; display: flex; align-items: center; justify-content: center; }
+        .vocab-text {
+            margin-left: 12px; font-weight: 600; font-size: 0.9em;
+            max-width: 0; opacity: 0; overflow: hidden; transition: all 0.3s ease;
+        }
+        .vocab-sidebar-item:hover .vocab-text { max-width: 200px; opacity: 1; display: inline-block; }
+        .vocab-sidebar-item.pause-btn { color: #c8102e; top: 0; }
+    </style>
+</head>
+<body>
+    <div class="celpip-header">
+        <h1>Test {{ test_num }} - Speaking - {{ section.title }}</h1>
+        <div class="header-right">
+            <span class="test-mode-badge">TEST MODE</span>
+            <span class="phase-badge instruction" id="phaseBadge">Instructions</span>
+            <span class="progress-info">Task {{ part_num }} of {{ total_parts }}</span>
+            <div class="recording-toggle">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="recordingToggle">
+                    <span class="toggle-slider"></span>
+                </label>
+                <label for="recordingToggle">Record</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- PHASE 1: Instructions -->
+        <div class="phase active" id="phaseInstruction">
+            <div class="instructions-bar">
+                <strong>Test Mode:</strong> {{ section.instructions }}
+            </div>
+
+            {% if section.image_url %}
+            <div class="prompt-image">
+                <img src="{{ section.image_url }}" alt="Task image">
+            </div>
+            {% endif %}
+
+            <div class="prompt-card">
+                <h3>Task Prompt</h3>
+                <div class="prompt-text">{{ section.prompt }}</div>
+                {% if section.prompt_context %}
+                <div class="prompt-context">{{ section.prompt_context }}</div>
+                {% endif %}
+            </div>
+
+            <div class="action-area">
+                <button class="begin-btn" onclick="startPreparation()">
+                    Begin Preparation ({{ section.preparation_time }}s)
+                </button>
+            </div>
+            <div class="auto-advance-notice">
+                Phases advance automatically. You cannot go back once started.
+            </div>
+        </div>
+
+        <!-- PHASE 2: Preparation -->
+        <div class="phase" id="phasePreparation">
+            {% if section.image_url %}
+            <div class="prompt-image">
+                <img src="{{ section.image_url }}" alt="Task image">
+            </div>
+            {% endif %}
+
+            <div class="prompt-card">
+                <h3>Task Prompt</h3>
+                <div class="prompt-text">{{ section.prompt }}</div>
+                {% if section.prompt_context %}
+                <div class="prompt-context">{{ section.prompt_context }}</div>
+                {% endif %}
+            </div>
+
+            <div class="timer-display">
+                <div class="timer-circle preparation" id="prepTimerCircle">
+                    <svg class="timer-ring" viewBox="0 0 200 200">
+                        <circle class="bg" cx="100" cy="100" r="97"></circle>
+                        <circle class="progress preparation" cx="100" cy="100" r="97"
+                                id="prepProgress"
+                                stroke-dasharray="609.4"
+                                stroke-dashoffset="0"></circle>
+                    </svg>
+                    <span class="timer-time" id="prepTimerText">{{ section.preparation_time }}</span>
+                    <span class="timer-label">Preparation</span>
+                </div>
+            </div>
+
+            <div class="auto-advance-notice">
+                Speaking will begin automatically when preparation time ends.
+            </div>
+        </div>
+
+        <!-- PHASE 3: Speaking -->
+        <div class="phase" id="phaseSpeaking">
+            {% if section.image_url %}
+            <div class="prompt-image">
+                <img src="{{ section.image_url }}" alt="Task image">
+            </div>
+            {% endif %}
+
+            <div class="prompt-card">
+                <h3>Task Prompt</h3>
+                <div class="prompt-text">{{ section.prompt }}</div>
+            </div>
+
+            <div class="timer-display">
+                <div class="timer-circle speaking" id="speakTimerCircle">
+                    <svg class="timer-ring" viewBox="0 0 200 200">
+                        <circle class="bg" cx="100" cy="100" r="97"></circle>
+                        <circle class="progress speaking" cx="100" cy="100" r="97"
+                                id="speakProgress"
+                                stroke-dasharray="609.4"
+                                stroke-dashoffset="0"></circle>
+                    </svg>
+                    <span class="timer-time" id="speakTimerText">{{ section.response_time }}</span>
+                    <span class="timer-label">Speaking</span>
+                </div>
+            </div>
+
+            <div class="speaking-indicator active" id="speakingIndicator">
+                <div class="audio-bars">
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <div class="speaking-status speak-now" id="speakingStatus">Speak Now</div>
+            </div>
+
+            <div class="auto-advance-notice">
+                Task will complete automatically when time runs out.
+            </div>
+        </div>
+
+        <!-- PHASE 4: Completion -->
+        <div class="phase" id="phaseComplete">
+            <div class="card completion-card">
+                <div class="completion-icon">&#10004;&#65039;</div>
+                <h2>Task Complete</h2>
+                <p>You have completed {{ section.title }}.</p>
+
+                <div class="playback-area" id="playbackArea" style="display: none;">
+                    <h4>Your Recording</h4>
+                    <audio id="playbackAudio" controls></audio>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                {% if is_last_part_of_skill %}
+                    {% if next_skill %}
+                    <a href="/test/{{ test_num }}/exam/{{ next_skill }}/part1" class="nav-btn">
+                        Continue to {{ next_skill|title }} &#8594;
+                    </a>
+                    {% else %}
+                    <a href="/test/{{ test_num }}" class="nav-btn">
+                        Finish Exam
+                    </a>
+                    {% endif %}
+                {% else %}
+                <a href="/test/{{ test_num }}/exam/speaking/part{{ part_num + 1 }}" class="nav-btn">
+                    Next Task &#8594;
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating sidebar -->
+    <div class="vocab-sidebar">
+        <a href="/" class="vocab-sidebar-item pause-btn" title="Pause & Exit">
+            <span class="vocab-icon">&#9208;</span>
+            <span class="vocab-text">Pause & Exit</span>
+        </a>
+    </div>
+
+    <script>
+        const PREP_TIME = {{ section.preparation_time }};
+        const RESPONSE_TIME = {{ section.response_time }};
+        const CIRCUMFERENCE = 2 * Math.PI * 97;
+
+        let prepTimer = null;
+        let speakTimer = null;
+        let mediaRecorder = null;
+        let audioChunks = [];
+        let recordedBlob = null;
+        let micStream = null;
+
+        function setPhase(phaseName) {
+            document.querySelectorAll('.phase').forEach(p => p.classList.remove('active'));
+            document.getElementById('phase' + phaseName).classList.add('active');
+
+            const badge = document.getElementById('phaseBadge');
+            badge.className = 'phase-badge';
+            if (phaseName === 'Instruction') {
+                badge.textContent = 'Instructions';
+                badge.classList.add('instruction');
+            } else if (phaseName === 'Preparation') {
+                badge.textContent = 'Preparation';
+                badge.classList.add('preparation');
+            } else if (phaseName === 'Speaking') {
+                badge.textContent = 'Speaking';
+                badge.classList.add('speaking');
+            } else if (phaseName === 'Complete') {
+                badge.textContent = 'Complete';
+                badge.classList.add('complete');
+            }
+        }
+
+        function startPreparation() {
+            setPhase('Preparation');
+            let timeLeft = PREP_TIME;
+            const timerText = document.getElementById('prepTimerText');
+            const progressCircle = document.getElementById('prepProgress');
+
+            updateTimerDisplay(timerText, timeLeft);
+            prepTimer = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay(timerText, timeLeft);
+                const offset = CIRCUMFERENCE * (1 - timeLeft / PREP_TIME);
+                progressCircle.style.strokeDashoffset = offset;
+
+                if (timeLeft <= 5) {
+                    document.getElementById('prepTimerCircle').classList.add('warning');
+                }
+                if (timeLeft <= 0) {
+                    clearInterval(prepTimer);
+                    startSpeaking();
+                }
+            }, 1000);
+        }
+
+        function startSpeaking() {
+            setPhase('Speaking');
+            let timeLeft = RESPONSE_TIME;
+            const timerText = document.getElementById('speakTimerText');
+            const progressCircle = document.getElementById('speakProgress');
+            const recordingEnabled = document.getElementById('recordingToggle').checked;
+
+            if (recordingEnabled) {
+                startRecording();
+            }
+
+            updateTimerDisplay(timerText, timeLeft);
+            speakTimer = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay(timerText, timeLeft);
+                const offset = CIRCUMFERENCE * (1 - timeLeft / RESPONSE_TIME);
+                progressCircle.style.strokeDashoffset = offset;
+
+                if (timeLeft <= 10) {
+                    document.getElementById('speakTimerCircle').classList.add('warning');
+                }
+                if (timeLeft <= 0) {
+                    clearInterval(speakTimer);
+                    finishSpeaking();
+                }
+            }, 1000);
+        }
+
+        function finishSpeaking() {
+            if (mediaRecorder && mediaRecorder.state === 'recording') {
+                mediaRecorder.stop();
+            }
+            if (micStream) {
+                micStream.getTracks().forEach(t => t.stop());
+                micStream = null;
+            }
+            setPhase('Complete');
+
+            if (!document.getElementById('recordingToggle').checked) {
+                document.getElementById('playbackArea').style.display = 'none';
+            }
+        }
+
+        async function startRecording() {
+            try {
+                micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                audioChunks = [];
+                mediaRecorder = new MediaRecorder(micStream);
+
+                mediaRecorder.ondataavailable = (e) => {
+                    if (e.data.size > 0) audioChunks.push(e.data);
+                };
+
+                mediaRecorder.onstop = () => {
+                    recordedBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    const url = URL.createObjectURL(recordedBlob);
+                    const audioEl = document.getElementById('playbackAudio');
+                    audioEl.src = url;
+                    document.getElementById('playbackArea').style.display = 'block';
+                };
+
+                mediaRecorder.start();
+                document.getElementById('speakingStatus').textContent = 'Recording...';
+                document.getElementById('speakingStatus').className = 'speaking-status recording';
+            } catch (err) {
+                console.error('Microphone access denied:', err);
+                document.getElementById('speakingStatus').textContent = 'Microphone unavailable — speak aloud';
+                document.getElementById('speakingStatus').className = 'speaking-status speak-now';
+            }
+        }
+
+        function updateTimerDisplay(el, seconds) {
+            const m = Math.floor(seconds / 60);
+            const s = seconds % 60;
+            el.textContent = m > 0 ? `${m}:${s.toString().padStart(2, '0')}` : s;
+        }
+
+        document.getElementById('recordingToggle').addEventListener('change', async function() {
+            if (this.checked) {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    stream.getTracks().forEach(t => t.stop());
+                } catch (err) {
+                    alert('Microphone access is required for recording. Please allow microphone access and try again.');
+                    this.checked = false;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
